@@ -28,7 +28,7 @@ const label = process.argv[3] || '';
 (async () => {
   const browser = await puppeteer.launch({
     headless: 'new',
-    executablePath: 'C:/Users/hasan/.cache/puppeteer/chrome/win64-136.0.7103.92/chrome-win64/chrome.exe',
+    executablePath: 'C:/Users/hasan/.cache/puppeteer/chrome/win64-127.0.6533.88/chrome-win64/chrome.exe',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
 
