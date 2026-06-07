@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The 7 Things Your $60 Probiotic Isn't Telling You | Flove</title>
+  <meta name="description" content="What a corporate desk does to a female digestive system that no wellness brand on your Instagram feed has a financial reason to tell you." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#08090C',
+            surface: '#0F1318',
+            border: '#1A2030',
+            accent: '#10B981',
+            amber: '#F59E0B',
+            'text-primary': '#F0F4F8',
+            'text-secondary': '#8A96A8',
+          },
+          fontFamily: {
+            grotesk: ['Space Grotesk', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #08090C;
+      color: #F0F4F8;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.03em; }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+    }
+
+    /* Reading progress bar */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #10B981, #34D399);
+      z-index: 1000;
+      transition: width 0.1s linear;
+      width: 0%;
+    }
+
+    /* Article body typography */
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: #B8C4D0;
+      font-size: 1.0625rem;
+      line-height: 1.8;
+    }
+    .article-body p strong {
+      color: #F0F4F8;
+      font-weight: 600;
+    }
+    .article-body p em {
+      color: #8A96A8;
+      font-style: italic;
+    }
+
+    /* Section number badge */
+    .section-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.25);
+      color: #10B981;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      flex-shrink: 0;
+    }
+
+    /* Section heading */
+    .section-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.625rem;
+      font-weight: 700;
+      color: #F0F4F8;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid #10B981;
+      padding: 1rem 1.5rem;
+      background: rgba(16,185,129,0.04);
+      border-radius: 0 8px 8px 0;
+      margin: 2rem 0;
+    }
+    .pull-quote p {
+      margin: 0 !important;
+      color: #D4E0EC !important;
+      font-size: 1.125rem !important;
+      font-style: italic;
+      line-height: 1.6 !important;
+    }
+
+    /* Data callout */
+    .data-callout {
+      background: #0F1318;
+      border: 1px solid #1A2030;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    /* Inline CTA */
+    .inline-cta {
+      background: #0F1318;
+      border: 1px solid #1A2030;
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 3rem 0;
+      text-align: center;
+    }
+    .inline-cta.accent {
+      background: rgba(16,185,129,0.05);
+      border-color: rgba(16,185,129,0.2);
+    }
+
+    /* Spec pill */
+    .spec-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #1A2030;
+      background: rgba(26,32,48,0.6);
+      padding: 4px 10px; border-radius: 20px;
+      font-size: 11px; font-weight: 500; color: #8A96A8;
+    }
+    .spec-pill span.dot { width: 5px; height: 5px; border-radius: 50%; background: #10B981; display: block; }
+
+    /* Stat number */
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    /* Survival bar */
+    .sbar-fill { width: 0; transition: width 1.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .sbar-fill.animated { width: var(--w); }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #08090C; }
+    ::-webkit-scrollbar-thumb { background: #1A2030; border-radius: 2px; }
+
+    /* Sticky nav */
+    #top-nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+
+    /* Final CTA btn */
+    .final-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #10B981;
+      color: #08090C;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.0625rem;
+      padding: 16px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      box-shadow: 0 0 48px rgba(16,185,129,0.2);
+    }
+    .final-btn:hover { opacity: 0.9; }
+    .final-btn:active { transform: scale(0.98); }
+
+    /* Requirement list */
+    .req-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 1.25rem;
+      border-radius: 10px;
+      border: 1px solid #1A2030;
+      background: #08090C;
+      margin-bottom: 0.625rem;
+    }
+    .req-item .req-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Dependency cycle items */
+    .dep-item {
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      background: rgba(239,68,68,0.05);
+      border: 1px solid rgba(239,68,68,0.15);
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Progress bar -->
+<div id="progress-bar"></div>
+
+<!-- ============================================================
+     TOP NAV
+     ============================================================ -->
+<nav id="top-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(8,9,12,0.9);">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 flex items-center justify-between h-13 py-3">
+    <a href="index.html" class="font-grotesk font-bold text-lg text-text-primary tracking-tighter">
+      FLOVE<span style="color:#10B981;">.</span>
+    </a>
+    <a href="index.html#order" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-grotesk font-semibold text-sm text-bg" style="background:#10B981;">
+      See the Protocol →
+    </a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     ARTICLE HEADER
+     ============================================================ -->
+<header class="pt-28 pb-12 px-4 sm:px-6">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Category + reading time -->
+    <div class="flex items-center gap-3 mb-6">
+      <div class="spec-pill"><span class="dot"></span>Gut Health · Corporate Performance</div>
+      <span class="text-xs text-text-secondary">9 min read</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="font-grotesk font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mb-6" style="letter-spacing:-0.04em; line-height:1.1;">
+      The 7 Things Your $60 Probiotic<br class="hidden sm:block" /> Isn't Telling You About What<br class="hidden sm:block" /> Happens Between 9 AM and 5 PM
+    </h1>
+
+    <!-- Deck / lede -->
+    <p class="text-text-secondary text-lg sm:text-xl" style="line-height:1.65;">
+      What a corporate desk does to a female digestive system — that no wellness brand on your Instagram feed has a financial reason to tell you.
+    </p>
+
+    <!-- Author line -->
+    <div class="flex items-center gap-3 mt-8 pt-6 border-t border-border">
+      <div class="w-9 h-9 rounded-full flex items-center justify-center font-grotesk font-bold text-xs" style="background:rgba(16,185,129,0.15); color:#10B981; border:1px solid rgba(16,185,129,0.2);">FL</div>
+      <div>
+        <div class="text-sm font-medium text-text-primary">Flove Research</div>
+        <div class="text-xs text-text-secondary">June 2025 · Clinical review pending</div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ============================================================
+     ARTICLE BODY
+     ============================================================ -->
+<main class="px-4 sm:px-6 pb-24" id="article-main">
+  <div class="max-w-3xl mx-auto article-body">
+
+    <!-- Opening -->
+    <p>You know the moment.</p>
+    <p>You're in a meeting room, the kind with the long table and the glass walls, and your stomach makes a sound that everyone hears. You drink water. You shift in your seat. You count the minutes until you can leave.</p>
+    <p>You've been told this is stress. You've been told it's your diet. You've been told to try a probiotic, and you've tried four of them, and you're still sitting in that meeting room.</p>
+    <p>The truth is that nothing you've been told about your gut accounts for the specific environment you spend 50 hours a week inside. What follows are the 7 things a corporate desk does to a female digestive system that no wellness brand on your Instagram feed has a financial reason to tell you.</p>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 1 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">01</span>
+      <h2 class="section-heading">Your bloat is mechanical, not behavioral.</h2>
+    </div>
+
+    <p>Sitting for 8 to 12 hours a day physically compresses the abdominal cavity. The colon, which is designed to move waste through peristaltic waves driven partly by walking, slows to a near-halt. By 2 PM your lower intestine is moving at roughly 40% of its morning rate.</p>
+
+    <div class="pull-quote">
+      <p>This isn't a discipline problem. It's a mechanics problem.</p>
+    </div>
+
+    <p>You could eat perfectly and you would still bloat by mid-afternoon, because the geometry of your workday doesn't allow your digestive system to do what it was built to do. The same body, on a Saturday, doesn't behave this way. The variable isn't you. The variable is the chair.</p>
+
+    <p>Most women in your position spend years blaming their diet, their hormones, their stress management, their lack of discipline. None of these are the primary cause. The primary cause is mechanical compression of a system that requires movement to function. <strong>You can't out-discipline geometry.</strong></p>
+
+    <!-- Data callout: colon motility -->
+    <div class="data-callout">
+      <div class="flex flex-wrap gap-6">
+        <div>
+          <div class="stat-number" style="color:#10B981;">40%</div>
+          <div class="text-sm text-text-secondary mt-1">Colonic motility rate by 2 PM<br/>(vs. morning baseline)</div>
+        </div>
+        <div class="border-l border-border pl-6">
+          <div class="stat-number" style="color:#8A96A8;">8–12h</div>
+          <div class="text-sm text-text-secondary mt-1">Daily abdominal compression<br/>in a standard desk role</div>
+        </div>
+        <div class="border-l border-border pl-6">
+          <div class="stat-number" style="color:#F59E0B;">50h</div>
+          <div class="text-sm text-text-secondary mt-1">Weekly hours the system<br/>operates under compression</div>
+        </div>
+      </div>
+    </div>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 2 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">02</span>
+      <h2 class="section-heading">Cortisol is starving your gut bacteria.</h2>
+    </div>
+
+    <p>Chronic cortisol — the kind generated by back-to-back meetings, Slack notifications, and the low-grade vigilance of an open-plan office — suppresses the growth of beneficial gut bacteria within hours.</p>
+    <p>Research on high-stress occupational environments has consistently shown measurable bacterial die-off in the gut microbiome under sustained cortisol load. The afternoon brain fog you've been blaming on lunch is a starved gut-brain axis. <strong>Your bacteria are running out of food while your boss is asking for the deck.</strong></p>
+
+    <div class="pull-quote">
+      <p>This is why the 3 PM cognitive crash feels neurological. It is neurological. Your gut and your brain are the same conversation, and the conversation goes quiet when your cortisol stays high for ten hours straight.</p>
+    </div>
+
+    <p>The mechanism is straightforward. Cortisol shifts blood flow away from the digestive tract and toward the muscles and brain — a residual evolutionary response built for running from threats, not for surviving Q4. Less blood flow to the gut means less nutrient delivery to your bacteria. Less nutrient delivery means population decline. Population decline means the bacteria that produce serotonin precursors, B vitamins, and short-chain fatty acids stop producing them at the rate you need.</p>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 3 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">03</span>
+      <h2 class="section-heading">The math your probiotic doesn't want you to do.</h2>
+    </div>
+
+    <p>Your stomach maintains a pH between 1.5 and 3.5. That's roughly the acidity of battery fluid.</p>
+    <p>A standard vegetable capsule — the kind used by every major probiotic brand in this category — dissolves in that environment within 5 to 10 minutes.</p>
+    <p>This means by the time the bacteria inside the capsule reach your lower intestine, where they're supposed to colonize, the vast majority of them are dead. Industry survival rates for unshielded probiotic delivery systems sit between 0.003% and 2.8%, depending on the strain and the buffer used.</p>
+
+    <!-- Survival rate visualization -->
+    <div class="data-callout" id="listicle-bars">
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Bacterial survival through gastric transit</div>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-sm mb-1.5">
+            <span class="text-text-secondary">Powder / no coating</span>
+            <span class="font-grotesk font-bold" style="color:#ef4444;">0.003%</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;">
+            <div class="sbar-fill h-full rounded-full" style="--w:0.3%; background:#ef4444;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1.5">
+            <span class="text-text-secondary">Standard vegetable capsule (most brands)</span>
+            <span class="font-grotesk font-bold" style="color:#F59E0B;">2.8%</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;">
+            <div class="sbar-fill h-full rounded-full" style="--w:5.6%; background:#F59E0B;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1.5">
+            <span class="text-text-secondary">MAKTREK® Bi-Pass (Flove)</span>
+            <span class="font-grotesk font-bold" style="color:#10B981;">50%+</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;">
+            <div class="sbar-fill h-full rounded-full" style="--w:100%; background:linear-gradient(90deg,#0D9668,#10B981);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>Run the math on a $60 bottle. You're paying $2 per day for a product that delivers, on average, less than 1% of what's printed on the label. The cost per surviving bacterium works out to roughly $4.28 × 10⁻⁸. For dead cells.</p>
+
+    <div class="pull-quote">
+      <p>This isn't a brand problem. It's a capsule problem. Every probiotic that uses a standard vegetable capsule is selling you the same equation, and the equation says you're funding a wellness routine that does not survive your own stomach.</p>
+    </div>
+
+    <p>That's the reason your last four probiotics didn't work. Not your gut. Not your diet. Not your consistency. The delivery system failed before the bacteria ever got to where they were supposed to go.</p>
+
+    <!-- MID-ARTICLE CTA -->
+    <div class="inline-cta accent">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
+      <p class="font-grotesk font-bold text-xl text-text-primary mb-2" style="margin-bottom: 0.5rem !important;">50%+ survival vs. 0.003% for powder.</p>
+      <p class="text-text-secondary text-sm mb-5" style="margin-bottom: 1.25rem !important;">Flove's marine polysaccharide shield holds bacteria intact through gastric transit, releasing them at the exact pH where colonization happens.</p>
+      <a href="index.html#order" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-grotesk font-bold text-sm text-bg" style="background:#10B981; box-shadow: 0 0 32px rgba(16,185,129,0.2);">
+        See the Flove Protocol →
+      </a>
+      <p class="text-xs text-text-secondary mt-4" style="margin-top:1rem !important;">60-day guarantee · No subscription · Ships in 24h</p>
+    </div>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 4 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">04</span>
+      <h2 class="section-heading">Your three workouts a week aren't saving you.</h2>
+    </div>
+
+    <p>You work out. You take the Pilates class. You hit the weights on Tuesday and Thursday. Maybe you run on Saturday.</p>
+    <p>It isn't enough, and the math is going to feel unfair.</p>
+    <p><strong>Three hours of exercise cannot structurally reverse 50 hours of compression.</strong> The ratio is wrong by an order of magnitude. Your morning Pilates class is excellent for your cardiovascular system and approximately useless for your colonic motility at 3 PM on a Wednesday, because by 3 PM you've been sitting for six hours since the class ended.</p>
+
+    <div class="pull-quote">
+      <p>The problem isn't that you don't move enough overall. The problem is that you don't move during the specific 50-hour block when the damage is actually happening.</p>
+    </div>
+
+    <p>Walking 200 steps every 30 minutes during the workday would do more for your gut than a 90-minute spin class on Saturday. Most of you reading this know that. Most of you reading this also know that there is no version of your job where you get up every 30 minutes to walk. Not realistically. Not without consequences.</p>
+    <p>So the workouts aren't the fix. They were never going to be the fix. They're a useful input that has been carrying more weight in your mental model than they can structurally bear.</p>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 5 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">05</span>
+      <h2 class="section-heading">The crutches in your desk drawer are quietly making it worse.</h2>
+    </div>
+
+    <p>Coffee strips thiamine (vitamin B1) from your system. By the time you've had your third cup, your B1 levels are measurably depleted — which is one reason the afternoon crash feels neurological rather than just tired. It is neurological. B1 is a cofactor in glucose metabolism for the brain.</p>
+    <p><strong>The reason you need more coffee this year than last year isn't tolerance. It's depletion.</strong></p>
+
+    <!-- Dependency cycle -->
+    <div style="margin: 2rem 0;">
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-3">The corporate dependency cycle</div>
+      <div class="dep-item">
+        <div class="font-grotesk font-semibold text-sm mb-1" style="color:#ef9999;">Caffeine-Depletion Loop</div>
+        <div class="text-sm text-text-secondary">Coffee → temporary alertness → Vitamin B1 depletion → severe brain fog → more coffee. Repeat.</div>
+      </div>
+      <div class="dep-item">
+        <div class="font-grotesk font-semibold text-sm mb-1" style="color:#ef9999;">Acid-Suppression Trap</div>
+        <div class="text-sm text-text-secondary">Acid reflux → antacids → raised stomach pH → SIBO → chronic bloating + nutrient malabsorption → more antacids. The loop is the product.</div>
+      </div>
+      <div class="dep-item">
+        <div class="font-grotesk font-semibold text-sm mb-1" style="color:#ef9999;">Laxative Desensitization Spiral</div>
+        <div class="text-sm text-text-secondary">Constipation → OTC laxatives → colon dependency → chronic constipation worsens. The medication takes over the function. The function atrophies.</div>
+      </div>
+    </div>
+
+    <p>Every quick fix in your desk drawer is making the underlying mechanism worse. This is not a moral failing. These products were marketed to you specifically because the problem they create funds the problem they solve.</p>
+    <p>The way out is not another crutch. The way out is restoring the underlying biology.</p>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 6 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">06</span>
+      <h2 class="section-heading">What a probiotic would actually have to do to work.</h2>
+    </div>
+
+    <p>If you were going to build a probiotic that actually worked for a sedentary female professional, here is what it would have to do.</p>
+
+    <!-- Requirements list -->
+    <div style="margin: 2rem 0;">
+      <div class="req-item">
+        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <div>
+          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Survive a pH of 1.5 without dissolving</div>
+          <div class="text-sm text-text-secondary">Standard vegetable capsules can't. They dissolve in 5–10 minutes.</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <div>
+          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Release specifically at lower intestine pH (6.0–7.5)</div>
+          <div class="text-sm text-text-secondary">Not the stomach. Most fail at first acid contact because they use a single-stage system.</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <div>
+          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Use strains that don't ferment aggressively in the upper GI tract</div>
+          <div class="text-sm text-text-secondary">Wrong strains in the wrong location produce the gas, cramping, and fishy burps you experienced the last time you tried this.</div>
+        </div>
+      </div>
+      <div class="req-item">
+        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        </div>
+        <div>
+          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Deliver 40 billion CFU at the destination — not on the label</div>
+          <div class="text-sm text-text-secondary">The number on the bottle is meaningless if it dies in transit. Over 20 billion live bacteria at the destination beats 100B CFU unshielded.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-quote">
+      <p>To our knowledge, exactly one probiotic on the market meets all four of these requirements.</p>
+    </div>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- ===== SECTION 7 ===== -->
+    <div class="flex items-center gap-3 mb-4">
+      <span class="section-num">07</span>
+      <h2 class="section-heading">The probiotic that meets the spec.</h2>
+    </div>
+
+    <p>Flove uses a patented marine polysaccharide delivery system called MAKTREK® Bi-Pass.</p>
+    <p>The capsule doesn't dissolve in stomach acid. When it enters the stomach, gastric moisture hydrates the marine polysaccharide matrix, which expands into a secondary acid-resistant gel shield that holds the bacteria intact through gastric transit. The shield naturally breaks down only when it encounters the neutral pH of the lower intestine — releasing the cultures at the exact location where they're supposed to colonize.</p>
+    <p>The 4-strain formulation (<em>L. acidophilus</em> La-14, <em>B. lactis</em> Bl-04, <em>L. plantarum</em> Lp-115, <em>L. paracasei</em> Lpc-37) was selected specifically for low upper-GI fermentation. This is the technical reason Flove doesn't cause the gas, cramping, and acclimation symptoms that made you quit your last probiotic in week two.</p>
+
+    <!-- Final stats block -->
+    <div class="data-callout">
+      <div class="grid sm:grid-cols-3 gap-6 text-center">
+        <div>
+          <div class="stat-number mb-1" style="color:#10B981;">50%+</div>
+          <div class="text-xs text-text-secondary">Clinical survival rate through gastric transit using MAKTREK® delivery</div>
+        </div>
+        <div class="border-t sm:border-t-0 sm:border-l pt-4 sm:pt-0 sm:pl-4 border-border">
+          <div class="stat-number mb-1" style="color:#F0F4F8;">1,685%</div>
+          <div class="text-xs text-text-secondary">More live bacteria delivered per dose vs. unshielded competitor</div>
+        </div>
+        <div class="border-t sm:border-t-0 sm:border-l pt-4 sm:pt-0 sm:pl-4 border-border">
+          <div class="stat-number mb-1" style="color:#F59E0B;">20B+</div>
+          <div class="text-xs text-text-secondary">CFU reaching your lower intestine — more than a 100B CFU unshielded capsule</div>
+        </div>
+      </div>
+    </div>
+
+    <p>The strains were also selected for their published research on the gut-brain axis, including cortisol modulation and mood regulation. The bloat work and the brain fog work are happening in the same dose.</p>
+    <p>One capsule morning. One capsule evening. No subscription trap. No multi-step routine. No 4-bottle stack on your bathroom counter.</p>
+
+    <div class="pull-quote">
+      <p>This is what you've been looking for. It just wasn't being made until now.</p>
+    </div>
+
+    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+
+    <!-- Closing paragraph -->
+    <p>You now know something most of your colleagues don't.</p>
+    <p>You know why the bloat happens. You know why the supplements didn't work. You know what a real solution has to do to qualify.</p>
+    <p>What you do with that information is up to you. But you can stop blaming yourself. <strong>It was never a discipline problem.</strong></p>
+
+  </div>
+</main>
+
+<!-- ============================================================
+     FINAL CTA SECTION
+     ============================================================ -->
+<section style="background: linear-gradient(180deg, #08090C 0%, #0A100D 50%, #08090C 100%); border-top: 1px solid #1A2030; border-bottom: 1px solid #1A2030;">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
+
+    <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The Flove Protocol</div>
+
+    <h2 class="font-grotesk font-bold text-3xl sm:text-4xl text-text-primary mb-5" style="letter-spacing:-0.04em; line-height:1.1;">
+      Stop funding a wellness routine<br />that doesn't survive your own stomach.
+    </h2>
+
+    <p class="text-text-secondary text-lg mb-8 max-w-xl mx-auto" style="line-height:1.65;">
+      40 billion CFU. MAKTREK® Bi-Pass delivery. The 4-strain formulation selected for the corporate workday. 60-day guarantee. No subscription.
+    </p>
+
+    <!-- Mini spec grid -->
+    <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mb-10">
+      <div class="rounded-xl py-4 px-2 text-center" style="background:#0F1318; border:1px solid #1A2030;">
+        <div class="font-grotesk font-bold text-lg" style="color:#10B981;">50%+</div>
+        <div class="text-xs text-text-secondary mt-1">Survival rate</div>
+      </div>
+      <div class="rounded-xl py-4 px-2 text-center" style="background:#0F1318; border:1px solid #1A2030;">
+        <div class="font-grotesk font-bold text-lg text-text-primary">40B</div>
+        <div class="text-xs text-text-secondary mt-1">CFU per dose</div>
+      </div>
+      <div class="rounded-xl py-4 px-2 text-center" style="background:#0F1318; border:1px solid #1A2030;">
+        <div class="font-grotesk font-bold text-lg" style="color:#F59E0B;">60-day</div>
+        <div class="text-xs text-text-secondary mt-1">Guarantee</div>
+      </div>
+    </div>
+
+    <a href="index.html#order" class="final-btn">
+      See the Flove Protocol →
+    </a>
+
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-text-secondary mt-7">
+      <div class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        60-day money-back guarantee
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        No subscription trap
+      </div>
+      <div class="flex items-center gap-1.5">
+        <svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        Ships in 24 hours
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 px-4 sm:px-6 border-t border-border">
+  <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-secondary">
+    <a href="index.html" class="font-grotesk font-bold text-lg text-text-primary tracking-tighter">
+      FLOVE<span style="color:#10B981;">.</span>
+    </a>
+    <p class="text-xs text-center max-w-lg" style="color:#4A5568;">
+      *These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.
+    </p>
+    <div class="flex gap-4">
+      <a href="#" class="hover:text-text-primary transition-colors">Privacy</a>
+      <a href="#" class="hover:text-text-primary transition-colors">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+  // Reading progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrollTop = window.scrollY || doc.scrollTop;
+    const scrollHeight = doc.scrollHeight - doc.clientHeight;
+    const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    document.getElementById('progress-bar').style.width = pct + '%';
+  });
+
+  // Animate survival bars on scroll
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.sbar-fill').forEach(b => b.classList.add('animated'));
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  const barsEl = document.getElementById('listicle-bars');
+  if (barsEl) barObserver.observe(barsEl);
+</script>
+
+</body>
+</html>
