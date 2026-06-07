@@ -115,4 +115,4 @@ Checkout (TBD)
 ---
 
 ## Design Direction (for copy context)
-Dark, clinical, high-contrast. Space Grotesk + Inter. Mint accent `#10B981`. NOT soft, pastel, or wellness-generic. The visual language is archive/clinical, not spa.
+Light, editorial, warm. Playfair Display (serif) + Inter. Lavender accent `#8B72CC`. Background: warm cream `#F8F4EE`. Dark CTA button `#1C1828`. Inspired by Nuriva's visual language — feminine but clinical, not soft pastel wellness. Tone stays direct and data-driven; the aesthetic is refined, not harsh.

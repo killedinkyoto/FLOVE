@@ -8,8 +8,8 @@
 - **Product:** Flove Daily Performance Synbiotic — 40B CFU, 4-strain + FOS prebiotics, MAKTREK® Bi-Pass Technology
 - **Avatar:** "Tina" — corporate female, 25–45, management consultant / attorney / analyst / software architect
 - **Big Idea:** "The Anatomy of Cubicle Gut" — sedentary desk job is an evolutionary mismatch. Unshielded probiotics die in stomach acid (0.003% survival). MAKTREK® delivers 1,685% more live bacteria.
-- **Tone:** Clinical, direct-response, data-driven. NOT soft, pastel, or wellness-generic. This is for an analytical professional who rejects vague claims.
-- **Design direction:** Clean, geometric, high-contrast, underground archive aesthetic. Sharp — not soft.
+- **Tone:** Clinical, direct-response, data-driven. NOT wellness-generic. This is for an analytical professional who rejects vague claims.
+- **Design direction:** Warm cream background (`#F8F4EE`), lavender purple accent (`#8B72CC`), dark CTA button (`#1C1828`), Playfair Display serif headings + Inter body. Editorial, warm, refined. Inspired by Nuriva. NOT dark, NOT mint-green, NOT Space Grotesk.
 
 ## Reference Files
 - `docs/tina-avatar.md` — full psychographic profile, pain points, emotional journey, verbatim quotes
@@ -45,15 +45,15 @@
 - If no brand assets yet, apply the design direction below.
 
 ## Anti-Generic Guardrails
-- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Flove brand direction: deep, clinical, high-contrast. Derive a custom palette.
-- **Shadows:** Never flat `shadow-md`. Use layered, color-tinted shadows with low opacity.
-- **Typography:** Never same font for heading and body. Pair a sharp display font with a clean sans. Tight tracking (`-0.03em`) on large headings, generous line-height (`1.7`) on body.
-- **Gradients:** Layer multiple radial gradients. Add grain/texture via SVG noise filter for depth.
+- **Colors:** Never use default Tailwind palette (indigo-500, blue-600, etc.). Brand palette: bg `#F8F4EE`, surface `#FFFFFF`, border `#EDE6F4`, accent `#8B72CC`, cta `#1C1828`.
+- **Shadows:** Never flat `shadow-md`. Use lavender-tinted shadows with low opacity: `rgba(139,114,204,0.1)`.
+- **Typography:** Playfair Display for all headings (`letter-spacing: -0.02em`). Inter for body (`line-height: 1.7`). Never same font for both.
+- **Gradients:** Soft lavender radial glows. No grain/noise overlay — the cream background provides warmth naturally.
 - **Animations:** Only animate `transform` and `opacity`. Never `transition-all`. Spring-style easing.
 - **Interactive states:** Every clickable element needs hover, focus-visible, and active states.
-- **Images:** Add gradient overlay (`bg-gradient-to-t from-black/60`) and color treatment with `mix-blend-multiply`.
+- **Images:** Light gradient overlays on cream. No dark overlays.
 - **Spacing:** Intentional, consistent spacing tokens — not random Tailwind steps.
-- **Depth:** Surfaces have a layering system (base → elevated → floating).
+- **Depth:** Surfaces have a layering system: cream bg → white cards → floating elements.
 
 ## Copy Rules
 - Use verbatim phrasing from `docs/copy-bank.md` — "desk bloat," "embarrassing growling noises," "mid-afternoon cognitive fatigue," "clothing digging into the waist"

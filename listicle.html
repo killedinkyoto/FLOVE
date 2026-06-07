@@ -8,22 +8,25 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            bg: '#08090C',
-            surface: '#0F1318',
-            border: '#1A2030',
-            accent: '#10B981',
-            amber: '#F59E0B',
-            'text-primary': '#F0F4F8',
-            'text-secondary': '#8A96A8',
+            bg: '#F8F4EE',
+            surface: '#FFFFFF',
+            'surface-2': '#F2EBF8',
+            border: '#EDE6F4',
+            accent: '#8B72CC',
+            'accent-dim': '#7A62B8',
+            'accent-light': '#C4B5E8',
+            amber: '#C4962A',
+            'text-primary': '#1A1526',
+            'text-secondary': '#6B6480',
           },
           fontFamily: {
-            grotesk: ['Space Grotesk', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
             inter: ['Inter', 'sans-serif'],
           },
         },
@@ -34,33 +37,19 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      background: #08090C;
-      color: #F0F4F8;
+      background: #F8F4EE;
+      color: #1A1526;
       font-family: 'Inter', sans-serif;
       line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.03em; }
-
-    /* Grain overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.02;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
-    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; }
 
     /* Reading progress bar */
     #progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
+      position: fixed; top: 0; left: 0;
       height: 2px;
-      background: linear-gradient(90deg, #10B981, #34D399);
+      background: linear-gradient(90deg, #8B72CC, #C4B5E8);
       z-index: 1000;
       transition: width 0.1s linear;
       width: 0%;
@@ -69,57 +58,43 @@
     /* Article body typography */
     .article-body p {
       margin-bottom: 1.5rem;
-      color: #B8C4D0;
+      color: #4A4060;
       font-size: 1.0625rem;
       line-height: 1.8;
     }
-    .article-body p strong {
-      color: #F0F4F8;
-      font-weight: 600;
-    }
-    .article-body p em {
-      color: #8A96A8;
-      font-style: italic;
-    }
+    .article-body p strong { color: #1A1526; font-weight: 600; }
+    .article-body p em { color: #6B6480; font-style: italic; }
 
     /* Section number badge */
     .section-num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: rgba(16,185,129,0.1);
-      border: 1px solid rgba(16,185,129,0.25);
-      color: #10B981;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 0.8125rem;
-      flex-shrink: 0;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 8px;
+      background: rgba(139,114,204,0.1);
+      border: 1px solid rgba(139,114,204,0.25);
+      color: #8B72CC;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700; font-size: 0.8125rem; flex-shrink: 0;
     }
 
     /* Section heading */
     .section-heading {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.625rem;
-      font-weight: 700;
-      color: #F0F4F8;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.625rem; font-weight: 700;
+      color: #1A1526;
+      letter-spacing: -0.02em; line-height: 1.2;
     }
 
     /* Pull quote */
     .pull-quote {
-      border-left: 3px solid #10B981;
+      border-left: 3px solid #8B72CC;
       padding: 1rem 1.5rem;
-      background: rgba(16,185,129,0.04);
+      background: rgba(139,114,204,0.05);
       border-radius: 0 8px 8px 0;
       margin: 2rem 0;
     }
     .pull-quote p {
       margin: 0 !important;
-      color: #D4E0EC !important;
+      color: #4A4060 !important;
       font-size: 1.125rem !important;
       font-style: italic;
       line-height: 1.6 !important;
@@ -127,44 +102,43 @@
 
     /* Data callout */
     .data-callout {
-      background: #0F1318;
-      border: 1px solid #1A2030;
-      border-radius: 12px;
+      background: #FFFFFF;
+      border: 1px solid #EDE6F4;
+      border-radius: 16px;
       padding: 1.5rem;
       margin: 2rem 0;
     }
 
     /* Inline CTA */
     .inline-cta {
-      background: #0F1318;
-      border: 1px solid #1A2030;
+      background: #FFFFFF;
+      border: 1px solid #EDE6F4;
       border-radius: 16px;
       padding: 2rem;
       margin: 3rem 0;
       text-align: center;
     }
     .inline-cta.accent {
-      background: rgba(16,185,129,0.05);
-      border-color: rgba(16,185,129,0.2);
+      background: rgba(139,114,204,0.05);
+      border-color: rgba(139,114,204,0.2);
     }
 
     /* Spec pill */
     .spec-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      border: 1px solid #1A2030;
-      background: rgba(26,32,48,0.6);
+      border: 1px solid #EDE6F4;
+      background: rgba(139,114,204,0.07);
       padding: 4px 10px; border-radius: 20px;
-      font-size: 11px; font-weight: 500; color: #8A96A8;
+      font-size: 11px; font-weight: 500; color: #8B72CC;
+      font-family: 'Inter', sans-serif;
     }
-    .spec-pill span.dot { width: 5px; height: 5px; border-radius: 50%; background: #10B981; display: block; }
+    .spec-pill span.dot { width: 5px; height: 5px; border-radius: 50%; background: #8B72CC; display: block; }
 
     /* Stat number */
     .stat-number {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 2.5rem; font-weight: 700;
+      letter-spacing: -0.02em; line-height: 1;
     }
 
     /* Survival bar */
@@ -173,59 +147,43 @@
 
     /* Scrollbar */
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #08090C; }
-    ::-webkit-scrollbar-thumb { background: #1A2030; border-radius: 2px; }
+    ::-webkit-scrollbar-track { background: #F8F4EE; }
+    ::-webkit-scrollbar-thumb { background: #EDE6F4; border-radius: 2px; }
 
     /* Sticky nav */
     #top-nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 
     /* Final CTA btn */
     .final-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #10B981;
-      color: #08090C;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #1C1828; color: #FFFFFF;
+      font-family: 'Inter', sans-serif; font-weight: 700;
       font-size: 1.0625rem;
-      padding: 16px 36px;
-      border-radius: 12px;
+      padding: 16px 36px; border-radius: 100px;
       text-decoration: none;
       transition: opacity 0.15s ease, transform 0.15s ease;
-      box-shadow: 0 0 48px rgba(16,185,129,0.2);
     }
-    .final-btn:hover { opacity: 0.9; }
+    .final-btn:hover { opacity: 0.85; }
     .final-btn:active { transform: scale(0.98); }
 
     /* Requirement list */
     .req-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 1.25rem;
-      border-radius: 10px;
-      border: 1px solid #1A2030;
-      background: #08090C;
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 1.25rem; border-radius: 12px;
+      border: 1px solid #EDE6F4; background: #FFFFFF;
       margin-bottom: 0.625rem;
     }
     .req-item .req-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
     }
 
     /* Dependency cycle items */
     .dep-item {
-      padding: 1rem 1.25rem;
-      border-radius: 10px;
-      background: rgba(239,68,68,0.05);
-      border: 1px solid rgba(239,68,68,0.15);
+      padding: 1rem 1.25rem; border-radius: 12px;
+      background: rgba(196,120,84,0.04);
+      border: 1px solid rgba(196,120,84,0.15);
       margin-bottom: 0.5rem;
     }
   </style>
@@ -238,12 +196,12 @@
 <!-- ============================================================
      TOP NAV
      ============================================================ -->
-<nav id="top-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(8,9,12,0.9);">
-  <div class="max-w-3xl mx-auto px-4 sm:px-6 flex items-center justify-between h-13 py-3">
-    <a href="index.html" class="font-grotesk font-bold text-lg text-text-primary tracking-tighter">
-      FLOVE<span style="color:#10B981;">.</span>
+<nav id="top-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(248,244,238,0.92);">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+    <a href="index.html" style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.25rem; color:#1A1526; text-decoration:none; letter-spacing:-0.01em;">
+      flove<span style="color:#8B72CC;">.</span>
     </a>
-    <a href="index.html#order" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-grotesk font-semibold text-sm text-bg" style="background:#10B981;">
+    <a href="index.html#order" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold text-sm text-white" style="background:#1C1828; font-family:'Inter',sans-serif; text-decoration:none;">
       See the Protocol →
     </a>
   </div>
@@ -258,25 +216,25 @@
     <!-- Category + reading time -->
     <div class="flex items-center gap-3 mb-6">
       <div class="spec-pill"><span class="dot"></span>Gut Health · Corporate Performance</div>
-      <span class="text-xs text-text-secondary">9 min read</span>
+      <span class="text-xs" style="color:#6B6480;">9 min read</span>
     </div>
 
     <!-- Headline -->
-    <h1 class="font-grotesk font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mb-6" style="letter-spacing:-0.04em; line-height:1.1;">
+    <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mb-6" style="letter-spacing:-0.02em; line-height:1.15;">
       The 7 Things Your $60 Probiotic<br class="hidden sm:block" /> Isn't Telling You About What<br class="hidden sm:block" /> Happens Between 9 AM and 5 PM
     </h1>
 
     <!-- Deck / lede -->
-    <p class="text-text-secondary text-lg sm:text-xl" style="line-height:1.65;">
+    <p class="text-lg sm:text-xl" style="color:#6B6480; line-height:1.65;">
       What a corporate desk does to a female digestive system — that no wellness brand on your Instagram feed has a financial reason to tell you.
     </p>
 
     <!-- Author line -->
     <div class="flex items-center gap-3 mt-8 pt-6 border-t border-border">
-      <div class="w-9 h-9 rounded-full flex items-center justify-center font-grotesk font-bold text-xs" style="background:rgba(16,185,129,0.15); color:#10B981; border:1px solid rgba(16,185,129,0.2);">FL</div>
+      <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-xs" style="background:rgba(139,114,204,0.12); color:#8B72CC; border:1px solid rgba(139,114,204,0.2);">FL</div>
       <div>
         <div class="text-sm font-medium text-text-primary">Flove Research</div>
-        <div class="text-xs text-text-secondary">June 2025 · Clinical review pending</div>
+        <div class="text-xs" style="color:#6B6480;">June 2025 · Clinical review pending</div>
       </div>
     </div>
 
@@ -295,7 +253,7 @@
     <p>You've been told this is stress. You've been told it's your diet. You've been told to try a probiotic, and you've tried four of them, and you're still sitting in that meeting room.</p>
     <p>The truth is that nothing you've been told about your gut accounts for the specific environment you spend 50 hours a week inside. What follows are the 7 things a corporate desk does to a female digestive system that no wellness brand on your Instagram feed has a financial reason to tell you.</p>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 1 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -317,21 +275,21 @@
     <div class="data-callout">
       <div class="flex flex-wrap gap-6">
         <div>
-          <div class="stat-number" style="color:#10B981;">40%</div>
-          <div class="text-sm text-text-secondary mt-1">Colonic motility rate by 2 PM<br/>(vs. morning baseline)</div>
+          <div class="stat-number" style="color:#8B72CC;">40%</div>
+          <div class="text-sm mt-1" style="color:#6B6480;">Colonic motility rate by 2 PM<br/>(vs. morning baseline)</div>
         </div>
         <div class="border-l border-border pl-6">
-          <div class="stat-number" style="color:#8A96A8;">8–12h</div>
-          <div class="text-sm text-text-secondary mt-1">Daily abdominal compression<br/>in a standard desk role</div>
+          <div class="stat-number" style="color:#6B6480;">8–12h</div>
+          <div class="text-sm mt-1" style="color:#6B6480;">Daily abdominal compression<br/>in a standard desk role</div>
         </div>
         <div class="border-l border-border pl-6">
-          <div class="stat-number" style="color:#F59E0B;">50h</div>
-          <div class="text-sm text-text-secondary mt-1">Weekly hours the system<br/>operates under compression</div>
+          <div class="stat-number" style="color:#C4962A;">50h</div>
+          <div class="text-sm mt-1" style="color:#6B6480;">Weekly hours the system<br/>operates under compression</div>
         </div>
       </div>
     </div>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 2 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -348,7 +306,7 @@
 
     <p>The mechanism is straightforward. Cortisol shifts blood flow away from the digestive tract and toward the muscles and brain — a residual evolutionary response built for running from threats, not for surviving Q4. Less blood flow to the gut means less nutrient delivery to your bacteria. Less nutrient delivery means population decline. Population decline means the bacteria that produce serotonin precursors, B vitamins, and short-chain fatty acids stop producing them at the rate you need.</p>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 3 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -362,33 +320,33 @@
 
     <!-- Survival rate visualization -->
     <div class="data-callout" id="listicle-bars">
-      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Bacterial survival through gastric transit</div>
+      <div class="text-sm font-semibold text-text-primary mb-4" style="font-family:'Playfair Display',serif;">Bacterial survival through gastric transit</div>
       <div class="space-y-4">
         <div>
           <div class="flex justify-between text-sm mb-1.5">
-            <span class="text-text-secondary">Powder / no coating</span>
-            <span class="font-grotesk font-bold" style="color:#ef4444;">0.003%</span>
+            <span style="color:#6B6480;">Powder / no coating</span>
+            <span class="font-semibold" style="color:#C04040; font-family:'Playfair Display',serif;">0.003%</span>
           </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;">
-            <div class="sbar-fill h-full rounded-full" style="--w:0.3%; background:#ef4444;"></div>
-          </div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5">
-            <span class="text-text-secondary">Standard vegetable capsule (most brands)</span>
-            <span class="font-grotesk font-bold" style="color:#F59E0B;">2.8%</span>
-          </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;">
-            <div class="sbar-fill h-full rounded-full" style="--w:5.6%; background:#F59E0B;"></div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;">
+            <div class="sbar-fill h-full rounded-full" style="--w:0.3%; background:#D06060;"></div>
           </div>
         </div>
         <div>
           <div class="flex justify-between text-sm mb-1.5">
-            <span class="text-text-secondary">MAKTREK® Bi-Pass (Flove)</span>
-            <span class="font-grotesk font-bold" style="color:#10B981;">50%+</span>
+            <span style="color:#6B6480;">Standard vegetable capsule (most brands)</span>
+            <span class="font-semibold" style="color:#C4962A; font-family:'Playfair Display',serif;">2.8%</span>
           </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;">
-            <div class="sbar-fill h-full rounded-full" style="--w:100%; background:linear-gradient(90deg,#0D9668,#10B981);"></div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;">
+            <div class="sbar-fill h-full rounded-full" style="--w:5.6%; background:#C4962A;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1.5">
+            <span style="color:#6B6480;">MAKTREK® Bi-Pass (Flove)</span>
+            <span class="font-semibold" style="color:#8B72CC; font-family:'Playfair Display',serif;">50%+</span>
+          </div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;">
+            <div class="sbar-fill h-full rounded-full" style="--w:100%; background:linear-gradient(90deg,#7A62B8,#8B72CC);"></div>
           </div>
         </div>
       </div>
@@ -405,15 +363,15 @@
     <!-- MID-ARTICLE CTA -->
     <div class="inline-cta accent">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
-      <p class="font-grotesk font-bold text-xl text-text-primary mb-2" style="margin-bottom: 0.5rem !important;">50%+ survival vs. 0.003% for powder.</p>
-      <p class="text-text-secondary text-sm mb-5" style="margin-bottom: 1.25rem !important;">Flove's marine polysaccharide shield holds bacteria intact through gastric transit, releasing them at the exact pH where colonization happens.</p>
-      <a href="index.html#order" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-grotesk font-bold text-sm text-bg" style="background:#10B981; box-shadow: 0 0 32px rgba(16,185,129,0.2);">
+      <p class="font-display font-bold text-xl text-text-primary mb-2" style="margin-bottom: 0.5rem !important; letter-spacing:-0.02em;">50%+ survival vs. 0.003% for powder.</p>
+      <p class="text-sm mb-5" style="color:#6B6480; margin-bottom: 1.25rem !important;">Flove's marine polysaccharide shield holds bacteria intact through gastric transit, releasing them at the exact pH where colonization happens.</p>
+      <a href="index.html#order" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm text-white" style="background:#1C1828; font-family:'Inter',sans-serif; text-decoration:none;">
         See the Flove Protocol →
       </a>
-      <p class="text-xs text-text-secondary mt-4" style="margin-top:1rem !important;">30-day guarantee · No subscription · Ships in 24h</p>
+      <p class="text-xs mt-4" style="color:#6B6480; margin-top:1rem !important;">30-day guarantee · No subscription · Ships in 24h</p>
     </div>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 4 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -432,7 +390,7 @@
     <p>Walking 200 steps every 30 minutes during the workday would do more for your gut than a 90-minute spin class on Saturday. Most of you reading this know that. Most of you reading this also know that there is no version of your job where you get up every 30 minutes to walk. Not realistically. Not without consequences.</p>
     <p>So the workouts aren't the fix. They were never going to be the fix. They're a useful input that has been carrying more weight in your mental model than they can structurally bear.</p>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 5 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -445,25 +403,25 @@
 
     <!-- Dependency cycle -->
     <div style="margin: 2rem 0;">
-      <div class="text-sm font-grotesk font-semibold text-text-primary mb-3">The corporate dependency cycle</div>
+      <div class="text-sm font-semibold mb-3" style="color:#1A1526; font-family:'Playfair Display',serif;">The corporate dependency cycle</div>
       <div class="dep-item">
-        <div class="font-grotesk font-semibold text-sm mb-1" style="color:#ef9999;">Caffeine-Depletion Loop</div>
-        <div class="text-sm text-text-secondary">Coffee → temporary alertness → Vitamin B1 depletion → severe brain fog → more coffee. Repeat.</div>
+        <div class="font-semibold text-sm mb-1" style="color:#A05040; font-family:'Inter',sans-serif;">Caffeine-Depletion Loop</div>
+        <div class="text-sm" style="color:#6B6480;">Coffee → temporary alertness → Vitamin B1 depletion → severe brain fog → more coffee. Repeat.</div>
       </div>
       <div class="dep-item">
-        <div class="font-grotesk font-semibold text-sm mb-1" style="color:#ef9999;">Acid-Suppression Trap</div>
-        <div class="text-sm text-text-secondary">Acid reflux → antacids → raised stomach pH → SIBO → chronic bloating + nutrient malabsorption → more antacids. The loop is the product.</div>
+        <div class="font-semibold text-sm mb-1" style="color:#A05040; font-family:'Inter',sans-serif;">Acid-Suppression Trap</div>
+        <div class="text-sm" style="color:#6B6480;">Acid reflux → antacids → raised stomach pH → SIBO → chronic bloating + nutrient malabsorption → more antacids. The loop is the product.</div>
       </div>
       <div class="dep-item">
-        <div class="font-grotesk font-semibold text-sm mb-1" style="color:#ef9999;">Laxative Desensitization Spiral</div>
-        <div class="text-sm text-text-secondary">Constipation → OTC laxatives → colon dependency → chronic constipation worsens. The medication takes over the function. The function atrophies.</div>
+        <div class="font-semibold text-sm mb-1" style="color:#A05040; font-family:'Inter',sans-serif;">Laxative Desensitization Spiral</div>
+        <div class="text-sm" style="color:#6B6480;">Constipation → OTC laxatives → colon dependency → chronic constipation worsens. The medication takes over the function. The function atrophies.</div>
       </div>
     </div>
 
     <p>Every quick fix in your desk drawer is making the underlying mechanism worse. This is not a moral failing. These products were marketed to you specifically because the problem they create funds the problem they solve.</p>
     <p>The way out is not another crutch. The way out is restoring the underlying biology.</p>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 6 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -476,39 +434,39 @@
     <!-- Requirements list -->
     <div style="margin: 2rem 0;">
       <div class="req-item">
-        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
           <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         </div>
         <div>
-          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Survive a pH of 1.5 without dissolving</div>
-          <div class="text-sm text-text-secondary">Standard vegetable capsules can't. They dissolve in 5–10 minutes.</div>
+          <div class="font-semibold text-sm text-text-primary mb-1">Survive a pH of 1.5 without dissolving</div>
+          <div class="text-sm" style="color:#6B6480;">Standard vegetable capsules can't. They dissolve in 5–10 minutes.</div>
         </div>
       </div>
       <div class="req-item">
-        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
           <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         </div>
         <div>
-          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Release specifically at lower intestine pH (6.0–7.5)</div>
-          <div class="text-sm text-text-secondary">Not the stomach. Most fail at first acid contact because they use a single-stage system.</div>
+          <div class="font-semibold text-sm text-text-primary mb-1">Release specifically at lower intestine pH (6.0–7.5)</div>
+          <div class="text-sm" style="color:#6B6480;">Not the stomach. Most fail at first acid contact because they use a single-stage system.</div>
         </div>
       </div>
       <div class="req-item">
-        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
           <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         </div>
         <div>
-          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Use strains that don't ferment aggressively in the upper GI tract</div>
-          <div class="text-sm text-text-secondary">Wrong strains in the wrong location produce the gas, cramping, and fishy burps you experienced the last time you tried this.</div>
+          <div class="font-semibold text-sm text-text-primary mb-1">Use strains that don't ferment aggressively in the upper GI tract</div>
+          <div class="text-sm" style="color:#6B6480;">Wrong strains in the wrong location produce the gas, cramping, and fishy burps you experienced the last time you tried this.</div>
         </div>
       </div>
       <div class="req-item">
-        <div class="req-icon" style="background:rgba(16,185,129,0.12); color:#10B981;">
+        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
           <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         </div>
         <div>
-          <div class="font-grotesk font-semibold text-sm text-text-primary mb-1">Deliver 40 billion CFU at the destination — not on the label</div>
-          <div class="text-sm text-text-secondary">The number on the bottle is meaningless if it dies in transit. Over 20 billion live bacteria at the destination beats 100B CFU unshielded.</div>
+          <div class="font-semibold text-sm text-text-primary mb-1">Deliver 40 billion CFU at the destination — not on the label</div>
+          <div class="text-sm" style="color:#6B6480;">The number on the bottle is meaningless if it dies in transit. Over 20 billion live bacteria at the destination beats 100B CFU unshielded.</div>
         </div>
       </div>
     </div>
@@ -517,7 +475,7 @@
       <p>To our knowledge, exactly one probiotic on the market meets all four of these requirements.</p>
     </div>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== SECTION 7 ===== -->
     <div class="flex items-center gap-3 mb-4">
@@ -533,16 +491,16 @@
     <div class="data-callout">
       <div class="grid sm:grid-cols-3 gap-6 text-center">
         <div>
-          <div class="stat-number mb-1" style="color:#10B981;">50%+</div>
-          <div class="text-xs text-text-secondary">Clinical survival rate through gastric transit using MAKTREK® delivery</div>
+          <div class="stat-number mb-1" style="color:#8B72CC;">50%+</div>
+          <div class="text-xs" style="color:#6B6480;">Clinical survival rate through gastric transit using MAKTREK® delivery</div>
         </div>
         <div class="border-t sm:border-t-0 sm:border-l pt-4 sm:pt-0 sm:pl-4 border-border">
-          <div class="stat-number mb-1" style="color:#F0F4F8;">1,685%</div>
-          <div class="text-xs text-text-secondary">More live bacteria delivered per dose vs. unshielded competitor</div>
+          <div class="stat-number mb-1 text-text-primary">1,685%</div>
+          <div class="text-xs" style="color:#6B6480;">More live bacteria delivered per dose vs. unshielded competitor</div>
         </div>
         <div class="border-t sm:border-t-0 sm:border-l pt-4 sm:pt-0 sm:pl-4 border-border">
-          <div class="stat-number mb-1" style="color:#F59E0B;">20B+</div>
-          <div class="text-xs text-text-secondary">CFU reaching your lower intestine — more than a 100B CFU unshielded capsule</div>
+          <div class="stat-number mb-1" style="color:#C4962A;">20B+</div>
+          <div class="text-xs" style="color:#6B6480;">CFU reaching your lower intestine — more than a 100B CFU unshielded capsule</div>
         </div>
       </div>
     </div>
@@ -554,7 +512,7 @@
       <p>This is what you've been looking for. It just wasn't being made until now.</p>
     </div>
 
-    <hr style="border:none; border-top:1px solid #1A2030; margin: 2.5rem 0;" />
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- Closing paragraph -->
     <p>You now know something most of your colleagues don't.</p>
@@ -567,32 +525,32 @@
 <!-- ============================================================
      FINAL CTA SECTION
      ============================================================ -->
-<section style="background: linear-gradient(180deg, #08090C 0%, #0A100D 50%, #08090C 100%); border-top: 1px solid #1A2030; border-bottom: 1px solid #1A2030;">
+<section style="background: #F2EBF8; border-top: 1px solid #EDE6F4; border-bottom: 1px solid #EDE6F4;">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 py-20 text-center">
 
     <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The Flove Protocol</div>
 
-    <h2 class="font-grotesk font-bold text-3xl sm:text-4xl text-text-primary mb-5" style="letter-spacing:-0.04em; line-height:1.1;">
+    <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.15;">
       Stop funding a wellness routine<br />that doesn't survive your own stomach.
     </h2>
 
-    <p class="text-text-secondary text-lg mb-8 max-w-xl mx-auto" style="line-height:1.65;">
+    <p class="text-lg mb-8 max-w-xl mx-auto" style="color:#6B6480; line-height:1.65;">
       40 billion CFU. MAKTREK® Bi-Pass delivery. The 4-strain formulation selected for the corporate workday. 30-day guarantee. No subscription.
     </p>
 
     <!-- Mini spec grid -->
     <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mb-10">
-      <div class="rounded-xl py-4 px-2 text-center" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="font-grotesk font-bold text-lg" style="color:#10B981;">50%+</div>
-        <div class="text-xs text-text-secondary mt-1">Survival rate</div>
+      <div class="rounded-2xl py-4 px-2 text-center bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="font-display font-bold text-xl" style="color:#8B72CC;">50%+</div>
+        <div class="text-xs mt-1" style="color:#6B6480;">Survival rate</div>
       </div>
-      <div class="rounded-xl py-4 px-2 text-center" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="font-grotesk font-bold text-lg text-text-primary">40B</div>
-        <div class="text-xs text-text-secondary mt-1">CFU per dose</div>
+      <div class="rounded-2xl py-4 px-2 text-center bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="font-display font-bold text-xl text-text-primary">40B</div>
+        <div class="text-xs mt-1" style="color:#6B6480;">CFU per dose</div>
       </div>
-      <div class="rounded-xl py-4 px-2 text-center" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="font-grotesk font-bold text-lg" style="color:#F59E0B;">30-day</div>
-        <div class="text-xs text-text-secondary mt-1">Guarantee</div>
+      <div class="rounded-2xl py-4 px-2 text-center bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="font-display font-bold text-xl" style="color:#C4962A;">30-day</div>
+        <div class="text-xs mt-1" style="color:#6B6480;">Guarantee</div>
       </div>
     </div>
 
@@ -600,17 +558,17 @@
       See the Flove Protocol →
     </a>
 
-    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-text-secondary mt-7">
+    <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm mt-7" style="color:#6B6480;">
       <div class="flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         30-day money-back guarantee
       </div>
       <div class="flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         No subscription trap
       </div>
       <div class="flex items-center gap-1.5">
-        <svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+        <svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
         Ships in 24 hours
       </div>
     </div>
@@ -618,12 +576,12 @@
 </section>
 
 <!-- Footer -->
-<footer class="py-8 px-4 sm:px-6 border-t border-border">
-  <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-secondary">
-    <a href="index.html" class="font-grotesk font-bold text-lg text-text-primary tracking-tighter">
-      FLOVE<span style="color:#10B981;">.</span>
+<footer class="py-8 px-4 sm:px-6 border-t border-border bg-surface">
+  <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm" style="color:#6B6480;">
+    <a href="index.html" style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#1A1526; text-decoration:none;">
+      flove<span style="color:#8B72CC;">.</span>
     </a>
-    <p class="text-xs text-center max-w-lg" style="color:#4A5568;">
+    <p class="text-xs text-center max-w-lg" style="color:#9B93A8;">
       *These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.
     </p>
     <div class="flex gap-4">
@@ -633,11 +591,7 @@
   </div>
 </footer>
 
-<!-- ============================================================
-     JAVASCRIPT
-     ============================================================ -->
 <script>
-  // Reading progress bar
   window.addEventListener('scroll', () => {
     const doc = document.documentElement;
     const scrollTop = window.scrollY || doc.scrollTop;
@@ -646,7 +600,6 @@
     document.getElementById('progress-bar').style.width = pct + '%';
   });
 
-  // Animate survival bars on scroll
   const barObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

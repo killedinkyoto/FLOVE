@@ -9,43 +9,45 @@
 
 ## Color System
 
-### Primary Palette
+### Primary Palette (v2.0 — Nuriva palette)
 | Token | Hex | Usage |
 |---|---|---|
-| `bg` | `#08090C` | Page background |
-| `surface` | `#0F1318` | Card / section background |
-| `border` | `#1A2030` | All borders and dividers |
-| `text-primary` | `#F0F4F8` | Headings, strong copy |
-| `text-secondary` | `#8A96A8` | Body copy, labels, captions |
+| `bg` | `#F8F4EE` | Page background — warm cream |
+| `surface` | `#FFFFFF` | Card / section background — white |
+| `surface-2` | `#F2EBF8` | Light lavender tinted sections |
+| `border` | `#EDE6F4` | All borders and dividers — lavender tint |
+| `text-primary` | `#1A1526` | Headings, strong copy — deep navy |
+| `text-secondary` | `#6B6480` | Body copy, labels, captions — muted purple-gray |
 
 ### Accent Palette
 | Token | Hex | Usage |
 |---|---|---|
-| `accent` | `#10B981` | Primary CTA, highlights, icons, dots |
-| `accent-dim` | `#0D9668` | Hover state for accent elements |
-| `amber` | `#F59E0B` | "POPULAR" / "SAVE" badges, secondary highlights |
-| `red` | `#ef4444` | Danger data (low survival rate bars) |
+| `accent` | `#8B72CC` | Primary accent — lavender purple |
+| `accent-dim` | `#7A62B8` | Hover state for accent elements |
+| `accent-light` | `#C4B5E8` | Card backgrounds, "POPULAR" badge, light fills |
+| `cta-dark` | `#1C1828` | Primary CTA buttons — dark navy |
+| `amber` | `#C4962A` | Secondary data highlights |
 | `trustpilot-green` | `#00B67A` | Review stars only (Trustpilot spec) |
 
 ### Gradient Patterns
-- **Ambient hero glow:** `radial-gradient(ellipse 60% 50% at 50% -10%, rgba(16,185,129,0.12) 0%, transparent 70%)`
-- **Final CTA glow:** `radial-gradient(ellipse 80% 60% at 50% 100%, rgba(16,185,129,0.08) 0%, transparent 70%)`
-- **CTA button shadow:** `box-shadow: 0 0 40px rgba(16,185,129,0.2)`
-- **Surface gradient:** `linear-gradient(135deg, #0F1318 0%, #131820 100%)`
+- **Ambient hero glow:** `radial-gradient(ellipse 60% 50% at 50% 30%, rgba(139,114,204,0.08) 0%, transparent 70%)`
+- **Surface lavender:** `linear-gradient(135deg, #F2EBF8 0%, #EDE6F4 100%)`
+- **Card shadow:** `box-shadow: 0 8px 24px rgba(139,114,204,0.1)`
 
 ### Anti-Rules
 - Never use default Tailwind blue (`blue-600`, `indigo-500`)
-- Never use pastel, soft, or warm-toned backgrounds
-- Never use white backgrounds — minimum surface is `#08090C`
+- Never use dark backgrounds — minimum surface is `#F8F4EE` (warm cream)
+- Never use the old mint `#10B981` — that was the previous brand
+- Never use white on a dark background — this brand is light/editorial
 
 ---
 
 ## Typography
 
-### Typefaces
+### Typefaces (v2.0)
 | Role | Family | Weights | Letter-spacing |
 |---|---|---|---|
-| Display / Headings | Space Grotesk | 400, 500, 600, 700 | `-0.04em` (large), `-0.03em` (medium) |
+| Display / Headings | Playfair Display | 400, 500, 600, 700 (+ italic) | `-0.02em` (large), `-0.01em` (medium) |
 | Body / UI | Inter | 400, 500, 600 | default |
 
 ### Scale
@@ -53,73 +55,78 @@
 |---|---|---|---|
 | H1 hero | `text-4xl`–`text-5xl` | 700 | `1.1` |
 | H2 section | `text-3xl`–`text-4xl` | 700 | `1.15` |
-| H3 | `text-xl`–`text-2xl` | 700 | `1.2` |
+| H3 | `text-xl`–`text-2xl` | 600 | `1.2` |
 | Body | `text-sm`–`text-base` | 400 | `1.7–1.8` |
-| Labels / caps | `text-xs` | 500–600 | `0.08em` uppercase |
+| Labels / caps | `text-xs` | 500–600 | `0.12em` uppercase |
 
 ### Rules
-- Headings always Space Grotesk with negative letter-spacing
+- Headings always Playfair Display with negative letter-spacing
 - Body copy always Inter at 1.7 line-height minimum
 - Never the same font for headings and body in the same block
+- Italic variant of Playfair Display (`font-style: italic; color:#8B72CC`) is the signature editorial touch
 
 ---
 
 ## Logo
-**Wordmark:** `FLOVE.` — Space Grotesk Bold, tracking-tighter  
-**Period accent:** Colored `#10B981` (accent mint)  
-**Usage:** Dark backgrounds only. Never place on light surfaces.  
+**Wordmark:** `flove.` — Playfair Display Bold, lowercase, letter-spacing -0.01em  
+**Period accent:** Colored `#8B72CC` (lavender)  
+**Usage:** Light backgrounds only (cream or white). Never on dark surfaces.  
 **Placeholder:** Text-based wordmark until brand_assets/logo.svg is added
 
 ---
 
 ## Grain Texture
-All pages use an SVG noise overlay at `opacity: 0.025`:
-```css
-background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-background-size: 200px;
-```
+Not used in v2.0 — the warm cream background provides natural warmth without noise overlay.
 
 ---
 
 ## Component Patterns
 
-### CTA Button (Primary)
+### CTA Button (Primary — dark)
 ```css
-background: #10B981;
-color: #08090C;
-font-family: Space Grotesk, bold;
-border-radius: 12px;
-box-shadow: 0 0 40px rgba(16,185,129,0.2);
+background: #1C1828;
+color: #FFFFFF;
+font-family: Inter, bold;
+border-radius: 100px;
 transition: opacity 0.15s, transform 0.15s;
 ```
-- Hover: `opacity: 0.9`
+- Hover: `opacity: 0.85`
 - Active: `transform: scale(0.98)`
+
+### CTA Button (Accent — lavender)
+```css
+background: #8B72CC;
+color: #FFFFFF;
+border-radius: 100px;
+transition: opacity 0.15s, transform 0.15s;
+```
 
 ### Spec Pill
 ```css
-border: 1px solid #1A2030;
-background: rgba(26,32,48,0.6);
+border: 1px solid #EDE6F4;
+background: rgba(139,114,204,0.07);
 padding: 5px 12px;
 border-radius: 20px;
 font-size: 11px; font-weight: 500;
-color: #8A96A8;
+color: #8B72CC;
 ```
-Always includes a 6px mint dot `●` on the left.
+Always includes a 6px lavender dot `●` on the left.
 
 ### Cards (Surface)
 ```css
-background: #0F1318;
-border: 1px solid #1A2030;
-border-radius: 16px; /* or 12px for tighter */
+background: #FFFFFF;
+border: 1px solid #EDE6F4;
+border-radius: 16px; /* or 24px for rounder */
 ```
-Hover: `border-color: rgba(16,185,129,0.2)` — never flat shadow-md.
+Hover: `border-color: rgba(139,114,204,0.3)` — never flat shadow-md.
 
 ### Data / Stat Numbers
-- Font: Space Grotesk Bold
+- Font: Playfair Display Bold
 - Size: `text-3xl`–`text-5xl`
-- Accent stats: `#10B981`
-- Warning/negative stats: `#ef4444`
-- Neutral: `#F0F4F8`
+- Accent stats: `#8B72CC`
+- Warning/negative stats: `#D06060`
+- Neutral: `#1A1526`
+- Amber: `#C4962A`
 
 ---
 

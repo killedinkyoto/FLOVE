@@ -8,23 +8,26 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            bg: '#08090C',
-            surface: '#0F1318',
-            border: '#1A2030',
-            accent: '#10B981',
-            'accent-dim': '#0D9668',
-            amber: '#F59E0B',
-            'text-primary': '#F0F4F8',
-            'text-secondary': '#8A96A8',
+            bg: '#F8F4EE',
+            surface: '#FFFFFF',
+            'surface-2': '#F2EBF8',
+            border: '#EDE6F4',
+            accent: '#8B72CC',
+            'accent-dim': '#7A62B8',
+            'accent-light': '#C4B5E8',
+            'cta-dark': '#1C1828',
+            amber: '#C4962A',
+            'text-primary': '#1A1526',
+            'text-secondary': '#6B6480',
           },
           fontFamily: {
-            grotesk: ['Space Grotesk', 'sans-serif'],
+            display: ['Playfair Display', 'Georgia', 'serif'],
             inter: ['Inter', 'sans-serif'],
           },
         },
@@ -35,26 +38,17 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      background: #08090C;
-      color: #F0F4F8;
+      background: #F8F4EE;
+      color: #1A1526;
       font-family: 'Inter', sans-serif;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
     }
-    h1,h2,h3,h4,h5 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em; }
-
-    /* Grain */
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      pointer-events: none; z-index: 999; opacity: 0.025;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 200px;
-    }
+    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', Georgia, serif; }
 
     ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: #08090C; }
-    ::-webkit-scrollbar-thumb { background: #1A2030; border-radius: 2px; }
+    ::-webkit-scrollbar-track { background: #F8F4EE; }
+    ::-webkit-scrollbar-thumb { background: #EDE6F4; border-radius: 2px; }
 
     /* ── NAV ── */
     #sticky-nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
@@ -62,168 +56,118 @@
     /* ── SPEC PILL ── */
     .spec-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      border: 1px solid #1A2030; background: rgba(26,32,48,0.6);
+      border: 1px solid #EDE6F4; background: rgba(139,114,204,0.07);
       padding: 5px 12px; border-radius: 20px;
-      font-size: 11px; font-weight: 500; color: #8A96A8;
+      font-size: 11px; font-weight: 500; color: #8B72CC; font-family: 'Inter', sans-serif;
     }
-    .spec-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+    .spec-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: #8B72CC; }
 
-    /* ── BENEFIT CHECK ITEM ── */
+    /* ── BENEFIT ITEM ── */
     .benefit-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
     .benefit-dot {
       width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; margin-top: 2px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);
+      background: rgba(139,114,204,0.1); border: 1px solid rgba(139,114,204,0.25);
     }
 
     /* ── BUNDLE CARD ── */
     .bundle-card { cursor: pointer; transition: border-color 0.15s, background 0.15s; }
-    .bundle-card.active { border-color: #10B981 !important; background: rgba(16,185,129,0.06) !important; }
-    .bundle-card.active .bcard-radio { background: #10B981; border-color: #10B981; }
-    .bcard-radio {
-      width: 16px; height: 16px; border-radius: 50%; border: 2px solid #1A2030;
-      flex-shrink: 0; transition: all 0.15s;
-    }
+    .bundle-card.active { border-color: #8B72CC !important; background: rgba(139,114,204,0.05) !important; }
+    .bundle-card.active .bcard-radio { background: #8B72CC; border-color: #8B72CC; }
+    .bcard-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D4C8E8; flex-shrink: 0; transition: all 0.15s; }
 
     /* ── INGREDIENTS ACCORDION ── */
     .ing-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .ing-body.open { max-height: 300px; }
+    .ing-body.open { max-height: 400px; }
     .ing-toggle { transition: transform 0.3s; }
     .ing-toggle.open { transform: rotate(45deg); }
 
     /* ── VIDEO TICKER ── */
-    .ticker-track {
-      display: flex; gap: 12px;
-      animation: ticker-scroll 28s linear infinite;
-      width: max-content;
-    }
+    .ticker-track { display: flex; gap: 12px; animation: ticker-scroll 28s linear infinite; width: max-content; }
     .ticker-track:hover { animation-play-state: paused; }
-    @keyframes ticker-scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    @keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
     .video-card {
-      flex-shrink: 0; width: 140px; height: 249px;
-      border-radius: 14px; overflow: hidden; position: relative;
-      border: 1px solid #1A2030; cursor: pointer;
+      flex-shrink: 0; width: 140px; height: 249px; border-radius: 14px;
+      overflow: hidden; position: relative; border: 1px solid #EDE6F4; cursor: pointer;
     }
-    .video-card-img {
-      width: 100%; height: 100%; object-fit: cover;
-      background: linear-gradient(160deg, #0F1318 0%, #131820 100%);
-    }
-    .video-play-btn {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.35);
-    }
-    .video-play-btn::after {
-      content: ''; width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(16,185,129,0.9);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .play-icon {
-      position: absolute; z-index: 2;
-      width: 0; height: 0;
-      border-top: 8px solid transparent; border-bottom: 8px solid transparent;
-      border-left: 14px solid #fff; margin-left: 3px;
-    }
-    .video-name {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 8px 10px; font-size: 11px; font-weight: 600;
-      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-      font-family: 'Space Grotesk', sans-serif; color: #F0F4F8;
-    }
+    .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(28,24,40,0.25); }
+    .video-play-btn::after { content:''; width:40px; height:40px; border-radius:50%; background:rgba(139,114,204,0.9); }
+    .play-icon { position:absolute; z-index:2; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-left:14px solid #fff; margin-left:3px; }
+    .video-name { position:absolute; bottom:0; left:0; right:0; padding:8px 10px; font-size:11px; font-weight:600; background:linear-gradient(to top,rgba(28,24,40,0.85) 0%,transparent 100%); font-family:'Inter',sans-serif; color:#fff; }
 
     /* ── PILL VISUAL ── */
     .pill-shape {
-      width: 64px; height: 128px; border-radius: 32px;
-      background: linear-gradient(160deg, #1A2030 0%, #0F1318 100%);
-      border: 1.5px solid rgba(16,185,129,0.4);
-      box-shadow: 0 0 40px rgba(16,185,129,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
+      width: 60px; height: 120px; border-radius: 30px;
+      background: linear-gradient(160deg, #EDE6F4 0%, #F8F4EE 100%);
+      border: 1.5px solid #C4B5E8;
+      box-shadow: 0 4px 24px rgba(139,114,204,0.18), inset 0 1px 0 rgba(255,255,255,0.8);
       position: relative; flex-shrink: 0;
     }
-    .pill-shape::before {
-      content: ''; position: absolute; top: 12px; left: 12px; right: 12px; height: 1px;
-      background: rgba(16,185,129,0.25); border-radius: 1px;
-    }
-    .pill-shape::after {
-      content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-      width: 6px; height: 6px; border-radius: 50%; background: #10B981;
-      box-shadow: 0 0 8px rgba(16,185,129,0.6);
-    }
-    .mech-line {
-      display: flex; align-items: center; gap: 0;
-      width: 100%; margin-bottom: 10px;
-    }
-    .mech-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: #10B981; flex-shrink: 0;
-      box-shadow: 0 0 6px rgba(16,185,129,0.5);
-    }
-    .mech-dash { flex: 1; height: 1px; background: rgba(16,185,129,0.2); }
+    .pill-shape::before { content:''; position:absolute; top:12px; left:12px; right:12px; height:1px; background:rgba(139,114,204,0.3); border-radius:1px; }
+    .pill-shape::after { content:''; position:absolute; top:14px; left:50%; transform:translateX(-50%); width:6px; height:6px; border-radius:50%; background:#8B72CC; box-shadow:0 0 8px rgba(139,114,204,0.5); }
+    .mech-dot { width:7px; height:7px; border-radius:50%; background:#8B72CC; flex-shrink:0; }
+    .mech-dash { flex:1; height:1px; background:rgba(139,114,204,0.25); }
 
     /* ── FAQ ACCORDION ── */
-    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .faq-answer.open { max-height: 400px; }
-    .faq-plus { transition: transform 0.3s; font-size: 20px; font-weight: 300; }
-    .faq-plus.open { transform: rotate(45deg); }
-
-    /* ── TRUSTPILOT-STYLE REVIEW ── */
-    .review-star { color: #00B67A; font-size: 18px; }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .faq-answer.open { max-height:400px; }
+    .faq-plus { transition:transform 0.3s; font-size:20px; font-weight:300; }
+    .faq-plus.open { transform:rotate(45deg); }
 
     /* ── BAR CHART ── */
-    .bar-fill { width: 0; transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .bar-fill.animated { width: var(--w); }
+    .bar-fill { width:0; transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .bar-fill.animated { width:var(--w); }
 
-    /* ── CTA BUTTON ── */
+    /* ── CTA BUTTON (dark) ── */
     .cta-btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      background: #10B981; color: #08090C;
-      font-family: 'Space Grotesk', sans-serif; font-weight: 700;
-      border-radius: 12px; transition: opacity 0.15s, transform 0.15s;
-      box-shadow: 0 0 40px rgba(16,185,129,0.2);
-      text-decoration: none;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      background:#1C1828; color:#FFFFFF;
+      font-family:'Inter',sans-serif; font-weight:600;
+      border-radius:100px; transition:opacity 0.15s, transform 0.15s;
+      text-decoration:none;
     }
-    .cta-btn:hover { opacity: 0.9; }
-    .cta-btn:active { transform: scale(0.98); }
+    .cta-btn:hover { opacity:0.85; }
+    .cta-btn:active { transform:scale(0.98); }
+
+    /* ── CTA BUTTON (lavender) ── */
+    .cta-btn-accent {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      background:#8B72CC; color:#FFFFFF;
+      font-family:'Inter',sans-serif; font-weight:600;
+      border-radius:100px; transition:opacity 0.15s, transform 0.15s;
+      text-decoration:none;
+    }
+    .cta-btn-accent:hover { opacity:0.9; }
+    .cta-btn-accent:active { transform:scale(0.98); }
+
+    /* ── HOW TO TAKE ── */
+    .how-step { display:flex; flex-direction:column; align-items:center; gap:10px; padding:1.5rem; border-radius:16px; text-align:center; background:#FFFFFF; border:1px solid #EDE6F4; }
+    .gif-placeholder { width:100%; aspect-ratio:1; border-radius:10px; background:linear-gradient(135deg,#F2EBF8,#EDE6F4); border:1px solid #EDE6F4; display:flex; align-items:center; justify-content:center; margin-bottom:8px; }
 
     /* ── MOBILE BAR ── */
-    #mobile-bar { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-    @media (max-width: 767px) { body { padding-bottom: 76px; } }
+    #mobile-bar { backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+    @media (max-width:767px) { body { padding-bottom:76px; } }
 
-    /* ── HOW TO TAKE STEP ── */
-    .how-step {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      padding: 1.5rem; border-radius: 14px; text-align: center;
-      background: #0F1318; border: 1px solid #1A2030;
-    }
-    .step-icon {
-      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.2);
-    }
-    /* gif placeholder */
-    .gif-placeholder {
-      width: 100%; aspect-ratio: 1; border-radius: 10px; overflow: hidden;
-      background: linear-gradient(135deg, #0F1318, #131820);
-      border: 1px solid #1A2030; display: flex; align-items: center;
-      justify-content: center; margin-bottom: 12px;
-    }
-    .gif-placeholder svg { opacity: 0.25; }
+    /* ── SECTION DIVIDER ── */
+    hr { border:none; border-top:1px solid #EDE6F4; }
+
+    /* ── REVIEW STARS ── */
+    .star-amber { color: #C4962A; }
+    .star-tp { color: #00B67A; }
   </style>
 </head>
 <body>
 
-<!-- ============================================================
-     STICKY NAV
-============================================================ -->
-<nav id="sticky-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(8,9,12,0.88);">
+<!-- ── STICKY NAV ── -->
+<nav id="sticky-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(248,244,238,0.92);">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
-    <div class="font-grotesk font-bold text-xl tracking-tighter text-text-primary">FLOVE<span style="color:#10B981">.</span></div>
-    <div class="hidden sm:flex items-center gap-5 text-sm text-text-secondary">
+    <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.25rem; color:#1A1526; letter-spacing:-0.01em;">flove.</div>
+    <div class="hidden sm:flex items-center gap-5 text-sm" style="color:#6B6480;">
       <a href="#mechanism" class="hover:text-text-primary transition-colors">The Science</a>
       <a href="#reviews" class="hover:text-text-primary transition-colors">Reviews</a>
       <a href="#faq" class="hover:text-text-primary transition-colors">FAQ</a>
     </div>
-    <a href="#order" class="cta-btn px-4 py-2 text-sm">Order Now →</a>
+    <a href="#order" class="cta-btn px-5 py-2 text-sm">Order Now →</a>
   </div>
 </nav>
 
@@ -231,46 +175,43 @@
 <!-- ============================================================
      1. PRODUCT INFORMATION SECTION
 ============================================================ -->
-<section class="pt-20 pb-0 px-4 sm:px-6">
+<section class="pt-20 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
-
-    <div class="grid lg:grid-cols-2 gap-8 lg:gap-14 items-start pt-8 pb-10">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start pt-10 pb-12">
 
       <!-- LEFT: Media -->
       <div class="flex flex-col gap-4 lg:sticky lg:top-20">
-        <!-- Main image -->
-        <div class="rounded-2xl overflow-hidden relative" style="aspect-ratio:1; background:linear-gradient(135deg,#0F1318 0%,#131820 100%); border:1px solid #1A2030;">
-          <div class="absolute inset-0" style="background:radial-gradient(ellipse 70% 60% at 50% 30%, rgba(16,185,129,0.09) 0%, transparent 70%);"></div>
+        <div class="rounded-3xl overflow-hidden relative" style="aspect-ratio:1; background:linear-gradient(135deg,#F2EBF8 0%,#EDE6F4 100%); border:1px solid #EDE6F4;">
+          <div class="absolute inset-0" style="background:radial-gradient(ellipse 60% 50% at 50% 30%, rgba(139,114,204,0.08) 0%, transparent 70%);"></div>
           <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <!-- Product bottle visual -->
             <div class="relative">
-              <div class="w-28 h-44 rounded-2xl flex flex-col items-center justify-center gap-1 relative" style="background:linear-gradient(160deg,#1E2535 0%,#131820 100%); border:1.5px solid rgba(16,185,129,0.35); box-shadow:0 0 60px rgba(16,185,129,0.1);">
-                <div class="font-grotesk font-bold text-xl text-text-primary tracking-tighter">FLOVE</div>
-                <div class="text-xs font-semibold" style="color:#10B981;">DAILY</div>
-                <div class="text-xs font-semibold" style="color:#10B981;">SYNBIOTIC</div>
-                <div class="my-1 w-12 border-t" style="border-color:rgba(16,185,129,0.2);"></div>
-                <div class="text-xs text-text-secondary">40B CFU</div>
-                <div class="text-xs text-text-secondary">60 CAPS</div>
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-grotesk font-bold text-bg" style="background:#10B981;">MAKTREK®</div>
+              <div class="w-28 h-44 rounded-2xl flex flex-col items-center justify-center gap-1" style="background:linear-gradient(160deg,#FFFFFF 0%,#F2EBF8 100%); border:1.5px solid rgba(139,114,204,0.3); box-shadow:0 8px 32px rgba(139,114,204,0.15);">
+                <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#1A1526; letter-spacing:-0.01em;">flove</div>
+                <div class="text-xs font-medium" style="color:#8B72CC;">DAILY</div>
+                <div class="text-xs font-medium" style="color:#8B72CC;">SYNBIOTIC</div>
+                <div class="my-1 w-12 border-t" style="border-color:rgba(139,114,204,0.2);"></div>
+                <div class="text-xs" style="color:#6B6480;">40B CFU</div>
+                <div class="text-xs" style="color:#6B6480;">60 CAPS</div>
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-semibold text-white" style="background:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®</div>
               </div>
             </div>
-            <p class="text-xs text-text-secondary text-center px-4 mt-2">Place product image at brand_assets/product.png</p>
+            <p class="text-xs text-center px-4 mt-1" style="color:#6B6480;">Place product image at brand_assets/product.png</p>
           </div>
           <!-- Floating badges -->
-          <div class="absolute top-4 left-4 rounded-xl px-3 py-2" style="background:#08090C; border:1px solid #1A2030; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
-            <div class="font-grotesk font-bold text-base" style="color:#10B981;">50%+</div>
-            <div class="text-xs text-text-secondary">Survival</div>
+          <div class="absolute top-4 left-4 rounded-2xl px-3 py-2 bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 4px 16px rgba(139,114,204,0.1);">
+            <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#8B72CC;">50%+</div>
+            <div class="text-xs" style="color:#6B6480;">Survival</div>
           </div>
-          <div class="absolute bottom-4 right-4 rounded-xl px-3 py-2" style="background:#08090C; border:1px solid #1A2030; box-shadow:0 4px 16px rgba(0,0,0,0.5);">
-            <div class="font-grotesk font-bold text-base text-text-primary">40B</div>
-            <div class="text-xs text-text-secondary">CFU / dose</div>
+          <div class="absolute bottom-4 right-4 rounded-2xl px-3 py-2 bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 4px 16px rgba(139,114,204,0.1);">
+            <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#1A1526;">40B</div>
+            <div class="text-xs" style="color:#6B6480;">CFU / dose</div>
           </div>
         </div>
-        <!-- Thumbnail strip -->
+        <!-- Thumbnails -->
         <div class="grid grid-cols-3 gap-3">
-          <div class="rounded-xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#0F1318,#0A0D10); border:1.5px solid #10B981;"></div>
-          <div class="rounded-xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#0F1318,#0A0D10); border:1px solid #1A2030;"></div>
-          <div class="rounded-xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#0F1318,#0A0D10); border:1px solid #1A2030;"></div>
+          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#EDE6F4,#E8E0F0); border:2px solid #8B72CC;"></div>
+          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#F2EBF8,#EDE6F4); border:1px solid #EDE6F4;"></div>
+          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#F2EBF8,#EDE6F4); border:1px solid #EDE6F4;"></div>
         </div>
       </div>
 
@@ -279,248 +220,193 @@
 
         <!-- Rating -->
         <div class="flex items-center gap-2">
-          <div style="color:#F59E0B; letter-spacing:2px;">★★★★★</div>
-          <span class="text-sm text-text-secondary">4.9 <span class="text-text-secondary">·</span> 847 reviews</span>
-          <a href="#reviews" class="text-xs underline text-text-secondary hover:text-text-primary transition-colors">See all</a>
+          <div class="star-amber text-base" style="letter-spacing:2px;">★★★★★</div>
+          <span class="text-sm" style="color:#6B6480;">4.9 · 847 reviews</span>
+          <a href="#reviews" class="text-xs underline" style="color:#8B72CC;">See all</a>
         </div>
 
         <!-- Title -->
         <div>
-          <h1 class="font-grotesk font-bold text-3xl sm:text-4xl text-text-primary leading-tight mb-1">
+          <h1 class="font-display font-bold text-4xl sm:text-5xl text-text-primary leading-tight mb-2" style="letter-spacing:-0.02em;">
             Flove Daily<br/>Performance Synbiotic
           </h1>
-          <p class="text-text-secondary text-sm">40B CFU · MAKTREK® Bi-Pass Technology · 4-strain formulation</p>
+          <p class="text-sm" style="color:#6B6480;">40B CFU · MAKTREK® Bi-Pass Technology · 4-strain formulation</p>
         </div>
 
-        <!-- Benefit points -->
+        <!-- Benefits -->
         <div class="py-4 border-t border-b border-border">
           <div class="benefit-item">
-            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
-            <div class="text-sm text-text-secondary"><strong class="text-text-primary">Survives your stomach acid</strong> — marine polysaccharide shield holds intact at pH 1.5</div>
+            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#8B72CC" stroke-width="2.5" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
+            <div class="text-sm" style="color:#6B6480;"><strong style="color:#1A1526;">Survives your stomach acid</strong> — marine polysaccharide shield holds intact at pH 1.5</div>
           </div>
           <div class="benefit-item">
-            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
-            <div class="text-sm text-text-secondary"><strong class="text-text-primary">No adjustment period</strong> — 4 strains selected for zero upper-GI fermentation</div>
+            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#8B72CC" stroke-width="2.5" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
+            <div class="text-sm" style="color:#6B6480;"><strong style="color:#1A1526;">No adjustment period</strong> — 4 strains selected for zero upper-GI fermentation</div>
           </div>
           <div class="benefit-item">
-            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
-            <div class="text-sm text-text-secondary"><strong class="text-text-primary">Addresses desk bloat + brain fog</strong> — the gut-brain axis work happens in the same dose</div>
+            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#8B72CC" stroke-width="2.5" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
+            <div class="text-sm" style="color:#6B6480;"><strong style="color:#1A1526;">Addresses desk bloat + brain fog</strong> — the gut-brain axis work happens in the same dose</div>
           </div>
           <div class="benefit-item">
-            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
-            <div class="text-sm text-text-secondary"><strong class="text-text-primary">1,685% more live bacteria</strong> at destination vs. unshielded competitors</div>
+            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#8B72CC" stroke-width="2.5" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
+            <div class="text-sm" style="color:#6B6480;"><strong style="color:#1A1526;">1,685% more live bacteria</strong> at destination vs. unshielded competitors</div>
           </div>
           <div class="benefit-item mb-0">
-            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#10B981" stroke-width="2" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
-            <div class="text-sm text-text-secondary"><strong class="text-text-primary">One capsule morning, one evening</strong> — no stack, no routine, no discipline required</div>
+            <div class="benefit-dot"><svg width="10" height="10" fill="none" stroke="#8B72CC" stroke-width="2.5" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg></div>
+            <div class="text-sm" style="color:#6B6480;"><strong style="color:#1A1526;">One capsule morning, one evening</strong> — no stack, no routine, no discipline required</div>
           </div>
         </div>
 
-        <!-- Price + bundle selector -->
+        <!-- Price + Bundle -->
         <div id="order">
           <div class="flex items-baseline gap-2 mb-4">
-            <span class="font-grotesk font-bold text-3xl text-text-primary" id="price-display">$119.97</span>
-            <span class="text-sm text-text-secondary line-through" id="original-price">$134.97</span>
-            <span class="px-2 py-0.5 rounded text-xs font-bold font-grotesk text-bg" style="background:#F59E0B;" id="save-badge">Save $15</span>
+            <span style="font-family:'Playfair Display',serif; font-weight:700; font-size:2rem; color:#1A1526;" id="price-display">$119.97</span>
+            <span class="text-sm line-through" style="color:#6B6480;" id="original-price">$134.97</span>
+            <span class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:#C4B5E8; color:#1A1526;" id="save-badge">Save $15</span>
           </div>
 
           <div class="space-y-2.5 mb-5" id="bundle-selector">
-            <div class="bundle-card rounded-xl px-4 py-3.5 flex items-center gap-3" style="background:#0F1318; border:1px solid #1A2030;" data-price="$44.99" data-orig="" data-save="" data-label="1-Bottle" data-sub="30-day supply · 60 capsules" onclick="pickBundle(this)">
+            <div class="bundle-card rounded-2xl px-4 py-3.5 flex items-center gap-3 bg-surface" style="border:1px solid #EDE6F4;" data-price="$44.99" data-orig="" data-save="" onclick="pickBundle(this)">
               <div class="bcard-radio"></div>
               <div class="flex-1">
-                <div class="font-grotesk font-semibold text-sm text-text-primary">1-Bottle — $44.99</div>
-                <div class="text-xs text-text-secondary">30-day supply · $1.50/day</div>
+                <div class="font-semibold text-sm" style="color:#1A1526;">1-Bottle — $44.99</div>
+                <div class="text-xs" style="color:#6B6480;">30-day supply · $1.50/day</div>
               </div>
             </div>
-            <div class="bundle-card active rounded-xl px-4 py-3.5 flex items-center gap-3" style="background:#0F1318; border:1px solid #1A2030;" data-price="$119.97" data-orig="$134.97" data-save="Save $15" data-label="3-Bottle" data-sub="90-day supply · 180 capsules" onclick="pickBundle(this)">
-              <div class="bcard-radio" style="background:#10B981; border-color:#10B981;"></div>
+            <div class="bundle-card active rounded-2xl px-4 py-3.5 flex items-center gap-3 bg-surface" style="border:1px solid #EDE6F4;" data-price="$119.97" data-orig="$134.97" data-save="Save $15" onclick="pickBundle(this)">
+              <div class="bcard-radio" style="background:#8B72CC; border-color:#8B72CC;"></div>
               <div class="flex-1">
                 <div class="flex items-center gap-2">
-                  <span class="font-grotesk font-semibold text-sm text-text-primary">3-Bottle — $119.97</span>
-                  <span class="px-1.5 py-0.5 rounded text-xs font-bold font-grotesk text-bg" style="background:#F59E0B;">POPULAR</span>
+                  <span class="font-semibold text-sm" style="color:#1A1526;">3-Bottle — $119.97</span>
+                  <span class="px-1.5 py-0.5 rounded-full text-xs font-semibold" style="background:#C4B5E8; color:#1A1526;">POPULAR</span>
                 </div>
-                <div class="text-xs" style="color:#10B981;">Save $15 · 90-day supply · $1.33/day</div>
+                <div class="text-xs" style="color:#8B72CC;">Save $15 · 90-day supply · $1.33/day</div>
               </div>
             </div>
-            <div class="bundle-card rounded-xl px-4 py-3.5 flex items-center gap-3" style="background:#0F1318; border:1px solid #1A2030;" data-price="$215.94" data-orig="$269.94" data-save="Save $54" data-label="6-Bottle" data-sub="180-day supply · 360 capsules" onclick="pickBundle(this)">
+            <div class="bundle-card rounded-2xl px-4 py-3.5 flex items-center gap-3 bg-surface" style="border:1px solid #EDE6F4;" data-price="$215.94" data-orig="$269.94" data-save="Save $54" onclick="pickBundle(this)">
               <div class="bcard-radio"></div>
               <div class="flex-1">
                 <div class="flex items-center gap-2">
-                  <span class="font-grotesk font-semibold text-sm text-text-primary">6-Bottle — $215.94</span>
-                  <span class="px-1.5 py-0.5 rounded text-xs font-bold font-grotesk text-bg" style="background:rgba(16,185,129,0.85);">BEST VALUE</span>
+                  <span class="font-semibold text-sm" style="color:#1A1526;">6-Bottle — $215.94</span>
+                  <span class="px-1.5 py-0.5 rounded-full text-xs font-semibold" style="background:#8B72CC; color:#fff;">BEST VALUE</span>
                 </div>
-                <div class="text-xs" style="color:#10B981;">Save $54 · 180-day supply · $1.20/day</div>
+                <div class="text-xs" style="color:#8B72CC;">Save $54 · 180-day supply · $1.20/day</div>
               </div>
             </div>
           </div>
 
-          <!-- Buy button -->
           <button class="cta-btn w-full py-4 text-base mb-3">
             Add to Cart — <span id="btn-price">$119.97</span>
           </button>
-          <div class="flex justify-center gap-5 text-xs text-text-secondary">
-            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>30-day guarantee</div>
-            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>No subscription</div>
-            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ships in 24h</div>
+          <div class="flex justify-center gap-5 text-xs" style="color:#6B6480;">
+            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>30-day guarantee</div>
+            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>No subscription</div>
+            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ships in 24h</div>
           </div>
         </div>
 
         <!-- How to take -->
         <div class="border-t border-border pt-5">
-          <div class="text-xs font-grotesk font-semibold text-text-secondary uppercase tracking-widest mb-4">How to take</div>
+          <div class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#8B72CC;">How to take</div>
           <div class="grid grid-cols-2 gap-3">
             <div class="how-step">
-              <div class="gif-placeholder">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707"/></svg>
-              </div>
-              <div class="font-grotesk font-semibold text-sm text-text-primary">Morning</div>
-              <div class="text-xs text-text-secondary">1 capsule with breakfast</div>
+              <div class="gif-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B72CC" stroke-width="1.5" opacity="0.5"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707"/></svg></div>
+              <div class="font-semibold text-sm text-text-primary">Morning</div>
+              <div class="text-xs" style="color:#6B6480;">1 capsule with breakfast</div>
             </div>
             <div class="how-step">
-              <div class="gif-placeholder">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="1.5"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-              </div>
-              <div class="font-grotesk font-semibold text-sm text-text-primary">Evening</div>
-              <div class="text-xs text-text-secondary">1 capsule with dinner</div>
+              <div class="gif-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B72CC" stroke-width="1.5" opacity="0.5"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg></div>
+              <div class="font-semibold text-sm text-text-primary">Evening</div>
+              <div class="text-xs" style="color:#6B6480;">1 capsule with dinner</div>
             </div>
           </div>
-          <div class="mt-3 flex items-start gap-2 px-3 py-2.5 rounded-lg" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15);">
-            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
-            <p class="text-xs text-text-secondary">No adjustment phase. Zero gas, cramping, or fishy burps. Take normally from day one.</p>
+          <div class="mt-3 flex items-start gap-2 px-3 py-2.5 rounded-xl" style="background:rgba(139,114,204,0.07); border:1px solid rgba(139,114,204,0.2);">
+            <svg class="w-4 h-4 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+            <p class="text-xs" style="color:#6B6480;">No adjustment phase. Zero gas, cramping, or fishy burps. Take normally from day one.</p>
           </div>
         </div>
 
         <!-- Ingredients accordion -->
         <div class="border-t border-border pt-4">
           <button class="w-full flex items-center justify-between py-1 text-left" onclick="toggleIngredients()">
-            <span class="font-grotesk font-semibold text-sm text-text-primary">Full ingredient list</span>
-            <span class="ing-toggle text-text-secondary text-xl font-light" id="ing-toggle">+</span>
+            <span class="font-semibold text-sm text-text-primary">Full ingredient list</span>
+            <span class="ing-toggle text-text-secondary text-xl font-light" id="ing-toggle" style="color:#6B6480;">+</span>
           </button>
           <div class="ing-body" id="ing-body">
             <div class="pt-4 pb-2 space-y-2">
-              <div class="text-sm font-grotesk font-semibold text-text-secondary uppercase tracking-widest text-xs mb-3">Active strains (40B CFU total)</div>
+              <div class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:#8B72CC;">Active strains (40B CFU total)</div>
               <div class="grid sm:grid-cols-2 gap-2">
-                <div class="px-3 py-2.5 rounded-lg text-sm" style="background:#0F1318; border:1px solid #1A2030;">
-                  <div class="font-medium text-text-primary text-xs mb-0.5"><em>L. acidophilus</em> La-14</div>
-                  <div class="text-xs text-text-secondary">Colonization anchor · tight junction support</div>
+                <div class="px-3 py-2.5 rounded-xl text-sm bg-surface" style="border:1px solid #EDE6F4;">
+                  <div class="font-medium text-xs mb-0.5 text-text-primary"><em>L. acidophilus</em> La-14</div>
+                  <div class="text-xs" style="color:#6B6480;">Colonization anchor · tight junction support</div>
                 </div>
-                <div class="px-3 py-2.5 rounded-lg text-sm" style="background:#0F1318; border:1px solid #1A2030;">
-                  <div class="font-medium text-text-primary text-xs mb-0.5"><em>B. lactis</em> Bl-04</div>
-                  <div class="text-xs text-text-secondary">Cortisol modulation · HPA axis support</div>
+                <div class="px-3 py-2.5 rounded-xl text-sm bg-surface" style="border:1px solid #EDE6F4;">
+                  <div class="font-medium text-xs mb-0.5 text-text-primary"><em>B. lactis</em> Bl-04</div>
+                  <div class="text-xs" style="color:#6B6480;">Cortisol modulation · HPA axis support</div>
                 </div>
-                <div class="px-3 py-2.5 rounded-lg text-sm" style="background:#0F1318; border:1px solid #1A2030;">
-                  <div class="font-medium text-text-primary text-xs mb-0.5"><em>L. plantarum</em> Lp-115</div>
-                  <div class="text-xs text-text-secondary">Colonic motility · transit time support</div>
+                <div class="px-3 py-2.5 rounded-xl text-sm bg-surface" style="border:1px solid #EDE6F4;">
+                  <div class="font-medium text-xs mb-0.5 text-text-primary"><em>L. plantarum</em> Lp-115</div>
+                  <div class="text-xs" style="color:#6B6480;">Colonic motility · transit time support</div>
                 </div>
-                <div class="px-3 py-2.5 rounded-lg text-sm" style="background:#0F1318; border:1px solid #1A2030;">
-                  <div class="font-medium text-text-primary text-xs mb-0.5"><em>L. paracasei</em> Lpc-37</div>
-                  <div class="text-xs text-text-secondary">Immune regulation · mood / serotonin axis</div>
+                <div class="px-3 py-2.5 rounded-xl text-sm bg-surface" style="border:1px solid #EDE6F4;">
+                  <div class="font-medium text-xs mb-0.5 text-text-primary"><em>L. paracasei</em> Lpc-37</div>
+                  <div class="text-xs" style="color:#6B6480;">Immune regulation · mood / serotonin axis</div>
                 </div>
               </div>
-              <div class="text-sm font-grotesk font-semibold text-text-secondary uppercase tracking-widest text-xs mb-2 mt-4">Prebiotic fiber</div>
-              <div class="px-3 py-2.5 rounded-lg text-sm" style="background:#0F1318; border:1px solid #1A2030;">
-                <div class="font-medium text-text-primary text-xs mb-0.5">FOS (Fructooligosaccharides) 200mg</div>
-                <div class="text-xs text-text-secondary">Prebiotic fuel for the 4 active strains · feeds colonization</div>
+              <div class="text-xs font-semibold uppercase tracking-widest mb-2 mt-4" style="color:#8B72CC;">Prebiotic fiber</div>
+              <div class="px-3 py-2.5 rounded-xl text-sm bg-surface" style="border:1px solid #EDE6F4;">
+                <div class="font-medium text-xs mb-0.5 text-text-primary">FOS (Fructooligosaccharides) 200mg</div>
+                <div class="text-xs" style="color:#6B6480;">Prebiotic fuel for the 4 active strains</div>
               </div>
-              <div class="text-sm font-grotesk font-semibold text-text-secondary uppercase tracking-widest text-xs mb-2 mt-4">Delivery system</div>
-              <div class="px-3 py-2.5 rounded-lg text-sm" style="background:#0F1318; border:1px solid rgba(16,185,129,0.2);">
-                <div class="font-medium text-xs mb-0.5" style="color:#10B981;">MAKTREK® Bi-Pass Technology</div>
-                <div class="text-xs text-text-secondary">Marine polysaccharide acid shield · patented targeted-release</div>
+              <div class="text-xs font-semibold uppercase tracking-widest mb-2 mt-4" style="color:#8B72CC;">Delivery system</div>
+              <div class="px-3 py-2.5 rounded-xl text-sm" style="background:rgba(139,114,204,0.07); border:1px solid rgba(139,114,204,0.2);">
+                <div class="font-medium text-xs mb-0.5" style="color:#8B72CC;">MAKTREK® Bi-Pass Technology</div>
+                <div class="text-xs" style="color:#6B6480;">Marine polysaccharide acid shield · patented targeted-release</div>
               </div>
-              <div class="mt-3 text-xs text-text-secondary flex flex-wrap gap-3">
+              <div class="mt-3 text-xs flex flex-wrap gap-3" style="color:#6B6480;">
                 <span>✓ Gluten-free</span><span>✓ Lactose-free</span><span>✓ Allergen-free</span><span>✓ Hormone-free</span><span>✓ 100% Natural</span><span>✓ Made in USA</span>
               </div>
             </div>
           </div>
         </div>
 
-      </div><!-- /right col -->
+      </div><!-- /right -->
     </div><!-- /grid -->
-  </div><!-- /max-w -->
+  </div>
 </section>
 
 
 <!-- ============================================================
-     2. SOCIAL PROOF — VIDEO TICKER
+     2. VIDEO TICKER
 ============================================================ -->
-<section class="py-12" style="background:#0F1318; border-top:1px solid #1A2030; border-bottom:1px solid #1A2030; overflow:hidden;">
+<section class="py-10 border-t border-b border-border" style="background:#F2EBF8; overflow:hidden;">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
     <div class="flex items-center gap-3">
       <div class="spec-pill"><span class="dot"></span>Customer stories</div>
-      <div class="text-sm text-text-secondary">847 verified buyers · 4.9★ average</div>
+      <div class="text-sm" style="color:#6B6480;">847 verified buyers · 4.9★ average</div>
     </div>
   </div>
   <div style="overflow:hidden; position:relative;">
-    <!-- fade edges -->
-    <div style="position:absolute; left:0; top:0; bottom:0; width:80px; z-index:2; background:linear-gradient(to right, #0F1318, transparent); pointer-events:none;"></div>
-    <div style="position:absolute; right:0; top:0; bottom:0; width:80px; z-index:2; background:linear-gradient(to left, #0F1318, transparent); pointer-events:none;"></div>
+    <div style="position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to right,#F2EBF8,transparent);pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to left,#F2EBF8,transparent);pointer-events:none;"></div>
     <div class="ticker-track px-4">
-      <!-- card set A (duplicated below for seamless loop) -->
-      <div class="video-card" style="background:linear-gradient(160deg,#10251E,#0A1510);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Sarah L. · Chicago</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#1A1A0F,#0F0F0A);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Megan P. · New York</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#0F1A25,#090F18);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Kristen T. · Boston</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#1A1025,#0F0A18);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Dana R. · Austin</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#101A20,#0A1015);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Jennifer M. · Seattle</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#201510,#15100A);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Amber C. · SF</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#10201A,#0A1510);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Priya K. · London</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#201A10,#15100A);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Lauren B. · LA</div>
-      </div>
-      <!-- duplicate set for seamless loop -->
-      <div class="video-card" style="background:linear-gradient(160deg,#10251E,#0A1510);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Sarah L. · Chicago</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#1A1A0F,#0F0F0A);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Megan P. · New York</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#0F1A25,#090F18);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Kristen T. · Boston</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#1A1025,#0F0A18);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Dana R. · Austin</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#101A20,#0A1015);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Jennifer M. · Seattle</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#201510,#15100A);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Amber C. · SF</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#10201A,#0A1510);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Priya K. · London</div>
-      </div>
-      <div class="video-card" style="background:linear-gradient(160deg,#201A10,#15100A);">
-        <div class="video-play-btn"><div class="play-icon"></div></div>
-        <div class="video-name">Lauren B. · LA</div>
-      </div>
+      <div class="video-card" style="background:linear-gradient(160deg,#D8CAEE,#C4B5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Sarah L. · Chicago</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#C8D4EE,#B5C4E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Megan P. · New York</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#D4CAEE,#BEB5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Kristen T. · Boston</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#CAEEDD,#B5E8CC);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Dana R. · Austin</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#EED4CA,#E8C4B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Jennifer M. · Seattle</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#EECAD4,#E8B5C4);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Amber C. · SF</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#CAEEE8,#B5E8E0);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Priya K. · London</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#EEE4CA,#E8D8B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Lauren B. · LA</div></div>
+      <!-- duplicate -->
+      <div class="video-card" style="background:linear-gradient(160deg,#D8CAEE,#C4B5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Sarah L. · Chicago</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#C8D4EE,#B5C4E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Megan P. · New York</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#D4CAEE,#BEB5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Kristen T. · Boston</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#CAEEDD,#B5E8CC);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Dana R. · Austin</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#EED4CA,#E8C4B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Jennifer M. · Seattle</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#EECAD4,#E8B5C4);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Amber C. · SF</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#CAEEE8,#B5E8E0);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Priya K. · London</div></div>
+      <div class="video-card" style="background:linear-gradient(160deg,#EEE4CA,#E8D8B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Lauren B. · LA</div></div>
     </div>
   </div>
 </section>
@@ -532,166 +418,138 @@
 <section id="mechanism" class="py-20 px-4 sm:px-6">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-14">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
-      <h2 class="font-grotesk font-bold text-3xl sm:text-4xl text-text-primary mb-4">Why other probiotics die<br/>before they reach you.</h2>
-      <p class="text-text-secondary max-w-xl mx-auto">Standard vegetable capsule = 5–10 min to dissolve at pH 1.5. 97–99.997% of bacteria are dead before reaching your lower intestine. This is a delivery problem, not a strain problem.</p>
+      <div class="spec-pill inline-flex mb-5"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4" style="letter-spacing:-0.02em;">Why other probiotics die<br/>before they reach you.</h2>
+      <p class="max-w-xl mx-auto text-sm sm:text-base" style="color:#6B6480;">Standard vegetable capsule = 5–10 min to dissolve at pH 1.5. 97–99.997% of bacteria are dead before reaching your lower intestine.</p>
     </div>
 
-    <!-- Pill visual with radiating bullets -->
+    <!-- Pill visual -->
     <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-16">
-
-      <!-- Left bullets -->
-      <div class="flex flex-col gap-4 w-full lg:w-64 text-right order-2 lg:order-1">
-        <div class="mech-line flex-row-reverse lg:flex-row justify-end lg:justify-start">
-          <div class="mech-dash order-2 lg:order-1"></div>
-          <div class="mech-dot order-1 lg:order-2"></div>
-          <div class="ml-0 mr-3 lg:ml-3 lg:mr-0 order-3 flex-1 lg:flex-none order-first lg:order-last text-right">
-            <div class="font-grotesk font-semibold text-sm text-text-primary">Marine polysaccharide matrix</div>
-            <div class="text-xs text-text-secondary">Hydrates on contact with gastric moisture</div>
+      <div class="flex flex-col gap-4 w-full lg:w-64 order-2 lg:order-1">
+        <div class="flex flex-row-reverse lg:flex-row items-center gap-3">
+          <div class="mech-dash"></div><div class="mech-dot"></div>
+          <div class="text-right lg:text-right flex-1 lg:flex-none">
+            <div class="font-semibold text-sm text-text-primary">Marine polysaccharide matrix</div>
+            <div class="text-xs" style="color:#6B6480;">Hydrates on gastric moisture contact</div>
           </div>
         </div>
-        <div class="mech-line flex-row-reverse lg:flex-row justify-end lg:justify-start">
-          <div class="mech-dash order-2 lg:order-1"></div>
-          <div class="mech-dot order-1 lg:order-2"></div>
-          <div class="ml-0 mr-3 lg:ml-3 lg:mr-0 order-3 flex-1 lg:flex-none order-first lg:order-last text-right">
-            <div class="font-grotesk font-semibold text-sm text-text-primary">Acid-resistant gel shield</div>
-            <div class="text-xs text-text-secondary">Survives pH 1.5–3.5 intact</div>
+        <div class="flex flex-row-reverse lg:flex-row items-center gap-3">
+          <div class="mech-dash"></div><div class="mech-dot"></div>
+          <div class="text-right flex-1 lg:flex-none">
+            <div class="font-semibold text-sm text-text-primary">Acid-resistant gel shield</div>
+            <div class="text-xs" style="color:#6B6480;">Survives pH 1.5–3.5 intact</div>
           </div>
         </div>
-        <div class="mech-line flex-row-reverse lg:flex-row justify-end lg:justify-start">
-          <div class="mech-dash order-2 lg:order-1"></div>
-          <div class="mech-dot order-1 lg:order-2"></div>
-          <div class="ml-0 mr-3 lg:ml-3 lg:mr-0 order-3 flex-1 lg:flex-none order-first lg:order-last text-right">
-            <div class="font-grotesk font-semibold text-sm text-text-primary">Protected gastric transit</div>
-            <div class="text-xs text-text-secondary">100% of payload reaches small intestine</div>
+        <div class="flex flex-row-reverse lg:flex-row items-center gap-3">
+          <div class="mech-dash"></div><div class="mech-dot"></div>
+          <div class="text-right flex-1 lg:flex-none">
+            <div class="font-semibold text-sm text-text-primary">Protected gastric transit</div>
+            <div class="text-xs" style="color:#6B6480;">Full payload reaches small intestine</div>
           </div>
         </div>
       </div>
 
-      <!-- Center: pill -->
       <div class="flex flex-col items-center gap-3 order-1 lg:order-2">
         <div class="pill-shape"></div>
-        <div class="font-grotesk font-bold text-xs text-center" style="color:#10B981;">MAKTREK®<br/>Bi-Pass</div>
+        <div class="font-semibold text-xs text-center" style="color:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®<br/>Bi-Pass</div>
       </div>
 
-      <!-- Right bullets -->
-      <div class="flex flex-col gap-4 w-full lg:w-64 text-left order-3">
-        <div class="mech-line">
-          <div class="mech-dot"></div>
-          <div class="mech-dash"></div>
-          <div class="ml-3">
-            <div class="font-grotesk font-semibold text-sm text-text-primary">Neutral pH triggered release</div>
-            <div class="text-xs text-text-secondary">Shield dissolves only at pH 6.0–7.5</div>
+      <div class="flex flex-col gap-4 w-full lg:w-64 order-3">
+        <div class="flex items-center gap-3">
+          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div>
+            <div class="font-semibold text-sm text-text-primary">Neutral pH triggered release</div>
+            <div class="text-xs" style="color:#6B6480;">Shield dissolves only at pH 6.0–7.5</div>
           </div>
         </div>
-        <div class="mech-line">
-          <div class="mech-dot"></div>
-          <div class="mech-dash"></div>
-          <div class="ml-3">
-            <div class="font-grotesk font-semibold text-sm text-text-primary">Colonizes lower intestine</div>
-            <div class="text-xs text-text-secondary">Exact location where it matters</div>
+        <div class="flex items-center gap-3">
+          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div>
+            <div class="font-semibold text-sm text-text-primary">Colonizes lower intestine</div>
+            <div class="text-xs" style="color:#6B6480;">Exact location where it matters</div>
           </div>
         </div>
-        <div class="mech-line">
-          <div class="mech-dot"></div>
-          <div class="mech-dash"></div>
-          <div class="ml-3">
-            <div class="font-grotesk font-semibold text-sm text-text-primary">50%+ clinical survival rate</div>
-            <div class="text-xs text-text-secondary">vs. 0.003% powder / 2.8% standard capsule</div>
+        <div class="flex items-center gap-3">
+          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div>
+            <div class="font-semibold text-sm text-text-primary">50%+ clinical survival rate</div>
+            <div class="text-xs" style="color:#6B6480;">vs. 0.003% powder / 2.8% standard capsule</div>
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- Survival bars -->
-    <div class="max-w-2xl mx-auto rounded-2xl p-7" style="background:#0F1318; border:1px solid #1A2030;" id="mech-bars">
-      <div class="text-sm font-grotesk font-semibold text-text-primary mb-6">Bacterial survival through gastric transit</div>
+    <div class="max-w-2xl mx-auto rounded-3xl p-7 bg-surface" style="border:1px solid #EDE6F4;" id="mech-bars">
+      <div class="text-sm font-semibold text-text-primary mb-6">Bacterial survival through gastric transit</div>
       <div class="space-y-5">
         <div>
-          <div class="flex justify-between text-sm mb-2">
-            <span class="text-text-secondary">Powder / loose capsule</span>
-            <span class="font-grotesk font-bold" style="color:#ef4444;">0.003%</span>
-          </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;"><div class="bar-fill h-full rounded-full" style="--w:0.3%;background:#ef4444;"></div></div>
+          <div class="flex justify-between text-sm mb-2"><span style="color:#6B6480;">Powder / loose capsule</span><span class="font-semibold" style="color:#D04040;">0.003%</span></div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:0.3%;background:#D04040;"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2">
-            <span class="text-text-secondary">Standard vegetable capsule (most brands)</span>
-            <span class="font-grotesk font-bold" style="color:#F59E0B;">2.8%</span>
-          </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;"><div class="bar-fill h-full rounded-full" style="--w:5.6%;background:#F59E0B;"></div></div>
+          <div class="flex justify-between text-sm mb-2"><span style="color:#6B6480;">Standard vegetable capsule (most brands)</span><span class="font-semibold" style="color:#C4962A;">2.8%</span></div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:5.6%;background:#C4962A;"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2">
-            <span class="text-text-secondary">Flove — MAKTREK® Bi-Pass</span>
-            <span class="font-grotesk font-bold text-base" style="color:#10B981;">50%+</span>
-          </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#1A2030;"><div class="bar-fill h-full rounded-full" style="--w:100%;background:linear-gradient(90deg,#0D9668,#10B981);"></div></div>
+          <div class="flex justify-between text-sm mb-2"><span style="color:#6B6480;">Flove — MAKTREK® Bi-Pass</span><span class="font-semibold text-base" style="color:#8B72CC;">50%+</span></div>
+          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:100%;background:linear-gradient(90deg,#7A62B8,#8B72CC);"></div></div>
         </div>
       </div>
-      <p class="text-xs text-text-secondary text-center mt-5">1,685% more live bacteria per dose. A 100B CFU unshielded competitor delivers fewer live colonies than Flove's 40B CFU.</p>
+      <p class="text-xs text-center mt-5" style="color:#6B6480;">1,685% more live bacteria per dose. A 100B CFU unshielded competitor delivers fewer live colonies than Flove's 40B CFU.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     4. FAQ — LIMITING BELIEFS
+     4. FAQ
 ============================================================ -->
-<section id="faq" class="py-20 px-4 sm:px-6" style="background:#0F1318; border-top:1px solid #1A2030;">
+<section id="faq" class="py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #EDE6F4;">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-12">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Common objections</div>
-      <h2 class="font-grotesk font-bold text-3xl sm:text-4xl text-text-primary mb-3">You've probably thought this before.</h2>
-      <p class="text-text-secondary">Every hesitation is answered below. Analytical answers, not marketing copy.</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">You've probably thought this before.</h2>
+      <p class="text-sm" style="color:#6B6480;">Every hesitation is answered below. Analytical answers, not marketing copy.</p>
     </div>
     <div class="space-y-2.5">
-      <div class="rounded-xl overflow-hidden" style="background:#08090C; border:1px solid #1A2030;">
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
         <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
-          <span class="font-grotesk font-semibold text-sm sm:text-base text-text-primary pr-4">I've tried four probiotics and none worked. Why would this be different?</span>
-          <span class="faq-plus text-text-secondary flex-shrink-0">+</span>
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">I've tried four probiotics and none worked. Why would this be different?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#6B6480;">+</span>
         </button>
-        <div class="faq-answer"><div class="px-5 pb-5 text-sm text-text-secondary leading-relaxed">
+        <div class="faq-answer"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">
           <p class="mb-3">They didn't fail because of your gut. They failed because of their capsule. Stomach pH runs 1.5–3.5. A standard vegetable capsule dissolves in 5–10 minutes. Industry survival rates: 0.003% (powder) to 2.8% (capsule). That means 97–99.997% of what you paid for died before reaching your lower intestine.</p>
           <p>MAKTREK® Bi-Pass forms a secondary marine polysaccharide gel shield in gastric moisture. It doesn't dissolve at stomach pH — only at the neutral pH of the lower intestine. Clinical survival: 50%+. That's not a better probiotic. That's a different mechanism entirely.</p>
         </div></div>
       </div>
-      <div class="rounded-xl overflow-hidden" style="background:#08090C; border:1px solid #1A2030;">
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
         <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
-          <span class="font-grotesk font-semibold text-sm sm:text-base text-text-primary pr-4">Will I get gas, cramping, or "fishy burps" like I did before?</span>
-          <span class="faq-plus text-text-secondary flex-shrink-0">+</span>
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Will I get gas, cramping, or "fishy burps" like I did before?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#6B6480;">+</span>
         </button>
-        <div class="faq-answer"><div class="px-5 pb-5 text-sm text-text-secondary leading-relaxed">
-          No. Those symptoms come from strains fermenting in the upper GI tract — bacteria dying and decaying in the wrong location. Flove's 4 strains were selected specifically for low upper-GI fermentation. They don't reach the upper intestine alive in volume — they're shielded through it. No ramp-up, no "start with half a dose." Take it normally from day one.
-        </div></div>
+        <div class="faq-answer"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">No. Those symptoms come from strains fermenting in the upper GI tract. Flove's 4 strains were selected specifically for low upper-GI fermentation. No ramp-up, no "start with half a dose." Take it normally from day one.</div></div>
       </div>
-      <div class="rounded-xl overflow-hidden" style="background:#08090C; border:1px solid #1A2030;">
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
         <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
-          <span class="font-grotesk font-semibold text-sm sm:text-base text-text-primary pr-4">I already take Seed / Ritual / [other $60 brand]. Why switch?</span>
-          <span class="faq-plus text-text-secondary flex-shrink-0">+</span>
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">I already take Seed / Ritual / [other brand]. Why switch?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#6B6480;">+</span>
         </button>
-        <div class="faq-answer"><div class="px-5 pb-5 text-sm text-text-secondary leading-relaxed">
-          Run the delivery math. Standard vegetable capsules — including the ones used by most premium brands — survive gastric transit at 2.8% or below. You are paying for the label count, not the destination count. MAKTREK® delivers 50%+ survival. A Flove 40B CFU dose delivers more live bacteria to your lower intestine than a competitor's 100B CFU unshielded capsule. The mechanism is the difference.
-        </div></div>
+        <div class="faq-answer"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">Run the delivery math. Standard vegetable capsules survive gastric transit at 2.8% or below. You're paying for the label count, not the destination count. MAKTREK® delivers 50%+ survival. A Flove 40B CFU dose delivers more live bacteria to your lower intestine than a competitor's 100B CFU unshielded capsule.</div></div>
       </div>
-      <div class="rounded-xl overflow-hidden" style="background:#08090C; border:1px solid #1A2030;">
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
         <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
-          <span class="font-grotesk font-semibold text-sm sm:text-base text-text-primary pr-4">I work out 3x a week and eat clean. Will this actually help?</span>
-          <span class="faq-plus text-text-secondary flex-shrink-0">+</span>
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">I work out 3x a week and eat clean. Will this actually help?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#6B6480;">+</span>
         </button>
-        <div class="faq-answer"><div class="px-5 pb-5 text-sm text-text-secondary leading-relaxed">
-          Three hours of exercise cannot reverse 50 hours of compression. The ratio is wrong by an order of magnitude. Your morning Pilates class doesn't address your colonic motility at 3 PM Wednesday — six hours after the class, six hours into the compression window. Flove addresses the specific physiological context of a 50-hour workweek: mechanical bloat, cortisol-driven bacterial die-off, and gut-brain axis disruption. Exercise and diet don't cover that.
-        </div></div>
+        <div class="faq-answer"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">Three hours of exercise cannot reverse 50 hours of compression. Your morning Pilates class doesn't address your colonic motility at 3 PM Wednesday. Flove addresses the specific physiological context of a 50-hour workweek: mechanical bloat, cortisol-driven bacterial die-off, and gut-brain axis disruption.</div></div>
       </div>
-      <div class="rounded-xl overflow-hidden" style="background:#08090C; border:1px solid #1A2030;">
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
         <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
-          <span class="font-grotesk font-semibold text-sm sm:text-base text-text-primary pr-4">Is this a subscription? Can I just buy once?</span>
-          <span class="faq-plus text-text-secondary flex-shrink-0">+</span>
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Is this a subscription? Can I just buy once?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#6B6480;">+</span>
         </button>
-        <div class="faq-answer"><div class="px-5 pb-5 text-sm text-text-secondary leading-relaxed">
-          One-time purchase. No auto-renew, no billing surprises, no cancellation flow. You order when you want to order. The 30-day guarantee applies to any size — if it's not working by day 30, full refund on the entire order. No return required.
-        </div></div>
+        <div class="faq-answer"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">One-time purchase. No auto-renew, no billing surprises, no cancellation flow. You order when you want to order. The 30-day guarantee applies to any size — if it's not working by day 30, full refund on the entire order. No return required.</div></div>
       </div>
     </div>
   </div>
@@ -705,47 +563,34 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>From skeptics</div>
-      <h2 class="font-grotesk font-bold text-3xl sm:text-4xl text-text-primary mb-3">People who didn't believe it either.</h2>
-      <p class="text-text-secondary">Selected from verified buyers who mentioned prior probiotic failures in their review.</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">People who didn't believe it either.</h2>
+      <p class="text-sm" style="color:#6B6480;">Selected from verified buyers who mentioned prior probiotic failures in their review.</p>
     </div>
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-      <div class="rounded-2xl p-6" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-1" style="color:#F59E0B;">★★★★★</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">"I told myself I was done with probiotics. I had tried four. This was a one-time experiment because of the refund policy. I didn't tell anyone I ordered it. By week three I was eating lunch before a presentation for the first time in a year."</p>
+      <div class="rounded-3xl p-6 bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="flex gap-0.5 mb-2 text-base star-amber">★★★★★</div>
+        <p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">"I told myself I was done with probiotics. I had tried four. This was a one-time experiment because of the refund policy. By week three I was eating lunch before a presentation for the first time in a year."</p>
         <div class="flex items-center gap-3 pt-4 border-t border-border">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(16,185,129,0.15); color:#10B981;">SL</div>
-          <div>
-            <div class="font-grotesk font-semibold text-xs text-text-primary">Sarah L.</div>
-            <div class="text-xs text-text-secondary">Strategy Manager · Chicago · 6-bottle</div>
-          </div>
+          <div class="w-8 h-8 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#C4B5E8; color:#1A1526;">SL</div>
+          <div><div class="font-semibold text-xs text-text-primary">Sarah L.</div><div class="text-xs" style="color:#6B6480;">Strategy Manager · Chicago · 6-bottle</div></div>
         </div>
       </div>
-
-      <div class="rounded-2xl p-6" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-1" style="color:#F59E0B;">★★★★★</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">"I specifically ordered because I read the delivery mechanism paper. I wasn't buying the marketing — I was buying the capsule technology. Four weeks in: the 3 PM crash I had accepted as permanent started lifting. Not because I believed in it. Because the mechanism actually works."</p>
+      <div class="rounded-3xl p-6 bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="flex gap-0.5 mb-2 text-base star-amber">★★★★★</div>
+        <p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">"I specifically ordered because I read the delivery mechanism paper. I wasn't buying the marketing — I was buying the capsule technology. Four weeks in: the 3 PM crash started lifting. Because the mechanism actually works."</p>
         <div class="flex items-center gap-3 pt-4 border-t border-border">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(245,158,11,0.15); color:#F59E0B;">MP</div>
-          <div>
-            <div class="font-grotesk font-semibold text-xs text-text-primary">Megan P.</div>
-            <div class="text-xs text-text-secondary">VP Operations · New York · 3-bottle</div>
-          </div>
+          <div class="w-8 h-8 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#F2EBF8; color:#8B72CC; border:1px solid #EDE6F4;">MP</div>
+          <div><div class="font-semibold text-xs text-text-primary">Megan P.</div><div class="text-xs" style="color:#6B6480;">VP Operations · New York · 3-bottle</div></div>
         </div>
       </div>
-
-      <div class="rounded-2xl p-6" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-1" style="color:#F59E0B;">★★★★★</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">"I stopped three probiotics in week two because of gas and cramping. I was fully convinced my body just couldn't tolerate them. Zero symptoms with Flove. Zero. I don't know what I was going to do if this one failed too."</p>
+      <div class="rounded-3xl p-6 bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="flex gap-0.5 mb-2 text-base star-amber">★★★★★</div>
+        <p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">"I stopped three probiotics in week two because of gas and cramping. Zero symptoms with Flove. Zero. Then three weeks in the bloat that follows me into every afternoon meeting was just gone."</p>
         <div class="flex items-center gap-3 pt-4 border-t border-border">
-          <div class="w-8 h-8 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(16,185,129,0.15); color:#10B981;">DR</div>
-          <div>
-            <div class="font-grotesk font-semibold text-xs text-text-primary">Dana R.</div>
-            <div class="text-xs text-text-secondary">Account Executive · Austin · 1-bottle</div>
-          </div>
+          <div class="w-8 h-8 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#C4B5E8; color:#1A1526;">DR</div>
+          <div><div class="font-semibold text-xs text-text-primary">Dana R.</div><div class="text-xs" style="color:#6B6480;">Account Executive · Austin · 1-bottle</div></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -754,30 +599,30 @@
 <!-- ============================================================
      6. GUARANTEES
 ============================================================ -->
-<section class="py-16 px-4 sm:px-6" style="background:#0F1318; border-top:1px solid #1A2030; border-bottom:1px solid #1A2030;">
+<section class="py-16 px-4 sm:px-6 border-t border-b border-border" style="background:#F2EBF8;">
   <div class="max-w-4xl mx-auto">
-    <h2 class="font-grotesk font-bold text-2xl sm:text-3xl text-text-primary text-center mb-10">The guarantee makes the math simple.</h2>
+    <h2 class="font-display font-bold text-2xl sm:text-3xl text-text-primary text-center mb-10" style="letter-spacing:-0.02em;">The guarantee makes the math simple.</h2>
     <div class="grid sm:grid-cols-3 gap-5">
-      <div class="flex flex-col items-center text-center gap-3 px-4 py-6 rounded-2xl" style="background:#08090C; border:1px solid #1A2030;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2);">
-          <svg class="w-6 h-6" style="color:#10B981;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 10c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286z"/></svg>
+      <div class="flex flex-col items-center text-center gap-3 px-4 py-6 rounded-3xl bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:rgba(139,114,204,0.1); border:1px solid rgba(139,114,204,0.2);">
+          <svg class="w-6 h-6" style="color:#8B72CC;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 10c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286z"/></svg>
         </div>
-        <div class="font-grotesk font-bold text-text-primary">60-Day Money-Back</div>
-        <p class="text-xs text-text-secondary">Not satisfied at any point in the first 30 days? Email us. Full refund. No return required.</p>
+        <div class="font-semibold text-text-primary">30-Day Money-Back</div>
+        <p class="text-xs" style="color:#6B6480;">Not satisfied in the first 30 days? Email us. Full refund. No return required.</p>
       </div>
-      <div class="flex flex-col items-center text-center gap-3 px-4 py-6 rounded-2xl" style="background:#08090C; border:1px solid #1A2030;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2);">
-          <svg class="w-6 h-6" style="color:#10B981;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      <div class="flex flex-col items-center text-center gap-3 px-4 py-6 rounded-3xl bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:rgba(139,114,204,0.1); border:1px solid rgba(139,114,204,0.2);">
+          <svg class="w-6 h-6" style="color:#8B72CC;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
         </div>
-        <div class="font-grotesk font-bold text-text-primary">No Subscription</div>
-        <p class="text-xs text-text-secondary">One-time purchase. No auto-renew. No hidden billing. Order when you want.</p>
+        <div class="font-semibold text-text-primary">No Subscription</div>
+        <p class="text-xs" style="color:#6B6480;">One-time purchase. No auto-renew. No hidden billing. Order when you want.</p>
       </div>
-      <div class="flex flex-col items-center text-center gap-3 px-4 py-6 rounded-2xl" style="background:#08090C; border:1px solid #1A2030;">
-        <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2);">
-          <svg class="w-6 h-6" style="color:#10B981;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+      <div class="flex flex-col items-center text-center gap-3 px-4 py-6 rounded-3xl bg-surface" style="border:1px solid #EDE6F4;">
+        <div class="w-12 h-12 rounded-2xl flex items-center justify-center" style="background:rgba(139,114,204,0.1); border:1px solid rgba(139,114,204,0.2);">
+          <svg class="w-6 h-6" style="color:#8B72CC;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
         </div>
-        <div class="font-grotesk font-bold text-text-primary">Made in USA</div>
-        <p class="text-xs text-text-secondary">FDA-registered, GMP-certified facility. Third-party tested. CoA available on request.</p>
+        <div class="font-semibold text-text-primary">Made in USA</div>
+        <p class="text-xs" style="color:#6B6480;">FDA-registered, GMP-certified facility. Third-party tested. CoA available on request.</p>
       </div>
     </div>
   </div>
@@ -791,170 +636,64 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Verified reviews</div>
-      <!-- Trustpilot-style summary bar -->
       <div class="inline-flex flex-col items-center gap-2 mb-6">
-        <div class="font-grotesk font-bold text-5xl text-text-primary">4.9</div>
-        <div class="flex gap-0.5 text-2xl" style="color:#00B67A;">★★★★★</div>
-        <div class="text-sm text-text-secondary">Based on 847 reviews</div>
+        <div class="font-display font-bold text-5xl text-text-primary">4.9</div>
+        <div class="flex gap-0.5 text-2xl star-tp">★★★★★</div>
+        <div class="text-sm" style="color:#6B6480;">Based on 847 reviews</div>
       </div>
-      <!-- Rating breakdown -->
       <div class="max-w-xs mx-auto space-y-1.5">
-        <div class="flex items-center gap-2 text-xs">
-          <span class="text-text-secondary w-8 text-right">5 ★</span>
-          <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#1A2030;"><div class="h-full rounded-full" style="width:92%;background:#00B67A;"></div></div>
-          <span class="text-text-secondary w-6">92%</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs">
-          <span class="text-text-secondary w-8 text-right">4 ★</span>
-          <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#1A2030;"><div class="h-full rounded-full" style="width:6%;background:#00B67A;"></div></div>
-          <span class="text-text-secondary w-6">6%</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs">
-          <span class="text-text-secondary w-8 text-right">3 ★</span>
-          <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#1A2030;"><div class="h-full rounded-full" style="width:1.5%;background:#1A2030;"></div></div>
-          <span class="text-text-secondary w-6">1%</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs">
-          <span class="text-text-secondary w-8 text-right">2 ★</span>
-          <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#1A2030;"><div class="h-full rounded-full" style="width:0.5%;background:#1A2030;"></div></div>
-          <span class="text-text-secondary w-6">0%</span>
-        </div>
-        <div class="flex items-center gap-2 text-xs">
-          <span class="text-text-secondary w-8 text-right">1 ★</span>
-          <div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#1A2030;"><div class="h-full rounded-full" style="width:0.5%;background:#ef4444;"></div></div>
-          <span class="text-text-secondary w-6">0%</span>
-        </div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#6B6480;">5 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:92%;background:#00B67A;"></div></div><span class="w-6" style="color:#6B6480;">92%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#6B6480;">4 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:6%;background:#00B67A;"></div></div><span class="w-6" style="color:#6B6480;">6%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#6B6480;">3 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:1.5%;background:#EDE6F4;"></div></div><span class="w-6" style="color:#6B6480;">1%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#6B6480;">2 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"></div><span class="w-6" style="color:#6B6480;">0%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#6B6480;">1 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"></div><span class="w-6" style="color:#6B6480;">0%</span></div>
       </div>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Review 1 -->
-      <div class="rounded-2xl p-5" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
-        <div class="font-grotesk font-semibold text-text-primary text-sm mb-2">"The bloat after lunch meetings is gone."</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">I've spent two years and probably $800 on probiotics that did nothing. Week two I actually noticed I was eating normally again. I wish I'd found this three years ago.</p>
-        <div class="flex items-center gap-2.5 pt-3 border-t border-border">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(16,185,129,0.15); color:#10B981;">S</div>
-          <div>
-            <div class="text-xs font-semibold text-text-primary">Sarah L.</div>
-            <div class="text-xs text-text-secondary">Chicago · Strategy Manager</div>
-          </div>
-          <div class="ml-auto text-xs text-text-secondary">Verified ✓</div>
-        </div>
-      </div>
-      <!-- Review 2 -->
-      <div class="rounded-2xl p-5" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
-        <div class="font-grotesk font-semibold text-text-primary text-sm mb-2">"The mechanism actually holds up under scrutiny."</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">I've read enough papers to know how fast a vegetable capsule dissolves. The math on what I was actually getting per dose was embarrassing. This is the first probiotic I've taken where the delivery science holds up.</p>
-        <div class="flex items-center gap-2.5 pt-3 border-t border-border">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(245,158,11,0.15); color:#F59E0B;">M</div>
-          <div>
-            <div class="text-xs font-semibold text-text-primary">Megan P.</div>
-            <div class="text-xs text-text-secondary">New York · VP Operations</div>
-          </div>
-          <div class="ml-auto text-xs text-text-secondary">Verified ✓</div>
-        </div>
-      </div>
-      <!-- Review 3 -->
-      <div class="rounded-2xl p-5" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
-        <div class="font-grotesk font-semibold text-text-primary text-sm mb-2">"The 3 PM crash is noticeably better."</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">I thought I was buying something for my stomach. By week three the 3 PM crash I had accepted as permanent got noticeably better. I'm not reaching for coffee at 2:45 anymore.</p>
-        <div class="flex items-center gap-2.5 pt-3 border-t border-border">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(16,185,129,0.15); color:#10B981;">K</div>
-          <div>
-            <div class="text-xs font-semibold text-text-primary">Kristen T.</div>
-            <div class="text-xs text-text-secondary">Boston · Director of Finance</div>
-          </div>
-          <div class="ml-auto text-xs text-text-secondary">Verified ✓</div>
-        </div>
-      </div>
-      <!-- Review 4 -->
-      <div class="rounded-2xl p-5" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
-        <div class="font-grotesk font-semibold text-text-primary text-sm mb-2">"Zero adjustment symptoms. Absolutely none."</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">I tried three probiotics that gave me gas and cramping in the first week. Zero with Flove. Zero. Then three weeks in the bloat that follows me into every afternoon meeting was just gone.</p>
-        <div class="flex items-center gap-2.5 pt-3 border-t border-border">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(245,158,11,0.15); color:#F59E0B;">D</div>
-          <div>
-            <div class="text-xs font-semibold text-text-primary">Dana R.</div>
-            <div class="text-xs text-text-secondary">Austin · Account Executive</div>
-          </div>
-          <div class="ml-auto text-xs text-text-secondary">Verified ✓</div>
-        </div>
-      </div>
-      <!-- Review 5 -->
-      <div class="rounded-2xl p-5" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
-        <div class="font-grotesk font-semibold text-text-primary text-sm mb-2">"By day 30 I'd forgotten the guarantee existed."</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">The 30-day guarantee is the only reason I tried it. I was completely done spending money on supplements that don't survive my own stomach. By day 30 I'd already forgotten the guarantee existed.</p>
-        <div class="flex items-center gap-2.5 pt-3 border-t border-border">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(16,185,129,0.15); color:#10B981;">J</div>
-          <div>
-            <div class="text-xs font-semibold text-text-primary">Jennifer M.</div>
-            <div class="text-xs text-text-secondary">Seattle · Clinical PM</div>
-          </div>
-          <div class="ml-auto text-xs text-text-secondary">Verified ✓</div>
-        </div>
-      </div>
-      <!-- Review 6 -->
-      <div class="rounded-2xl p-5" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
-        <div class="font-grotesk font-semibold text-text-primary text-sm mb-2">"Stable in three different time zones."</div>
-        <p class="text-text-secondary text-sm leading-relaxed mb-4">I travel 3 weeks out of 4. Hotel food, no routine, different time zones. Flove has been the one consistent thing in my travel kit. One capsule morning, one evening. Works regardless of what city I'm in.</p>
-        <div class="flex items-center gap-2.5 pt-3 border-t border-border">
-          <div class="w-7 h-7 rounded-full flex items-center justify-center font-grotesk font-bold text-xs flex-shrink-0" style="background:rgba(245,158,11,0.15); color:#F59E0B;">A</div>
-          <div>
-            <div class="text-xs font-semibold text-text-primary">Amber C.</div>
-            <div class="text-xs text-text-secondary">San Francisco · Partner, Consulting</div>
-          </div>
-          <div class="ml-auto text-xs text-text-secondary">Verified ✓</div>
-        </div>
-      </div>
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base star-tp">★★★★★</div><div class="font-semibold text-text-primary text-sm mb-2">"The bloat after lunch meetings is gone."</div><p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">I've spent two years and probably $800 on probiotics that did nothing. Week two I actually noticed I was eating normally again.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><div class="w-7 h-7 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#C4B5E8; color:#1A1526;">S</div><div><div class="text-xs font-semibold text-text-primary">Sarah L.</div><div class="text-xs" style="color:#6B6480;">Chicago · Strategy Manager</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base star-tp">★★★★★</div><div class="font-semibold text-text-primary text-sm mb-2">"The mechanism actually holds up under scrutiny."</div><p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">I've read enough papers to know how fast a vegetable capsule dissolves. This is the first probiotic where the delivery science holds up.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><div class="w-7 h-7 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#F2EBF8; color:#8B72CC; border:1px solid #EDE6F4;">M</div><div><div class="text-xs font-semibold text-text-primary">Megan P.</div><div class="text-xs" style="color:#6B6480;">New York · VP Operations</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base star-tp">★★★★★</div><div class="font-semibold text-text-primary text-sm mb-2">"The 3 PM crash is noticeably better."</div><p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">By week three the 3 PM crash I had accepted as permanent got noticeably better. I'm not reaching for coffee at 2:45 anymore.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><div class="w-7 h-7 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#C4B5E8; color:#1A1526;">K</div><div><div class="text-xs font-semibold text-text-primary">Kristen T.</div><div class="text-xs" style="color:#6B6480;">Boston · Director of Finance</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base star-tp">★★★★★</div><div class="font-semibold text-text-primary text-sm mb-2">"Zero adjustment symptoms. Absolutely none."</div><p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">I tried three probiotics that gave me gas and cramping in week one. Zero with Flove. Then three weeks in the afternoon bloat was just gone.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><div class="w-7 h-7 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#F2EBF8; color:#8B72CC; border:1px solid #EDE6F4;">D</div><div><div class="text-xs font-semibold text-text-primary">Dana R.</div><div class="text-xs" style="color:#6B6480;">Austin · Account Executive</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base star-tp">★★★★★</div><div class="font-semibold text-text-primary text-sm mb-2">"By day 30 I'd forgotten the guarantee existed."</div><p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">The 30-day guarantee is the only reason I tried it. I was completely done spending money on supplements. By day 30 I'd already forgotten the guarantee existed.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><div class="w-7 h-7 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#C4B5E8; color:#1A1526;">J</div><div><div class="text-xs font-semibold text-text-primary">Jennifer M.</div><div class="text-xs" style="color:#6B6480;">Seattle · Clinical PM</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base star-tp">★★★★★</div><div class="font-semibold text-text-primary text-sm mb-2">"Stable in three different time zones."</div><p class="text-sm leading-relaxed mb-4" style="color:#6B6480;">I travel 3 weeks out of 4. Hotel food, no routine. Flove has been the one consistent thing in my travel kit. One capsule morning, one evening. Works anywhere.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><div class="w-7 h-7 rounded-full flex items-center justify-center font-semibold text-xs flex-shrink-0" style="background:#F2EBF8; color:#8B72CC; border:1px solid #EDE6F4;">A</div><div><div class="text-xs font-semibold text-text-primary">Amber C.</div><div class="text-xs" style="color:#6B6480;">San Francisco · Partner, Consulting</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     8. OFFER — RE-STATE + FINAL CTA
+     8. OFFER — FINAL CTA
 ============================================================ -->
-<section class="py-24 px-4 sm:px-6 text-center" style="background:linear-gradient(180deg, #08090C 0%, #0A110D 50%, #08090C 100%); border-top:1px solid #1A2030;">
+<section class="py-24 px-4 sm:px-6 text-center border-t border-border" style="background:#F2EBF8;">
   <div class="max-w-2xl mx-auto">
     <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The complete offer</div>
-    <h2 class="font-grotesk font-bold text-3xl sm:text-5xl text-text-primary mb-5 leading-none">Stop blaming yourself<br/>for a delivery problem.</h2>
-    <p class="text-text-secondary text-lg mb-10 max-w-lg mx-auto">40B CFU. MAKTREK® Bi-Pass. 4 strains built for the desk environment. One capsule morning, one evening. 30-day guarantee. No subscription.</p>
-    <!-- Mini stat row -->
+    <h2 class="font-display font-bold text-3xl sm:text-5xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.1;">Stop blaming yourself<br/>for a delivery problem.</h2>
+    <p class="text-lg mb-10 max-w-lg mx-auto" style="color:#6B6480; line-height:1.65;">40B CFU. MAKTREK® Bi-Pass. 4 strains built for the desk environment. One capsule morning, one evening. 30-day guarantee. No subscription.</p>
     <div class="grid grid-cols-3 gap-3 max-w-sm mx-auto mb-10">
-      <div class="py-4 rounded-xl" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="font-grotesk font-bold text-xl" style="color:#10B981;">50%+</div>
-        <div class="text-xs text-text-secondary mt-1">Survival rate</div>
-      </div>
-      <div class="py-4 rounded-xl" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="font-grotesk font-bold text-xl text-text-primary">40B</div>
-        <div class="text-xs text-text-secondary mt-1">CFU / dose</div>
-      </div>
-      <div class="py-4 rounded-xl" style="background:#0F1318; border:1px solid #1A2030;">
-        <div class="font-grotesk font-bold text-xl" style="color:#F59E0B;">60-day</div>
-        <div class="text-xs text-text-secondary mt-1">Guarantee</div>
-      </div>
+      <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">50%+</div><div class="text-xs mt-1" style="color:#6B6480;">Survival rate</div></div>
+      <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl text-text-primary">40B</div><div class="text-xs mt-1" style="color:#6B6480;">CFU / dose</div></div>
+      <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">30-day</div><div class="text-xs mt-1" style="color:#6B6480;">Guarantee</div></div>
     </div>
-    <a href="#order" class="cta-btn px-10 py-5 text-lg mb-5 inline-flex">Choose Your Supply →</a>
-    <div class="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-sm text-text-secondary">
-      <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>30-day money-back</div>
-      <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ships in 24 hours</div>
-      <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" style="color:#10B981;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>GMP certified · Made in USA</div>
+    <a href="#order" class="cta-btn px-10 py-5 text-base mb-5 inline-flex">Choose Your Supply →</a>
+    <div class="flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-sm" style="color:#6B6480;">
+      <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>30-day money-back</div>
+      <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ships in 24 hours</div>
+      <div class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>GMP certified · Made in USA</div>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="py-8 px-4 sm:px-6 border-t border-border">
-  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-text-secondary">
-    <div class="font-grotesk font-bold text-lg text-text-primary tracking-tighter">FLOVE<span style="color:#10B981;">.</span></div>
-    <p class="text-xs text-center max-w-lg" style="color:#4A5568;">*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
-    <div class="flex gap-4">
+<footer class="py-8 px-4 sm:px-6 border-t border-border bg-surface">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm" style="color:#6B6480;">
+    <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#1A1526;">flove.</div>
+    <p class="text-xs text-center max-w-lg" style="color:#9B93A8;">*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    <div class="flex gap-4 text-xs">
       <a href="#" class="hover:text-text-primary transition-colors">Privacy</a>
       <a href="#" class="hover:text-text-primary transition-colors">Terms</a>
       <a href="#" class="hover:text-text-primary transition-colors">Contact</a>
@@ -963,22 +702,16 @@
 </footer>
 
 
-<!-- ============================================================
-     MOBILE STICKY BUY BAR
-============================================================ -->
-<div id="mobile-bar" class="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-4 py-3" style="background:rgba(8,9,12,0.95); border-top:1px solid #1A2030;">
+<!-- MOBILE BAR -->
+<div id="mobile-bar" class="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-4 py-3 bg-surface" style="border-top:1px solid #EDE6F4;">
   <a href="#order" class="cta-btn w-full py-3.5 text-sm">
     <span>Order Now</span>
-    <span class="font-normal opacity-75">· From $44.99 · 30-day guarantee</span>
+    <span class="font-normal opacity-60">· From $44.99 · 30-day guarantee</span>
   </a>
 </div>
 
 
-<!-- ============================================================
-     JAVASCRIPT
-============================================================ -->
 <script>
-  // Bundle selector
   const priceEl = document.getElementById('price-display');
   const origEl = document.getElementById('original-price');
   const saveEl = document.getElementById('save-badge');
@@ -992,59 +725,37 @@
     });
     card.classList.add('active');
     const r = card.querySelector('.bcard-radio');
-    r.style.background = '#10B981'; r.style.borderColor = '#10B981';
-
+    r.style.background = '#8B72CC'; r.style.borderColor = '#8B72CC';
     priceEl.textContent = card.dataset.price;
     btnPriceEl.textContent = card.dataset.price;
     origEl.textContent = card.dataset.orig || '';
     origEl.style.display = card.dataset.orig ? '' : 'none';
-    if (card.dataset.save) {
-      saveEl.textContent = card.dataset.save;
-      saveEl.style.display = '';
-    } else {
-      saveEl.style.display = 'none';
-    }
+    if (card.dataset.save) { saveEl.textContent = card.dataset.save; saveEl.style.display = ''; }
+    else { saveEl.style.display = 'none'; }
   }
 
-  // FAQ accordion
   function toggleFaq(btn) {
     const answer = btn.nextElementSibling;
     const plus = btn.querySelector('.faq-plus');
     const isOpen = answer.classList.contains('open');
-    document.querySelectorAll('.faq-answer.open').forEach(a => {
-      a.classList.remove('open');
-      a.previousElementSibling.querySelector('.faq-plus').classList.remove('open');
-    });
+    document.querySelectorAll('.faq-answer.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.querySelector('.faq-plus').classList.remove('open'); });
     if (!isOpen) { answer.classList.add('open'); plus.classList.add('open'); }
   }
 
-  // Ingredients accordion
   function toggleIngredients() {
-    const body = document.getElementById('ing-body');
-    const toggle = document.getElementById('ing-toggle');
-    body.classList.toggle('open');
-    toggle.classList.toggle('open');
+    document.getElementById('ing-body').classList.toggle('open');
+    document.getElementById('ing-toggle').classList.toggle('open');
   }
 
-  // Animate survival bars on scroll
   const barObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.bar-fill').forEach(b => b.classList.add('animated'));
-        barObserver.unobserve(entry.target);
-      }
-    });
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.querySelectorAll('.bar-fill').forEach(b => b.classList.add('animated')); barObserver.unobserve(entry.target); } });
   }, { threshold: 0.3 });
   const mechBars = document.getElementById('mech-bars');
   if (mechBars) barObserver.observe(mechBars);
 
-  // Mobile bar visibility
-  function checkMobileBar() {
-    document.getElementById('mobile-bar').style.display = window.innerWidth >= 640 ? 'none' : '';
-  }
+  function checkMobileBar() { document.getElementById('mobile-bar').style.display = window.innerWidth >= 640 ? 'none' : ''; }
   window.addEventListener('resize', checkMobileBar);
   checkMobileBar();
 </script>
-
 </body>
 </html>
