@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flove — Brand Guidelines</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { background: #08090C; color: #F0F4F8; font-family: 'Inter', sans-serif; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3,h4 { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.04em; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #08090C; }
+    ::-webkit-scrollbar-thumb { background: #1A2030; border-radius: 2px; }
+
+    body::before {
+      content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 999; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 200px;
+    }
+
+    .section-label {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #10B981; font-family: 'Space Grotesk', sans-serif;
+      border-left: 2px solid #10B981; padding-left: 10px; margin-bottom: 20px;
+    }
+    .swatch { border-radius: 10px; aspect-ratio: 1; }
+    .code-block {
+      background: #0F1318; border: 1px solid #1A2030; border-radius: 8px;
+      padding: 12px 16px; font-family: 'Courier New', monospace;
+      font-size: 12px; color: #8A96A8;
+    }
+    .code-block .hl { color: #10B981; }
+    .spec-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #1A2030; background: rgba(26,32,48,0.6);
+      padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 500; color: #8A96A8;
+    }
+    .spec-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+    .do-dont { border-radius: 10px; padding: 16px; font-size: 13px; line-height: 1.6; }
+    .do-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .nav-link { display: block; padding: 6px 10px; border-radius: 6px; font-size: 12px; color: #8A96A8; transition: all 0.15s; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { background: rgba(16,185,129,0.08); color: #10B981; }
+    hr { border: none; border-top: 1px solid #1A2030; margin: 3rem 0; }
+    .type-sample { font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+  </style>
+</head>
+<body>
+
+<div class="flex min-h-screen">
+
+  <!-- Sidebar nav -->
+  <nav class="hidden lg:flex flex-col w-52 flex-shrink-0 py-10 px-4 sticky top-0 h-screen overflow-y-auto" style="border-right:1px solid #1A2030;">
+    <div class="font-grotesk font-bold text-lg tracking-tighter mb-8">FLOVE<span style="color:#10B981;">.</span></div>
+    <div class="text-xs font-semibold text-text-secondary uppercase tracking-widest mb-3 pl-2">Brand Guidelines</div>
+    <a href="#logo" class="nav-link">Logo</a>
+    <a href="#colors" class="nav-link">Colors</a>
+    <a href="#typography" class="nav-link">Typography</a>
+    <a href="#components" class="nav-link">Components</a>
+    <a href="#motion" class="nav-link">Motion</a>
+    <a href="#copy" class="nav-link">Copy Voice</a>
+    <a href="#do-dont" class="nav-link">Do / Don't</a>
+    <div class="mt-auto pt-8">
+      <a href="index.html" class="nav-link">← Product page</a>
+      <a href="listicle.html" class="nav-link">← Listicle</a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="flex-1 max-w-4xl px-6 sm:px-12 py-16">
+
+    <!-- Header -->
+    <div class="mb-16">
+      <div class="spec-pill mb-5"><span class="dot"></span>Internal reference · v1.0</div>
+      <h1 class="font-grotesk font-bold text-5xl text-text-primary mb-4">Brand Guidelines</h1>
+      <p class="text-text-secondary text-lg max-w-xl">Design system, copy voice, and component reference for Flove. Use this before building any new page or asset.</p>
+    </div>
+
+    <!-- ── LOGO ── -->
+    <section id="logo">
+      <div class="section-label">01 — Logo</div>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="rounded-2xl p-10 flex flex-col items-center justify-center gap-3" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="font-grotesk font-bold text-4xl tracking-tighter">FLOVE<span style="color:#10B981;">.</span></div>
+          <div class="text-xs text-text-secondary">Primary — on dark</div>
+        </div>
+        <div class="rounded-2xl p-10 flex flex-col items-center justify-center gap-3" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="font-grotesk font-bold text-4xl tracking-tighter text-text-secondary">FLOVE<span style="color:#10B981;">.</span></div>
+          <div class="text-xs text-text-secondary">Secondary — muted</div>
+        </div>
+      </div>
+      <div class="code-block text-xs mb-3">
+        <span class="hl">FLOVE.</span> — Space Grotesk Bold · tracking-tighter (-0.06em)<br/>
+        Period accent: <span class="hl">#10B981</span> always<br/>
+        Dark backgrounds only · Never on light surfaces
+      </div>
+      <p class="text-sm text-text-secondary">Drop <code style="color:#10B981;">brand_assets/logo.svg</code> when available — CLAUDE.md will auto-reference it.</p>
+    </section>
+
+    <hr />
+
+    <!-- ── COLORS ── -->
+    <section id="colors">
+      <div class="section-label">02 — Colors</div>
+
+      <div class="text-xs font-semibold text-text-secondary uppercase tracking-widest mb-4">Base palette</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <div>
+          <div class="swatch mb-2" style="background:#08090C; border:1px solid #1A2030;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#08090C</div>
+          <div class="text-xs text-text-secondary">bg</div>
+        </div>
+        <div>
+          <div class="swatch mb-2" style="background:#0F1318;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#0F1318</div>
+          <div class="text-xs text-text-secondary">surface</div>
+        </div>
+        <div>
+          <div class="swatch mb-2" style="background:#1A2030;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#1A2030</div>
+          <div class="text-xs text-text-secondary">border</div>
+        </div>
+        <div>
+          <div class="swatch mb-2" style="background:#F0F4F8;"></div>
+          <div class="text-xs font-semibold text-bg font-grotesk">#F0F4F8</div>
+          <div class="text-xs text-text-secondary">text-primary</div>
+        </div>
+      </div>
+
+      <div class="text-xs font-semibold text-text-secondary uppercase tracking-widest mb-4">Accent palette</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <div>
+          <div class="swatch mb-2" style="background:#10B981;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#10B981</div>
+          <div class="text-xs text-text-secondary">accent · CTA · highlights</div>
+        </div>
+        <div>
+          <div class="swatch mb-2" style="background:#0D9668;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#0D9668</div>
+          <div class="text-xs text-text-secondary">accent-dim · hover</div>
+        </div>
+        <div>
+          <div class="swatch mb-2" style="background:#F59E0B;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#F59E0B</div>
+          <div class="text-xs text-text-secondary">amber · badges</div>
+        </div>
+        <div>
+          <div class="swatch mb-2" style="background:#00B67A;"></div>
+          <div class="text-xs font-semibold text-text-primary font-grotesk">#00B67A</div>
+          <div class="text-xs text-text-secondary">trustpilot · review stars only</div>
+        </div>
+      </div>
+
+      <div class="text-xs font-semibold text-text-secondary uppercase tracking-widest mb-4">Usage rules</div>
+      <div class="code-block text-xs">
+        ✓ <span class="hl">#10B981</span> — primary CTA buttons, icon dots, data highlights, accent borders<br/>
+        ✓ <span class="hl">#F59E0B</span> — "POPULAR" / "SAVE" badges only<br/>
+        ✓ <span class="hl">#00B67A</span> — review stars only (Trustpilot green spec)<br/>
+        ✓ <span class="hl">#ef4444</span> — negative data visualization (low survival bars) only<br/>
+        ✗ Never: blue-600, indigo-500, or any default Tailwind accent<br/>
+        ✗ Never: pastel, warm, or soft-toned surfaces
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ── TYPOGRAPHY ── -->
+    <section id="typography">
+      <div class="section-label">03 — Typography</div>
+
+      <div class="space-y-6 mb-8">
+        <div class="rounded-2xl p-7" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="text-xs text-text-secondary mb-3">H1 — Space Grotesk Bold · -0.04em · line-height 1.1</div>
+          <div class="type-sample text-5xl text-text-primary">The protocol your last<br/>four probiotics couldn't finish.</div>
+        </div>
+        <div class="rounded-2xl p-7" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="text-xs text-text-secondary mb-3">H2 — Space Grotesk Bold · -0.04em · line-height 1.15</div>
+          <div class="type-sample text-4xl text-text-primary">Why your last probiotic died before it reached you.</div>
+        </div>
+        <div class="rounded-2xl p-7" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="text-xs text-text-secondary mb-3">H3 — Space Grotesk SemiBold · -0.03em</div>
+          <div class="font-grotesk font-semibold text-2xl text-text-primary" style="letter-spacing:-0.03em;">MAKTREK® Bi-Pass Technology</div>
+        </div>
+        <div class="rounded-2xl p-7" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="text-xs text-text-secondary mb-3">Body — Inter 400 · line-height 1.75 · #B8C4D0</div>
+          <p style="color:#B8C4D0; line-height:1.75; font-size:1rem;">Your stomach maintains a pH between 1.5 and 3.5. That's roughly the acidity of battery fluid. A standard vegetable capsule dissolves in that environment within 5 to 10 minutes. This is a delivery problem, not a strain problem.</p>
+        </div>
+        <div class="rounded-2xl p-7" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="text-xs text-text-secondary mb-3">Caption / Label — Inter 500 · uppercase · 0.08em tracking</div>
+          <div class="text-xs font-semibold uppercase tracking-widest text-text-secondary">MAKTREK® Bi-Pass Technology · Verified purchase · 90-day supply</div>
+        </div>
+      </div>
+
+      <div class="code-block text-xs">
+        Headings: <span class="hl">font-family: 'Space Grotesk'; letter-spacing: -0.04em;</span><br/>
+        Body:     <span class="hl">font-family: 'Inter'; line-height: 1.7–1.8;</span><br/>
+        Rule: Never the same font for headings and body in the same block.
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ── COMPONENTS ── -->
+    <section id="components">
+      <div class="section-label">04 — Components</div>
+
+      <!-- CTA Buttons -->
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">CTA Buttons</div>
+      <div class="flex flex-wrap gap-3 mb-5">
+        <button class="font-grotesk font-bold text-bg px-6 py-3.5 rounded-xl" style="background:#10B981; box-shadow:0 0 32px rgba(16,185,129,0.2);">Primary — Add to Cart</button>
+        <button class="font-grotesk font-semibold text-text-primary px-6 py-3.5 rounded-xl" style="background:#0F1318; border:1px solid #1A2030;">Secondary — Learn More</button>
+        <button class="font-grotesk font-semibold text-sm text-bg px-4 py-2.5 rounded-lg" style="background:#10B981;">Nav CTA</button>
+      </div>
+      <div class="code-block text-xs mb-8">
+        Primary: <span class="hl">bg:#10B981; color:#08090C; border-radius:12px; box-shadow:0 0 40px rgba(16,185,129,0.2);</span><br/>
+        Hover: <span class="hl">opacity:0.9;</span> · Active: <span class="hl">transform:scale(0.98);</span><br/>
+        Never use transition-all — use <span class="hl">transition: opacity 0.15s, transform 0.15s;</span>
+      </div>
+
+      <!-- Spec Pills -->
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Spec Pills</div>
+      <div class="flex flex-wrap gap-2 mb-5">
+        <div class="spec-pill"><span class="dot"></span>MAKTREK® Bi-Pass</div>
+        <div class="spec-pill"><span class="dot"></span>40B CFU per dose</div>
+        <div class="spec-pill"><span class="dot"></span>4-strain formulation</div>
+        <div class="spec-pill"><span class="dot"></span>Made in USA</div>
+      </div>
+      <div class="code-block text-xs mb-8">
+        <span class="hl">border:1px solid #1A2030; background:rgba(26,32,48,0.6);</span><br/>
+        <span class="hl">padding:5px 12px; border-radius:20px; font-size:11px; font-weight:500;</span><br/>
+        Always includes a 6px mint dot on the left.
+      </div>
+
+      <!-- Badges -->
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Badges</div>
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="px-2 py-0.5 rounded text-xs font-bold font-grotesk text-bg" style="background:#F59E0B;">MOST POPULAR</span>
+        <span class="px-2 py-0.5 rounded text-xs font-bold font-grotesk text-bg" style="background:rgba(16,185,129,0.9);">BEST VALUE</span>
+        <span class="px-2 py-0.5 rounded text-xs font-bold font-grotesk text-bg" style="background:#F59E0B;">SAVE $15</span>
+      </div>
+      <div class="code-block text-xs mb-8">
+        Popular/Save: <span class="hl">#F59E0B</span> background · <span class="hl">#08090C</span> text<br/>
+        Value: <span class="hl">rgba(16,185,129,0.9)</span> background
+      </div>
+
+      <!-- Cards -->
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Cards</div>
+      <div class="grid sm:grid-cols-2 gap-4 mb-5">
+        <div class="rounded-2xl p-6" style="background:#0F1318; border:1px solid #1A2030;">
+          <div class="text-xs font-semibold text-text-secondary uppercase tracking-widest mb-2">Default card</div>
+          <p class="text-sm text-text-secondary">Used for reviews, testimonials, feature explanations. Always surface (#0F1318) on bg (#08090C).</p>
+        </div>
+        <div class="rounded-2xl p-6" style="background:#0F1318; border:1px solid rgba(16,185,129,0.25);">
+          <div class="text-xs font-semibold uppercase tracking-widest mb-2" style="color:#10B981;">Accent card</div>
+          <p class="text-sm text-text-secondary">Used for highlighted callouts, info boxes. Replace border with rgba(16,185,129,0.2).</p>
+        </div>
+      </div>
+      <div class="code-block text-xs mb-8">
+        Default: <span class="hl">background:#0F1318; border:1px solid #1A2030; border-radius:16px;</span><br/>
+        Hover: <span class="hl">border-color:rgba(16,185,129,0.2);</span> — Never shadow-md.<br/>
+        Floating surfaces add: <span class="hl">box-shadow:0 8px 24px rgba(0,0,0,0.4);</span>
+      </div>
+
+      <!-- Data stats -->
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Data / Stat Numbers</div>
+      <div class="flex flex-wrap gap-6 mb-5">
+        <div><div class="font-grotesk font-bold text-5xl" style="color:#10B981;">50%+</div><div class="text-xs text-text-secondary">accent stat</div></div>
+        <div><div class="font-grotesk font-bold text-5xl text-text-primary">1,685%</div><div class="text-xs text-text-secondary">neutral stat</div></div>
+        <div><div class="font-grotesk font-bold text-5xl" style="color:#F59E0B;">40B</div><div class="text-xs text-text-secondary">amber stat</div></div>
+        <div><div class="font-grotesk font-bold text-5xl" style="color:#ef4444;">0.003%</div><div class="text-xs text-text-secondary">negative stat</div></div>
+      </div>
+
+      <!-- Star ratings -->
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-4">Star Ratings</div>
+      <div class="flex items-center gap-4 mb-5">
+        <div>
+          <div class="text-xl" style="color:#F59E0B;">★★★★★</div>
+          <div class="text-xs text-text-secondary">Inline — amber #F59E0B</div>
+        </div>
+        <div>
+          <div class="text-xl" style="color:#00B67A;">★★★★★</div>
+          <div class="text-xs text-text-secondary">Reviews — Trustpilot #00B67A</div>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ── MOTION ── -->
+    <section id="motion">
+      <div class="section-label">05 — Motion</div>
+      <div class="space-y-3">
+        <div class="code-block text-xs">
+          <span class="hl">/* Survival bars */<br/></span>
+          transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);<br/>
+          Triggered by IntersectionObserver at threshold: 0.3
+        </div>
+        <div class="code-block text-xs">
+          <span class="hl">/* Accordions (FAQ, ingredients) */<br/></span>
+          max-height: 0 → max-height: 400px;<br/>
+          transition: max-height 0.3s ease;
+        </div>
+        <div class="code-block text-xs">
+          <span class="hl">/* Video ticker */<br/></span>
+          animation: ticker-scroll 28s linear infinite;<br/>
+          Pause on hover: animation-play-state: paused;
+        </div>
+        <div class="code-block text-xs">
+          <span class="hl">/* CTA buttons */<br/></span>
+          transition: opacity 0.15s, transform 0.15s;<br/>
+          Hover: opacity 0.9 · Active: transform scale(0.98)<br/>
+          ✗ Never: transition-all
+        </div>
+        <div class="code-block text-xs">
+          <span class="hl">/* General rule */<br/></span>
+          Only animate transform and opacity.<br/>
+          Every interactive element needs: hover + focus-visible + active states.
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ── COPY VOICE ── -->
+    <section id="copy">
+      <div class="section-label">06 — Copy Voice</div>
+
+      <div class="grid sm:grid-cols-2 gap-6 mb-8">
+        <div>
+          <div class="text-sm font-grotesk font-semibold text-text-primary mb-3">Tone</div>
+          <ul class="text-sm text-text-secondary space-y-2">
+            <li>→ Clinical, direct-response, data-driven</li>
+            <li>→ Removes personal guilt — blames the environment</li>
+            <li>→ Mechanism before claim</li>
+            <li>→ Specificity over superlatives</li>
+            <li>→ Respects the reader's intelligence</li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-sm font-grotesk font-semibold text-text-primary mb-3">Required verbatim phrases</div>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"desk bloat"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"cubicle gut"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"3 PM crash"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"gastric mortality"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"dead bacteria"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"post-lunch brain fog"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"fishy burps"</span>
+            <span class="text-xs px-2 py-1 rounded" style="background:#0F1318; border:1px solid #1A2030; color:#8A96A8;">"the acid furnace"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-sm font-grotesk font-semibold text-text-primary mb-3">Key data points — always use these exact numbers</div>
+      <div class="code-block text-xs">
+        Survival: powder <span class="hl">0.003%</span> / standard capsule <span class="hl">2.8%</span> / MAKTREK® <span class="hl">50%+</span><br/>
+        Delivery increase: <span class="hl">1,685%</span> more live bacteria than unshielded<br/>
+        CFU: <span class="hl">40B</span> on label → <span class="hl">20B+</span> at destination<br/>
+        Refund: <span class="hl">30-day</span> money-back · no return required<br/>
+        Subscription: <span class="hl">none</span> — one-time purchase only
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- ── DO / DON'T ── -->
+    <section id="do-dont">
+      <div class="section-label">07 — Do / Don't</div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <div class="do-label" style="color:#10B981;">✓ Do</div>
+          <div class="space-y-2">
+            <div class="do-dont text-text-secondary" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15);">"Your stomach acid destroys 97–99.997% of standard probiotics before they reach your lower intestine."</div>
+            <div class="do-dont text-text-secondary" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15);">"40B CFU on the label. Over 20B CFU at the destination."</div>
+            <div class="do-dont text-text-secondary" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15);">"This isn't a discipline problem. It's a mechanics problem."</div>
+            <div class="do-dont text-text-secondary" style="background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.15);">"The variable isn't you. The variable is the chair."</div>
+          </div>
+        </div>
+        <div>
+          <div class="do-label" style="color:#ef4444;">✗ Don't</div>
+          <div class="space-y-2">
+            <div class="do-dont" style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.15); color:#8A96A8; text-decoration:line-through;">"Feel your best every day!"</div>
+            <div class="do-dont" style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.15); color:#8A96A8; text-decoration:line-through;">"Support your gut health naturally."</div>
+            <div class="do-dont" style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.15); color:#8A96A8; text-decoration:line-through;">"Start your wellness journey today!"</div>
+            <div class="do-dont" style="background:rgba(239,68,68,0.05); border:1px solid rgba(239,68,68,0.15); color:#8A96A8; text-decoration:line-through;">"Our innovative formula helps you thrive."</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-16 pt-8 border-t border-border text-xs text-text-secondary">
+      Flove Brand Guidelines v1.0 · Internal use only · Updated June 2025
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // Highlight active nav on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
