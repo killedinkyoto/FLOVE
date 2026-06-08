@@ -83,16 +83,13 @@
     .ing-toggle.open { transform: rotate(45deg); }
 
     /* ── VIDEO TICKER ── */
-    .ticker-track { display: flex; gap: 12px; animation: ticker-scroll 28s linear infinite; width: max-content; }
-    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-track { display: flex; gap: 12px; animation: ticker-scroll 32s linear infinite; width: max-content; }
     @keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
     .video-card {
       flex-shrink: 0; width: 140px; height: 249px; border-radius: 14px;
-      overflow: hidden; position: relative; border: 1px solid #EDE6F4; cursor: pointer;
+      overflow: hidden; position: relative; border: 1px solid #EDE6F4;
     }
-    .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(28,24,40,0.25); }
-    .video-play-btn::after { content:''; width:40px; height:40px; border-radius:50%; background:rgba(139,114,204,0.9); }
-    .play-icon { position:absolute; z-index:2; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-left:14px solid #fff; margin-left:3px; }
+    .video-card video { width:100%; height:100%; object-fit:cover; display:block; }
     .video-name { position:absolute; bottom:0; left:0; right:0; padding:8px 10px; font-size:11px; font-weight:600; background:linear-gradient(to top,rgba(28,24,40,0.85) 0%,transparent 100%); font-family:'Inter',sans-serif; color:#fff; }
 
     /* ── PILL VISUAL ── */
@@ -390,23 +387,15 @@
     <div style="position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to right,#F2EBF8,transparent);pointer-events:none;"></div>
     <div style="position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to left,#F2EBF8,transparent);pointer-events:none;"></div>
     <div class="ticker-track px-4">
-      <div class="video-card" style="background:linear-gradient(160deg,#D8CAEE,#C4B5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Sarah L. · Chicago</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#C8D4EE,#B5C4E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Megan P. · New York</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#D4CAEE,#BEB5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Kristen T. · Boston</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEDD,#B5E8CC);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Dana R. · Austin</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EED4CA,#E8C4B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Jennifer M. · Seattle</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EECAD4,#E8B5C4);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Amber C. · SF</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEE8,#B5E8E0);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Priya K. · London</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EEE4CA,#E8D8B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Lauren B. · LA</div></div>
-      <!-- duplicate -->
-      <div class="video-card" style="background:linear-gradient(160deg,#D8CAEE,#C4B5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Sarah L. · Chicago</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#C8D4EE,#B5C4E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Megan P. · New York</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#D4CAEE,#BEB5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Kristen T. · Boston</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEDD,#B5E8CC);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Dana R. · Austin</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EED4CA,#E8C4B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Jennifer M. · Seattle</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EECAD4,#E8B5C4);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Amber C. · SF</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEE8,#B5E8E0);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Priya K. · London</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EEE4CA,#E8D8B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Lauren B. · LA</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid1.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid2.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid3.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid4.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid1.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid2.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid3.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
+      <div class="video-card"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid4.mp4" type="video/mp4"></video><div class="video-name">Verified buyer</div></div>
     </div>
   </div>
 </section>
