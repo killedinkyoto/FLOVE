@@ -33,7 +33,10 @@ const label = process.argv[3] || '';
   });
 
   const page = await browser.newPage();
-  await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
+  const isMobile = process.argv[4] === 'mobile';
+  await page.setViewport(isMobile
+    ? { width: 390, height: 844, deviceScaleFactor: 3 }
+    : { width: 1440, height: 900, deviceScaleFactor: 2 });
   await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
 
   // Allow animations/transitions to settle

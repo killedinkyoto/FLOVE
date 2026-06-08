@@ -157,6 +157,15 @@
     /* ── REVIEW STARS ── */
     .star-amber { color: #C4962A; }
     .star-tp { color: #00B67A; }
+
+    /* ── MOBILE OVERRIDES ── */
+    @media (max-width: 1023px) {
+      /* Hide mechanism connector dashes — they only make sense in the desktop radial layout */
+      .mech-dash { display: none; }
+      /* Mechanism bullet items: dot on left, text to the right */
+      .mech-item-left { flex-direction: row !important; }
+      .mech-item-left .mech-text { text-align: left !important; }
+    }
   </style>
 </head>
 <body>
@@ -230,7 +239,7 @@
 
         <!-- Title -->
         <div>
-          <h1 class="font-display font-bold text-4xl sm:text-5xl text-text-primary leading-tight mb-2" style="letter-spacing:-0.02em;">
+          <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary leading-tight mb-2" style="letter-spacing:-0.02em;">
             Flove Daily<br/>Performance Synbiotic
           </h1>
           <p class="text-sm" style="color:#6B6480;">40B CFU · MAKTREK® Bi-Pass Technology · 4-strain formulation</p>
@@ -439,23 +448,23 @@
     <!-- Pill visual -->
     <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-16">
       <div class="flex flex-col gap-4 w-full lg:w-64 order-2 lg:order-1">
-        <div class="flex flex-row-reverse lg:flex-row items-center gap-3">
-          <div class="mech-dash"></div><div class="mech-dot"></div>
-          <div class="text-right lg:text-right flex-1 lg:flex-none">
+        <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
+          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
             <div class="font-semibold text-sm text-text-primary">Marine polysaccharide matrix</div>
             <div class="text-xs" style="color:#6B6480;">Hydrates on gastric moisture contact</div>
           </div>
         </div>
-        <div class="flex flex-row-reverse lg:flex-row items-center gap-3">
-          <div class="mech-dash"></div><div class="mech-dot"></div>
-          <div class="text-right flex-1 lg:flex-none">
+        <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
+          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
             <div class="font-semibold text-sm text-text-primary">Acid-resistant gel shield</div>
             <div class="text-xs" style="color:#6B6480;">Survives pH 1.5–3.5 intact</div>
           </div>
         </div>
-        <div class="flex flex-row-reverse lg:flex-row items-center gap-3">
-          <div class="mech-dash"></div><div class="mech-dot"></div>
-          <div class="text-right flex-1 lg:flex-none">
+        <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
+          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
             <div class="font-semibold text-sm text-text-primary">Protected gastric transit</div>
             <div class="text-xs" style="color:#6B6480;">Full payload reaches small intestine</div>
           </div>
@@ -470,21 +479,21 @@
       <div class="flex flex-col gap-4 w-full lg:w-64 order-3">
         <div class="flex items-center gap-3">
           <div class="mech-dot"></div><div class="mech-dash"></div>
-          <div>
+          <div class="flex-1">
             <div class="font-semibold text-sm text-text-primary">Neutral pH triggered release</div>
             <div class="text-xs" style="color:#6B6480;">Shield dissolves only at pH 6.0–7.5</div>
           </div>
         </div>
         <div class="flex items-center gap-3">
           <div class="mech-dot"></div><div class="mech-dash"></div>
-          <div>
+          <div class="flex-1">
             <div class="font-semibold text-sm text-text-primary">Colonizes lower intestine</div>
             <div class="text-xs" style="color:#6B6480;">Exact location where it matters</div>
           </div>
         </div>
         <div class="flex items-center gap-3">
           <div class="mech-dot"></div><div class="mech-dash"></div>
-          <div>
+          <div class="flex-1">
             <div class="font-semibold text-sm text-text-primary">50%+ clinical survival rate</div>
             <div class="text-xs" style="color:#6B6480;">vs. 0.003% powder / 2.8% standard capsule</div>
           </div>
@@ -501,7 +510,7 @@
           <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:0.3%;background:#D04040;"></div></div>
         </div>
         <div>
-          <div class="flex justify-between text-sm mb-2"><span style="color:#6B6480;">Standard vegetable capsule (most brands)</span><span class="font-semibold" style="color:#C4962A;">2.8%</span></div>
+          <div class="flex justify-between text-sm mb-2"><span class="text-xs sm:text-sm" style="color:#6B6480;">Standard vegetable capsule (most brands)</span><span class="font-semibold" style="color:#C4962A;">2.8%</span></div>
           <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:5.6%;background:#C4962A;"></div></div>
         </div>
         <div>
@@ -686,7 +695,7 @@
 <section class="py-24 px-4 sm:px-6 text-center border-t border-border" style="background:#F2EBF8;">
   <div class="max-w-2xl mx-auto">
     <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The complete offer</div>
-    <h2 class="font-display font-bold text-3xl sm:text-5xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.1;">Stop blaming yourself<br/>for a delivery problem.</h2>
+    <h2 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.1;">Stop blaming yourself<br/>for a delivery problem.</h2>
     <p class="text-lg mb-10 max-w-lg mx-auto" style="color:#6B6480; line-height:1.65;">40B CFU. MAKTREK® Bi-Pass. 4 strains built for the desk environment. One capsule morning, one evening. 30-day guarantee. No subscription.</p>
     <div class="grid grid-cols-3 gap-3 max-w-sm mx-auto mb-10">
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">50%+</div><div class="text-xs mt-1" style="color:#6B6480;">Survival rate</div></div>
