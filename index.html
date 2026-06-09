@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flove Daily Performance Synbiotic — 40B CFU · MAKTREK® Bi-Pass</title>
   <meta name="description" content="The only probiotic engineered for the high-protein fitness lifestyle. MAKTREK® Bi-Pass Technology delivers 50%+ bacterial survival vs 0.003% for unshielded capsules — eliminates Imposter Bloat." />
+  <!-- Meta Pixel -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1725808198870245');fbq('track','PageView');fbq('track','ViewContent',{content_ids:['flove-daily-synbiotic'],content_name:'Flove Daily Performance Synbiotic',content_type:'product',value:119.97,currency:'USD'});</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1725808198870245&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1091,6 +1095,16 @@
     if (activeCard) {
       document.getElementById('cart-variant-label').textContent = activeCard.querySelector('.font-semibold.text-sm').textContent.trim();
       document.getElementById('cart-item-price').textContent = activeCard.dataset.price;
+      // AddToCart pixel event
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'AddToCart', {
+          content_ids: [activeCard.dataset.variant],
+          content_name: 'Flove Daily Performance Synbiotic',
+          content_type: 'product',
+          value: parseFloat(activeCard.dataset.price.replace('$', '')),
+          currency: 'USD'
+        });
+      }
     }
     cartQty = 1;
     document.getElementById('cart-qty').textContent = '1';
@@ -1152,6 +1166,18 @@
   }
 
   function proceedToCheckout() {
+    const activeCard = document.querySelector('.bundle-card.active');
+    const total = activeCard ? parseFloat(activeCard.dataset.price.replace('$', '')) * cartQty : 0;
+    // InitiateCheckout pixel event
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'InitiateCheckout', {
+        content_ids: [selectedVariant],
+        content_type: 'product',
+        num_items: cartQty,
+        value: total,
+        currency: 'USD'
+      });
+    }
     let items = selectedVariant + ':' + cartQty;
     Object.keys(upsellState).forEach(id => {
       if (upsellState[id] && UPSELL_VARIANTS[id] && !UPSELL_VARIANTS[id].includes('VARIANT_ID')) {
