@@ -81,7 +81,7 @@
     .ing-toggle.open { transform: rotate(45deg); }
 
     /* ── VIDEO TICKER ── */
-    .ticker-track { display: flex; gap: 12px; align-items: center; animation: ticker-scroll 36s linear infinite; width: max-content; }
+    .ticker-track { display: flex; gap: 12px; align-items: center; animation: ticker-scroll 48s linear infinite; width: max-content; }
     @keyframes ticker-scroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
     .video-card {
       flex-shrink: 0; width: 140px; height: 249px; border-radius: 14px;
@@ -214,37 +214,73 @@
 
       <!-- LEFT: Media -->
       <div class="flex flex-col gap-4 lg:sticky lg:top-20">
-        <div class="rounded-3xl overflow-hidden relative" style="aspect-ratio:1; background:linear-gradient(135deg,#F2EBF8 0%,#EDE6F4 100%); border:1px solid #EDE6F4;">
-          <div class="absolute inset-0" style="background:radial-gradient(ellipse 60% 50% at 50% 30%, rgba(139,114,204,0.08) 0%, transparent 70%);"></div>
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-3">
-            <div class="relative">
-              <div class="w-28 h-44 rounded-2xl flex flex-col items-center justify-center gap-1" style="background:linear-gradient(160deg,#FFFFFF 0%,#F2EBF8 100%); border:1.5px solid rgba(139,114,204,0.3); box-shadow:0 8px 32px rgba(139,114,204,0.15);">
-                <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#1A1526; letter-spacing:-0.01em;">flove</div>
-                <div class="text-xs font-medium" style="color:#8B72CC;">DAILY</div>
-                <div class="text-xs font-medium" style="color:#8B72CC;">SYNBIOTIC</div>
-                <div class="my-1 w-12 border-t" style="border-color:rgba(139,114,204,0.2);"></div>
-                <div class="text-xs" style="color:#6B6480;">40B CFU</div>
-                <div class="text-xs" style="color:#6B6480;">60 CAPS</div>
-                <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-semibold text-white" style="background:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®</div>
-              </div>
+        <!-- Carousel -->
+        <div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE6F4;" id="product-carousel">
+          <div id="carousel-track" style="display:flex; will-change:transform; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <div style="min-width:100%; flex-shrink:0;">
+              <img src="brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png"
+                   alt="Flove Daily Performance Synbiotic"
+                   width="1024" height="1024"
+                   fetchpriority="high"
+                   style="width:100%; height:auto; display:block;">
             </div>
-            <p class="text-xs text-center px-4 mt-1" style="color:#6B6480;">Place product image at brand_assets/product.png</p>
-          </div>
-          <!-- Floating badges -->
-          <div class="absolute top-4 left-4 rounded-2xl px-3 py-2 bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 4px 16px rgba(139,114,204,0.1);">
-            <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#8B72CC;">50%+</div>
-            <div class="text-xs" style="color:#6B6480;">Survival</div>
-          </div>
-          <div class="absolute bottom-4 right-4 rounded-2xl px-3 py-2 bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 4px 16px rgba(139,114,204,0.1);">
-            <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.1rem; color:#1A1526;">40B</div>
-            <div class="text-xs" style="color:#6B6480;">CFU / dose</div>
+            <div style="min-width:100%; flex-shrink:0;">
+              <img src="brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png"
+                   alt="Flove product view 2"
+                   width="1024" height="1024"
+                   loading="lazy"
+                   style="width:100%; height:auto; display:block;">
+            </div>
+            <div style="min-width:100%; flex-shrink:0;">
+              <img src="brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png"
+                   alt="Flove product view 3"
+                   width="1024" height="1024"
+                   loading="lazy"
+                   style="width:100%; height:auto; display:block;">
+            </div>
+            <div style="min-width:100%; flex-shrink:0;">
+              <img src="brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png"
+                   alt="Flove product view 4"
+                   width="1024" height="1024"
+                   loading="lazy"
+                   style="width:100%; height:auto; display:block;">
+            </div>
+            <div style="min-width:100%; flex-shrink:0;">
+              <img src="brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png"
+                   alt="Flove product view 5"
+                   width="1024" height="1024"
+                   loading="lazy"
+                   style="width:100%; height:auto; display:block;">
+            </div>
           </div>
         </div>
         <!-- Thumbnails -->
-        <div class="grid grid-cols-3 gap-3">
-          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#EDE6F4,#E8E0F0); border:2px solid #8B72CC;"></div>
-          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#F2EBF8,#EDE6F4); border:1px solid #EDE6F4;"></div>
-          <div class="rounded-2xl overflow-hidden" style="aspect-ratio:1; background:linear-gradient(135deg,#F2EBF8,#EDE6F4); border:1px solid #EDE6F4;"></div>
+        <div class="grid grid-cols-5 gap-2">
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="0" style="border:2px solid #8B72CC; cursor:pointer;">
+            <img src="brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png"
+                 alt="" width="128" height="128" loading="lazy"
+                 style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+          </div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="1" style="border:1px solid #EDE6F4; cursor:pointer;">
+            <img src="brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png"
+                 alt="" width="128" height="128" loading="lazy"
+                 style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+          </div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="2" style="border:1px solid #EDE6F4; cursor:pointer;">
+            <img src="brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png"
+                 alt="" width="128" height="128" loading="lazy"
+                 style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+          </div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer;">
+            <img src="brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png"
+                 alt="" width="128" height="128" loading="lazy"
+                 style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+          </div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer;">
+            <img src="brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png"
+                 alt="" width="128" height="128" loading="lazy"
+                 style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+          </div>
         </div>
       </div>
 
@@ -343,12 +379,24 @@
           <div class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#8B72CC;">How to take</div>
           <div class="grid grid-cols-2 gap-3">
             <div class="how-step">
-              <div class="gif-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B72CC" stroke-width="1.5" opacity="0.5"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707"/></svg></div>
+              <div class="rounded-xl overflow-hidden w-full mb-2" style="border:1px solid #EDE6F4;">
+                <img src="brand_assets/hf_20260608_102847_d2587ddf-7fdb-4222-b5fc-b33d32b5e6da.png"
+                     alt="Morning — Active Digestion"
+                     width="512" height="512"
+                     loading="lazy"
+                     style="width:100%; height:auto; display:block;">
+              </div>
               <div class="font-semibold text-sm text-text-primary">Morning — Active Digestion</div>
               <div class="text-xs" style="color:#6B6480;">1 capsule with your pre/post-workout meal</div>
             </div>
             <div class="how-step">
-              <div class="gif-placeholder"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B72CC" stroke-width="1.5" opacity="0.5"><path d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg></div>
+              <div class="rounded-xl overflow-hidden w-full mb-2" style="border:1px solid #EDE6F4;">
+                <img src="brand_assets/hf_20260608_102856_3cb02c81-3e89-4bfd-b48d-a874cb40b0a1.png"
+                     alt="Evening — Overnight Repair"
+                     width="512" height="512"
+                     loading="lazy"
+                     style="width:100%; height:auto; display:block;">
+              </div>
               <div class="font-semibold text-sm text-text-primary">Evening — Overnight Repair</div>
               <div class="text-xs" style="color:#6B6480;">1 capsule at bedtime — colonizes gut lining during sleep</div>
             </div>
@@ -423,33 +471,23 @@
     <div style="position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to right,#F2EBF8,transparent);pointer-events:none;"></div>
     <div style="position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to left,#F2EBF8,transparent);pointer-events:none;"></div>
     <div class="ticker-track px-4">
-      <!-- real videos (slightly smaller) -->
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid1.mp4" type="video/mp4"></video><div class="video-name">Sarah L. · Chicago</div></div>
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid2.mp4" type="video/mp4"></video><div class="video-name">Megan P. · New York</div></div>
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid3.mp4" type="video/mp4"></video><div class="video-name">Kristen T. · Boston</div></div>
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid4.mp4" type="video/mp4"></video><div class="video-name">Dana R. · Austin</div></div>
-      <!-- placeholder cards -->
-      <div class="video-card" style="background:linear-gradient(160deg,#D8CAEE,#C4B5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Jennifer M. · Seattle</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EECAD4,#E8B5C4);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Amber C. · SF</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEE8,#B5E8E0);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Priya K. · London</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EEE4CA,#E8D8B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Lauren B. · LA</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#C8D4EE,#B5C4E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Rachel S. · Denver</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEDD,#B5E8CC);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Nina W. · Miami</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EED4CA,#E8C4B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Claire B. · DC</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#D4CAEE,#BEB5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Tara H. · Toronto</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid5.mp4" type="video/mp4"></video><div class="video-name">Jennifer M. · Seattle</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid6.mp4" type="video/mp4"></video><div class="video-name">Amber C. · SF</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid7.mp4" type="video/mp4"></video><div class="video-name">Lauren B. · LA</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid8.mp4" type="video/mp4"></video><div class="video-name">Rachel S. · Denver</div></div>
       <!-- duplicate set for seamless loop -->
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid1.mp4" type="video/mp4"></video><div class="video-name">Sarah L. · Chicago</div></div>
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid2.mp4" type="video/mp4"></video><div class="video-name">Megan P. · New York</div></div>
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid3.mp4" type="video/mp4"></video><div class="video-name">Kristen T. · Boston</div></div>
       <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid4.mp4" type="video/mp4"></video><div class="video-name">Dana R. · Austin</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#D8CAEE,#C4B5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Jennifer M. · Seattle</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EECAD4,#E8B5C4);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Amber C. · SF</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEE8,#B5E8E0);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Priya K. · London</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EEE4CA,#E8D8B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Lauren B. · LA</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#C8D4EE,#B5C4E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Rachel S. · Denver</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#CAEEDD,#B5E8CC);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Nina W. · Miami</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#EED4CA,#E8C4B5);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Claire B. · DC</div></div>
-      <div class="video-card" style="background:linear-gradient(160deg,#D4CAEE,#BEB5E8);"><div class="video-play-btn"><div class="play-icon"></div></div><div class="video-name">Tara H. · Toronto</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid5.mp4" type="video/mp4"></video><div class="video-name">Jennifer M. · Seattle</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid6.mp4" type="video/mp4"></video><div class="video-name">Amber C. · SF</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid7.mp4" type="video/mp4"></video><div class="video-name">Lauren B. · LA</div></div>
+      <div class="video-card video-card--real"><video autoplay muted loop playsinline preload="auto"><source src="videos/vid8.mp4" type="video/mp4"></video><div class="video-name">Rachel S. · Denver</div></div>
     </div>
   </div>
 </section>
@@ -755,6 +793,50 @@
 
 
 <script>
+  // ── PRODUCT CAROUSEL ──
+  (function () {
+    const track = document.getElementById('carousel-track');
+    const thumbs = document.querySelectorAll('.carousel-thumb');
+    const total = thumbs.length;
+    let current = 0;
+    let timer;
+    let touchStartX = 0;
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      thumbs.forEach((t, i) => {
+        t.style.border = i === current ? '2px solid #8B72CC' : '1px solid #EDE6F4';
+      });
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    thumbs.forEach(t => {
+      t.addEventListener('click', () => {
+        goTo(parseInt(t.dataset.index));
+        startTimer();
+      });
+    });
+
+    // Touch / swipe
+    track.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      startTimer();
+    }, { passive: true });
+
+    goTo(0);
+    startTimer();
+  })();
+
   const priceEl = document.getElementById('price-display');
   const origEl = document.getElementById('original-price');
   const saveEl = document.getElementById('save-badge');
