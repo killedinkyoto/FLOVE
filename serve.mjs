@@ -29,6 +29,12 @@ const server = http.createServer((req, res) => {
   // Strip query strings
   filePath = filePath.split('?')[0];
 
+  // Directory index: /quiz/ → /quiz/index.html
+  if (!path.extname(filePath)) {
+    const withIndex = path.join(filePath, 'index.html');
+    if (fs.existsSync(withIndex)) filePath = withIndex;
+  }
+
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
