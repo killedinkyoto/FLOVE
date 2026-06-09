@@ -6,7 +6,6 @@ const dir = path.join(__dirname, 'temporary screenshots');
 
 const browser = await puppeteer.launch({
   headless: 'new',
-  executablePath: 'C:/Users/hasan/.cache/puppeteer/chrome/win64-127.0.6533.88/chrome-win64/chrome.exe',
   args: ['--no-sandbox'],
 });
 const page = await browser.newPage();
