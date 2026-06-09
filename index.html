@@ -86,11 +86,12 @@
     .video-card {
       flex-shrink: 0; width: 140px; height: 249px; border-radius: 14px;
       overflow: hidden; position: relative; border: 1px solid #EDE6F4; cursor: pointer;
+      background: #2A2240;
     }
     .video-card--real {
       width: 118px; height: 210px; border-radius: 12px;
     }
-    .video-card video { width:100%; height:100%; object-fit:cover; display:block; }
+    .video-card video { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
     .video-play-btn { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(28,24,40,0.25); }
     .video-play-btn::after { content:''; width:40px; height:40px; border-radius:50%; background:rgba(139,114,204,0.9); }
     .play-icon { position:absolute; z-index:2; width:0; height:0; border-top:8px solid transparent; border-bottom:8px solid transparent; border-left:14px solid #fff; margin-left:3px; }
@@ -116,7 +117,7 @@
     @media (min-width: 1024px) {
       #product-carousel { height: 540px; }
       #carousel-track { height: 540px; }
-      #carousel-track > div { min-width: 100%; height: 540px; }
+      #carousel-track > div { flex: 0 0 100%; width: 100%; height: 540px; }
       .carousel-thumb img { object-fit: contain !important; background: #F8F4EE; }
     }
 
@@ -220,7 +221,8 @@
         height: 380px;
       }
       #carousel-track > div {
-        min-width: 100%;
+        flex: 0 0 100%;
+        width: 100%;
         height: 380px;
         display: flex;
         align-items: center;
@@ -267,37 +269,37 @@
       <!-- LEFT: Media -->
       <div class="flex flex-col gap-4 lg:sticky lg:top-20">
         <!-- Carousel -->
-        <div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE6F4;" id="product-carousel">
-          <div id="carousel-track" style="display:flex; will-change:transform; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">
-            <div style="min-width:100%; flex-shrink:0;">
+        <div class="rounded-3xl" style="border:1px solid #EDE6F4; overflow:hidden; position:relative;" id="product-carousel">
+          <div id="carousel-track" style="display:flex; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);">
+            <div style="flex:0 0 100%; width:100%;">
               <img src="brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png"
                    alt="Flove Daily Performance Synbiotic"
                    width="1024" height="1024"
                    fetchpriority="high"
                    style="width:100%; height:auto; display:block;">
             </div>
-            <div style="min-width:100%; flex-shrink:0;">
+            <div style="flex:0 0 100%; width:100%;">
               <img src="brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png"
                    alt="Flove product view 2"
                    width="1024" height="1024"
                    loading="lazy"
                    style="width:100%; height:auto; display:block;">
             </div>
-            <div style="min-width:100%; flex-shrink:0;">
+            <div style="flex:0 0 100%; width:100%;">
               <img src="brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png"
                    alt="Flove product view 3"
                    width="1024" height="1024"
                    loading="lazy"
                    style="width:100%; height:auto; display:block;">
             </div>
-            <div style="min-width:100%; flex-shrink:0;">
+            <div style="flex:0 0 100%; width:100%;">
               <img src="brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png"
                    alt="Flove product view 4"
                    width="1024" height="1024"
                    loading="lazy"
                    style="width:100%; height:auto; display:block;">
             </div>
-            <div style="min-width:100%; flex-shrink:0;">
+            <div style="flex:0 0 100%; width:100%;">
               <img src="brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png"
                    alt="Flove product view 5"
                    width="1024" height="1024"
@@ -860,9 +862,13 @@
     let timer;
     let touchStartX = 0;
 
+    function slideWidth() {
+      return track.parentElement.offsetWidth;
+    }
+
     function goTo(index) {
       current = (index + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      track.style.transform = 'translateX(-' + (current * slideWidth()) + 'px)';
       thumbs.forEach((t, i) => {
         t.style.border = i === current ? '2px solid #8B72CC' : '1px solid #EDE6F4';
       });
@@ -872,6 +878,8 @@
       clearInterval(timer);
       timer = setInterval(() => goTo(current + 1), 5000);
     }
+
+    window.addEventListener('resize', () => goTo(current), { passive: true });
 
     thumbs.forEach(t => {
       t.addEventListener('click', () => {
