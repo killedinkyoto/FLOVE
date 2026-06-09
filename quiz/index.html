@@ -365,10 +365,11 @@ function submitMulti(qId) {
   next();
 }
 
-function submitEmail() {
-  const input = document.getElementById('email-field');
-  const errEl = document.getElementById('email-err');
-  const val = input.value.trim();
+async function submitEmail() {
+  const input  = document.getElementById('email-field');
+  const errEl  = document.getElementById('email-err');
+  const btn    = document.querySelector('#email-screen-btn');
+  const val    = input.value.trim();
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)) {
     input.classList.add('error');
@@ -379,6 +380,53 @@ function submitEmail() {
   input.classList.remove('error');
   errEl.style.display = 'none';
   answers.email = val;
+
+  // Loading state
+  if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+  try {
+    await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=S3D76Q', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'revision': '2024-02-15' },
+      body: JSON.stringify({
+        data: {
+          type: 'subscription',
+          attributes: {
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: val,
+                  properties: {
+                    quiz_source:         'flove-performance-quiz',
+                    quiz_training_freq:  answers.q1  || '',
+                    quiz_training_style: answers.q2  || '',
+                    quiz_tracks_macros:  answers.q3  || '',
+                    quiz_protein_target: answers.q4  || '',
+                    quiz_stack:          (answers.q5  || []).join(', '),
+                    quiz_bloat_trigger:  answers.q6  || '',
+                    quiz_bloat_impact:   (answers.q7  || []).join(', '),
+                    quiz_probiotics:     answers.q8  || '',
+                    quiz_tried_for_bloat:(answers.q9  || []).join(', '),
+                    quiz_goals:          (answers.q10 || []).join(', '),
+                    quiz_commitment:     answers.q11 || '',
+                    quiz_sleep:          answers.q12 || '',
+                  }
+                }
+              }
+            }
+          },
+          relationships: {
+            list: { data: { type: 'list', id: 'VUENSz' } }
+          }
+        }
+      })
+    });
+  } catch (e) {
+    // Silently continue — don't block the user on a network error
+    console.error('Klaviyo error:', e);
+  }
+
   next();
 }
 
@@ -609,7 +657,7 @@ function renderEmail() {
         onkeydown="if(event.key==='Enter') submitEmail()"
       >
       <p id="email-err" style="font-size:12px; color:#D95050; margin:0 0 10px; display:none;">Please enter a valid email address.</p>
-      <button class="cta" style="width:100%;" onclick="submitEmail()">
+      <button id="email-screen-btn" class="cta" style="width:100%;" onclick="submitEmail()">
         Get My Protocol →
       </button>
       <p style="font-size:11px; color:#AEA5C8; text-align:center; margin-top:12px; line-height:1.5;">
