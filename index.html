@@ -186,6 +186,34 @@
       }
       .mech-left-col { grid-area: left; width: 100% !important; }
       .mech-right-col { grid-area: right; width: 100% !important; }
+
+      /* ── PRODUCT CAROUSEL: constrain height on mobile ── */
+      #product-carousel {
+        max-height: 380px;
+        overflow: hidden;
+      }
+      #carousel-track {
+        height: 380px;
+      }
+      #carousel-track > div {
+        min-width: 100%;
+        height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #F8F4EE;
+      }
+      #carousel-track img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+      }
+      /* Thumbnail row: slightly smaller on mobile */
+      .carousel-thumb img {
+        aspect-ratio: 1;
+        object-fit: contain !important;
+        background: #F8F4EE;
+      }
     }
   </style>
 </head>
