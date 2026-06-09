@@ -255,7 +255,11 @@ const Q = [
 const FLOW = [
   { type: 'intro' },
   ...Q.slice(0, 5).map(q => ({ type: 'question', q })),    // Q1–Q5
-  ...Q.slice(5, 9).map(q => ({ type: 'question', q })),    // Q6–Q9
+  { type: 'question', q: Q[5] },   // Q6
+  { type: 'question', q: Q[6] },   // Q7
+  { type: 'interval2' },           // reframe after Q7
+  { type: 'question', q: Q[7] },   // Q8
+  { type: 'question', q: Q[8] },   // Q9
   { type: 'interval' },
   ...Q.slice(9, 12).map(q => ({ type: 'question', q })),   // Q10–Q12
   { type: 'email' },
@@ -582,6 +586,108 @@ function renderQuestion() {
 </div>`;
 }
 
+function renderInterval2() {
+  const trigger = answers.q6 || '';
+  const impacts = answers.q7 || [];
+
+  let triggerPhrase = 'your bloating';
+  if (trigger === 'After protein shakes')    triggerPhrase = 'protein shake bloating';
+  else if (trigger === 'Mid-workout')        triggerPhrase = 'mid-workout bloating';
+  else if (trigger.startsWith('Afternoon'))  triggerPhrase = 'afternoon bloating even when eating clean';
+  else if (trigger.startsWith('After'))      triggerPhrase = 'bloating after "healthy" foods';
+  else if (trigger === "It's constant")      triggerPhrase = 'constant bloating';
+
+  let impactPhrase = 'how it affects you';
+  if (impacts.includes('My abs disappear for hours'))          impactPhrase = 'disappearing abs';
+  else if (impacts.includes('I look pregnant in my gym clothes')) impactPhrase = 'looking bloated in your gym clothes';
+  else if (impacts.includes('It ruins my workouts'))           impactPhrase = 'workouts being derailed';
+  else if (impacts.includes('I cancel plans because of it'))   impactPhrase = 'cancelling plans because of it';
+  else if (impacts.includes('I avoid progress photos'))        impactPhrase = 'avoiding progress photos';
+
+  return `
+<div class="quiz-screen screen-enter min-h-screen flex flex-col" style="max-width:480px; margin:0 auto;">
+
+  <!-- Progress -->
+  <div style="padding:16px 20px 14px;">
+    <div id="progress-track">
+      <div id="progress-fill" style="width:58%;"></div>
+    </div>
+  </div>
+
+  <div style="flex:1; display:flex; flex-direction:column; padding:12px 20px 40px;">
+
+    <!-- Badge -->
+    <div style="display:flex; justify-content:center; margin-bottom:20px;">
+      <div class="badge">
+        <span style="width:6px;height:6px;background:#8B72CC;border-radius:50%;"></span>
+        Good News
+      </div>
+    </div>
+
+    <h2 style="font-size:clamp(24px,6vw,34px); font-weight:700; line-height:1.2; margin:0 0 12px; text-align:center;">
+      We have just the thing for you.
+    </h2>
+
+    <p style="font-size:15px; line-height:1.65; color:#5A5370; text-align:center; margin:0 0 24px;">
+      Your ${triggerPhrase} — and ${impactPhrase} — has a gut reason.
+    </p>
+
+    <!-- Formula card -->
+    <div class="card" style="padding:22px; margin-bottom:18px;">
+      <p style="font-size:11px; font-weight:700; color:#8B72CC; letter-spacing:0.07em; text-transform:uppercase; margin:0 0 16px;">So we built Flove's 2-in-1 formula to fix it from the root:</p>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <span style="width:32px;height:32px;background:#F0FFF4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;">🌿</span>
+          <div>
+            <p style="font-size:13px; font-weight:700; color:#1C1828; margin:0 0 2px;">Prebiotics (FOS)</p>
+            <p style="font-size:13px; line-height:1.55; color:#5A5370; margin:0;">Selectively fuel the bacteria that eliminate gas and inflammation — so your stomach stays flat.</p>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid #EDE6F4;"></div>
+
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <span style="width:32px;height:32px;background:#F3EEFF;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;">🦠</span>
+          <div>
+            <p style="font-size:13px; font-weight:700; color:#1C1828; margin:0 0 2px;">Probiotics (4 clinical strains)</p>
+            <p style="font-size:13px; line-height:1.55; color:#5A5370; margin:0;">Restore gut microbiome balance and eliminate the bloat response to your training stack.</p>
+          </div>
+        </div>
+
+        <div style="border-top:1px solid #EDE6F4;"></div>
+
+        <div style="display:flex; align-items:flex-start; gap:12px;">
+          <span style="width:32px;height:32px;background:#FFF7E0;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;">🛡️</span>
+          <div>
+            <p style="font-size:13px; font-weight:700; color:#1C1828; margin:0 0 2px;">MAKTREK® Delivery System</p>
+            <p style="font-size:13px; line-height:1.55; color:#5A5370; margin:0;">Standard probiotics survive at 0.003%. MAKTREK® delivers 50%+ live bacteria to your gut — where they actually work.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px;">
+      <div class="card" style="padding:16px; text-align:center;">
+        <p style="font-size:22px; font-weight:700; color:#8B72CC; margin:0 0 4px; font-family:'Playfair Display',serif;">8 Weeks</p>
+        <p style="font-size:11px; color:#9B8EC0; margin:0; line-height:1.4;">average time to see results</p>
+      </div>
+      <div class="card" style="padding:16px; text-align:center;">
+        <p style="font-size:22px; font-weight:700; color:#8B72CC; margin:0 0 4px; font-family:'Playfair Display',serif;">1,500+</p>
+        <p style="font-size:11px; color:#9B8EC0; margin:0; line-height:1.4;">verified gym girlies use Flove</p>
+      </div>
+    </div>
+
+    <button class="cta" style="width:100%;" onclick="next()">
+      Let's finish the quiz and get to your results →
+    </button>
+
+  </div>
+</div>`;
+}
+
 function renderInterval() {
   return `
 <div class="quiz-screen screen-enter min-h-screen flex flex-col" style="max-width:480px; margin:0 auto;">
@@ -806,6 +912,7 @@ function render() {
 
   if (s.type === 'intro')     html = renderIntro();
   else if (s.type === 'question') html = renderQuestion();
+  else if (s.type === 'interval2') html = renderInterval2();
   else if (s.type === 'interval') html = renderInterval();
   else if (s.type === 'email')    html = renderEmail();
   else if (s.type === 'results')  html = renderResults();
