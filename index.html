@@ -134,6 +134,41 @@
     .mech-dot { width:7px; height:7px; border-radius:50%; background:#8B72CC; flex-shrink:0; }
     .mech-dash { flex:1; height:1px; background:rgba(139,114,204,0.25); }
 
+    /* ── MECH COLLAPSIBLE ── */
+    .mech-toggle { background:none; border:none; padding:0; cursor:pointer; }
+    .mech-toggle:focus-visible { outline:2px solid #8B72CC; outline-offset:2px; border-radius:4px; }
+    .mech-plus-icon {
+      display:inline-flex; align-items:center; justify-content:center;
+      width:14px; height:14px; flex-shrink:0;
+      position:relative;
+    }
+    .mech-plus-icon::before,
+    .mech-plus-icon::after {
+      content:''; position:absolute; background:#8B72CC; border-radius:2px;
+      transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+    }
+    .mech-plus-icon::before { width:10px; height:1.5px; }
+    .mech-plus-icon::after  { width:1.5px; height:10px; }
+    /* open state: rotate into × */
+    .mech-toggle[aria-expanded="true"] .mech-plus-icon::before { transform: rotate(45deg); }
+    .mech-toggle[aria-expanded="true"] .mech-plus-icon::after  { transform: rotate(45deg); }
+    /* closed state: normal + */
+    .mech-toggle[aria-expanded="false"] .mech-plus-icon::before { transform: rotate(0deg); }
+    .mech-toggle[aria-expanded="false"] .mech-plus-icon::after  { transform: rotate(0deg); }
+
+    .mech-body {
+      overflow: hidden;
+      max-height: 3em;
+      opacity: 1;
+      transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease, margin-top 0.25s ease;
+      margin-top: 2px;
+    }
+    .mech-body.mech-collapsed {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+    }
+
     /* ── FAQ ACCORDION ── */
     .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
     .faq-answer.open { max-height:400px; }
@@ -562,53 +597,83 @@
     <div class="mech-outer flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-6 sm:mb-16">
       <div class="mech-left-col flex flex-col gap-4 w-full lg:w-64 order-2 lg:order-1">
         <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
-          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-dash"></div>
           <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
-            <div class="font-semibold text-sm text-text-primary">Marine polysaccharide matrix</div>
-            <div class="text-xs" style="color:#6B6480;">Hydrates on gastric moisture contact</div>
+            <button class="mech-toggle w-full text-left lg:text-right" onclick="mechToggle(this)" aria-expanded="false">
+              <span class="flex lg:flex-row-reverse items-center gap-1.5">
+                <span class="mech-plus-icon" aria-hidden="true"></span>
+                <span class="font-semibold text-sm text-text-primary">Marine polysaccharide matrix</span>
+              </span>
+            </button>
+            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Hydrates on gastric moisture contact</div>
           </div>
         </div>
         <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
-          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-dash"></div>
           <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
-            <div class="font-semibold text-sm text-text-primary">Acid-resistant gel shield</div>
-            <div class="text-xs" style="color:#6B6480;">Survives pH 1.5–3.5 intact</div>
+            <button class="mech-toggle w-full text-left lg:text-right" onclick="mechToggle(this)" aria-expanded="false">
+              <span class="flex lg:flex-row-reverse items-center gap-1.5">
+                <span class="mech-plus-icon" aria-hidden="true"></span>
+                <span class="font-semibold text-sm text-text-primary">Acid-resistant gel shield</span>
+              </span>
+            </button>
+            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Survives pH 1.5–3.5 intact</div>
           </div>
         </div>
         <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
-          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-dash"></div>
           <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
-            <div class="font-semibold text-sm text-text-primary">Protected gastric transit</div>
-            <div class="text-xs" style="color:#6B6480;">Full payload reaches small intestine</div>
+            <button class="mech-toggle w-full text-left lg:text-right" onclick="mechToggle(this)" aria-expanded="false">
+              <span class="flex lg:flex-row-reverse items-center gap-1.5">
+                <span class="mech-plus-icon" aria-hidden="true"></span>
+                <span class="font-semibold text-sm text-text-primary">Protected gastric transit</span>
+              </span>
+            </button>
+            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Full payload reaches small intestine</div>
           </div>
         </div>
       </div>
 
       <div class="mech-pill flex flex-col items-center gap-3 order-1 lg:order-2">
-        <div class="pill-shape"></div>
+        <img src="brand_assets/maktrek-pill-opt.png" alt="MAKTREK® Bi-Pass capsule" width="144" height="193" loading="eager" decoding="async" style="display:block;">
         <div class="font-semibold text-xs text-center" style="color:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®<br/>Bi-Pass</div>
       </div>
 
       <div class="mech-right-col flex flex-col gap-4 w-full lg:w-64 order-3">
         <div class="flex items-center gap-3">
-          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-dash"></div>
           <div class="flex-1">
-            <div class="font-semibold text-sm text-text-primary">Neutral pH triggered release</div>
-            <div class="text-xs" style="color:#6B6480;">Shield dissolves only at pH 6.0–7.5</div>
+            <button class="mech-toggle w-full text-left" onclick="mechToggle(this)" aria-expanded="false">
+              <span class="flex items-center gap-1.5">
+                <span class="mech-plus-icon" aria-hidden="true"></span>
+                <span class="font-semibold text-sm text-text-primary">Neutral pH triggered release</span>
+              </span>
+            </button>
+            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Shield dissolves only at pH 6.0–7.5</div>
           </div>
         </div>
         <div class="flex items-center gap-3">
-          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-dash"></div>
           <div class="flex-1">
-            <div class="font-semibold text-sm text-text-primary">Colonizes lower intestine</div>
-            <div class="text-xs" style="color:#6B6480;">Exact location where it matters</div>
+            <button class="mech-toggle w-full text-left" onclick="mechToggle(this)" aria-expanded="false">
+              <span class="flex items-center gap-1.5">
+                <span class="mech-plus-icon" aria-hidden="true"></span>
+                <span class="font-semibold text-sm text-text-primary">Colonizes lower intestine</span>
+              </span>
+            </button>
+            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Exact location where it matters</div>
           </div>
         </div>
         <div class="flex items-center gap-3">
-          <div class="mech-dot"></div><div class="mech-dash"></div>
+          <div class="mech-dash"></div>
           <div class="flex-1">
-            <div class="font-semibold text-sm text-text-primary">50%+ clinical survival rate</div>
-            <div class="text-xs" style="color:#6B6480;">vs. 0.003% powder / 2.8% standard capsule</div>
+            <button class="mech-toggle w-full text-left" onclick="mechToggle(this)" aria-expanded="false">
+              <span class="flex items-center gap-1.5">
+                <span class="mech-plus-icon" aria-hidden="true"></span>
+                <span class="font-semibold text-sm text-text-primary">50%+ clinical survival rate</span>
+              </span>
+            </button>
+            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">vs. 0.003% powder / 2.8% standard capsule</div>
           </div>
         </div>
       </div>
@@ -651,11 +716,11 @@
       <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
         <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
           <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">I've already tried three different probiotic brands and none stopped my bloating. Why would this be different?</span>
-          <span class="faq-plus flex-shrink-0" style="color:#6B6480;">+</span>
+          <span class="faq-plus open flex-shrink-0" style="color:#6B6480;">+</span>
         </button>
-        <div class="faq-answer"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">
-          <p class="mb-3">They didn't fail because of your gut. They failed because of their capsule. Stomach pH runs 1.5–3.5. A standard vegetable capsule dissolves in 5–10 minutes. Industry survival rates: 0.003% (powder) to 2.8% (capsule). That means 97–99.997% of what you paid for was dead before reaching your intestines.</p>
-          <p>MAKTREK® Bi-Pass forms a secondary marine polysaccharide gel shield when the capsule enters gastric moisture. It doesn't dissolve at stomach pH — only at the neutral pH of the lower intestine. Clinical survival: 50%+. That's not a better probiotic. It's a completely different mechanism.</p>
+        <div class="faq-answer open"><div class="px-5 pb-5 text-sm leading-relaxed" style="color:#6B6480;">
+          <p class="mb-3">They failed because of their capsule. Stomach pH runs 1.5–3.5. A standard vegetable capsule dissolves in 5–10 minutes. 
+          <p><strong>MAKTREK® Bi-Pass</strong> forms a secondary marine polysaccharide gel shield when the capsule enters gastric moisture. It doesn't dissolve at stomach pH — only at the neutral pH of the lower intestine. <br><br><strong>Clinical survival: 50%+.</strong></p>
         </div></div>
       </div>
       <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
@@ -770,11 +835,11 @@
 <section id="reviews" class="py-12 sm:py-20 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-8 sm:mb-12">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Verified reviews</div>
       <div class="inline-flex flex-col items-center gap-2 mb-6">
+        <div class="spec-pill inline-flex mb-1"><span class="dot"></span>Verified reviews</div>
         <div class="font-display font-bold text-5xl text-text-primary">4.9</div>
         <div class="flex gap-0.5 text-2xl star-tp">★★★★★</div>
-        <div class="text-sm" style="color:#6B6480;">Based on 847 reviews</div>
+        <div class="text-sm" style="color:#6B6480;">Based on 889 reviews</div>
       </div>
       <div class="max-w-xs mx-auto space-y-1.5">
         <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#6B6480;">5 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:92%;background:#00B67A;"></div></div><span class="w-6" style="color:#6B6480;">92%</span></div>
@@ -953,6 +1018,14 @@
   function checkMobileBar() { document.getElementById('mobile-bar').style.display = window.innerWidth >= 640 ? 'none' : ''; }
   window.addEventListener('resize', checkMobileBar);
   checkMobileBar();
+</script>
+<script>
+  function mechToggle(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    const body = btn.closest('.mech-text, .flex-1')?.querySelector('.mech-body');
+    if (body) body.classList.toggle('mech-collapsed', expanded);
+  }
 </script>
 </body>
 </html>
