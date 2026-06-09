@@ -983,6 +983,11 @@
   // Replace these with real numeric IDs from Shopify Admin → Products → Variants
   // (click a variant, copy the number at the end of the URL)
   const SHOPIFY_DOMAIN = 'jaytqk-rb.myshopify.com';
+  // Upsell variant IDs — replace with real Shopify variant IDs once products are created
+  const UPSELL_VARIANTS = {
+    'upsell-1': 'UPSELL_1_VARIANT_ID',
+    'upsell-2': 'UPSELL_2_VARIANT_ID',
+  };
   // ────────────────────────────────────────────────────────────────────────
 
   // ── PRODUCT CAROUSEL ──
@@ -1147,7 +1152,13 @@
   }
 
   function proceedToCheckout() {
-    window.location.href = 'https://' + SHOPIFY_DOMAIN + '/cart/' + selectedVariant + ':' + cartQty;
+    let items = selectedVariant + ':' + cartQty;
+    Object.keys(upsellState).forEach(id => {
+      if (upsellState[id] && UPSELL_VARIANTS[id] && !UPSELL_VARIANTS[id].includes('VARIANT_ID')) {
+        items += ',' + UPSELL_VARIANTS[id] + ':1';
+      }
+    });
+    window.location.href = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
   }
 
   function toggleFaq(btn) {
