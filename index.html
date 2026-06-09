@@ -77,8 +77,6 @@
     .bcard-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid #D4C8E8; flex-shrink: 0; transition: all 0.15s; }
 
     /* ── INGREDIENTS ACCORDION ── */
-    .ing-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-    .ing-body.open { max-height: 400px; }
     .ing-toggle { transition: transform 0.3s; }
     .ing-toggle.open { transform: rotate(45deg); }
 
@@ -158,13 +156,36 @@
     .star-amber { color: #C4962A; }
     .star-tp { color: #00B67A; }
 
+    /* ── INGREDIENTS ACCORDION ── */
+    .ing-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .ing-body.open { max-height: 700px; }
+
     /* ── MOBILE OVERRIDES ── */
     @media (max-width: 1023px) {
-      /* Hide mechanism connector dashes — they only make sense in the desktop radial layout */
+      /* Hide mechanism connector dashes */
       .mech-dash { display: none; }
       /* Mechanism bullet items: dot on left, text to the right */
       .mech-item-left { flex-direction: row !important; }
       .mech-item-left .mech-text { text-align: left !important; }
+
+      /* Mechanism section: pill spans full width at top, items in 2-col grid below */
+      .mech-outer {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "pill pill" "left right";
+        align-items: start;
+        column-gap: 10px;
+        row-gap: 0;
+      }
+      .mech-pill {
+        grid-area: pill;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding-bottom: 20px;
+      }
+      .mech-left-col { grid-area: left; width: 100% !important; }
+      .mech-right-col { grid-area: right; width: 100% !important; }
     }
   </style>
 </head>
@@ -437,17 +458,17 @@
 <!-- ============================================================
      3. MECHANISM
 ============================================================ -->
-<section id="mechanism" class="py-20 px-4 sm:px-6">
+<section id="mechanism" class="py-12 sm:py-20 px-4 sm:px-6">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-14">
-      <div class="spec-pill inline-flex mb-5"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
+    <div class="text-center mb-8 sm:mb-14">
+      <div class="spec-pill inline-flex mb-4 sm:mb-5"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4" style="letter-spacing:-0.02em;">Why other probiotics die<br/>before they reach you.</h2>
       <p class="max-w-xl mx-auto text-sm sm:text-base" style="color:#6B6480;">Standard vegetable capsule = 5–10 min to dissolve at pH 1.5. 97–99.997% of bacteria are dead before reaching your lower intestine.</p>
     </div>
 
     <!-- Pill visual -->
-    <div class="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-16">
-      <div class="flex flex-col gap-4 w-full lg:w-64 order-2 lg:order-1">
+    <div class="mech-outer flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-6 sm:mb-16">
+      <div class="mech-left-col flex flex-col gap-4 w-full lg:w-64 order-2 lg:order-1">
         <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
           <div class="mech-dot"></div><div class="mech-dash"></div>
           <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
@@ -471,12 +492,12 @@
         </div>
       </div>
 
-      <div class="flex flex-col items-center gap-3 order-1 lg:order-2">
+      <div class="mech-pill flex flex-col items-center gap-3 order-1 lg:order-2">
         <div class="pill-shape"></div>
         <div class="font-semibold text-xs text-center" style="color:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®<br/>Bi-Pass</div>
       </div>
 
-      <div class="flex flex-col gap-4 w-full lg:w-64 order-3">
+      <div class="mech-right-col flex flex-col gap-4 w-full lg:w-64 order-3">
         <div class="flex items-center gap-3">
           <div class="mech-dot"></div><div class="mech-dash"></div>
           <div class="flex-1">
@@ -527,9 +548,9 @@
 <!-- ============================================================
      4. FAQ
 ============================================================ -->
-<section id="faq" class="py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #EDE6F4;">
+<section id="faq" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #EDE6F4;">
   <div class="max-w-3xl mx-auto">
-    <div class="text-center mb-12">
+    <div class="text-center mb-8 sm:mb-12">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Common objections</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">You've probably thought this before.</h2>
       <p class="text-sm" style="color:#6B6480;">Every hesitation is answered below. Analytical answers, not marketing copy.</p>
@@ -581,9 +602,9 @@
 <!-- ============================================================
      5. TESTIMONIALS — SKEPTIC COMBAT
 ============================================================ -->
-<section class="py-20 px-4 sm:px-6">
+<section class="py-12 sm:py-20 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
+    <div class="text-center mb-8 sm:mb-12">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>From skeptics</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">People who didn't believe it either.</h2>
       <p class="text-sm" style="color:#6B6480;">Selected from verified buyers who mentioned prior probiotic failures in their review.</p>
@@ -621,7 +642,7 @@
 <!-- ============================================================
      6. GUARANTEES
 ============================================================ -->
-<section class="py-16 px-4 sm:px-6 border-t border-b border-border" style="background:#F2EBF8;">
+<section class="py-10 sm:py-16 px-4 sm:px-6 border-t border-b border-border" style="background:#F2EBF8;">
   <div class="max-w-4xl mx-auto">
     <h2 class="font-display font-bold text-2xl sm:text-3xl text-text-primary text-center mb-10" style="letter-spacing:-0.02em;">The guarantee makes the math simple.</h2>
     <div class="grid sm:grid-cols-3 gap-5">
@@ -654,9 +675,9 @@
 <!-- ============================================================
      7. REVIEWS — TRUSTPILOT STYLE
 ============================================================ -->
-<section id="reviews" class="py-20 px-4 sm:px-6">
+<section id="reviews" class="py-12 sm:py-20 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
+    <div class="text-center mb-8 sm:mb-12">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Verified reviews</div>
       <div class="inline-flex flex-col items-center gap-2 mb-6">
         <div class="font-display font-bold text-5xl text-text-primary">4.9</div>
@@ -692,12 +713,12 @@
 <!-- ============================================================
      8. OFFER — FINAL CTA
 ============================================================ -->
-<section class="py-24 px-4 sm:px-6 text-center border-t border-border" style="background:#F2EBF8;">
+<section class="py-14 sm:py-24 px-4 sm:px-6 text-center border-t border-border" style="background:#F2EBF8;">
   <div class="max-w-2xl mx-auto">
     <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The complete offer</div>
     <h2 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.1;">Stop blaming yourself<br/>for a delivery problem.</h2>
     <p class="text-lg mb-10 max-w-lg mx-auto" style="color:#6B6480; line-height:1.65;">40B CFU. MAKTREK® Bi-Pass. 4 strains built to survive the high-protein fitness lifestyle. Chrono-Biotic Split Protocol. 30-day guarantee. No subscription.</p>
-    <div class="grid grid-cols-3 gap-3 max-w-sm mx-auto mb-10">
+    <div class="grid grid-cols-3 gap-2 sm:gap-3 max-w-sm mx-auto mb-10">
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">50%+</div><div class="text-xs mt-1" style="color:#6B6480;">Survival rate</div></div>
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl text-text-primary">40B</div><div class="text-xs mt-1" style="color:#6B6480;">CFU / dose</div></div>
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">30-day</div><div class="text-xs mt-1" style="color:#6B6480;">Guarantee</div></div>
