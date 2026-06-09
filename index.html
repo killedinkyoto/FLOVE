@@ -924,8 +924,17 @@
 </div>
 
 <!-- ── CART DRAWER ── -->
+<style>
+  #cart-drawer { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); transform: translateX(100%); }
+  #cart-drawer.open { transform: translateX(0); }
+  @media (max-width: 639px) {
+    #cart-drawer { top: auto !important; right: 0 !important; left: 0 !important; bottom: 0 !important; width: 100vw !important; max-height: 92vh !important; border-radius: 20px 20px 0 0 !important; transform: translateY(100%) !important; box-shadow: 0 -8px 40px rgba(28,24,40,0.18) !important; }
+    #cart-drawer.open { transform: translateY(0) !important; }
+  }
+  .upsell-slot { transition: opacity 0.28s ease; }
+</style>
 <div id="cart-overlay" onclick="closeCart()" style="display:none;position:fixed;inset:0;background:rgba(28,24,40,0.5);z-index:100;opacity:0;transition:opacity 0.3s ease;"></div>
-<div id="cart-drawer" style="display:none;position:fixed;right:0;top:0;bottom:0;width:min(420px,100vw);background:#F8F4EE;z-index:101;transform:translateX(100%);transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);overflow-y:auto;box-shadow:-8px 0 40px rgba(28,24,40,0.15);">
+<div id="cart-drawer" style="display:none;position:fixed;right:0;top:0;bottom:0;width:min(420px,100vw);background:#F8F4EE;z-index:101;overflow-y:auto;box-shadow:-8px 0 40px rgba(28,24,40,0.15);">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #EDE6F4;position:sticky;top:0;background:#F8F4EE;z-index:2;">
     <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1828;">Your Cart</span>
     <button onclick="closeCart()" style="width:36px;height:36px;border-radius:50%;border:none;background:#EDE6F4;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#5A5370;">
@@ -950,24 +959,8 @@
     </div>
     <div style="margin-bottom:24px;">
       <div style="font-size:11px;font-weight:700;color:#8B72CC;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">Add to your routine</div>
-      <div id="upsell-1" style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color 0.15s;" onclick="toggleUpsell('upsell-1',9.99)">
-        <div style="width:48px;height:48px;background:#F3EEFF;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px;">📘</div>
-        <div style="flex:1;">
-          <div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:1px;">Gut Reset Protocol Guide</div>
-          <div style="font-size:11px;color:#6B6480;line-height:1.4;">4-week meal + supplement plan for maximum results</div>
-          <div style="font-size:13px;font-weight:700;color:#8B72CC;margin-top:4px;">+ $9.99</div>
-        </div>
-        <div id="upsell-1-check" style="width:24px;height:24px;border-radius:6px;border:2px solid #D4C8EE;flex-shrink:0;transition:all 0.15s;"></div>
-      </div>
-      <div id="upsell-2" style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:border-color 0.15s;" onclick="toggleUpsell('upsell-2',24.99)">
-        <div style="width:48px;height:48px;background:#FFF7E0;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:22px;">🌿</div>
-        <div style="flex:1;">
-          <div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:1px;">Flove Organic Greens Booster</div>
-          <div style="font-size:11px;color:#6B6480;line-height:1.4;">Daily alkalizing greens — pairs with synbiotic for full gut support</div>
-          <div style="font-size:13px;font-weight:700;color:#8B72CC;margin-top:4px;">+ $24.99</div>
-        </div>
-        <div id="upsell-2-check" style="width:24px;height:24px;border-radius:6px;border:2px solid #D4C8EE;flex-shrink:0;transition:all 0.15s;"></div>
-      </div>
+      <div id="upsell-slot-0" class="upsell-slot" style="margin-bottom:10px;"></div>
+      <div id="upsell-slot-1" class="upsell-slot"></div>
     </div>
     <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:16px;margin-bottom:20px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
@@ -996,12 +989,13 @@
   // Replace these with real numeric IDs from Shopify Admin → Products → Variants
   // (click a variant, copy the number at the end of the URL)
   const SHOPIFY_DOMAIN = 'jaytqk-rb.myshopify.com';
-  // Upsell variant IDs — replace with real Shopify variant IDs once products are created
-  const UPSELL_VARIANTS = {
-    'upsell-1': 'UPSELL_1_VARIANT_ID',
-    'upsell-2': 'UPSELL_2_VARIANT_ID',
-  };
   // ────────────────────────────────────────────────────────────────────────
+  const UPSELL_ITEMS = [
+    { variant: '43848224374862', title: 'Colostrum Capsules',       desc: 'Strengthens gut lining — amplifies probiotic colonization',          price: 35.00, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/1781040026680-generated-label-image-0.jpg' },
+    { variant: '43848216150094', title: 'Max Detox (Acai)',          desc: 'Daily gut cleanse — removes waste that blocks live bacteria',         price: 29.90, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/1781039522206-generated-label-image-0.jpg' },
+    { variant: '43848218640462', title: 'Fat Burner with MCT',       desc: 'MCT + L-Carnitine — accelerates fat metabolism alongside gut repair', price: 33.90, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/1781039422263-generated-label-image-0.jpg' },
+    { variant: '43848210251854', title: 'Hair, Skin & Nails Gummies',desc: 'Biotin + Collagen + Vitamins — gut health reflects in your skin',    price: 34.90, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/1781038865992-generated-label-image-0.jpg' },
+  ];
 
   // ── PRODUCT CAROUSEL ──
   (function () {
@@ -1092,8 +1086,57 @@
   }
 
   let cartQty = 1;
-  const upsellState = { 'upsell-1': false, 'upsell-2': false };
-  const upsellPrices = { 'upsell-1': 9.99, 'upsell-2': 24.99 };
+  let addedUpsells = {};
+  let upsellSlots = [0, 1];
+  let nextUpsellIdx = 2;
+
+  function buildUpsellCardHTML(slotIdx, item) {
+    return '<div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;">'
+      + '<img src="' + item.img + '" style="width:52px;height:52px;object-fit:cover;border-radius:10px;flex-shrink:0;" onerror="this.style.cssText=\'width:52px;height:52px;border-radius:10px;flex-shrink:0;background:#F3EEFF;\';this.removeAttribute(\'src\')">'
+      + '<div style="flex:1;min-width:0;">'
+      + '<div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:2px;">' + item.title + '</div>'
+      + '<div style="font-size:11px;color:#6B6480;line-height:1.4;margin-bottom:4px;">' + item.desc + '</div>'
+      + '<div style="font-size:13px;font-weight:700;color:#8B72CC;">+$' + item.price.toFixed(2) + '</div>'
+      + '</div>'
+      + '<button onclick="addUpsell(' + slotIdx + ')" style="flex-shrink:0;padding:8px 14px;background:#1C1828;color:#fff;border:none;border-radius:100px;font-family:\'Inter\',sans-serif;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">Add</button>'
+      + '</div>';
+  }
+
+  function renderUpsellSlot(slotIdx, itemIdx) {
+    const slot = document.getElementById('upsell-slot-' + slotIdx);
+    if (!slot) return;
+    slot.style.display = '';
+    slot.style.opacity = '0';
+    slot.innerHTML = buildUpsellCardHTML(slotIdx, UPSELL_ITEMS[itemIdx]);
+    requestAnimationFrame(() => requestAnimationFrame(() => { slot.style.opacity = '1'; }));
+  }
+
+  function initUpsellSlots() {
+    upsellSlots = [0, 1];
+    nextUpsellIdx = 2;
+    addedUpsells = {};
+    for (var i = 0; i < 2; i++) {
+      var slot = document.getElementById('upsell-slot-' + i);
+      if (slot) { slot.style.display = ''; slot.style.opacity = '1'; slot.innerHTML = buildUpsellCardHTML(i, UPSELL_ITEMS[i]); }
+    }
+  }
+
+  function addUpsell(slotIdx) {
+    var item = UPSELL_ITEMS[upsellSlots[slotIdx]];
+    addedUpsells[item.variant] = item.price;
+    var slot = document.getElementById('upsell-slot-' + slotIdx);
+    if (slot) slot.style.opacity = '0';
+    setTimeout(function() {
+      if (nextUpsellIdx < UPSELL_ITEMS.length) {
+        upsellSlots[slotIdx] = nextUpsellIdx++;
+        renderUpsellSlot(slotIdx, upsellSlots[slotIdx]);
+      } else if (slot) {
+        slot.style.display = 'none';
+      }
+      updateCartTotals();
+    }, 280);
+    updateCartTotals();
+  }
 
   function goToCheckout() { openCart(); }
 
@@ -1104,7 +1147,6 @@
     if (activeCard) {
       document.getElementById('cart-variant-label').textContent = activeCard.querySelector('.font-semibold.text-sm').textContent.trim();
       document.getElementById('cart-item-price').textContent = activeCard.dataset.price;
-      // AddToCart pixel event
       if (typeof fbq !== 'undefined') {
         fbq('track', 'AddToCart', {
           content_ids: [activeCard.dataset.variant],
@@ -1117,21 +1159,22 @@
     }
     cartQty = 1;
     document.getElementById('cart-qty').textContent = '1';
+    initUpsellSlots();
     overlay.style.display = 'block';
     drawer.style.display  = 'block';
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
       overlay.style.opacity = '1';
-      drawer.style.transform = 'translateX(0)';
-    });
+      drawer.classList.add('open');
+    }));
     updateCartTotals();
   }
 
   function closeCart() {
     const overlay = document.getElementById('cart-overlay');
     const drawer  = document.getElementById('cart-drawer');
-    drawer.style.transform  = 'translateX(100%)';
-    overlay.style.opacity   = '0';
+    drawer.classList.remove('open');
+    overlay.style.opacity = '0';
     setTimeout(() => {
       overlay.style.display = 'none';
       drawer.style.display  = 'none';
@@ -1145,30 +1188,12 @@
     updateCartTotals();
   }
 
-  function toggleUpsell(id, price) {
-    upsellState[id] = !upsellState[id];
-    const checkEl = document.getElementById(id + '-check');
-    const card    = document.getElementById(id);
-    if (upsellState[id]) {
-      card.style.borderColor = '#8B72CC';
-      checkEl.style.background = '#8B72CC';
-      checkEl.style.borderColor = '#8B72CC';
-      checkEl.innerHTML = '<svg width="12" height="9" viewBox="0 0 12 9" fill="none"><path d="M1 4.5L4.5 8L11 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    } else {
-      card.style.borderColor = '#EDE6F4';
-      checkEl.style.background = '';
-      checkEl.style.borderColor = '#D4C8EE';
-      checkEl.innerHTML = '';
-    }
-    updateCartTotals();
-  }
-
   function updateCartTotals() {
     const activeCard = document.querySelector('.bundle-card.active');
     if (!activeCard) return;
     const base = parseFloat(activeCard.dataset.price.replace('$', ''));
     let total = base * cartQty;
-    Object.keys(upsellState).forEach(id => { if (upsellState[id]) total += upsellPrices[id]; });
+    Object.values(addedUpsells).forEach(p => { total += p; });
     const fmt = '$' + total.toFixed(2);
     document.getElementById('cart-subtotal').textContent = fmt;
     document.getElementById('cart-total').textContent    = fmt;
@@ -1176,8 +1201,9 @@
 
   function proceedToCheckout() {
     const activeCard = document.querySelector('.bundle-card.active');
-    const total = activeCard ? parseFloat(activeCard.dataset.price.replace('$', '')) * cartQty : 0;
-    // InitiateCheckout pixel event
+    const base = activeCard ? parseFloat(activeCard.dataset.price.replace('$', '')) : 0;
+    let total = base * cartQty;
+    Object.values(addedUpsells).forEach(p => { total += p; });
     if (typeof fbq !== 'undefined') {
       fbq('track', 'InitiateCheckout', {
         content_ids: [selectedVariant],
@@ -1188,11 +1214,7 @@
       });
     }
     let items = selectedVariant + ':' + cartQty;
-    Object.keys(upsellState).forEach(id => {
-      if (upsellState[id] && UPSELL_VARIANTS[id] && !UPSELL_VARIANTS[id].includes('VARIANT_ID')) {
-        items += ',' + UPSELL_VARIANTS[id] + ':1';
-      }
-    });
+    Object.keys(addedUpsells).forEach(variant => { items += ',' + variant + ':1'; });
     window.location.href = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
   }
 
