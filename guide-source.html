@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Clean Label Saboteur Guide — Flove</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #F8F4EE;
+      font-family: 'Inter', sans-serif;
+      color: #1C1828;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #F8F4EE;
+      page-break-after: always;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── PAGE 1: COVER ── */
+    .cover {
+      background: #1C1828;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 48px 52px;
+    }
+
+    .cover-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #F8F4EE;
+      letter-spacing: -0.02em;
+    }
+
+    .cover-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139,114,204,0.2);
+      border: 1px solid rgba(139,114,204,0.4);
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+    .cover-badge span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #B8A0E0;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      font-size: 62px;
+      font-weight: 800;
+      line-height: 1.05;
+      color: #F8F4EE;
+      margin-bottom: 24px;
+    }
+
+    .cover-title em {
+      color: #8B72CC;
+      font-style: italic;
+    }
+
+    .cover-subtitle {
+      font-size: 16px;
+      line-height: 1.7;
+      color: rgba(248,244,238,0.65);
+      max-width: 380px;
+      margin-bottom: 52px;
+    }
+
+    .cover-divider {
+      width: 48px;
+      height: 2px;
+      background: #8B72CC;
+      margin-bottom: 20px;
+    }
+
+    .cover-tagline {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(248,244,238,0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── INNER PAGE WRAPPER ── */
+    .inner {
+      padding: 52px 52px 44px;
+      display: flex;
+      flex-direction: column;
+      min-height: 297mm;
+    }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #EDE6F4;
+    }
+
+    .page-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1C1828;
+    }
+
+    .page-number {
+      font-size: 11px;
+      font-weight: 500;
+      color: #AEA5C8;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #8B72CC;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .page-title {
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .page-intro {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #3D3355;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    /* ── INGREDIENT CARDS ── */
+    .ingredient-card {
+      background: #FFFFFF;
+      border: 1.5px solid #EDE6F4;
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .risk-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .risk-high { background: #D95050; }
+    .risk-med  { background: #E09030; }
+
+    .ingredient-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1C1828;
+      margin-bottom: 4px;
+    }
+
+    .ingredient-found {
+      font-size: 11px;
+      font-weight: 600;
+      color: #8B72CC;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .ingredient-desc {
+      font-size: 12px;
+      line-height: 1.65;
+      color: #5A5370;
+    }
+
+    /* ── CHECKLIST ── */
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid #EDE6F4;
+    }
+    .check-row:last-child { border-bottom: none; }
+
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .check-yes { background: #E8F8EE; }
+    .check-no  { background: #FDEAEA; }
+
+    .check-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1C1828;
+      margin-bottom: 2px;
+    }
+
+    .check-note {
+      font-size: 11px;
+      line-height: 1.55;
+      color: #5A5370;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-box {
+      flex: 1;
+      background: #FFFFFF;
+      border: 1.5px solid #EDE6F4;
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #8B72CC;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: #9B8EC0;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+    }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      background: linear-gradient(135deg, #F3EEFF, #EAE0F8);
+      border-left: 3px solid #8B72CC;
+      border-radius: 0 10px 10px 0;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+
+    .callout p {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #1C1828;
+      font-style: italic;
+    }
+
+    /* ── CLOSING PAGE ── */
+    .closing {
+      background: #F8F4EE;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 52px;
+    }
+
+    .closing-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #F3EEFF;
+      border: 1px solid #EDE6F4;
+      border-radius: 100px;
+      padding: 6px 16px;
+      margin-bottom: 24px;
+    }
+    .closing-badge span {
+      font-size: 10px;
+      font-weight: 700;
+      color: #8B72CC;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .closing-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      max-width: 380px;
+    }
+
+    .closing-body {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #5A5370;
+      max-width: 380px;
+      margin-bottom: 36px;
+    }
+
+    .closing-cta {
+      background: #1C1828;
+      color: #F8F4EE;
+      border-radius: 100px;
+      padding: 16px 36px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 40px;
+    }
+
+    .closing-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 44px;
+    }
+
+    .closing-stat-item {
+      text-align: center;
+    }
+
+    .closing-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #8B72CC;
+    }
+
+    .closing-stat-lbl {
+      font-size: 10px;
+      color: #AEA5C8;
+      font-weight: 500;
+    }
+
+    .closing-footer {
+      font-size: 11px;
+      color: #AEA5C8;
+      letter-spacing: 0.04em;
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── PAGE 1: COVER ── -->
+<div class="page cover">
+  <div class="cover-logo">flove.</div>
+
+  <div>
+    <div class="cover-badge">
+      <span>Free Research Guide</span>
+    </div>
+    <h1 class="cover-title">The Clean Label<br><em>Saboteur</em><br>Guide.</h1>
+    <p class="cover-subtitle">
+      The 6 ingredients hiding in your fitness supplements that are working against your gut — and the exact label criteria for a clean stack.
+    </p>
+    <div class="cover-divider"></div>
+    <p class="cover-tagline">Flove Performance Research · tryflove.com</p>
+  </div>
+</div>
+
+<!-- ── PAGE 2: THE PROBLEM ── -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <span class="page-logo">flove.</span>
+      <span class="page-number">02 / 04</span>
+    </div>
+
+    <p class="section-label">The Problem</p>
+    <h2 class="page-title">Your stack is working<br>against your gut.</h2>
+
+    <p class="page-intro">
+      You train hard. You track your macros. You've invested in a serious supplement stack. And you're still bloating after every protein shake, every pre-workout, every "clean" meal.
+    </p>
+    <p class="page-intro" style="margin-top:-16px;">
+      The fitness industry has a dirty secret: most of the ingredients that make supplements taste good and mix well are the exact same ingredients that disrupt the gut microbiome.
+    </p>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-number">87%</div>
+        <div class="stat-label">of flavored pre-workouts contain at least one gut-disrupting sweetener</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">64%</div>
+        <div class="stat-label">of protein bars contain sugar alcohols linked to osmotic bloating</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-number">50%</div>
+        <div class="stat-label">reduction in Lactobacillus counts observed with regular sucralose use</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <p>"Your gut is reacting exactly as it should to ingredients it was never designed to process. This is a chemistry problem — not a discipline failure."</p>
+    </div>
+
+    <p style="font-size:13px; line-height:1.7; color:#5A5370;">
+      The following pages identify the six most common gut-disrupting ingredients found in mainstream fitness supplements — where they hide, what they do, and what to look for on a label instead.
+    </p>
+  </div>
+</div>
+
+<!-- ── PAGE 3: SABOTEUR LIST (ingredients 1–4) ── -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <span class="page-logo">flove.</span>
+      <span class="page-number">03 / 04</span>
+    </div>
+
+    <p class="section-label">The Saboteur List</p>
+    <h2 class="page-title" style="margin-bottom:24px;">6 ingredients to eliminate.</h2>
+
+    <div class="ingredient-card">
+      <div class="risk-dot risk-high"></div>
+      <div>
+        <div class="ingredient-name">Sucralose</div>
+        <div class="ingredient-found">Found in: C4, Ghost, Celsius, most flavored pre-workouts</div>
+        <div class="ingredient-desc">Shown to reduce beneficial Lactobacillus populations by up to 50% at standard serving sizes. Alters gut pH and promotes growth of opportunistic bacteria. The most common cause of post-supplement bloating in athletic women.</div>
+      </div>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="risk-dot risk-high"></div>
+      <div>
+        <div class="ingredient-name">Acesulfame Potassium (Ace-K)</div>
+        <div class="ingredient-found">Found in: Reign, Bang, most RTD protein shakes, diet sodas</div>
+        <div class="ingredient-desc">Linked to gut microbiome disruption and increased intestinal permeability ("leaky gut"). Often paired with sucralose for synergistic sweetness — doubling the gut impact. Difficult to identify because it can be listed under multiple names.</div>
+      </div>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="risk-dot risk-high"></div>
+      <div>
+        <div class="ingredient-name">Sugar Alcohols (Sorbitol, Maltitol, Xylitol, Erythritol)</div>
+        <div class="ingredient-found">Found in: Quest bars, RXBar flavored varieties, most low-carb protein bars</div>
+        <div class="ingredient-desc">Incompletely absorbed in the small intestine, then rapidly fermented by gut bacteria in the colon. This fermentation produces hydrogen and methane gas, causing severe osmotic bloating and distension — often within 30–90 minutes of consumption.</div>
+      </div>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="risk-dot risk-high"></div>
+      <div>
+        <div class="ingredient-name">Whey Concentrate</div>
+        <div class="ingredient-found">Found in: Most budget whey proteins, mass gainers, flavored protein blends</div>
+        <div class="ingredient-desc">Unlike whey isolate, concentrate retains significant lactose content. Even mild lactose sensitivity — present in roughly 65% of adult women — triggers bloating and GI distress at the 25g+ serving sizes common in post-workout shakes. Look for "whey isolate" specifically.</div>
+      </div>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="risk-dot risk-med"></div>
+      <div>
+        <div class="ingredient-name">Inulin / Chicory Root (High Dose)</div>
+        <div class="ingredient-found">Found in: AG1, Bloom Greens, most fiber-added greens powders</div>
+        <div class="ingredient-desc">A prebiotic fiber that can be beneficial in small doses but ferments aggressively in the colon at the 5–10g doses common in greens powders. Causes pronounced gas and abdominal distension, particularly when combined with a high-protein diet.</div>
+      </div>
+    </div>
+
+    <div class="ingredient-card">
+      <div class="risk-dot risk-med"></div>
+      <div>
+        <div class="ingredient-name">Carrageenan</div>
+        <div class="ingredient-found">Found in: Some RTD protein shakes, plant-based milks used as shake bases</div>
+        <div class="ingredient-desc">A processed seaweed extract used as a thickener and emulsifier. Classified as a gut inflammatory agent in multiple peer-reviewed studies. Linked to increased intestinal permeability and inflammatory bowel symptoms at regular dietary exposure.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PAGE 4: CLEAN LABEL CHECKLIST + CLOSING ── -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <span class="page-logo">flove.</span>
+      <span class="page-number">04 / 04</span>
+    </div>
+
+    <p class="section-label">The Clean Label Checklist</p>
+    <h2 class="page-title" style="margin-bottom:20px;">What a clean stack looks like.</h2>
+
+    <p style="font-size:13px; line-height:1.7; color:#5A5370; margin-bottom:22px;">
+      Use this checklist when auditing your current supplements. A clean label passes all six criteria.
+    </p>
+
+    <div style="background:#FFFFFF; border:1.5px solid #EDE6F4; border-radius:12px; padding:8px 20px; margin-bottom:28px;">
+      <div class="check-row">
+        <div class="check-icon check-yes">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2A9050" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="check-label">Whey Isolate (not Concentrate)</div>
+          <div class="check-note">Lactose removed. Safe for sensitive guts at any protein dose.</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-yes">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2A9050" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="check-label">Stevia or Monk Fruit only</div>
+          <div class="check-note">The only non-nutritive sweeteners without documented microbiome disruption at normal doses.</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-yes">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2A9050" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="check-label">No sugar alcohols on the label</div>
+          <div class="check-note">Check for: sorbitol, maltitol, xylitol, erythritol, mannitol, lactitol.</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-yes">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5L4.5 8.5L11 1.5" stroke="#2A9050" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="check-label">Under 3g added fiber per serving</div>
+          <div class="check-note">Above this threshold, especially with inulin/chicory root, fermentation bloat becomes likely.</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-no">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2l-6 6" stroke="#D95050" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="check-label">No "proprietary blend" on the label</div>
+          <div class="check-note">Proprietary blends hide ingredient doses — you can't verify what you're actually consuming.</div>
+        </div>
+      </div>
+      <div class="check-row">
+        <div class="check-icon check-no">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2l-6 6" stroke="#D95050" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <div class="check-label">No carrageenan or guar gum as primary thickener</div>
+          <div class="check-note">Common in RTD shakes. Xanthan gum at low doses is generally well-tolerated.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#1C1828; border-radius:12px; padding:22px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+      <div>
+        <p style="font-size:11px; font-weight:700; color:#8B72CC; letter-spacing:0.07em; text-transform:uppercase; margin-bottom:6px;">The Next Step</p>
+        <p style="font-size:16px; font-weight:700; color:#F8F4EE; font-family:'Playfair Display',serif; line-height:1.3; margin-bottom:4px;">Rebuild your microbiome with a protocol that actually survives.</p>
+        <p style="font-size:11px; color:rgba(248,244,238,0.55); line-height:1.5;">MAKTREK® Bi-Pass · 50%+ survival rate · 40B CFU · tryflove.com</p>
+      </div>
+      <div style="flex-shrink:0; background:#8B72CC; border-radius:100px; padding:10px 20px; white-space:nowrap;">
+        <p style="font-size:12px; font-weight:700; color:#F8F4EE;">tryflove.com →</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
