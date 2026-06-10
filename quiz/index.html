@@ -268,7 +268,6 @@ const FLOW = [
   { type: 'interval' },
   ...Q.slice(9, 12).map(q => ({ type: 'question', q })),   // Q10–Q12
   { type: 'email' },
-  { type: 'results' },
 ];
 
 const BLOCK_LABEL = { 1: 'Profile', 2: 'Symptoms', 3: 'Goals' };
@@ -444,7 +443,7 @@ async function submitEmail() {
     console.error('Klaviyo error:', e);
   }
 
-  next();
+  window.location.href = '/';
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
