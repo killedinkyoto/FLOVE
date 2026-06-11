@@ -636,125 +636,73 @@ function renderInterval2() {
       </div>
     </div>
 
-    <h2 style="font-size:clamp(22px,6vw,30px); font-weight:700; line-height:1.2; margin:0 0 8px; text-align:center;">
-      We have just the thing for you.
-    </h2>
+    <!-- Main card — two-column layout -->
+    <div style="background:#fff; border-radius:20px; border:1px solid #EDE6F4; padding:22px 20px; margin-bottom:16px; box-shadow:0 4px 24px rgba(139,114,204,0.08);">
 
-    <p style="font-size:14px; line-height:1.6; color:#5A5370; text-align:center; margin:0 0 18px;">
-      Your ${triggerPhrase} — and ${impactPhrase} — has a gut reason.
-    </p>
+      <div style="display:grid; grid-template-columns:1fr 120px; gap:14px; align-items:start;">
 
-    <!-- Product photo -->
-    <div style="display:flex; justify-content:center; margin-bottom:18px;">
-      <img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png"
-           alt="Flove Daily Performance Synbiotic"
-           style="width:140px; height:auto; display:block; filter:drop-shadow(0 8px 28px rgba(139,114,204,0.28));">
-    </div>
+        <!-- Left: headline, bullets, stats -->
+        <div>
+          <h2 style="font-size:26px; font-weight:700; line-height:1.2; margin:0 0 6px; font-family:'Playfair Display',serif; color:#1C1828; letter-spacing:-0.02em;">We got you.</h2>
+          <p style="font-size:12.5px; line-height:1.55; color:#5A5370; margin:0 0 4px;">
+            Your ${triggerPhrase} has a gut reason.
+          </p>
+          <p style="font-size:11.5px; font-weight:600; color:#8B72CC; margin:0 0 13px; text-transform:uppercase; letter-spacing:0.05em;">Flove's 3-in-1 formula fixes it from the root:</p>
 
-    <!-- Before / After split card -->
-    <div class="card" style="padding:0; overflow:hidden; margin-bottom:14px;">
-      <div style="display:grid; grid-template-columns:1fr 1fr;">
+          <!-- Formula bullets -->
+          <div style="display:flex; flex-direction:column; gap:11px; margin-bottom:16px;">
 
-        <!-- Without Flove -->
-        <div style="padding:14px 13px; background:#FAFAFA; border-right:1px solid #EDE6F4;">
-          <div style="font-size:9px; font-weight:700; color:#A09AB0; letter-spacing:0.09em; text-transform:uppercase; margin-bottom:11px;">Without Flove</div>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#D04040; font-size:12px; flex-shrink:0; line-height:1.5;">✕</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#6B6480;">Afternoon bloat eating clean</span>
+            <div style="display:flex; align-items:flex-start; gap:8px;">
+              <span style="width:18px;height:18px;background:#8B72CC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+                <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2 2L8 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p style="font-size:12.5px; line-height:1.5; color:#3D3355; margin:0;"><strong style="color:#1C1828;">Prebiotics (FOS)</strong> selectively feed bacteria that eliminate gas and inflammation</p>
             </div>
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#D04040; font-size:12px; flex-shrink:0; line-height:1.5;">✕</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#6B6480;">Clothes dig in by 3 PM</span>
+
+            <div style="display:flex; align-items:flex-start; gap:8px;">
+              <span style="width:18px;height:18px;background:#8B72CC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+                <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2 2L8 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p style="font-size:12.5px; line-height:1.5; color:#3D3355; margin:0;"><strong style="color:#1C1828;">Probiotics — 40B CFU</strong> across 4 clinical strains restore gut balance and end bloat</p>
             </div>
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#D04040; font-size:12px; flex-shrink:0; line-height:1.5;">✕</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#6B6480;">GI cramping mid-workout</span>
+
+            <div style="display:flex; align-items:flex-start; gap:8px;">
+              <span style="width:18px;height:18px;background:#8B72CC;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;">
+                <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1 3.5l2 2L8 1" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p style="font-size:12.5px; line-height:1.5; color:#3D3355; margin:0;"><strong style="color:#1C1828;">MAKTREK®</strong> delivers <strong style="color:#8B72CC;">50%+ survival</strong> vs. 0.003% standard — 1,685× more live bacteria</p>
             </div>
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#D04040; font-size:12px; flex-shrink:0; line-height:1.5;">✕</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#6B6480;">0.003% probiotic survival</span>
+
+          </div>
+
+          <!-- Stat boxes -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <div style="background:#F8F4EE; border-radius:10px; padding:10px 8px; text-align:center;">
+              <p style="font-size:18px; font-weight:700; color:#8B72CC; margin:0 0 2px; font-family:'Playfair Display',serif;">8 weeks</p>
+              <p style="font-size:10px; color:#9B8EC0; margin:0; line-height:1.35;">avg. time to see results</p>
+            </div>
+            <div style="background:#F8F4EE; border-radius:10px; padding:10px 8px; text-align:center;">
+              <p style="font-size:18px; font-weight:700; color:#8B72CC; margin:0 0 2px; font-family:'Playfair Display',serif;">1,685%</p>
+              <p style="font-size:10px; color:#9B8EC0; margin:0; line-height:1.35;">more live bacteria reach your gut</p>
             </div>
           </div>
         </div>
 
-        <!-- With Flove -->
-        <div style="padding:14px 13px; background:#F8F5FF;">
-          <div style="font-size:9px; font-weight:700; color:#8B72CC; letter-spacing:0.09em; text-transform:uppercase; margin-bottom:11px;">With Flove</div>
-          <div style="display:flex; flex-direction:column; gap:8px;">
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#8B72CC; font-size:12px; flex-shrink:0; line-height:1.5;">✓</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#3D3355;">Flat stomach AM and PM</span>
-            </div>
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#8B72CC; font-size:12px; flex-shrink:0; line-height:1.5;">✓</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#3D3355;">Clothes fitting all day</span>
-            </div>
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#8B72CC; font-size:12px; flex-shrink:0; line-height:1.5;">✓</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#3D3355;">Zero distress during training</span>
-            </div>
-            <div style="display:flex; align-items:flex-start; gap:5px;">
-              <span style="color:#8B72CC; font-size:12px; flex-shrink:0; line-height:1.5;">✓</span>
-              <span style="font-size:11.5px; line-height:1.45; color:#3D3355;">50%+ live bacteria delivered</span>
-            </div>
-          </div>
+        <!-- Right: product photo -->
+        <div style="display:flex; align-items:center; justify-content:center;">
+          <img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png"
+               alt="Flove Daily Performance Synbiotic"
+               style="width:112px; height:auto; display:block; filter:drop-shadow(0 8px 28px rgba(139,114,204,0.4));">
         </div>
 
-      </div>
-    </div>
-
-    <!-- Formula card -->
-    <div class="card" style="padding:18px; margin-bottom:14px;">
-      <p style="font-size:10px; font-weight:700; color:#8B72CC; letter-spacing:0.07em; text-transform:uppercase; margin:0 0 14px;">Flove's 2-in-1 formula fixes it from the root:</p>
-      <div style="display:flex; flex-direction:column; gap:12px;">
-
-        <div style="display:flex; align-items:flex-start; gap:10px;">
-          <span style="width:30px;height:30px;background:#F0FFF4;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;">🌿</span>
-          <div>
-            <p style="font-size:13px; font-weight:700; color:#1C1828; margin:0 0 1px;">Prebiotics (FOS)</p>
-            <p style="font-size:12px; line-height:1.5; color:#5A5370; margin:0;">Fuel the bacteria that eliminate gas and inflammation.</p>
-          </div>
-        </div>
-
-        <div style="border-top:1px solid #EDE6F4;"></div>
-
-        <div style="display:flex; align-items:flex-start; gap:10px;">
-          <span style="width:30px;height:30px;background:#F3EEFF;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;">🦠</span>
-          <div>
-            <p style="font-size:13px; font-weight:700; color:#1C1828; margin:0 0 1px;">Probiotics (4 clinical strains)</p>
-            <p style="font-size:12px; line-height:1.5; color:#5A5370; margin:0;">Restore gut balance and end the bloat response to your stack.</p>
-          </div>
-        </div>
-
-        <div style="border-top:1px solid #EDE6F4;"></div>
-
-        <div style="display:flex; align-items:flex-start; gap:10px;">
-          <span style="width:30px;height:30px;background:#FFF7E0;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;">🛡️</span>
-          <div>
-            <p style="font-size:13px; font-weight:700; color:#1C1828; margin:0 0 1px;">MAKTREK® Delivery System</p>
-            <p style="font-size:12px; line-height:1.5; color:#5A5370; margin:0;">50%+ survival rate vs. 0.003% for standard capsules.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- Stats -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
-      <div class="card" style="padding:14px; text-align:center;">
-        <p style="font-size:22px; font-weight:700; color:#8B72CC; margin:0 0 3px; font-family:'Playfair Display',serif;">8 Weeks</p>
-        <p style="font-size:11px; color:#9B8EC0; margin:0; line-height:1.4;">average time to see results</p>
-      </div>
-      <div class="card" style="padding:14px; text-align:center;">
-        <p style="font-size:22px; font-weight:700; color:#8B72CC; margin:0 0 3px; font-family:'Playfair Display',serif;">1,500+</p>
-        <p style="font-size:11px; color:#9B8EC0; margin:0; line-height:1.4;">verified gym girlies use Flove</p>
       </div>
     </div>
 
     <button class="cta" style="width:100%;" onclick="next()">
       Let's finish the quiz and get to your results →
     </button>
+
+    <p style="font-size:12px; color:#AEA5C8; text-align:center; margin:12px 0 0;">2 quick questions left</p>
 
   </div>
 </div>`;

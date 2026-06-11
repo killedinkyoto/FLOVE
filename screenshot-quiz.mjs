@@ -56,8 +56,13 @@ await new Promise(r => setTimeout(r, 500));
 await page.click('.opt-btn');
 await new Promise(r => setTimeout(r, 300));
 await page.click('#multi-btn');
-await new Promise(r => setTimeout(r, 500));
+await new Promise(r => setTimeout(r, 600));
+// interval2 — Good News screen
+await page.screenshot({ path: path.join(dir, 'qz-4b-goodnews.png') });
+console.log('saved qz-4b-goodnews.png');
 // Q8
+await page.click('.cta');
+await new Promise(r => setTimeout(r, 500));
 await page.click('.opt-btn');
 await new Promise(r => setTimeout(r, 500));
 // Q9 multi
