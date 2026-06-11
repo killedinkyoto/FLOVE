@@ -221,6 +221,12 @@
     /* ── SECTION DIVIDER ── */
     hr { border:none; border-top:1px solid #EDE6F4; }
 
+    /* ── MECHANISM TAB ANIMATION ── */
+    @keyframes mechFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     /* ── REVIEW STARS ── */
     .star-amber { color: #C4962A; }
     .star-tp { color: #00B67A; }
@@ -592,116 +598,203 @@
 ============================================================ -->
 <section id="mechanism" class="py-12 sm:py-20 px-4 sm:px-6">
   <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-8 sm:mb-14">
+    <div class="text-center mb-8 sm:mb-10">
       <div class="spec-pill inline-flex mb-4 sm:mb-5"><span class="dot"></span>MAKTREK® Bi-Pass Technology</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-4" style="letter-spacing:-0.02em;">Why other probiotics die<br/>before they reach you.</h2>
       <p class="max-w-xl mx-auto text-sm sm:text-base" style="color:#6B6480;">Standard vegetable capsule = 5–10 min to dissolve at pH 1.5. 97–99.997% of bacteria are dead before reaching your lower intestine.</p>
     </div>
 
-    <!-- Pill visual -->
-    <div class="mech-outer flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-6 sm:mb-16">
-      <div class="mech-left-col flex flex-col gap-4 w-full lg:w-64 order-2 lg:order-1">
-        <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
-          <div class="mech-dash"></div>
-          <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
-            <button class="mech-toggle w-full text-left lg:text-right" onclick="mechToggle(this)" aria-expanded="false">
-              <span class="flex lg:flex-row-reverse items-center gap-1.5">
-                <span class="mech-plus-icon" aria-hidden="true"></span>
-                <span class="font-semibold text-sm text-text-primary">Marine polysaccharide matrix</span>
-              </span>
-            </button>
-            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Hydrates on gastric moisture contact</div>
-          </div>
-        </div>
-        <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
-          <div class="mech-dash"></div>
-          <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
-            <button class="mech-toggle w-full text-left lg:text-right" onclick="mechToggle(this)" aria-expanded="false">
-              <span class="flex lg:flex-row-reverse items-center gap-1.5">
-                <span class="mech-plus-icon" aria-hidden="true"></span>
-                <span class="font-semibold text-sm text-text-primary">Acid-resistant gel shield</span>
-              </span>
-            </button>
-            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Survives pH 1.5–3.5 intact</div>
-          </div>
-        </div>
-        <div class="mech-item-left flex flex-row lg:flex-row-reverse items-center gap-3">
-          <div class="mech-dash"></div>
-          <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
-            <button class="mech-toggle w-full text-left lg:text-right" onclick="mechToggle(this)" aria-expanded="false">
-              <span class="flex lg:flex-row-reverse items-center gap-1.5">
-                <span class="mech-plus-icon" aria-hidden="true"></span>
-                <span class="font-semibold text-sm text-text-primary">Protected gastric transit</span>
-              </span>
-            </button>
-            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Full payload reaches small intestine</div>
-          </div>
-        </div>
+    <!-- Toggle switch -->
+    <div class="flex justify-center mb-8 sm:mb-12">
+      <div class="inline-flex p-1 rounded-full" style="background:#EDE6F4; border:1px solid #D8D0EE;">
+        <button id="mtab-other" onclick="mechTab('other')"
+          class="rounded-full text-sm font-semibold"
+          style="padding:10px 24px; border:none; cursor:pointer; background:#1C1828; color:#fff; transition:background 0.22s, color 0.22s; font-family:'Inter',sans-serif;">
+          Other Probiotics
+        </button>
+        <button id="mtab-flove" onclick="mechTab('flove')"
+          class="rounded-full text-sm font-semibold"
+          style="padding:10px 24px; border:none; cursor:pointer; background:transparent; color:#6B6480; transition:background 0.22s, color 0.22s; font-family:'Inter',sans-serif;">
+          With Flove
+        </button>
       </div>
+    </div>
 
-      <div class="mech-pill flex flex-col items-center gap-3 order-1 lg:order-2">
-        <img src="brand_assets/maktrek-pill-opt.png" alt="MAKTREK® Bi-Pass capsule" width="144" height="193" loading="eager" decoding="async" style="display:block;">
-        <div class="font-semibold text-xs text-center" style="color:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®<br/>Bi-Pass</div>
-      </div>
-
-      <div class="mech-right-col flex flex-col gap-4 w-full lg:w-64 order-3">
-        <div class="flex items-center gap-3">
-          <div class="mech-dash"></div>
-          <div class="flex-1">
-            <button class="mech-toggle w-full text-left" onclick="mechToggle(this)" aria-expanded="false">
-              <span class="flex items-center gap-1.5">
-                <span class="mech-plus-icon" aria-hidden="true"></span>
-                <span class="font-semibold text-sm text-text-primary">Neutral pH triggered release</span>
-              </span>
-            </button>
-            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Shield dissolves only at pH 6.0–7.5</div>
+    <!-- Panel: Other Probiotics -->
+    <div id="mpanel-other" style="animation:mechFadeIn 0.25s ease;">
+      <div class="mech-outer flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-6 sm:mb-14">
+        <div class="mech-left-col flex flex-col gap-5 w-full lg:w-64 order-2 lg:order-1">
+          <div class="mech-item-left flex flex-row lg:flex-row-reverse items-start gap-3">
+            <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
+              <div class="flex lg:flex-row-reverse items-center gap-2 mb-1">
+                <span style="color:#D04040; font-size:15px; line-height:1; flex-shrink:0;">✕</span>
+                <span class="font-semibold text-sm text-text-primary">No acid protection</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Dissolves in 5 min at stomach pH 1.5</div>
+            </div>
+          </div>
+          <div class="mech-item-left flex flex-row lg:flex-row-reverse items-start gap-3">
+            <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
+              <div class="flex lg:flex-row-reverse items-center gap-2 mb-1">
+                <span style="color:#D04040; font-size:15px; line-height:1; flex-shrink:0;">✕</span>
+                <span class="font-semibold text-sm text-text-primary">Massive gastric die-off</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">97–99.997% of bacteria dead before intestine</div>
+            </div>
+          </div>
+          <div class="mech-item-left flex flex-row lg:flex-row-reverse items-start gap-3">
+            <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
+              <div class="flex lg:flex-row-reverse items-center gap-2 mb-1">
+                <span style="color:#D04040; font-size:15px; line-height:1; flex-shrink:0;">✕</span>
+                <span class="font-semibold text-sm text-text-primary">Wrong release site</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Bacteria dump in upper GI, not lower intestine</div>
+            </div>
           </div>
         </div>
-        <div class="flex items-center gap-3">
-          <div class="mech-dash"></div>
-          <div class="flex-1">
-            <button class="mech-toggle w-full text-left" onclick="mechToggle(this)" aria-expanded="false">
-              <span class="flex items-center gap-1.5">
-                <span class="mech-plus-icon" aria-hidden="true"></span>
-                <span class="font-semibold text-sm text-text-primary">Colonizes lower intestine</span>
-              </span>
-            </button>
-            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">Exact location where it matters</div>
-          </div>
+        <div class="mech-pill flex flex-col items-center gap-3 order-1 lg:order-2">
+          <img src="brand_assets/maktrek-pill-opt.png" alt="Standard capsule" width="144" height="193" loading="eager" decoding="async" style="display:block; filter:grayscale(0.55) brightness(0.88);">
+          <div class="font-semibold text-xs text-center" style="color:#D04040; font-family:'Inter',sans-serif;">Standard<br/>Capsule</div>
         </div>
-        <div class="flex items-center gap-3">
-          <div class="mech-dash"></div>
-          <div class="flex-1">
-            <button class="mech-toggle w-full text-left" onclick="mechToggle(this)" aria-expanded="false">
-              <span class="flex items-center gap-1.5">
-                <span class="mech-plus-icon" aria-hidden="true"></span>
-                <span class="font-semibold text-sm text-text-primary">50%+ clinical survival rate</span>
-              </span>
-            </button>
-            <div class="mech-body mech-collapsed text-xs" style="color:#6B6480;">vs. 0.003% powder / 2.8% standard capsule</div>
+        <div class="mech-right-col flex flex-col gap-5 w-full lg:w-64 order-3">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color:#D04040; font-size:15px; line-height:1; flex-shrink:0;">✕</span>
+                <span class="font-semibold text-sm text-text-primary">No pH-targeted release</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Dissolves randomly — not at the right location</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color:#D04040; font-size:15px; line-height:1; flex-shrink:0;">✕</span>
+                <span class="font-semibold text-sm text-text-primary">Zero colonization</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Dead bacteria can't colonize the gut wall</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color:#D04040; font-size:15px; line-height:1; flex-shrink:0;">✕</span>
+                <span class="font-semibold text-sm text-text-primary">0.003% survive</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">3 bacteria per 100,000 survive the journey</div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Survival bars -->
-    <div class="max-w-2xl mx-auto rounded-3xl p-7 bg-surface" style="border:1px solid #EDE6F4;" id="mech-bars">
-      <div class="text-sm font-semibold text-text-primary mb-6">Bacterial survival through gastric transit</div>
-      <div class="space-y-5">
-        <div>
-          <div class="flex justify-between text-sm mb-2"><span style="color:#6B6480;">Powder / loose capsule</span><span class="font-semibold" style="color:#D04040;">0.003%</span></div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:0.3%;background:#D04040;"></div></div>
+    <!-- Panel: With Flove -->
+    <div id="mpanel-flove" style="display:none;">
+      <div class="mech-outer flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 mb-6 sm:mb-14">
+        <div class="mech-left-col flex flex-col gap-5 w-full lg:w-64 order-2 lg:order-1">
+          <div class="mech-item-left flex flex-row lg:flex-row-reverse items-start gap-3">
+            <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
+              <div class="flex lg:flex-row-reverse items-center gap-2 mb-1">
+                <span style="color:#8B72CC; font-size:15px; line-height:1; flex-shrink:0;">✓</span>
+                <span class="font-semibold text-sm text-text-primary">Marine polysaccharide matrix</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Forms double-layer gel shield on gastric contact</div>
+            </div>
+          </div>
+          <div class="mech-item-left flex flex-row lg:flex-row-reverse items-start gap-3">
+            <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
+              <div class="flex lg:flex-row-reverse items-center gap-2 mb-1">
+                <span style="color:#8B72CC; font-size:15px; line-height:1; flex-shrink:0;">✓</span>
+                <span class="font-semibold text-sm text-text-primary">Acid-resistant gel shield</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Intact through pH 1.5–3.5 stomach acid</div>
+            </div>
+          </div>
+          <div class="mech-item-left flex flex-row lg:flex-row-reverse items-start gap-3">
+            <div class="mech-text flex-1 lg:flex-none text-left lg:text-right">
+              <div class="flex lg:flex-row-reverse items-center gap-2 mb-1">
+                <span style="color:#8B72CC; font-size:15px; line-height:1; flex-shrink:0;">✓</span>
+                <span class="font-semibold text-sm text-text-primary">Protected gastric transit</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Full payload reaches the small intestine</div>
+            </div>
+          </div>
         </div>
-        <div>
-          <div class="flex justify-between text-sm mb-2"><span class="text-xs sm:text-sm" style="color:#6B6480;">Standard vegetable capsule (most brands)</span><span class="font-semibold" style="color:#C4962A;">2.8%</span></div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:5.6%;background:#C4962A;"></div></div>
+        <div class="mech-pill flex flex-col items-center gap-3 order-1 lg:order-2">
+          <img src="brand_assets/maktrek-pill-opt.png" alt="MAKTREK® Bi-Pass capsule" width="144" height="193" loading="eager" decoding="async" style="display:block; filter:drop-shadow(0 6px 24px rgba(139,114,204,0.4));">
+          <div class="font-semibold text-xs text-center" style="color:#8B72CC; font-family:'Inter',sans-serif;">MAKTREK®<br/>Bi-Pass</div>
         </div>
-        <div>
-          <div class="flex justify-between text-sm mb-2"><span style="color:#6B6480;">Flove — MAKTREK® Bi-Pass</span><span class="font-semibold text-base" style="color:#8B72CC;">50%+</span></div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;"><div class="bar-fill h-full rounded-full" style="--w:100%;background:linear-gradient(90deg,#7A62B8,#8B72CC);"></div></div>
+        <div class="mech-right-col flex flex-col gap-5 w-full lg:w-64 order-3">
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color:#8B72CC; font-size:15px; line-height:1; flex-shrink:0;">✓</span>
+                <span class="font-semibold text-sm text-text-primary">Neutral pH triggered release</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Shield dissolves only at pH 6.0–7.5</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color:#8B72CC; font-size:15px; line-height:1; flex-shrink:0;">✓</span>
+                <span class="font-semibold text-sm text-text-primary">Colonizes lower intestine</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">Exact location where it matters</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="flex-1">
+              <div class="flex items-center gap-2 mb-1">
+                <span style="color:#8B72CC; font-size:15px; line-height:1; flex-shrink:0;">✓</span>
+                <span class="font-semibold text-sm text-text-primary">50%+ clinical survival rate</span>
+              </div>
+              <div class="text-xs" style="color:#6B6480;">vs. 0.003% powder / 2.8% standard capsule</div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="text-xs text-center mt-5" style="color:#6B6480;">1,685% more live bacteria per dose. A 100B CFU unshielded competitor delivers fewer live colonies than Flove's 40B CFU.</p>
+    </div>
+
+    <!-- Survival bars — enhanced -->
+    <div class="max-w-2xl mx-auto rounded-3xl overflow-hidden" id="mech-bars">
+      <div class="p-6 sm:p-8" style="background:#1C1828;">
+        <div class="text-center mb-6 sm:mb-8">
+          <div class="font-display font-bold mb-1" style="font-size:clamp(2.2rem,8vw,3.5rem); color:#fff; letter-spacing:-0.03em; line-height:1.05;">1,685%</div>
+          <div class="text-sm font-semibold" style="color:#A089DC;">more live bacteria per dose than standard capsules</div>
+          <div class="text-xs mt-2" style="color:#5A536E;">A 100B CFU unshielded competitor delivers fewer live colonies than Flove's 40B CFU</div>
+        </div>
+        <div class="text-xs font-semibold uppercase tracking-widest mb-5" style="color:#5A536E; letter-spacing:0.1em;">Bacterial survival · gastric transit</div>
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="text-sm" style="color:#9090A8;">Powder / loose capsule</span>
+              <span class="text-xl font-bold" style="color:#E07070;">0.003%</span>
+            </div>
+            <div class="rounded-full overflow-hidden" style="height:12px; background:rgba(255,255,255,0.07);">
+              <div class="bar-fill h-full rounded-full" style="--w:0.3%; background:#E07070;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="text-sm" style="color:#9090A8;">Standard capsule (most brands)</span>
+              <span class="text-xl font-bold" style="color:#D4A644;">2.8%</span>
+            </div>
+            <div class="rounded-full overflow-hidden" style="height:12px; background:rgba(255,255,255,0.07);">
+              <div class="bar-fill h-full rounded-full" style="--w:5.6%; background:#D4A644;"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-baseline mb-2">
+              <span class="font-semibold text-sm" style="color:#fff;">Flove — MAKTREK® Bi-Pass</span>
+              <span class="font-bold" style="color:#A089DC; font-size:1.75rem; line-height:1;">50%+</span>
+            </div>
+            <div class="rounded-full" style="height:20px; background:rgba(139,114,204,0.18); box-shadow:0 0 0 1px rgba(139,114,204,0.3); overflow:hidden;">
+              <div class="bar-fill h-full rounded-full" style="--w:100%; background:linear-gradient(90deg,#7A62B8,#B09DE0); box-shadow:0 0 18px rgba(139,114,204,0.7);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1243,11 +1336,24 @@
   checkMobileBar();
 </script>
 <script>
-  function mechToggle(btn) {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    const body = btn.closest('.mech-text, .flex-1')?.querySelector('.mech-body');
-    if (body) body.classList.toggle('mech-collapsed', expanded);
+  function mechTab(state) {
+    var btnOther = document.getElementById('mtab-other');
+    var btnFlove = document.getElementById('mtab-flove');
+    var pOther = document.getElementById('mpanel-other');
+    var pFlove = document.getElementById('mpanel-flove');
+    if (state === 'other') {
+      btnOther.style.background = '#1C1828'; btnOther.style.color = '#fff';
+      btnFlove.style.background = 'transparent'; btnFlove.style.color = '#6B6480';
+      pFlove.style.display = 'none';
+      pOther.style.display = ''; pOther.style.animation = 'none';
+      requestAnimationFrame(function(){ pOther.style.animation = 'mechFadeIn 0.25s ease'; });
+    } else {
+      btnFlove.style.background = '#8B72CC'; btnFlove.style.color = '#fff';
+      btnOther.style.background = 'transparent'; btnOther.style.color = '#6B6480';
+      pOther.style.display = 'none';
+      pFlove.style.display = ''; pFlove.style.animation = 'none';
+      requestAnimationFrame(function(){ pFlove.style.animation = 'mechFadeIn 0.25s ease'; });
+    }
   }
 </script>
 </body>
