@@ -307,6 +307,7 @@
       .ritual-grid { grid-template-columns: 1fr; }
       .price-grid-purple { grid-template-columns: 1fr; }
       .prob-pills-row { flex-wrap: wrap; }
+      #pricing .pricing-2col { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -775,55 +776,120 @@
         <p style="font-size:15px;color:rgba(255,255,255,0.6);margin:0 auto;max-width:440px;line-height:1.7;">One-time purchase. No subscription. No return required if it doesn't work.</p>
       </div>
 
-      <!-- Product image -->
-      <div style="text-align:center;margin-bottom:48px;">
-        <img src="brand_assets/1780881996497-generated-label-image-3.png" alt="Flove Daily Performance Synbiotic" style="max-width:260px;width:100%;filter:drop-shadow(0 20px 48px rgba(139,114,204,0.5));">
-      </div>
+      <!-- 2-col: gallery left / pricing right -->
+      <div class="pricing-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
 
-      <!-- Pricing tiers -->
-      <div class="price-grid-purple" style="margin-bottom:32px;">
-
-        <!-- 1 bottle -->
-        <div class="price-tier-purple">
-          <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 14px;letter-spacing:0.1em;text-transform:uppercase;">Starter</p>
-          <p style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:#FFFFFF;margin:0 0 4px;letter-spacing:-0.02em;">$44.99</p>
-          <p style="font-size:13px;color:rgba(255,255,255,0.55);margin:0 0 20px;">1 bottle / 30 days &middot; <strong style="color:rgba(255,255,255,0.75);">$1.50/day</strong></p>
-          <a href="#" class="cta-dark" style="display:block;padding:13px 20px;font-size:14px;text-align:center;background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.2);">Select</a>
-        </div>
-
-        <!-- 3 bottles -->
-        <div class="price-tier-purple popular">
-          <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);">
-            <span style="background:#C4B5E8;color:#1C1828;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 16px;border-radius:0 0 10px 10px;white-space:nowrap;">MOST POPULAR</span>
+        <!-- LEFT: image carousel -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <!-- Main viewer -->
+          <div id="pricing-carousel" style="border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);position:relative;background:rgba(255,255,255,0.05);">
+            <div id="pricing-track" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);">
+              <div style="flex:0 0 100%;"><img src="brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove product" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="Flove vs standard" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="1700+ women" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="Guarantee" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="Flove lifestyle" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+            </div>
           </div>
-          <p style="font-size:11px;font-weight:600;color:#C4B5E8;margin:20px 0 14px;letter-spacing:0.1em;text-transform:uppercase;">90-Day Reset</p>
-          <p style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:#FFFFFF;margin:0 0 4px;letter-spacing:-0.02em;">$119.97</p>
-          <p style="font-size:13px;color:rgba(255,255,255,0.55);margin:0 0 4px;">3 bottles / 90 days &middot; <strong style="color:rgba(255,255,255,0.75);">$1.33/day</strong></p>
-          <p style="font-size:12px;color:#C4B5E8;font-weight:600;margin:0 0 20px;">You save $15.00</p>
-          <a href="#" class="cta-white" style="display:block;padding:14px 20px;font-size:14px;text-align:center;">Select &rarr;</a>
-          <p style="font-size:11px;color:rgba(196,181,232,0.7);margin:10px 0 0;text-align:center;">$1.33 a day. Less than the greens powder that cramped you.</p>
+          <!-- Thumbnails -->
+          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
+            <div class="p-thumb" data-idx="0" style="border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid rgba(196,181,232,0.8);transition:border-color 0.15s ease;">
+              <img src="brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            </div>
+            <div class="p-thumb" data-idx="1" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+              <img src="brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            </div>
+            <div class="p-thumb" data-idx="2" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+              <img src="brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            </div>
+            <div class="p-thumb" data-idx="3" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+              <img src="brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            </div>
+            <div class="p-thumb" data-idx="4" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+              <img src="brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            </div>
+          </div>
         </div>
 
-        <!-- 6 bottles -->
-        <div class="price-tier-purple">
-          <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 4px;letter-spacing:0.1em;text-transform:uppercase;">Best Value</p>
-          <p style="font-size:10px;color:#C4962A;font-weight:600;margin:0 0 14px;letter-spacing:0.06em;text-transform:uppercase;">&#9733; Save most per day</p>
-          <p style="font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:#FFFFFF;margin:0 0 4px;letter-spacing:-0.02em;">$215.94</p>
-          <p style="font-size:13px;color:rgba(255,255,255,0.55);margin:0 0 4px;">6 bottles / 180 days &middot; <strong style="color:rgba(255,255,255,0.75);">$1.20/day</strong></p>
-          <p style="font-size:12px;color:#C4962A;font-weight:600;margin:0 0 20px;">You save $54.00</p>
-          <a href="#" class="cta-dark" style="display:block;padding:13px 20px;font-size:14px;text-align:center;background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.2);">Select</a>
+        <!-- RIGHT: pricing -->
+        <div>
+          <!-- Rating -->
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+            <span style="color:#C4962A;font-size:14px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">4.9 &middot; 847 reviews</span>
+          </div>
+
+          <!-- Pricing tiers -->
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+
+            <!-- 1 bottle -->
+            <div class="price-tier-purple" style="padding:16px 20px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                <div>
+                  <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">Starter · 1 bottle</p>
+                  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0;letter-spacing:-0.02em;">$44.99 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.50/day</span></p>
+                </div>
+                <a href="#" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;">Select</a>
+              </div>
+            </div>
+
+            <!-- 3 bottles POPULAR -->
+            <div class="price-tier-purple popular" style="padding:16px 20px;">
+              <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);">
+                <span style="background:#C4B5E8;color:#1C1828;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 14px;border-radius:0 0 8px 8px;white-space:nowrap;">MOST POPULAR</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;">
+                <div>
+                  <p style="font-size:11px;font-weight:600;color:#C4B5E8;margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">90-Day Reset · 3 bottles</p>
+                  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0 0 2px;letter-spacing:-0.02em;">$119.97 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.33/day</span></p>
+                  <p style="font-size:11px;color:#C4B5E8;font-weight:600;margin:0;">You save $15.00</p>
+                </div>
+                <a href="#" class="cta-white" style="padding:10px 20px;font-size:13px;white-space:nowrap;">Select &rarr;</a>
+              </div>
+            </div>
+
+            <!-- 6 bottles -->
+            <div class="price-tier-purple" style="padding:16px 20px;">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+                <div>
+                  <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">Best Value · 6 bottles</p>
+                  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0 0 2px;letter-spacing:-0.02em;">$215.94 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.20/day</span></p>
+                  <p style="font-size:11px;color:#C4962A;font-weight:600;margin:0;">&#9733; Save $54.00</p>
+                </div>
+                <a href="#" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;">Select</a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Trust row -->
+          <div style="display:flex;flex-wrap:wrap;gap:10px 20px;opacity:0.65;">
+            <span style="font-size:11px;color:#C4B5E8;font-weight:500;">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9 stars</span>
+            <span style="font-size:11px;color:#C4B5E8;font-weight:500;">30-day money-back</span>
+            <span style="font-size:11px;color:#C4B5E8;font-weight:500;">No subscription</span>
+            <span style="font-size:11px;color:#C4B5E8;font-weight:500;">Made in USA</span>
+          </div>
         </div>
 
       </div>
 
-      <!-- Trust row -->
-      <div style="display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:center;opacity:0.7;">
-        <span style="font-size:12px;color:#C4B5E8;font-weight:500;">&#9733;&#9733;&#9733;&#9733;&#9733; 4.9 stars</span>
-        <span style="font-size:12px;color:#C4B5E8;font-weight:500;">30-day money-back</span>
-        <span style="font-size:12px;color:#C4B5E8;font-weight:500;">No subscription</span>
-        <span style="font-size:12px;color:#C4B5E8;font-weight:500;">Made in USA</span>
-        <span style="font-size:12px;color:#C4B5E8;font-weight:500;">Third-Party Tested</span>
-      </div>
+      <script>
+        (function() {
+          const track = document.getElementById('pricing-track');
+          const thumbs = document.querySelectorAll('.p-thumb');
+          let current = 0;
+          function goTo(idx) {
+            current = idx;
+            track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+            thumbs.forEach((t, i) => {
+              t.style.border = i === idx
+                ? '2px solid rgba(196,181,232,0.9)'
+                : '1px solid rgba(255,255,255,0.18)';
+            });
+          }
+          thumbs.forEach(t => t.addEventListener('click', () => goTo(parseInt(t.dataset.idx))));
+        })();
+      </script>
 
     </div>
   </section>
