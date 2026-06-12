@@ -1,2 +1,5 @@
-/relaunch   /presales.html  200
-/lander     /lander.html    200
+/relaunch       /presales.html  200
+/presales       /presales.html  200
+/lander         /lander.html    200
+/presales.html  /presales       301
+/lander.html    /lander         301
