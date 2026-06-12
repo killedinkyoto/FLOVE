@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flove — For Women Who Train</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      background: #F8F4EE;
+      font-family: 'Inter', sans-serif;
+      color: #1A1526;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+
+    .hero-glow { background: radial-gradient(ellipse 80% 60% at 60% 10%, rgba(139,114,204,0.09) 0%, transparent 65%); }
+
+    .cta-dark {
+      display: inline-block;
+      background: #1C1828;
+      color: #fff;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      cursor: pointer;
+      border: none;
+      text-align: center;
+    }
+    .cta-dark:hover { opacity: 0.85; }
+    .cta-dark:active { transform: scale(0.98); }
+    .cta-dark:focus-visible { outline: 2px solid #8B72CC; outline-offset: 3px; }
+
+    .spec-pill {
+      border: 1px solid #EDE6F4;
+      background: rgba(139,114,204,0.07);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #8B72CC;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .spec-dot { width: 6px; height: 6px; background: #8B72CC; border-radius: 50%; flex-shrink: 0; }
+
+    .card-white {
+      background: #FFFFFF;
+      border: 1px solid #EDE6F4;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(139,114,204,0.06);
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      overflow: hidden;
+    }
+    .card-white:hover { border-color: rgba(139,114,204,0.28); box-shadow: 0 12px 32px rgba(139,114,204,0.1); }
+
+    /* ── RESPONSIVE ── */
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .benefit-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+
+    @media (max-width: 767px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero-img-wrap { order: -1; margin-bottom: 28px; }
+      .hero-section { padding: 40px 20px 48px; }
+      .benefit-row {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 12px;
+        padding-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .benefit-row::-webkit-scrollbar { display: none; }
+      .benefit-card { flex: 0 0 72vw; scroll-snap-align: start; }
+      .teaser-card { padding: 36px 24px; }
+    }
+    @media (min-width: 768px) {
+      .hero-section { padding: 64px 20px 60px; }
+      .teaser-card { padding: 52px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(248,244,238,0.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #EDE6F4;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;">
+      <a href="presales.html" style="text-decoration:none;">
+        <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
+      </a>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <span style="font-size:12px;color:#6B6480;display:none;" id="nav-trust">★★★★★ 30-day guarantee</span>
+        <a href="lander.html" class="cta-dark" style="padding:10px 22px;font-size:13px;">Get Flove</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- P1.1 · HERO BLOCK                       -->
+  <!-- ════════════════════════════════════════ -->
+  <section class="hero-glow hero-section" style="max-width:1080px;margin:0 auto;">
+    <div class="hero-grid">
+
+      <!-- Copy -->
+      <div>
+        <div style="margin-bottom:16px;">
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;color:#8B72CC;text-transform:uppercase;">For Women Who Train</span>
+        </div>
+
+        <h1 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;color:#1A1526;margin:0 0 18px;">
+          The flat stomach <em style="color:#8B72CC;font-style:italic;">fasting</em> never gave you.
+        </h1>
+
+        <p style="font-size:16px;line-height:1.75;color:#6B6480;margin:0 0 26px;max-width:430px;">
+          Live bacteria, delivered past the stomach acid that kills standard probiotics. A marine shield called PhaseLock&trade; does what greens powders, gummies and detox teas can't.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
+          <span class="spec-pill"><span class="spec-dot"></span>PhaseLock&trade; delivery</span>
+          <span class="spec-pill"><span class="spec-dot"></span>40B CFU, 4-strain</span>
+          <span class="spec-pill"><span class="spec-dot"></span>One-time, no subscription</span>
+        </div>
+
+        <a href="lander.html" class="cta-dark" style="padding:16px 36px;font-size:16px;">See why this one's different &rarr;</a>
+
+        <p style="font-size:12px;color:#6B6480;margin:14px 0 0;">&#9733;&#9733;&#9733;&#9733;&#9733;&nbsp;&nbsp;30-day money-back guarantee &mdash; no return needed</p>
+      </div>
+
+      <!-- Image -->
+      <div class="hero-img-wrap" style="position:relative;">
+        <img
+          src="brand_assets/testimonial-2-opt.webp"
+          alt="Woman in activewear, confident and flat"
+          style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5;display:block;object-position:top;"
+        >
+        <!-- Floating result badge -->
+        <div style="position:absolute;bottom:20px;left:16px;right:16px;background:rgba(255,255,255,0.97);border-radius:14px;padding:12px 16px;box-shadow:0 6px 20px rgba(139,114,204,0.15);display:flex;align-items:center;gap:12px;">
+          <div style="width:34px;height:34px;background:rgba(139,114,204,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8l3.5 3.5L13 4.5" stroke="#8B72CC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <p style="font-size:10px;font-weight:600;color:#8B72CC;margin:0 0 1px;letter-spacing:0.1em;text-transform:uppercase;">After 8 weeks</p>
+            <p style="font-size:13px;color:#1A1526;margin:0;font-weight:600;">Flat. Consistent. Every morning.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- P1.2 · PICTURE YOURSELF BENEFIT ROW     -->
+  <!-- ════════════════════════════════════════ -->
+  <section style="padding:0 20px 64px;max-width:1080px;margin:0 auto;">
+    <div class="benefit-row">
+
+      <!-- Card 1: Progress photo -->
+      <div class="card-white benefit-card">
+        <img
+          src="brand_assets/hf_20260609_213338_b21d8181-1a05-475e-ab68-fb4e5ac9563d.png"
+          alt="Progress photo moment"
+          style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block;"
+        >
+        <div style="padding:18px 18px 20px;">
+          <p style="font-size:14px;line-height:1.65;color:#1A1526;margin:0;font-weight:500;">Progress photos that show the abs you actually trained for.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Compression set -->
+      <div class="card-white benefit-card">
+        <img
+          src="brand_assets/hf_20260609_203118_00fc2515-c475-41c7-a023-dfc0bbc2f701.png"
+          alt="Compression set, nothing to suck in"
+          style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block;"
+        >
+        <div style="padding:18px 18px 20px;">
+          <p style="font-size:14px;line-height:1.65;color:#1A1526;margin:0;font-weight:500;">A compression set with nothing to suck in.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Morning flat holds -->
+      <div class="card-white benefit-card">
+        <img
+          src="brand_assets/hf_optimized.webp"
+          alt="Before and after — flat stomach that holds"
+          style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;display:block;"
+        >
+        <div style="padding:18px 18px 20px;">
+          <p style="font-size:14px;line-height:1.65;color:#1A1526;margin:0;font-weight:500;">A flat stomach that holds — morning, post-meal, and every day of the week.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- P1.3 · MECHANISM TEASER                 -->
+  <!-- ════════════════════════════════════════ -->
+  <section style="padding:0 20px 88px;max-width:640px;margin:0 auto;">
+    <div class="card-white teaser-card" id="teaser-card" style="text-align:center;">
+
+      <h2 style="font-size:clamp(1.5rem,2.8vw,2.1rem);font-weight:700;line-height:1.2;color:#1A1526;margin:0 0 14px;">
+        Most probiotics are dead before they reach your <em style="color:#8B72CC;font-style:italic;">gut</em>.
+      </h2>
+      <p style="font-size:15px;line-height:1.7;color:#6B6480;margin:0 auto 36px;max-width:480px;">
+        PhaseLock&trade; wraps live strains in a seaweed-derived shield that stays sealed through stomach acid &mdash; so 50%+ of the dose arrives instead of the 2.8% a normal capsule delivers.
+      </p>
+
+      <!-- Survival bars (vertical) -->
+      <div id="bars-wrapper" style="display:flex;gap:36px;align-items:flex-end;justify-content:center;margin-bottom:16px;">
+
+        <!-- Standard capsule -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <div style="position:relative;width:52px;height:140px;background:#F2EBF8;border-radius:10px;overflow:hidden;display:flex;align-items:flex-end;">
+            <div id="bar-std" style="width:100%;height:0%;background:#D06060;border-radius:7px;transition:height 1.3s cubic-bezier(0.25,0.46,0.45,0.94) 0.25s;"></div>
+          </div>
+          <div>
+            <p style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#D06060;margin:0 0 3px;letter-spacing:-0.01em;">2.8%</p>
+            <p style="font-size:10px;color:#6B6480;margin:0;max-width:64px;line-height:1.4;text-align:center;">Standard capsule</p>
+          </div>
+        </div>
+
+        <!-- PhaseLock -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <div style="position:relative;width:52px;height:140px;">
+            <!-- ambient glow -->
+            <div style="position:absolute;inset:-10px;background:radial-gradient(ellipse at center bottom, rgba(139,114,204,0.2) 0%, transparent 70%);pointer-events:none;border-radius:50%;"></div>
+            <div style="width:100%;height:100%;background:#F2EBF8;border-radius:10px;overflow:hidden;display:flex;align-items:flex-end;position:relative;">
+              <div id="bar-pl" style="width:100%;height:0%;background:linear-gradient(180deg,#8B72CC 0%,#C4962A 100%);border-radius:7px;transition:height 1.3s cubic-bezier(0.25,0.46,0.45,0.94) 0.1s;"></div>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#C4962A;margin:0 0 3px;letter-spacing:-0.01em;">50%+</p>
+            <p style="font-size:10px;color:#6B6480;margin:0;max-width:64px;line-height:1.4;text-align:center;">PhaseLock&trade;</p>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="font-size:11px;color:#9B96A8;margin:0 0 32px;font-style:italic;">Live bacteria reaching your lower gut. Patented MAKTREK&reg; Bi-Pass Technology.</p>
+
+      <a href="lander.html" class="cta-dark" style="padding:16px 36px;font-size:16px;">Show me how it works &rarr;</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer style="background:#FFFFFF;border-top:1px solid #EDE6F4;padding:28px 20px;text-align:center;">
+    <a href="presales.html" style="text-decoration:none;display:inline-block;margin-bottom:10px;">
+      <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:20px;letter-spacing:-0.01em;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
+    </a>
+    <p style="font-size:12px;color:#6B6480;margin:0 0 4px;">Daily Performance Synbiotic &middot; 40B CFU &middot; PhaseLock&trade; Technology</p>
+    <p style="font-size:12px;color:#6B6480;margin:0;">30-Day Money-Back Guarantee &middot; Made in USA &middot; Third-Party Tested</p>
+  </footer>
+
+  <script>
+    // Show nav trust line on wider screens
+    if (window.innerWidth >= 640) {
+      document.getElementById('nav-trust').style.display = 'inline';
+    }
+
+    // Animate bars when wrapper scrolls into view
+    const barsEl = document.getElementById('bars-wrapper');
+    const barObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        document.getElementById('bar-std').style.height = '5%';
+        document.getElementById('bar-pl').style.height = '90%';
+        barObserver.disconnect();
+      }
+    }, { threshold: 0.5 });
+    barObserver.observe(barsEl);
+  </script>
+
+</body>
+</html>
