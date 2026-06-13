@@ -236,7 +236,7 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-top: 1px solid #EDE6F4;
-      padding: 8px 16px;
+      padding: 6px 16px;
       box-shadow: 0 -4px 16px rgba(139,114,204,0.08);
     }
     #sticky-atc.visible { transform: translateY(0); }
@@ -390,24 +390,21 @@
 
   <!-- ── STICKY ATC ── -->
   <div id="sticky-atc">
-    <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
-        <span style="font-size:11px;color:#6B6480;"><span style="color:#C4962A;font-size:10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;30-day guarantee</span>
-      </div>
-      <button onclick="document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth',block:'start'})" class="cta-dark" style="padding:8px 20px;font-size:13px;border:none;cursor:pointer;white-space:nowrap;">Get Flove &rarr;</button>
+    <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:8px;">
+      <span style="font-size:11px;color:#6B6480;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"><span style="color:#C4962A;font-size:10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp;30-day guarantee</span>
+      <button onclick="document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth',block:'start'})" class="cta-dark" style="padding:7px 18px;font-size:12px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get Flove &rarr;</button>
     </div>
   </div>
 
   <!-- ── NAV ── -->
-  <nav style="position:sticky;top:0;z-index:40;background:rgba(248,244,238,0.96);backdrop-filter:blur(10px);border-bottom:1px solid #EDE6F4;">
-    <div style="max-width:1080px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;justify-content:space-between;">
+  <nav style="position:sticky;top:0;z-index:40;background:rgba(248,244,238,0.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #EDE6F4;">
+    <div style="max-width:1080px;margin:0 auto;padding:0 16px;height:44px;display:flex;align-items:center;justify-content:space-between;">
       <a href="/relaunch" style="text-decoration:none;">
-        <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:22px;letter-spacing:-0.01em;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
+        <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
       </a>
-      <div style="display:flex;align-items:center;gap:16px;">
-        <span style="font-size:12px;color:#6B6480;"><span style="color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp;30-day guarantee</span>
-        <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:10px 22px;font-size:13px;border:none;cursor:pointer;">Get Flove</button>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:11px;color:#6B6480;display:none;" id="nav-trust-lander"><span style="color:#C4962A;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp;30-day guarantee</span>
+        <button onclick="document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth',block:'start'})" class="cta-dark" style="padding:6px 14px;font-size:12px;border:none;cursor:pointer;">Get Flove</button>
       </div>
     </div>
   </nav>
