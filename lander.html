@@ -306,23 +306,14 @@
     .vticker-item video { width: 90px; height: 160px; object-fit: cover; display: block; }
 
     /* ── SLIDER CART ── */
-    #cart-overlay {
-      position: fixed; inset: 0; z-index: 200;
-      background: rgba(0,0,0,0);
-      pointer-events: none;
-      transition: background 0.3s ease;
+    #cart-overlay { display:none; position:fixed; inset:0; background:rgba(28,24,40,0.5); z-index:200; opacity:0; transition:opacity 0.3s ease; }
+    #cart-drawer { transition:transform 0.35s cubic-bezier(0.22,1,0.36,1); transform:translateX(100%); display:none; position:fixed; right:0; top:0; bottom:0; width:min(420px,100vw); background:#F8F4EE; z-index:201; overflow-y:auto; box-shadow:-8px 0 40px rgba(28,24,40,0.15); }
+    #cart-drawer.open { transform:translateX(0); }
+    @media (max-width:639px) {
+      #cart-drawer { top:auto !important; right:0 !important; left:0 !important; bottom:0 !important; width:100vw !important; max-height:92vh !important; border-radius:20px 20px 0 0 !important; transform:translateY(100%) !important; box-shadow:0 -8px 40px rgba(28,24,40,0.18) !important; }
+      #cart-drawer.open { transform:translateY(0) !important; }
     }
-    #cart-overlay.open { background: rgba(0,0,0,0.52); pointer-events: all; }
-    #cart-drawer {
-      position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100vw);
-      background: #FFFFFF; z-index: 201;
-      transform: translateX(100%);
-      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
-      display: flex; flex-direction: column;
-      overflow-y: auto;
-      box-shadow: -8px 0 40px rgba(0,0,0,0.15);
-    }
-    #cart-overlay.open #cart-drawer { transform: translateX(0); }
+    .upsell-slot { transition:opacity 0.28s ease; }
 
     /* ── RESPONSIVE ── */
     .l1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
@@ -346,41 +337,54 @@
 <body>
 
   <!-- ── SLIDER CART ── -->
-  <div id="cart-overlay" onclick="closeCart(event)">
-    <div id="cart-drawer">
-      <!-- header -->
-      <div style="padding:20px 20px 16px;border-bottom:1px solid #EDE6F4;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1;">
-        <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1A1526;margin:0;">Your order</h3>
-        <button onclick="closeCartBtn()" style="width:32px;height:32px;border-radius:50%;border:1px solid #EDE6F4;background:#F8F4EE;cursor:pointer;display:flex;align-items:center;justify-content:center;">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="#1A1526" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-      </div>
-      <!-- selected item -->
-      <div style="padding:20px 20px 16px;">
-        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:#F8F4EE;border-radius:16px;border:1px solid #EDE6F4;">
-          <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove" style="width:64px;height:64px;object-fit:contain;border-radius:10px;background:#fff;flex-shrink:0;border:1px solid #EDE6F4;">
-          <div style="flex:1;min-width:0;">
-            <p style="font-size:10px;font-weight:600;color:#8B72CC;margin:0 0 3px;letter-spacing:0.1em;text-transform:uppercase;">Flove Daily Performance Synbiotic</p>
-            <p id="cart-bundle-name" style="font-size:14px;font-weight:700;color:#1A1526;margin:0 0 4px;font-family:'Playfair Display',serif;"></p>
-            <p id="cart-bundle-price" style="font-size:15px;font-weight:700;color:#8B72CC;margin:0;"></p>
+  <div id="cart-overlay" onclick="closeCart()"></div>
+  <div id="cart-drawer">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #EDE6F4;position:sticky;top:0;background:#F8F4EE;z-index:2;">
+      <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1828;">Your Cart</span>
+      <button onclick="closeCart()" style="width:36px;height:36px;border-radius:50%;border:none;background:#EDE6F4;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#5A5370;">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div style="padding:20px 24px;">
+      <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:16px;padding:16px;margin-bottom:24px;">
+        <div style="display:flex;gap:14px;align-items:center;">
+          <img src="/brand_assets/1780881996497-generated-label-image-3.png" style="width:72px;height:72px;object-fit:contain;border-radius:10px;background:#F8F4EE;flex-shrink:0;">
+          <div style="flex:1;">
+            <div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:2px;">Flove Daily Performance Synbiotic</div>
+            <div id="cart-variant-label" style="font-size:12px;color:#6B6480;margin-bottom:6px;">3-Bottle — 90-day supply</div>
+            <div id="cart-item-price" style="font-size:15px;font-weight:700;color:#8B72CC;">$119.97</div>
           </div>
-          <span style="background:#2D9C6E;color:#fff;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;">✓ Added</span>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+            <button onclick="adjustQty(1)" style="width:28px;height:28px;border-radius:8px;border:1.5px solid #EDE6F4;background:#fff;cursor:pointer;font-size:16px;color:#1C1828;display:flex;align-items:center;justify-content:center;">+</button>
+            <span id="cart-qty" style="font-size:14px;font-weight:600;color:#1C1828;">1</span>
+            <button onclick="adjustQty(-1)" style="width:28px;height:28px;border-radius:8px;border:1.5px solid #EDE6F4;background:#fff;cursor:pointer;font-size:16px;color:#1C1828;display:flex;align-items:center;justify-content:center;">&minus;</button>
+          </div>
         </div>
       </div>
-      <!-- upsell -->
-      <div id="cart-upsell-section" style="padding:0 20px 20px;">
-        <div style="background:linear-gradient(135deg,#16073A 0%,#2A1260 100%);border-radius:16px;padding:18px;">
-          <p style="font-size:10px;font-weight:700;color:#C4B5E8;margin:0 0 6px;letter-spacing:0.1em;text-transform:uppercase;">⚡ Upgrade &amp; Save</p>
-          <p id="upsell-headline" style="font-size:15px;font-weight:700;color:#fff;margin:0 0 8px;font-family:'Playfair Display',serif;line-height:1.3;"></p>
-          <p id="upsell-body" style="font-size:12px;color:rgba(255,255,255,0.65);margin:0 0 14px;line-height:1.6;"></p>
-          <button id="upsell-btn" onclick="upgradeBundle()" style="width:100%;background:#C4B5E8;color:#1C1828;border:none;border-radius:100px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity 0.15s ease;">Upgrade my order &rarr;</button>
+      <div style="margin-bottom:24px;">
+        <div style="font-size:11px;font-weight:700;color:#8B72CC;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:12px;">Add to your routine</div>
+        <div id="upsell-slot-0" class="upsell-slot" style="margin-bottom:10px;"></div>
+        <div id="upsell-slot-1" class="upsell-slot"></div>
+      </div>
+      <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:16px;margin-bottom:20px;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:13px;color:#6B6480;">Subtotal</span>
+          <span id="cart-subtotal" style="font-size:13px;font-weight:600;color:#1C1828;">$119.97</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <span style="font-size:13px;color:#6B6480;">Shipping</span>
+          <span style="font-size:13px;font-weight:600;color:#22C55E;">Free</span>
+        </div>
+        <div style="border-top:1px solid #EDE6F4;margin:10px 0;"></div>
+        <div style="display:flex;justify-content:space-between;">
+          <span style="font-size:15px;font-weight:700;color:#1C1828;">Total</span>
+          <span id="cart-total" style="font-size:15px;font-weight:700;color:#1C1828;">$119.97</span>
         </div>
       </div>
-      <!-- footer -->
-      <div style="padding:0 20px 32px;margin-top:auto;">
-        <a id="cart-checkout-btn" href="#" style="display:block;text-align:center;padding:16px;font-size:16px;background:#1C1828;color:#fff;border-radius:14px;font-family:'Inter',sans-serif;font-weight:700;text-decoration:none;transition:opacity 0.15s ease;">Complete Purchase &rarr;</a>
-        <p style="font-size:11px;color:#9B96A8;text-align:center;margin:10px 0 0;line-height:1.5;">30-day money-back &middot; Keep the bottle &middot; No subscription</p>
-      </div>
+      <button onclick="proceedToCheckout()" style="width:100%;padding:16px;background:#1C1828;color:#fff;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(28,24,40,0.22);">
+        Proceed to Checkout &rarr;
+      </button>
+      <p style="font-size:11px;color:#AEA5C8;text-align:center;margin-top:10px;">Secure checkout &middot; 30-day money-back guarantee</p>
     </div>
   </div>
 
@@ -735,34 +739,6 @@
         Flove uses brown seaweed, which survives stomach acid (where other "solutions" fail), so 50%+ of the active probiotics actually reach the place they were meant to colonize.
       </p>
 
-      <!-- Resolved bar chart -->
-      <div id="resolved-bars" style="display:flex;gap:20px;align-items:flex-end;justify-content:center;margin-bottom:28px;flex-wrap:wrap;">
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-          <div class="bar-track" style="width:44px;height:180px;"><div id="r-bar1" class="bar-fill-grey" style="height:0%;"></div></div>
-          <p style="font-size:13px;font-weight:600;color:#8B8090;margin:0;">~0%</p>
-          <p style="font-size:10px;color:#9B96A8;margin:0;max-width:56px;text-align:center;line-height:1.4;">Greens</p>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-          <div class="bar-track" style="width:44px;height:180px;"><div id="r-bar2" class="bar-fill-grey" style="height:0%;"></div></div>
-          <p style="font-size:13px;font-weight:600;color:#8B8090;margin:0;">~1%</p>
-          <p style="font-size:10px;color:#9B96A8;margin:0;max-width:56px;text-align:center;line-height:1.4;">Gummy</p>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-          <div class="bar-track" style="width:44px;height:180px;"><div id="r-bar3" class="bar-fill-grey" style="height:0%;"></div></div>
-          <p style="font-size:13px;font-weight:600;color:#8B8090;margin:0;">2.8%</p>
-          <p style="font-size:10px;color:#9B96A8;margin:0;max-width:56px;text-align:center;line-height:1.4;">Standard</p>
-        </div>
-        <div style="width:1px;height:180px;background:#EDE6F4;align-self:flex-end;"></div>
-        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
-          <div style="position:relative;">
-            <div style="position:absolute;inset:-16px;background:radial-gradient(ellipse at center bottom,rgba(139,114,204,0.22) 0%,transparent 70%);pointer-events:none;border-radius:50%;"></div>
-            <div class="bar-track" style="width:56px;height:180px;position:relative;"><div id="r-bar-pl" class="bar-fill-lavender" style="height:0%;"></div></div>
-          </div>
-          <p style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#C4962A;margin:0;">50%+</p>
-          <p style="font-size:10px;color:#6B6480;margin:0;max-width:70px;text-align:center;line-height:1.4;font-weight:600;">PhaseLock&trade;</p>
-        </div>
-      </div>
-
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
         <span class="spec-pill"><span class="spec-dot"></span>Patented MAKTREK&reg; Bi-Pass</span>
         <span class="spec-pill"><span class="spec-dot"></span>40B CFU on label, 20B+ delivered</span>
@@ -925,32 +901,28 @@
           <div id="pricing-carousel" style="border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);position:relative;background:rgba(255,255,255,0.05);">
             <div id="pricing-track" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);">
               <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.gif" alt="Flove morning ritual" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
-              <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove product" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
-              <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="Flove vs standard" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
-              <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="1700+ women" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
-              <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="Guarantee" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
-              <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="Flove lifestyle" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="/brand_assets/LPM1.png" alt="Flove benefits" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="/brand_assets/LPM2.png" alt="Flove #1 clinical synbiotic" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="/brand_assets/LPM3.png" alt="Flove digestion and focus" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
+              <div style="flex:0 0 100%;"><img src="/brand_assets/LPM4.png" alt="Flove 40B CFU seaweed matrix" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
             </div>
           </div>
           <!-- Thumbnails -->
           <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;">
-            <div class="p-thumb" data-idx="0" style="border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid rgba(196,181,232,0.8);transition:border-color 0.15s ease;flex:0 0 17%;">
+            <div class="p-thumb" data-idx="0" style="border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid rgba(196,181,232,0.8);transition:border-color 0.15s ease;flex:0 0 18%;">
               <img src="/brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.gif" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="1" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
-              <img src="/brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            <div class="p-thumb" data-idx="1" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 18%;">
+              <img src="/brand_assets/LPM1.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="2" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
-              <img src="/brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            <div class="p-thumb" data-idx="2" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 18%;">
+              <img src="/brand_assets/LPM2.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="3" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
-              <img src="/brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            <div class="p-thumb" data-idx="3" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 18%;">
+              <img src="/brand_assets/LPM3.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="4" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
-              <img src="/brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
-            </div>
-            <div class="p-thumb" data-idx="5" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
-              <img src="/brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
+            <div class="p-thumb" data-idx="4" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 18%;">
+              <img src="/brand_assets/LPM4.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
           </div>
         </div>
@@ -1099,8 +1071,10 @@
           </div>
         </div>
       </div>
-      <div style="max-width:680px;margin:0 auto;border-radius:20px;overflow:hidden;border:1px solid #EDE6F4;box-shadow:0 8px 24px rgba(139,114,204,0.07);">
-        <img src="/brand_assets/hf_optimized.webp" alt="Before and after — flat stomach held at 42 minutes" style="width:100%;display:block;">
+      <div style="max-width:680px;margin:0 auto;border-radius:20px;overflow:hidden;border:1px solid #EDE6F4;box-shadow:0 8px 24px rgba(139,114,204,0.07);position:relative;">
+        <img src="/brand_assets/hf_optimized.webp" alt="Before and after stomach comparison" style="width:100%;display:block;">
+        <div style="position:absolute;bottom:11%;left:5%;background:rgba(28,24,40,0.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;">Before</div>
+        <div style="position:absolute;bottom:11%;right:5%;background:#8B72CC;color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:0.06em;text-transform:uppercase;">After</div>
       </div>
     </div>
   </section>
@@ -1319,59 +1293,120 @@
 
   <script>
     // ── Slider Cart ──
-    const BUNDLES = {
-      '43847080837198': {
-        label: 'Starter · 1 Bottle', price: '$44.99', perDay: '$1.50/day',
-        url: 'https://checkout.tryflove.com/cart/43847080837198:1',
-        upsellId: '43847089946702',
-        upsellHeadline: 'Switch to 3 bottles — save $15',
-        upsellBody: '90 days is the full colonization window. The stable morning-flat result typically lands at week 6. The 3-bottle gives you the full arc.'
-      },
-      '43847089946702': {
-        label: '90-Day Reset · 3 Bottles', price: '$119.97', perDay: '$1.33/day',
-        url: 'https://checkout.tryflove.com/cart/43847089946702:1',
-        upsellId: '43847100563534',
-        upsellHeadline: 'Add 3 more bottles — save $54 total',
-        upsellBody: 'The 6-bottle locks your price through the full maintenance phase. Women who complete 6 months report the most consistent long-term results.'
-      },
-      '43847100563534': {
-        label: 'Best Value · 6 Bottles', price: '$215.94', perDay: '$1.20/day',
-        url: 'https://checkout.tryflove.com/cart/43847100563534:1',
-        upsellId: null
-      }
+    const SHOPIFY_DOMAIN = 'checkout.tryflove.com';
+    const BUNDLE_MAP = {
+      '43847080837198': { label: '1-Bottle — 30-day supply',  price: '$44.99',  amount: 44.99 },
+      '43847089946702': { label: '3-Bottle — 90-day supply',  price: '$119.97', amount: 119.97 },
+      '43847100563534': { label: '6-Bottle — 180-day supply', price: '$215.94', amount: 215.94 },
     };
-    let currentVariant = '43847089946702';
+    const UPSELL_ITEMS = [
+      { variant: '43850583933006', title: 'Colostrum Capsules',        desc: 'Strengthens gut lining — amplifies probiotic colonization',          price: 35.00, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovecolos_a5b7d8dc-9612-42d5-9cc5-2ae0966e035e.png' },
+      { variant: '43850609655886', title: 'Max Detox (Acai)',           desc: 'Daily gut cleanse — removes waste that blocks live bacteria',         price: 29.90, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovedetox.png' },
+      { variant: '43850597695566', title: 'Fat Burner with MCT',        desc: 'MCT + L-Carnitine — accelerates fat metabolism alongside gut repair', price: 33.90, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/floveburner.png' },
+      { variant: '43850619387982', title: 'Hair, Skin & Nails Gummies', desc: 'Biotin + Collagen + Vitamins — gut health reflects in your skin',    price: 34.90, img: 'https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovehair.png' },
+    ];
+
+    let selectedVariant = '43847089946702';
+    let cartQty = 1;
+    let addedUpsells = {};
+    let upsellSlots = [0, 1];
+    let nextUpsellIdx = 2;
+
+    function buildUpsellCardHTML(slotIdx, item) {
+      return '<div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:14px;display:flex;align-items:center;gap:12px;">'
+        + '<img src="' + item.img + '" style="width:52px;height:52px;object-fit:cover;border-radius:10px;flex-shrink:0;" onerror="this.style.cssText=\'width:52px;height:52px;border-radius:10px;flex-shrink:0;background:#F3EEFF;\';this.removeAttribute(\'src\')">'
+        + '<div style="flex:1;min-width:0;">'
+        + '<div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:2px;">' + item.title + '</div>'
+        + '<div style="font-size:11px;color:#6B6480;line-height:1.4;margin-bottom:4px;">' + item.desc + '</div>'
+        + '<div style="font-size:13px;font-weight:700;color:#8B72CC;">+$' + item.price.toFixed(2) + '</div>'
+        + '</div>'
+        + '<button onclick="addUpsell(' + slotIdx + ')" style="flex-shrink:0;padding:8px 14px;background:#1C1828;color:#fff;border:none;border-radius:100px;font-family:\'Inter\',sans-serif;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;">Add</button>'
+        + '</div>';
+    }
+
+    function renderUpsellSlot(slotIdx, itemIdx) {
+      var slot = document.getElementById('upsell-slot-' + slotIdx);
+      if (!slot) return;
+      slot.style.display = '';
+      slot.style.opacity = '0';
+      slot.innerHTML = buildUpsellCardHTML(slotIdx, UPSELL_ITEMS[itemIdx]);
+      requestAnimationFrame(function() { requestAnimationFrame(function() { slot.style.opacity = '1'; }); });
+    }
+
+    function initUpsellSlots() {
+      upsellSlots = [0, 1]; nextUpsellIdx = 2; addedUpsells = {};
+      for (var i = 0; i < 2; i++) {
+        var slot = document.getElementById('upsell-slot-' + i);
+        if (slot) { slot.style.display = ''; slot.style.opacity = '1'; slot.innerHTML = buildUpsellCardHTML(i, UPSELL_ITEMS[i]); }
+      }
+    }
+
+    function addUpsell(slotIdx) {
+      var item = UPSELL_ITEMS[upsellSlots[slotIdx]];
+      addedUpsells[item.variant] = item.price;
+      var slot = document.getElementById('upsell-slot-' + slotIdx);
+      if (slot) slot.style.opacity = '0';
+      setTimeout(function() {
+        if (nextUpsellIdx < UPSELL_ITEMS.length) {
+          upsellSlots[slotIdx] = nextUpsellIdx++;
+          renderUpsellSlot(slotIdx, upsellSlots[slotIdx]);
+        } else if (slot) { slot.style.display = 'none'; }
+        updateCartTotals();
+      }, 280);
+      updateCartTotals();
+    }
 
     function openCart(variantId) {
-      currentVariant = variantId;
-      const b = BUNDLES[variantId];
-      document.getElementById('cart-bundle-name').textContent = b.label;
-      document.getElementById('cart-bundle-price').textContent = b.price + ' · ' + b.perDay;
-      document.getElementById('cart-checkout-btn').href = b.url;
-      const upsellSec = document.getElementById('cart-upsell-section');
-      if (b.upsellId) {
-        document.getElementById('upsell-headline').textContent = b.upsellHeadline;
-        document.getElementById('upsell-body').textContent = b.upsellBody;
-        upsellSec.style.display = 'block';
-      } else {
-        upsellSec.style.display = 'none';
-      }
-      document.getElementById('cart-overlay').classList.add('open');
+      selectedVariant = variantId;
+      var b = BUNDLE_MAP[variantId];
+      document.getElementById('cart-variant-label').textContent = b.label;
+      document.getElementById('cart-item-price').textContent = b.price;
+      cartQty = 1;
+      document.getElementById('cart-qty').textContent = '1';
+      initUpsellSlots();
+      var overlay = document.getElementById('cart-overlay');
+      var drawer = document.getElementById('cart-drawer');
+      overlay.style.display = 'block';
+      drawer.style.display = 'block';
       document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        overlay.style.opacity = '1';
+        drawer.classList.add('open');
+      }); });
+      updateCartTotals();
     }
 
-    function upgradeBundle() {
-      const upId = BUNDLES[currentVariant].upsellId;
-      if (upId) openCart(upId);
+    function closeCart() {
+      var overlay = document.getElementById('cart-overlay');
+      var drawer = document.getElementById('cart-drawer');
+      drawer.classList.remove('open');
+      overlay.style.opacity = '0';
+      setTimeout(function() {
+        overlay.style.display = 'none';
+        drawer.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 350);
     }
 
-    function closeCart(e) {
-      if (e.target === document.getElementById('cart-overlay')) closeCartBtn();
+    function adjustQty(delta) {
+      cartQty = Math.max(1, cartQty + delta);
+      document.getElementById('cart-qty').textContent = cartQty;
+      updateCartTotals();
     }
 
-    function closeCartBtn() {
-      document.getElementById('cart-overlay').classList.remove('open');
-      document.body.style.overflow = '';
+    function updateCartTotals() {
+      var base = BUNDLE_MAP[selectedVariant] ? BUNDLE_MAP[selectedVariant].amount : 0;
+      var total = base * cartQty;
+      Object.values(addedUpsells).forEach(function(p) { total += p; });
+      var fmt = '$' + total.toFixed(2);
+      document.getElementById('cart-subtotal').textContent = fmt;
+      document.getElementById('cart-total').textContent = fmt;
+    }
+
+    function proceedToCheckout() {
+      var items = selectedVariant + ':' + cartQty;
+      Object.keys(addedUpsells).forEach(function(v) { items += ',' + v + ':1'; });
+      window.location.href = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
     }
 
     // ── Sticky ATC ──
