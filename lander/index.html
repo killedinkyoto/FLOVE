@@ -294,6 +294,36 @@
     .cross-red { color: #D06060; }
     .comp-logo { width: 36px; height: 36px; object-fit: contain; display: block; margin: 0 auto 4px; }
 
+    /* ── VIDEO TICKER ── */
+    @keyframes vticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .vticker-wrap { background: #1C1828; overflow: hidden; padding: 16px 0; }
+    .vticker-track { display: flex; width: max-content; animation: vticker-scroll 26s linear infinite; gap: 10px; padding: 0 5px; }
+    .vticker-track:hover { animation-play-state: paused; }
+    .vticker-item { flex: 0 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); }
+    .vticker-item video { width: 90px; height: 160px; object-fit: cover; display: block; }
+
+    /* ── SLIDER CART ── */
+    #cart-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0);
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    #cart-overlay.open { background: rgba(0,0,0,0.52); pointer-events: all; }
+    #cart-drawer {
+      position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100vw);
+      background: #FFFFFF; z-index: 201;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      display: flex; flex-direction: column;
+      overflow-y: auto;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    }
+    #cart-overlay.open #cart-drawer { transform: translateX(0); }
+
     /* ── RESPONSIVE ── */
     .l1-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .strain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
@@ -315,6 +345,45 @@
 </head>
 <body>
 
+  <!-- ── SLIDER CART ── -->
+  <div id="cart-overlay" onclick="closeCart(event)">
+    <div id="cart-drawer">
+      <!-- header -->
+      <div style="padding:20px 20px 16px;border-bottom:1px solid #EDE6F4;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:1;">
+        <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1A1526;margin:0;">Your order</h3>
+        <button onclick="closeCartBtn()" style="width:32px;height:32px;border-radius:50%;border:1px solid #EDE6F4;background:#F8F4EE;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="#1A1526" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <!-- selected item -->
+      <div style="padding:20px 20px 16px;">
+        <div style="display:flex;gap:14px;align-items:flex-start;padding:16px;background:#F8F4EE;border-radius:16px;border:1px solid #EDE6F4;">
+          <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove" style="width:64px;height:64px;object-fit:contain;border-radius:10px;background:#fff;flex-shrink:0;border:1px solid #EDE6F4;">
+          <div style="flex:1;min-width:0;">
+            <p style="font-size:10px;font-weight:600;color:#8B72CC;margin:0 0 3px;letter-spacing:0.1em;text-transform:uppercase;">Flove Daily Performance Synbiotic</p>
+            <p id="cart-bundle-name" style="font-size:14px;font-weight:700;color:#1A1526;margin:0 0 4px;font-family:'Playfair Display',serif;"></p>
+            <p id="cart-bundle-price" style="font-size:15px;font-weight:700;color:#8B72CC;margin:0;"></p>
+          </div>
+          <span style="background:#2D9C6E;color:#fff;border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0;">✓ Added</span>
+        </div>
+      </div>
+      <!-- upsell -->
+      <div id="cart-upsell-section" style="padding:0 20px 20px;">
+        <div style="background:linear-gradient(135deg,#16073A 0%,#2A1260 100%);border-radius:16px;padding:18px;">
+          <p style="font-size:10px;font-weight:700;color:#C4B5E8;margin:0 0 6px;letter-spacing:0.1em;text-transform:uppercase;">⚡ Upgrade &amp; Save</p>
+          <p id="upsell-headline" style="font-size:15px;font-weight:700;color:#fff;margin:0 0 8px;font-family:'Playfair Display',serif;line-height:1.3;"></p>
+          <p id="upsell-body" style="font-size:12px;color:rgba(255,255,255,0.65);margin:0 0 14px;line-height:1.6;"></p>
+          <button id="upsell-btn" onclick="upgradeBundle()" style="width:100%;background:#C4B5E8;color:#1C1828;border:none;border-radius:100px;padding:11px;font-size:13px;font-weight:700;cursor:pointer;transition:opacity 0.15s ease;">Upgrade my order &rarr;</button>
+        </div>
+      </div>
+      <!-- footer -->
+      <div style="padding:0 20px 32px;margin-top:auto;">
+        <a id="cart-checkout-btn" href="#" style="display:block;text-align:center;padding:16px;font-size:16px;background:#1C1828;color:#fff;border-radius:14px;font-family:'Inter',sans-serif;font-weight:700;text-decoration:none;transition:opacity 0.15s ease;">Complete Purchase &rarr;</a>
+        <p style="font-size:11px;color:#9B96A8;text-align:center;margin:10px 0 0;line-height:1.5;">30-day money-back &middot; Keep the bottle &middot; No subscription</p>
+      </div>
+    </div>
+  </div>
+
   <!-- ── STICKY ATC ── -->
   <div id="sticky-atc">
     <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
@@ -322,7 +391,7 @@
         <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:17px;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
         <span style="font-size:12px;color:#6B6480;"><span style="color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;30-day guarantee</span>
       </div>
-      <a href="#pricing-cards" class="cta-dark" style="padding:11px 28px;font-size:14px;">Get Flove &rarr;</a>
+      <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:11px 28px;font-size:14px;border:none;cursor:pointer;">Get Flove &rarr;</button>
     </div>
   </div>
 
@@ -334,7 +403,7 @@
       </a>
       <div style="display:flex;align-items:center;gap:16px;">
         <span style="font-size:12px;color:#6B6480;"><span style="color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp;30-day guarantee</span>
-        <a href="#pricing-cards" class="cta-dark" style="padding:10px 22px;font-size:13px;">Get Flove</a>
+        <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:10px 22px;font-size:13px;border:none;cursor:pointer;">Get Flove</button>
       </div>
     </div>
   </nav>
@@ -356,7 +425,7 @@
           <span style="font-size:13px;color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span style="font-size:13px;color:#6B6480;">4.9 stars &middot; 30-day money back, no return needed</span>
         </div>
-        <a href="#pricing-cards" class="cta-dark" style="padding:16px 36px;font-size:16px;">Start the 90-day reset &rarr;</a>
+        <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:16px 36px;font-size:16px;border:none;cursor:pointer;">Start the 90-day reset &rarr;</button>
       </div>
       <div class="l1-img" style="position:relative;">
         <img src="/brand_assets/testimonial-1-opt.webp" alt="Woman in activewear" style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5;display:block;object-position:top;">
@@ -445,6 +514,20 @@
       <span class="ticker-dot"></span>
       <span class="ticker-item">1,685% more than standard capsule</span>
       <span class="ticker-dot"></span>
+    </div>
+  </div>
+
+  <!-- ── VIDEO TICKER ── -->
+  <div class="vticker-wrap">
+    <div class="vticker-track">
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_023526_e96dc144-3a32-4775-83de-462af85ac5f7.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_023542_bb8a20a6-caad-48b9-be04-05c6e9ba36c2 - Trim.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_023559_1c1a4585-7b5e-4713-b50e-7c01c71ca689 - Trim.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_024629_3b1d1993-bedf-4ab9-b581-5cae48ebf3f1.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_023526_e96dc144-3a32-4775-83de-462af85ac5f7.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_023542_bb8a20a6-caad-48b9-be04-05c6e9ba36c2 - Trim.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_023559_1c1a4585-7b5e-4713-b50e-7c01c71ca689 - Trim.mp4" autoplay muted loop playsinline></video></div>
+      <div class="vticker-item"><video src="/brand_assets/hf_20260609_024629_3b1d1993-bedf-4ab9-b581-5cae48ebf3f1.mp4" autoplay muted loop playsinline></video></div>
     </div>
   </div>
 
@@ -761,6 +844,65 @@
   </section>
 
   <!-- ════════════════════════════════════════ -->
+  <!-- FAQ — FIRST ITEM OPEN                   -->
+  <!-- ════════════════════════════════════════ -->
+  <section style="background:#F8F4EE;padding:72px 20px;">
+    <div style="max-width:720px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:48px;">
+        <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0;">
+          Questions about <em style="color:#8B72CC;font-style:italic;">PhaseLock&trade;</em>
+        </h2>
+      </div>
+      <div style="background:#FFFFFF;border:1px solid #EDE6F4;border-radius:20px;padding:0 24px;" id="faq-container">
+        <div class="faq-item open">
+          <button class="faq-question" aria-expanded="true">
+            Why two capsules a day instead of one?
+            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="faq-answer" id="faq-first-answer">
+            <div class="faq-answer-inner">A single big dose hits a sensitive gut all at once and causes the exact transition gas you're trying to avoid. Splitting it lets the morning capsule handle your meals and the night capsule handle repair &mdash; on the schedule your body already runs.</div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            I've tried three probiotics already. Why is this different?
+            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Those dissolved in your stomach acid. PhaseLock&trade; stays sealed until it clears the acid, so the strains arrive alive instead of as digested protein. 50%+ delivery compared to 2.8% for a standard capsule.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Will it cramp me like greens powder did?
+            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">No. Greens powders dump high-volume raw fiber that ferments under pressure. This is a low dose of FOS (200mg) that feeds only the strains that just arrived &mdash; not the gas-producing bacteria already there.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I keep my whey shakes?
+            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes, and they get easier. The La-14 strain makes the lactase enzyme that breaks down the lactose in whey concentrate, which is what causes protein bloat. Two or three shakes a day is exactly what La-14 was selected to handle.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Is this a laxative?
+            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">No senna, no stimulants, nothing that forces a bowel movement. It rebuilds the microbiome so bloating stops at the source. No dependency, no urgency, no "cleanse" crash.</div></div>
+        </div>
+        <div class="faq-item" style="border-bottom:none;">
+          <button class="faq-question" aria-expanded="false">
+            How long until I see it?
+            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </button>
+          <div class="faq-answer"><div class="faq-answer-inner">Shake-gas eases in the first week. The stable, morning-flat result lands around weeks 6 to 8 when colonization completes. That's why the 90-day supply exists &mdash; it gives you the full arc instead of stopping at the early result.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
   <!-- PURPLE PRICING — RIGHT AFTER STRAINS    -->
   <!-- ════════════════════════════════════════ -->
   <section id="pricing" class="purple-section" style="padding:80px 20px;scroll-margin-top:64px;">
@@ -782,6 +924,7 @@
           <!-- Main viewer -->
           <div id="pricing-carousel" style="border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.12);position:relative;background:rgba(255,255,255,0.05);">
             <div id="pricing-track" style="display:flex;transition:transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);">
+              <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.gif" alt="Flove morning ritual" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
               <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove product" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
               <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="Flove vs standard" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
               <div style="flex:0 0 100%;"><img src="/brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="1700+ women" style="width:100%;height:auto;display:block;background:#F8F4EE;"></div>
@@ -790,20 +933,23 @@
             </div>
           </div>
           <!-- Thumbnails -->
-          <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
-            <div class="p-thumb" data-idx="0" style="border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid rgba(196,181,232,0.8);transition:border-color 0.15s ease;">
+          <div style="display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px;">
+            <div class="p-thumb" data-idx="0" style="border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid rgba(196,181,232,0.8);transition:border-color 0.15s ease;flex:0 0 17%;">
+              <img src="/brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.gif" alt="" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#F8F4EE;">
+            </div>
+            <div class="p-thumb" data-idx="1" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
               <img src="/brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="1" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+            <div class="p-thumb" data-idx="2" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
               <img src="/brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="2" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+            <div class="p-thumb" data-idx="3" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
               <img src="/brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="3" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+            <div class="p-thumb" data-idx="4" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
               <img src="/brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
-            <div class="p-thumb" data-idx="4" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;">
+            <div class="p-thumb" data-idx="5" style="border-radius:12px;overflow:hidden;cursor:pointer;border:1px solid rgba(255,255,255,0.18);transition:border-color 0.15s ease;flex:0 0 17%;">
               <img src="/brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" style="width:100%;aspect-ratio:1;object-fit:contain;display:block;background:#F8F4EE;">
             </div>
           </div>
@@ -811,6 +957,21 @@
 
         <!-- RIGHT: pricing -->
         <div>
+          <!-- Product info -->
+          <div style="margin-bottom:20px;">
+            <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#FFFFFF;margin:0 0 12px;letter-spacing:-0.02em;">Flove Daily Performance Synbiotic</h3>
+            <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px;">
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.82);"><span style="color:#C4962A;font-weight:700;">✓</span> Protein bloat gone in week 1</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.82);"><span style="color:#C4962A;font-weight:700;">✓</span> 50%+ bacteria delivery via PhaseLock&trade;</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.82);"><span style="color:#C4962A;font-weight:700;">✓</span> Morning-flat result in 6–8 weeks</div>
+              <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.82);"><span style="color:#C4962A;font-weight:700;">✓</span> 40B CFU &middot; 4 targeted strains &middot; No subscription</div>
+            </div>
+            <div style="background:rgba(139,114,204,0.18);border:1px solid rgba(139,114,204,0.35);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
+              <span style="font-size:14px;flex-shrink:0;margin-top:1px;">🧪</span>
+              <p style="font-size:11px;color:rgba(196,181,232,0.9);margin:0;line-height:1.5;"><strong style="color:#C4B5E8;">PhaseLock&trade; (MAKTREK&reg; Bi-Pass)</strong> — marine seaweed shield keeps bacteria alive through stomach acid. 1,685% more live bacteria than a standard capsule.</p>
+            </div>
+          </div>
+
           <!-- Rating -->
           <div id="pricing-cards" style="display:flex;align-items:center;gap:8px;margin-bottom:16px;scroll-margin-top:72px;">
             <span style="color:#C4962A;font-size:14px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
@@ -827,7 +988,7 @@
                   <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">Starter · 1 bottle</p>
                   <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0;letter-spacing:-0.02em;">$44.99 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.50/day</span></p>
                 </div>
-                <a href="https://checkout.tryflove.com/cart/43847080837198:1" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;">Select</a>
+                <button onclick="openCart('43847080837198')" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;cursor:pointer;">Select</button>
               </div>
             </div>
 
@@ -842,7 +1003,7 @@
                   <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0 0 2px;letter-spacing:-0.02em;">$119.97 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.33/day</span></p>
                   <p style="font-size:11px;color:#C4B5E8;font-weight:600;margin:0;">You save $15.00</p>
                 </div>
-                <a href="https://checkout.tryflove.com/cart/43847089946702:1" class="cta-white" style="padding:10px 20px;font-size:13px;white-space:nowrap;">Select &rarr;</a>
+                <button onclick="openCart('43847089946702')" class="cta-white" style="padding:10px 20px;font-size:13px;white-space:nowrap;border:none;cursor:pointer;">Select &rarr;</button>
               </div>
             </div>
 
@@ -854,7 +1015,7 @@
                   <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0 0 2px;letter-spacing:-0.02em;">$215.94 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.20/day</span></p>
                   <p style="font-size:11px;color:#C4962A;font-weight:600;margin:0;">&#9733; Save $54.00</p>
                 </div>
-                <a href="https://checkout.tryflove.com/cart/43847100563534:1" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;">Select</a>
+                <button onclick="openCart('43847100563534')" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;cursor:pointer;">Select</button>
               </div>
             </div>
 
@@ -876,6 +1037,7 @@
           const track = document.getElementById('pricing-track');
           const thumbs = document.querySelectorAll('.p-thumb');
           let current = 0;
+          let autoTimer;
           function goTo(idx) {
             current = idx;
             track.style.transform = 'translateX(-' + (idx * 100) + '%)';
@@ -885,7 +1047,15 @@
                 : '1px solid rgba(255,255,255,0.18)';
             });
           }
-          thumbs.forEach(t => t.addEventListener('click', () => goTo(parseInt(t.dataset.idx))));
+          function startAuto() {
+            autoTimer = setInterval(() => goTo((current + 1) % thumbs.length), 4000);
+          }
+          thumbs.forEach(t => t.addEventListener('click', () => {
+            clearInterval(autoTimer);
+            goTo(parseInt(t.dataset.idx));
+            startAuto();
+          }));
+          startAuto();
         })();
       </script>
 
@@ -1041,72 +1211,6 @@
   </section>
 
   <!-- ════════════════════════════════════════ -->
-  <!-- FAQ — FIRST ITEM OPEN                   -->
-  <!-- ════════════════════════════════════════ -->
-  <section style="background:#F8F4EE;padding:72px 20px;">
-    <div style="max-width:720px;margin:0 auto;">
-      <div style="text-align:center;margin-bottom:48px;">
-        <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0;">
-          Questions about <em style="color:#8B72CC;font-style:italic;">PhaseLock&trade;</em>
-        </h2>
-      </div>
-      <div style="background:#FFFFFF;border:1px solid #EDE6F4;border-radius:20px;padding:0 24px;" id="faq-container">
-
-        <div class="faq-item open">
-          <button class="faq-question" aria-expanded="true">
-            Why two capsules a day instead of one?
-            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </button>
-          <div class="faq-answer" id="faq-first-answer">
-            <div class="faq-answer-inner">A single big dose hits a sensitive gut all at once and causes the exact transition gas you're trying to avoid. Splitting it lets the morning capsule handle your meals and the night capsule handle repair &mdash; on the schedule your body already runs.</div>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            I've tried three probiotics already. Why is this different?
-            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Those dissolved in your stomach acid. PhaseLock&trade; stays sealed until it clears the acid, so the strains arrive alive instead of as digested protein. 50%+ delivery compared to 2.8% for a standard capsule.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Will it cramp me like greens powder did?
-            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">No. Greens powders dump high-volume raw fiber that ferments under pressure. This is a low dose of FOS (200mg) that feeds only the strains that just arrived &mdash; not the gas-producing bacteria already there.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Can I keep my whey shakes?
-            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Yes, and they get easier. The La-14 strain makes the lactase enzyme that breaks down the lactose in whey concentrate, which is what causes protein bloat. Two or three shakes a day is exactly what La-14 was selected to handle.</div></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false">
-            Is this a laxative?
-            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">No senna, no stimulants, nothing that forces a bowel movement. It rebuilds the microbiome so bloating stops at the source. No dependency, no urgency, no "cleanse" crash.</div></div>
-        </div>
-
-        <div class="faq-item" style="border-bottom:none;">
-          <button class="faq-question" aria-expanded="false">
-            How long until I see it?
-            <span class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="#8B72CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </button>
-          <div class="faq-answer"><div class="faq-answer-inner">Shake-gas eases in the first week. The stable, morning-flat result lands around weeks 6 to 8 when colonization completes. That's why the 90-day supply exists &mdash; it gives you the full arc instead of stopping at the early result.</div></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════════════════════════════════ -->
   <!-- GUARANTEE                               -->
   <!-- ════════════════════════════════════════ -->
   <section style="background:#FFFFFF;padding:72px 20px;">
@@ -1117,7 +1221,7 @@
         </div>
         <h3 style="font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;color:#1A1526;margin:0 0 14px;">30 days. Keep the bottle either way.</h3>
         <p style="font-size:15px;line-height:1.75;color:#6B6480;margin:0 0 28px;">Take it morning and night for 30 days. If your stomach isn't flatter, email us and we refund you. Nothing to send back. One-time purchase, no subscription to cancel.</p>
-        <a href="#pricing-cards" class="cta-dark" style="padding:15px 36px;font-size:15px;">Start my 30-day trial &rarr;</a>
+        <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:15px 36px;font-size:15px;border:none;cursor:pointer;">Start my 30-day trial &rarr;</button>
       </div>
     </div>
   </section>
@@ -1197,7 +1301,7 @@
 
       <!-- Final CTA -->
       <div style="text-align:center;margin-top:48px;">
-        <a href="#pricing-cards" class="cta-dark" style="padding:18px 52px;font-size:18px;display:inline-block;margin-bottom:16px;">Start the 90-day reset &rarr;</a>
+        <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:18px 52px;font-size:18px;display:inline-block;margin-bottom:16px;border:none;cursor:pointer;">Start the 90-day reset &rarr;</button>
         <p style="font-size:13px;color:#6B6480;margin:0;"><span style="color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp; 30-day money-back &middot; No subscription &middot; Made in USA</p>
       </div>
     </div>
@@ -1214,6 +1318,62 @@
   </footer>
 
   <script>
+    // ── Slider Cart ──
+    const BUNDLES = {
+      '43847080837198': {
+        label: 'Starter · 1 Bottle', price: '$44.99', perDay: '$1.50/day',
+        url: 'https://checkout.tryflove.com/cart/43847080837198:1',
+        upsellId: '43847089946702',
+        upsellHeadline: 'Switch to 3 bottles — save $15',
+        upsellBody: '90 days is the full colonization window. The stable morning-flat result typically lands at week 6. The 3-bottle gives you the full arc.'
+      },
+      '43847089946702': {
+        label: '90-Day Reset · 3 Bottles', price: '$119.97', perDay: '$1.33/day',
+        url: 'https://checkout.tryflove.com/cart/43847089946702:1',
+        upsellId: '43847100563534',
+        upsellHeadline: 'Add 3 more bottles — save $54 total',
+        upsellBody: 'The 6-bottle locks your price through the full maintenance phase. Women who complete 6 months report the most consistent long-term results.'
+      },
+      '43847100563534': {
+        label: 'Best Value · 6 Bottles', price: '$215.94', perDay: '$1.20/day',
+        url: 'https://checkout.tryflove.com/cart/43847100563534:1',
+        upsellId: null
+      }
+    };
+    let currentVariant = '43847089946702';
+
+    function openCart(variantId) {
+      currentVariant = variantId;
+      const b = BUNDLES[variantId];
+      document.getElementById('cart-bundle-name').textContent = b.label;
+      document.getElementById('cart-bundle-price').textContent = b.price + ' · ' + b.perDay;
+      document.getElementById('cart-checkout-btn').href = b.url;
+      const upsellSec = document.getElementById('cart-upsell-section');
+      if (b.upsellId) {
+        document.getElementById('upsell-headline').textContent = b.upsellHeadline;
+        document.getElementById('upsell-body').textContent = b.upsellBody;
+        upsellSec.style.display = 'block';
+      } else {
+        upsellSec.style.display = 'none';
+      }
+      document.getElementById('cart-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function upgradeBundle() {
+      const upId = BUNDLES[currentVariant].upsellId;
+      if (upId) openCart(upId);
+    }
+
+    function closeCart(e) {
+      if (e.target === document.getElementById('cart-overlay')) closeCartBtn();
+    }
+
+    function closeCartBtn() {
+      document.getElementById('cart-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
     // ── Sticky ATC ──
     const heroEl = document.getElementById('hero');
     const stickyAtc = document.getElementById('sticky-atc');
