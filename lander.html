@@ -236,7 +236,7 @@
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-top: 1px solid #EDE6F4;
-      padding: 12px 20px;
+      padding: 8px 16px;
       box-shadow: 0 -4px 16px rgba(139,114,204,0.08);
     }
     #sticky-atc.visible { transform: translateY(0); }
@@ -390,12 +390,12 @@
 
   <!-- ── STICKY ATC ── -->
   <div id="sticky-atc">
-    <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-      <div style="display:flex;align-items:center;gap:12px;">
-        <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:17px;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
-        <span style="font-size:12px;color:#6B6480;"><span style="color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;30-day guarantee</span>
+    <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:15px;color:#1A1526;">flove<span style="color:#8B72CC;">.</span></span>
+        <span style="font-size:11px;color:#6B6480;"><span style="color:#C4962A;font-size:10px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span> &nbsp;30-day guarantee</span>
       </div>
-      <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:11px 28px;font-size:14px;border:none;cursor:pointer;">Get Flove &rarr;</button>
+      <button onclick="document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth',block:'start'})" class="cta-dark" style="padding:8px 20px;font-size:13px;border:none;cursor:pointer;white-space:nowrap;">Get Flove &rarr;</button>
     </div>
   </div>
 
