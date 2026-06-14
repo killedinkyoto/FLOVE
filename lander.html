@@ -215,6 +215,7 @@
       transition: transform 0.25s ease, background 0.15s ease;
     }
     .faq-item.open .faq-chevron { transform: rotate(180deg); background: rgba(139,114,204,0.2); }
+    .faq-item.open .faq-answer { max-height: 600px; }
     .faq-answer {
       max-height: 0;
       overflow: hidden;
@@ -712,70 +713,198 @@
   </script>
 
   <!-- ════════════════════════════════════════ -->
-  <!-- L5 · DEATH ZONE — IMAGE LABELS + FLOVE  -->
+  <!-- L4b · ROOT CAUSE                         -->
   <!-- ════════════════════════════════════════ -->
-  <section id="death-zone" style="background:linear-gradient(180deg,#FFFFFF 0%,#FFF5F5 100%);padding:80px 20px;">
-    <div style="max-width:800px;margin:0 auto;text-align:center;">
-      <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0 0 16px;">
-        They all failed you the same way.
+  <section id="root-cause" style="background:#F8F4EE;padding:80px 20px;">
+    <div style="max-width:760px;margin:0 auto;text-align:center;">
+
+      <div class="section-label" style="margin-bottom:14px;">THE ROOT CAUSE</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0 0 18px;letter-spacing:-0.02em;">
+        The real reason nothing works&hellip;
       </h2>
-      <p style="font-size:16px;line-height:1.7;color:#6B6480;margin:0 auto 48px;max-width:520px;">
-        Your stomach runs at a pH that breaks a normal synbiotic capsule in minutes. The live bacteria (that fixes your bloating) are all digested in your stomach before even reaching the gut.
+      <p style="font-size:16px;line-height:1.75;color:#6B6480;margin:0 auto 40px;max-width:540px;">
+        You've tried it all, and they all seemed like the perfect fix. But none of them addressed the issue at its root.
       </p>
 
-      <!-- Bars with image labels -->
-      <div id="death-bars" style="display:flex;gap:24px;align-items:flex-end;justify-content:center;margin-bottom:16px;flex-wrap:wrap;">
-
-        <!-- Greens -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <img src="/brand_assets/Matcha_Green_Powder_Web.png" alt="Greens powder" style="width:44px;height:44px;object-fit:contain;opacity:0.6;filter:grayscale(30%);">
-          <div class="bar-track" style="width:44px;height:160px;">
-            <div id="d-bar1" class="bar-fill-red" style="height:100%;"></div>
-          </div>
-          <p style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#D06060;margin:0;">~0%</p>
-        </div>
-
-        <!-- ACV gummy -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <img src="/brand_assets/serve-of-acv-gummies.png" alt="ACV gummies" style="width:44px;height:44px;object-fit:contain;opacity:0.6;filter:grayscale(30%);">
-          <div class="bar-track" style="width:44px;height:160px;">
-            <div id="d-bar2" class="bar-fill-red" style="height:100%;"></div>
-          </div>
-          <p style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#D06060;margin:0;">~1%</p>
-        </div>
-
-        <!-- Standard capsule -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <img src="/brand_assets/aayj82p0i.png" alt="Standard capsule" style="width:44px;height:44px;object-fit:contain;opacity:0.7;filter:grayscale(20%);">
-          <div class="bar-track" style="width:44px;height:160px;">
-            <div id="d-bar3" class="bar-fill-red" style="height:100%;"></div>
-          </div>
-          <p style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#D06060;margin:0;">2.8%</p>
-        </div>
-
-        <!-- Divider -->
-        <div style="width:1px;height:160px;background:#EDE6F4;align-self:flex-end;margin:0 4px;"></div>
-
-        <!-- Flove (purple, stays tall) -->
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-          <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove" style="width:44px;height:44px;object-fit:contain;">
-          <div style="position:relative;">
-            <div style="position:absolute;inset:-10px;background:radial-gradient(ellipse at center bottom,rgba(139,114,204,0.2) 0%,transparent 70%);pointer-events:none;border-radius:50%;"></div>
-            <div class="bar-track" style="width:52px;height:160px;position:relative;">
-              <div class="bar-fill-purple-static" style="height:90%;"></div>
-            </div>
-          </div>
-          <p style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#C4962A;margin:0;">50%+</p>
-        </div>
-
+      <!-- Image -->
+      <div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(139,114,204,0.12);margin-bottom:40px;">
+        <img src="/brand_assets/09_12_2022_Da-studio-su-microbiota-dellileo-nuove-speranze-per-celiachia-e-malattia-di-Crohn.jpg"
+             alt="Gut bacteria microbiome illustration"
+             style="width:100%;display:block;object-fit:cover;max-height:420px;">
       </div>
-      <p style="font-size:11px;color:#9B96A8;margin:0 0 40px;font-style:italic;">Live bacteria reaching the lower gut. PhaseLock&trade; stays sealed through stomach acid.</p>
 
-      <!-- The stat -->
-      <div style="background:#FFF5F5;border:1.5px solid rgba(208,96,96,0.2);border-radius:20px;padding:36px 40px;display:inline-block;">
-        <p style="font-family:'Playfair Display',serif;font-size:clamp(3.5rem,8vw,5.5rem);font-weight:700;color:#D06060;margin:0 0 8px;line-height:1;">2.8%</p>
-        <p style="font-size:14px;color:#8B6060;margin:0;">of a standard probiotic dose survives your stomach acid.</p>
+      <!-- Explanation -->
+      <div style="background:#FFFFFF;border:1.5px solid #EDE6F4;border-radius:20px;padding:36px 40px;box-shadow:0 4px 24px rgba(139,114,204,0.08);text-align:left;">
+        <p style="font-size:16px;line-height:1.8;color:#3D3553;margin:0 0 20px;">
+          The good bacteria in your gut are what ferment fiber. When you're low on these bacteria, gases get trapped, and your gut lining becomes sensitive — causing visible, painful bloating.
+        </p>
+        <p style="font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:#1A1526;margin:0;border-top:1px solid #EDE6F4;padding-top:20px;">
+          Yet none of these &ldquo;fixes&rdquo; address this.
+        </p>
       </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════ -->
+  <!-- L5 · DEATH ZONE — IMAGE LABELS + FLOVE  -->
+  <!-- ════════════════════════════════════════ -->
+  <section id="death-zone" style="background:#F8F4EE;padding:80px 20px;">
+    <div style="max-width:680px;margin:0 auto;text-align:center;">
+
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0 0 36px;letter-spacing:-0.02em;">
+        How it stacks up
+      </h2>
+
+      <!-- Comparison table card -->
+      <div style="background:#FFFFFF;border:1.5px solid #EDE6F4;border-radius:20px;overflow:hidden;box-shadow:0 4px 32px rgba(139,114,204,0.1);">
+        <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+
+          <!-- Product header row -->
+          <thead>
+            <tr style="border-bottom:1.5px solid #EDE6F4;">
+              <th style="width:32%;padding:18px 12px 18px 20px;text-align:left;"></th>
+              <!-- Col 1: Flove -->
+              <th style="padding:18px 8px;text-align:center;background:rgba(139,114,204,0.06);">
+                <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove" style="width:40px;height:40px;object-fit:contain;display:block;margin:0 auto;">
+              </th>
+              <!-- Col 2: Greens -->
+              <th style="padding:18px 8px;text-align:center;">
+                <img src="/brand_assets/Matcha_Green_Powder_Web.png" alt="Greens powder" style="width:40px;height:40px;object-fit:contain;display:block;margin:0 auto;filter:grayscale(20%);opacity:0.7;">
+              </th>
+              <!-- Col 3: Standard capsule -->
+              <th style="padding:18px 8px;text-align:center;">
+                <img src="/brand_assets/aayj82p0i.png" alt="Standard capsule" style="width:40px;height:40px;object-fit:contain;display:block;margin:0 auto;filter:grayscale(20%);opacity:0.7;">
+              </th>
+              <!-- Col 4: ACV gummies -->
+              <th style="padding:18px 8px;text-align:center;">
+                <img src="/brand_assets/serve-of-acv-gummies.png" alt="ACV gummies" style="width:40px;height:40px;object-fit:contain;display:block;margin:0 auto;filter:grayscale(20%);opacity:0.7;">
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- Row styles alternating -->
+            <style>
+              #cmp-table tr:nth-child(even) td { background:#FAFAFA; }
+              #cmp-table tr:nth-child(even) td.flove-col { background:rgba(139,114,204,0.07); }
+            </style>
+
+            <!-- ROW 0: Active Probiotics -->
+            <tr id="cmp-table">
+              <td style="padding:14px 12px 14px 20px;text-align:left;font-size:13px;font-weight:600;color:#3D3553;line-height:1.35;border-bottom:1px solid #F0EBF8;">Active Probiotics</td>
+              <td class="flove-col" style="padding:14px 8px;text-align:center;background:rgba(139,114,204,0.06);border-bottom:1px solid #F0EBF8;">
+                <span style="color:#4CAF50;font-size:17px;font-weight:700;">✓</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="color:#E07070;font-size:15px;">✗</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="color:#4CAF50;font-size:17px;font-weight:700;">✓</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="color:#E07070;font-size:15px;">✗</span>
+              </td>
+            </tr>
+
+            <!-- ROW 1: Survives stomach acid -->
+            <tr>
+              <td style="padding:14px 12px 14px 20px;text-align:left;font-size:13px;font-weight:600;color:#3D3553;line-height:1.35;border-bottom:1px solid #F0EBF8;">Survives stomach acid</td>
+              <td style="padding:14px 8px;text-align:center;background:rgba(139,114,204,0.06);border-bottom:1px solid #F0EBF8;">
+                <span style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#8B72CC;">50%+</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:13px;color:#E07070;font-weight:600;">0%</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:13px;color:#E07070;font-weight:600;">2.8%</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:13px;color:#E07070;font-weight:600;">0%</span>
+              </td>
+            </tr>
+
+            <!-- ROW 2: Built for protein bloat -->
+            <tr>
+              <td style="padding:14px 12px 14px 20px;text-align:left;font-size:13px;font-weight:600;color:#3D3553;line-height:1.35;border-bottom:1px solid #F0EBF8;background:#FAFAFA;">Built for protein bloat</td>
+              <td style="padding:14px 8px;text-align:center;background:rgba(139,114,204,0.07);border-bottom:1px solid #F0EBF8;">
+                <span style="color:#4CAF50;font-size:17px;font-weight:700;">✓</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;background:#FAFAFA;border-bottom:1px solid #F0EBF8;">
+                <span style="color:#E07070;font-size:15px;">✗</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;background:#FAFAFA;border-bottom:1px solid #F0EBF8;">
+                <span style="color:#E07070;font-size:15px;">✗</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;background:#FAFAFA;border-bottom:1px solid #F0EBF8;">
+                <span style="color:#E07070;font-size:15px;">✗</span>
+              </td>
+            </tr>
+
+            <!-- ROW 3: Causes mid-lift cramps -->
+            <tr>
+              <td style="padding:14px 12px 14px 20px;text-align:left;font-size:13px;font-weight:600;color:#3D3553;line-height:1.35;border-bottom:1px solid #F0EBF8;">Causes mid-lift cramps</td>
+              <td style="padding:14px 8px;text-align:center;background:rgba(139,114,204,0.06);border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:700;color:#4CAF50;">No</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:600;color:#E07070;">Yes</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;color:#9B96A8;">Sometimes</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:600;color:#E07070;">Yes</span>
+              </td>
+            </tr>
+
+            <!-- ROW 4: Laxatives / dependency -->
+            <tr>
+              <td style="padding:14px 12px 14px 20px;text-align:left;font-size:13px;font-weight:600;color:#3D3553;line-height:1.35;border-bottom:1px solid #F0EBF8;background:#FAFAFA;">Laxatives / dependency</td>
+              <td style="padding:14px 8px;text-align:center;background:rgba(139,114,204,0.07);border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:700;color:#4CAF50;">None</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;background:#FAFAFA;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:700;color:#4CAF50;">None</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;background:#FAFAFA;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:700;color:#4CAF50;">None</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;background:#FAFAFA;border-bottom:1px solid #F0EBF8;">
+                <span style="font-size:12px;font-weight:600;color:#E07070;">Senna</span>
+              </td>
+            </tr>
+
+            <!-- ROW 5: Cost per day -->
+            <tr>
+              <td style="padding:14px 12px 14px 20px;text-align:left;font-size:13px;font-weight:600;color:#3D3553;line-height:1.35;">Cost per day</td>
+              <td style="padding:14px 8px;text-align:center;background:rgba(139,114,204,0.06);">
+                <span style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:#8B72CC;">$1.33</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;">
+                <span style="font-size:12px;color:#6B6480;">~$3.30</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;">
+                <span style="font-size:12px;color:#6B6480;">~$1.50</span>
+              </td>
+              <td style="padding:14px 8px;text-align:center;">
+                <span style="font-size:12px;color:#6B6480;">varies</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- CTA -->
+      <div style="margin-top:36px;">
+        <a href="#pricing" style="display:inline-block;background:#1C1828;color:#FFFFFF;font-size:16px;font-weight:600;padding:18px 40px;border-radius:100px;text-decoration:none;letter-spacing:0.01em;transition:opacity 0.2s,transform 0.2s;" onmouseover="this.style.opacity='0.85';this.style.transform='translateY(-1px)'" onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+          Bring Back My Confidence &rarr;
+        </a>
+        <p style="margin:14px 0 0;font-size:13px;color:#9B96A8;">
+          <span style="color:#C4962A;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>&nbsp; 30-day money-back &middot; No subscription &middot; Made in USA
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -785,20 +914,24 @@
   <section id="phaselockshift" style="background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(139,114,204,0.09) 0%,transparent 70%),#F8F4EE;padding:80px 20px;">
     <div style="max-width:840px;margin:0 auto;text-align:center;">
       <div class="section-label" style="margin-bottom:14px;">THE DIFFERENCE</div>
-      <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0 0 18px;">
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0 0 10px;">
         A marine shield that stays sealed. We call it <em style="color:#8B72CC;font-style:italic;">PhaseLock&trade;</em>.
       </h2>
+      <p style="font-size:16px;line-height:1.6;color:#6B6480;margin:0 auto 36px;max-width:480px;">
+        Flove uses brown seaweed, which actually survives the stomach acid.
+      </p>
 
       <!-- MAKTREK mechanism diagram -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 auto 28px;">
         <img src="brand_assets/360_F_595670163_GKUD4KOsEJ7kO6TlW5LXTkazEUXvhqKe.png" alt="Brown seaweed" style="width:220px;height:220px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(139,114,204,0.12));">
         <span style="font-size:2rem;font-weight:700;color:#8B72CC;line-height:1;">+</span>
         <img src="brand_assets/1780881996493-generated-label-image-4.png" alt="Flove capsule" style="width:220px;height:220px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(139,114,204,0.12));">
+        <span style="font-size:2rem;font-weight:700;color:#8B72CC;line-height:1;">=</span>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 40px;background:#FFFFFF;border:1.5px solid #EDE6F4;border-radius:20px;box-shadow:0 4px 24px rgba(139,114,204,0.1);">
+          <p style="font-family:'Playfair Display',serif;font-size:clamp(3.2rem,10vw,5rem);font-weight:700;color:#8B72CC;margin:0;line-height:1;">50%+</p>
+          <p style="font-size:14px;color:#6B6480;margin:0;max-width:260px;line-height:1.55;">Of active probiotics actually reach the place they were meant to colonize.</p>
+        </div>
       </div>
-
-      <p style="font-size:16px;line-height:1.75;color:#6B6480;margin:0 auto 40px;max-width:540px;">
-        Flove uses brown seaweed, which survives stomach acid (where other "solutions" fail), so 50%+ of the active probiotics actually reach the place they were meant to colonize.
-      </p>
 
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
         <span class="spec-pill"><span class="spec-dot"></span>Patented MAKTREK&reg; Bi-Pass</span>
@@ -1520,31 +1653,22 @@
       });
     }
 
-    // ── Death zone bars (start full, collapse) ──
-    new IntersectionObserver((e) => {
-      if (e[0].isIntersecting) {
-        setTimeout(() => {
-          document.getElementById('d-bar1').style.height = '1%';
-          document.getElementById('d-bar2').style.height = '2%';
-          document.getElementById('d-bar3').style.height = '4%';
-        }, 150);
-        e[0].target._obs?.disconnect();
-      }
-    }, { threshold: 0.5 }).observe(document.getElementById('death-bars'));
-
     // ── Resolved bars (rise up) ──
-    new IntersectionObserver((e) => {
-      if (e[0].isIntersecting) {
-        setTimeout(() => {
-          document.getElementById('r-bar1').style.height = '1%';
-          document.getElementById('r-bar2').style.height = '2%';
-          document.getElementById('r-bar3').style.height = '4%';
-        }, 100);
-        setTimeout(() => {
-          document.getElementById('r-bar-pl').style.height = '92%';
-        }, 300);
-      }
-    }, { threshold: 0.4 }).observe(document.getElementById('resolved-bars'));
+    const resolvedBarsEl = document.getElementById('resolved-bars');
+    if (resolvedBarsEl) {
+      new IntersectionObserver((e) => {
+        if (e[0].isIntersecting) {
+          setTimeout(() => {
+            document.getElementById('r-bar1').style.height = '1%';
+            document.getElementById('r-bar2').style.height = '2%';
+            document.getElementById('r-bar3').style.height = '4%';
+          }, 100);
+          setTimeout(() => {
+            document.getElementById('r-bar-pl').style.height = '92%';
+          }, 300);
+        }
+      }, { threshold: 0.4 }).observe(resolvedBarsEl);
+    }
 
     // ── FAQ — first item open on load ──
     const firstAnswer = document.getElementById('faq-first-answer');
