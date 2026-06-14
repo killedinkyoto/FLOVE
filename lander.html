@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flove — Daily Performance Synbiotic</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="theme-color" content="#F8F4EE">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
@@ -322,8 +324,13 @@
     .ritual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .price-grid-purple { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 
-    @media (max-width: 767px) {
-      .l1-grid { grid-template-columns: 1fr; }
+    /* Images always responsive */
+    img { max-width: 100%; height: auto; }
+
+    /* Section padding tighter on mobile */
+    @media (max-width: 639px) {
+      section { padding-left: 16px !important; padding-right: 16px !important; }
+      .l1-grid { grid-template-columns: 1fr; gap: 0; }
       .l1-img { order: -1; margin-bottom: 24px; }
       .l1-copy { text-align: center; }
       .hero-trust { justify-content: center; }
@@ -332,6 +339,24 @@
       .price-grid-purple { grid-template-columns: 1fr; }
       .prob-pills-row { flex-wrap: wrap; }
       #pricing .pricing-2col { grid-template-columns: 1fr !important; }
+      /* Comparison table: shrink cells */
+      #death-zone table th, #death-zone table td { padding: 10px 4px !important; }
+      #death-zone table th:first-child, #death-zone table td:first-child { padding-left: 10px !important; font-size: 11px !important; }
+      /* Carousel arrows pull inward on small screens */
+      #fc-prev { left: -10px !important; }
+      #fc-next { right: -10px !important; }
+      /* Pricing card savings pill wraps gracefully */
+      #pricing-cards .price-tier-purple { padding: 14px 16px !important; }
+    }
+    @media (min-width: 640px) and (max-width: 767px) {
+      .l1-grid { grid-template-columns: 1fr; }
+      .l1-img { order: -1; margin-bottom: 24px; }
+      .l1-copy { text-align: center; }
+      .hero-trust { justify-content: center; }
+      .strain-grid { grid-template-columns: 1fr; }
+      .ritual-grid { grid-template-columns: 1fr; }
+      .price-grid-purple { grid-template-columns: 1fr; }
+      .prob-pills-row { flex-wrap: wrap; }
     }
   </style>
 </head>
@@ -430,7 +455,7 @@
         <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:16px 36px;font-size:16px;border:none;cursor:pointer;">Bring Back My Confidence &rarr;</button>
       </div>
       <div class="l1-img" style="position:relative;">
-        <img src="/brand_assets/testimonial-1-opt.webp" alt="Woman in activewear" style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5;display:block;object-position:top;">
+        <img src="/brand_assets/testimonial-1-opt.webp" alt="Woman in activewear" fetchpriority="high" decoding="async" style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5;display:block;object-position:top;">
       </div>
     </div>
   </section>
@@ -536,7 +561,7 @@
   <!-- ════════════════════════════════════════ -->
   <!-- L3 · PROBLEM EXPANSION — INTERACTIVE    -->
   <!-- ════════════════════════════════════════ -->
-  <section style="background:#F2EBF8;padding:72px 20px;">
+  <section style="background:linear-gradient(180deg,#F8F4EE 0%,#F2EBF8 100%);padding:72px 20px;">
     <div style="max-width:760px;margin:0 auto;">
       <div style="text-align:center;margin-bottom:32px;">
         <div class="section-label" style="margin-bottom:12px;">THE PART NO ONE SEES</div>
@@ -554,7 +579,7 @@
       <!-- Panel 0 -->
       <div class="problem-panel active" id="prob-0">
         <div style="background:#FFFFFF;border:1px solid #EDE6F4;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(139,114,204,0.07);">
-          <img src="brand_assets/hf_20260614_125425_5576cba9-407f-4d28-a7e5-e39ecf829976.png" alt="Changing room mirror" style="width:100%;display:block;object-fit:cover;">
+          <img src="brand_assets/hf_20260614_125425_5576cba9-407f-4d28-a7e5-e39ecf829976.png" alt="Changing room mirror" loading="lazy" decoding="async" style="width:100%;display:block;object-fit:cover;max-height:420px;">
           <div style="padding:28px 32px;">
             <p style="font-size:15px;line-height:1.8;color:#6B6480;margin:0;">
               You just finished your workout. Ready to take your hoodie off and reveal your hard work, just to find a stomach that <strong style="color:#D06060;font-weight:600;">won't suck in</strong> no matter how you stand, leaving you disappointed.
@@ -566,7 +591,7 @@
       <!-- Panel 1 -->
       <div class="problem-panel" id="prob-1">
         <div style="background:#FFFFFF;border:1px solid #EDE6F4;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(139,114,204,0.07);">
-          <img src="brand_assets/hf_20260614_125659_c11e3eb0-42a6-48b2-9173-a6b6139cdaa6.png" alt="Progress photos" style="width:100%;display:block;object-fit:cover;">
+          <img src="brand_assets/hf_20260614_125659_c11e3eb0-42a6-48b2-9173-a6b6139cdaa6.png" alt="Progress photos" loading="lazy" decoding="async" style="width:100%;display:block;object-fit:cover;max-height:420px;">
           <div style="padding:28px 32px;">
             <p style="font-size:15px;line-height:1.8;color:#6B6480;margin:0;">
               Twelve weeks of training. The abs are there, you've felt them. But in the photo your coach sees, they're buried under a <strong style="color:#D06060;font-weight:600;">bloat that showed up out of nowhere</strong>. The work is real. The photo says otherwise.
@@ -578,7 +603,7 @@
       <!-- Panel 2 -->
       <div class="problem-panel" id="prob-2">
         <div style="background:#FFFFFF;border:1px solid #EDE6F4;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px rgba(139,114,204,0.07);">
-          <img src="brand_assets/hf_20260614_130350_c1c1f885-4263-49af-b07a-7a9dd23e6e66.png" alt="Mid-lift" style="width:100%;display:block;object-fit:cover;">
+          <img src="brand_assets/hf_20260614_130350_c1c1f885-4263-49af-b07a-7a9dd23e6e66.png" alt="Mid-lift" loading="lazy" decoding="async" style="width:100%;display:block;object-fit:cover;max-height:420px;">
           <div style="padding:28px 32px;">
             <p style="font-size:15px;line-height:1.8;color:#6B6480;margin:0;">
               The shake went down an hour ago. Now you're under the bar and your stomach is <strong style="color:#D06060;font-weight:600;">tight, loud, swelling</strong> against your waistband. You skip the last set. You've started to wonder if the protein you live on is the thing turning on you.
@@ -607,11 +632,12 @@
       <div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(139,114,204,0.12);margin-bottom:40px;">
         <img src="/brand_assets/09_12_2022_Da-studio-su-microbiota-dellileo-nuove-speranze-per-celiachia-e-malattia-di-Crohn.jpg"
              alt="Gut bacteria microbiome illustration"
+             loading="lazy" decoding="async"
              style="width:100%;display:block;object-fit:cover;max-height:420px;">
       </div>
 
       <!-- Explanation -->
-      <div style="background:#FFFFFF;border:1.5px solid #EDE6F4;border-radius:20px;padding:36px 40px;box-shadow:0 4px 24px rgba(139,114,204,0.08);text-align:left;">
+      <div style="background:#FFFFFF;border:1.5px solid #EDE6F4;border-radius:20px;padding:clamp(20px,5vw,36px) clamp(20px,6vw,40px);box-shadow:0 4px 24px rgba(139,114,204,0.08);text-align:left;">
         <p style="font-size:16px;line-height:1.8;color:#3D3553;margin:0 0 20px;">
           The good bacteria in your gut are what ferment fiber. When you're low on these bacteria, gases get trapped, and your gut lining becomes sensitive — causing visible, painful bloating.
         </p>
@@ -626,7 +652,7 @@
   <!-- ════════════════════════════════════════ -->
   <!-- L4 · FAILED SOLUTIONS + IMAGES          -->
   <!-- ════════════════════════════════════════ -->
-  <section style="background:#F8F4EE;padding:72px 20px;">
+  <section style="background:#FFFFFF;padding:72px 20px;">
     <div style="max-width:520px;margin:0 auto;text-align:center;">
       <div style="margin-bottom:40px;">
         <div class="section-label" style="margin-bottom:12px;">YOU'RE NOT THE PROBLEM</div>
@@ -644,37 +670,37 @@
 
             <!-- Slide 0 -->
             <div class="fc-slide" style="min-width:100%;box-sizing:border-box;padding:0 8px;">
-              <img src="/brand_assets/Matcha_Green_Powder_Web.png" alt="Greens powder" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
+              <img src="/brand_assets/Matcha_Green_Powder_Web.png" alt="Greens powder" loading="lazy" decoding="async" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
               <p style="font-size:16px;font-weight:700;color:#4A4060;margin:0 0 12px;text-decoration:line-through;text-decoration-color:#D06060;">Greens powders (Bloom, AG1)</p>
-              <p style="font-size:15px;line-height:1.75;color:#7A7080;margin:0;">Raw insoluble fiber and inulin that ferment under lifting pressure. The cramp that ended your session wasn't weakness. It was <strong style="color:#D06060;">chicory root</strong>.</p>
+              <p style="font-size:15px;line-height:1.75;color:#5A5370;margin:0;">Raw insoluble fiber and inulin that ferment under lifting pressure. The cramp that ended your session wasn't weakness. It was <strong style="color:#D06060;">chicory root</strong>.</p>
             </div>
 
             <!-- Slide 1 -->
             <div class="fc-slide" style="min-width:100%;box-sizing:border-box;padding:0 8px;">
-              <img src="/brand_assets/serve-of-acv-gummies.png" alt="ACV gummies" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
+              <img src="/brand_assets/serve-of-acv-gummies.png" alt="ACV gummies" loading="lazy" decoding="async" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
               <p style="font-size:16px;font-weight:700;color:#4A4060;margin:0 0 12px;text-decoration:line-through;text-decoration-color:#D06060;">ACV gummies</p>
-              <p style="font-size:15px;line-height:1.75;color:#7A7080;margin:0;">Trace acetic acid wrapped in sugar. The sugar feeds the exact <strong style="color:#D06060;">gas-producing bacteria</strong> making you bloat.</p>
+              <p style="font-size:15px;line-height:1.75;color:#5A5370;margin:0;">Trace acetic acid wrapped in sugar. The sugar feeds the exact <strong style="color:#D06060;">gas-producing bacteria</strong> making you bloat.</p>
             </div>
 
             <!-- Slide 2 -->
             <div class="fc-slide" style="min-width:100%;box-sizing:border-box;padding:0 8px;">
-              <img src="/brand_assets/detox-loose-leaf-tea-ybtco.png" alt="Detox tea" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
+              <img src="/brand_assets/detox-loose-leaf-tea-ybtco.png" alt="Detox tea" loading="lazy" decoding="async" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
               <p style="font-size:16px;font-weight:700;color:#4A4060;margin:0 0 12px;text-decoration:line-through;text-decoration-color:#D06060;">Detox &amp; laxative teas</p>
-              <p style="font-size:15px;line-height:1.75;color:#7A7080;margin:0;">Senna forces your colon to contract. It empties you once, then leaves you more bloated and <strong style="color:#D06060;">slightly more dependent</strong> each time.</p>
+              <p style="font-size:15px;line-height:1.75;color:#5A5370;margin:0;">Senna forces your colon to contract. It empties you once, then leaves you more bloated and <strong style="color:#D06060;">slightly more dependent</strong> each time.</p>
             </div>
 
             <!-- Slide 3 -->
             <div class="fc-slide" style="min-width:100%;box-sizing:border-box;padding:0 8px;">
-              <img src="/brand_assets/maktrek-pill-opt.png" alt="Standard probiotic capsule" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;opacity:0.85;filter:grayscale(35%) brightness(0.6);">
+              <img src="/brand_assets/maktrek-pill-opt.png" alt="Standard probiotic capsule" loading="lazy" decoding="async" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;opacity:0.85;filter:grayscale(35%) brightness(0.6);">
               <p style="font-size:16px;font-weight:700;color:#4A4060;margin:0 0 12px;text-decoration:line-through;text-decoration-color:#D06060;">Standard probiotics (Align, Culturelle)</p>
-              <p style="font-size:15px;line-height:1.75;color:#7A7080;margin:0;">Freeze-dried bacteria in a capsule that dissolves in your stomach. <strong style="color:#D06060;">Most of the dose dies in the acid</strong> before it reaches your gut.</p>
+              <p style="font-size:15px;line-height:1.75;color:#5A5370;margin:0;">Freeze-dried bacteria in a capsule that dissolves in your stomach. <strong style="color:#D06060;">Most of the dose dies in the acid</strong> before it reaches your gut.</p>
             </div>
 
             <!-- Slide 4 -->
             <div class="fc-slide" style="min-width:100%;box-sizing:border-box;padding:0 8px;">
-              <img src="/brand_assets/ripe-apple-royalty-free-image-1659454396.png" alt="Fasting" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
+              <img src="/brand_assets/ripe-apple-royalty-free-image-1659454396.png" alt="Fasting" loading="lazy" decoding="async" style="width:160px;height:160px;object-fit:contain;margin:0 auto 28px;display:block;">
               <p style="font-size:16px;font-weight:700;color:#4A4060;margin:0 0 12px;text-decoration:line-through;text-decoration-color:#D06060;">Fasting</p>
-              <p style="font-size:15px;line-height:1.75;color:#7A7080;margin:0;">Drops water for a day and spikes cortisol, and <strong style="color:#D06060;">cortisol holds onto fluid</strong>. The flat stomach is gone by dinner.</p>
+              <p style="font-size:15px;line-height:1.75;color:#5A5370;margin:0;">Drops water for a day and spikes cortisol, and <strong style="color:#D06060;">cortisol holds onto fluid</strong>. The flat stomach is gone by dinner.</p>
             </div>
 
           </div>
@@ -762,7 +788,7 @@
 
       <!-- Stomach image -->
       <div style="border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(139,114,204,0.12);margin-bottom:36px;">
-        <img src="/brand_assets/stomach.png" alt="Stomach acid environment" style="width:100%;display:block;object-fit:cover;max-height:380px;">
+        <img src="/brand_assets/stomach.png" alt="Stomach acid environment" loading="lazy" decoding="async" style="width:100%;display:block;object-fit:cover;max-height:380px;">
       </div>
 
       <!-- Explanation -->
@@ -814,7 +840,7 @@
     <div style="max-width:680px;margin:0 auto;text-align:center;">
 
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;line-height:1.15;color:#1A1526;margin:0 0 36px;letter-spacing:-0.02em;">
-        How it stacks up
+        What the <em style="color:#8B72CC;font-style:italic;">real</em> solution <br>must look like&hellip;  
       </h2>
 
       <!-- Comparison table card -->
@@ -983,9 +1009,9 @@
 
       <!-- MAKTREK mechanism diagram -->
       <div style="display:flex;flex-direction:column;align-items:center;gap:8px;margin:0 auto 28px;">
-        <img src="brand_assets/360_F_595670163_GKUD4KOsEJ7kO6TlW5LXTkazEUXvhqKe.png" alt="Brown seaweed" style="width:220px;height:220px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(139,114,204,0.12));">
+        <img src="brand_assets/360_F_595670163_GKUD4KOsEJ7kO6TlW5LXTkazEUXvhqKe.png" alt="Brown seaweed" loading="lazy" decoding="async" style="width:min(220px,60vw);height:auto;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(139,114,204,0.12));">
         <span style="font-size:2rem;font-weight:700;color:#8B72CC;line-height:1;">+</span>
-        <img src="brand_assets/1780881996493-generated-label-image-4.png" alt="Flove capsule" style="width:220px;height:220px;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(139,114,204,0.12));">
+        <img src="brand_assets/1780881996493-generated-label-image-4.png" alt="Flove capsule" loading="lazy" decoding="async" style="width:min(220px,60vw);height:auto;object-fit:contain;filter:drop-shadow(0 8px 24px rgba(139,114,204,0.12));">
         <span style="font-size:2rem;font-weight:700;color:#8B72CC;line-height:1;">=</span>
         <div style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:28px 40px;background:#FFFFFF;border:1.5px solid #EDE6F4;border-radius:20px;box-shadow:0 4px 24px rgba(139,114,204,0.1);">
           <p style="font-family:'Playfair Display',serif;font-size:clamp(3.2rem,10vw,5rem);font-weight:700;color:#8B72CC;margin:0;line-height:1;">50%+</p>
@@ -1014,7 +1040,7 @@
         <p style="font-size:15px;color:#6B6480;margin:0 auto;max-width:480px;line-height:1.7;">Delivered live via PhaseLock&trade;. Not a scatter-shot blend &mdash; a protocol.</p>
       </div>
       <div style="text-align:center;margin-bottom:52px;">
-        <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove Daily Performance Synbiotic" style="max-width:300px;width:100%;display:block;margin:0 auto;filter:drop-shadow(0 16px 40px rgba(139,114,204,0.15));">
+        <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove Daily Performance Synbiotic" loading="lazy" decoding="async" style="max-width:280px;width:100%;display:block;margin:0 auto;filter:drop-shadow(0 16px 40px rgba(139,114,204,0.15));">
       </div>
       <div class="strain-grid" style="margin-bottom:24px;">
         <div class="card-white" style="padding:28px;">
@@ -1202,8 +1228,12 @@
             <div class="price-tier-purple" style="padding:16px 20px;">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
                 <div>
-                  <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">Starter · 1 bottle</p>
-                  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0;letter-spacing:-0.02em;">$44.99 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.50/day</span></p>
+                  <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 6px;letter-spacing:0.08em;text-transform:uppercase;">Starter · 1 bottle</p>
+                  <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:3px;">
+                    <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#FFFFFF;margin:0;letter-spacing:-0.02em;">$44.99</p>
+                    <span style="font-size:12px;color:rgba(255,255,255,0.45);font-family:'Inter',sans-serif;">/bottle</span>
+                  </div>
+                  <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:0;">$44.99 total &middot; $1.50/day</p>
                 </div>
                 <button onclick="openCart('43847080837198')" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;cursor:pointer;">Select</button>
               </div>
@@ -1216,9 +1246,13 @@
               </div>
               <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;">
                 <div>
-                  <p style="font-size:11px;font-weight:600;color:#C4B5E8;margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">90-Day Reset · 3 bottles</p>
-                  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0 0 2px;letter-spacing:-0.02em;">$119.97 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.33/day</span></p>
-                  <p style="font-size:11px;color:#C4B5E8;font-weight:600;margin:0;">You save $15.00</p>
+                  <p style="font-size:11px;font-weight:600;color:#C4B5E8;margin:0 0 6px;letter-spacing:0.08em;text-transform:uppercase;">90-Day Reset · 3 bottles</p>
+                  <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:3px;">
+                    <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#FFFFFF;margin:0;letter-spacing:-0.02em;">$39.99</p>
+                    <span style="font-size:12px;color:rgba(255,255,255,0.45);font-family:'Inter',sans-serif;">/bottle</span>
+                  </div>
+                  <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:0 0 6px;">$119.97 total &middot; $1.33/day</p>
+                  <span style="display:inline-block;background:rgba(196,181,232,0.18);border:1px solid rgba(196,181,232,0.35);color:#C4B5E8;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.03em;">You save $15.00 &mdash; $5 off per bottle</span>
                 </div>
                 <button onclick="openCart('43847089946702')" class="cta-white" style="padding:10px 20px;font-size:13px;white-space:nowrap;border:none;cursor:pointer;">Select &rarr;</button>
               </div>
@@ -1228,9 +1262,13 @@
             <div class="price-tier-purple" style="padding:16px 20px;">
               <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
                 <div>
-                  <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 3px;letter-spacing:0.08em;text-transform:uppercase;">Best Value · 6 bottles</p>
-                  <p style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#FFFFFF;margin:0 0 2px;letter-spacing:-0.02em;">$215.94 <span style="font-size:13px;font-weight:400;color:rgba(255,255,255,0.5);font-family:'Inter',sans-serif;">$1.20/day</span></p>
-                  <p style="font-size:11px;color:#C4962A;font-weight:600;margin:0;">&#9733; Save $54.00</p>
+                  <p style="font-size:11px;font-weight:600;color:rgba(196,181,232,0.7);margin:0 0 6px;letter-spacing:0.08em;text-transform:uppercase;">Best Value · 6 bottles</p>
+                  <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:3px;">
+                    <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:#FFFFFF;margin:0;letter-spacing:-0.02em;">$35.99</p>
+                    <span style="font-size:12px;color:rgba(255,255,255,0.45);font-family:'Inter',sans-serif;">/bottle</span>
+                  </div>
+                  <p style="font-size:11px;color:rgba(255,255,255,0.4);margin:0 0 6px;">$215.94 total &middot; $1.20/day</p>
+                  <span style="display:inline-block;background:rgba(196,150,42,0.18);border:1px solid rgba(196,150,42,0.4);color:#C4962A;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:0.03em;">&#9733; You save $54.00 &mdash; $9 off per bottle</span>
                 </div>
                 <button onclick="openCart('43847100563534')" class="cta-dark" style="padding:10px 20px;font-size:13px;background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(255,255,255,0.18);white-space:nowrap;cursor:pointer;">Select</button>
               </div>
@@ -1385,7 +1423,7 @@
           </div>
         </div>
         <div class="card-white">
-          <img src="/brand_assets/womanbro.png" alt="Customer testimonial" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;">
+          <img src="/brand_assets/womanbro.png" alt="Customer testimonial" loading="lazy" decoding="async" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;">
           <div style="padding:16px 18px 20px;">
             <span style="color:#2D9C6E;font-size:13px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <p style="font-size:13px;line-height:1.65;color:#1A1526;margin:8px 0;font-style:italic;">"I was wasting money on AG1 for a year. The protein bloat was gone in week two. I had no idea a probiotic could actually get there."</p>
@@ -1393,7 +1431,7 @@
           </div>
         </div>
         <div class="card-white">
-          <img src="/brand_assets/testimonial-3-opt.webp" alt="Customer testimonial" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;">
+          <img src="/brand_assets/testimonial-3-opt.webp" alt="Customer testimonial" loading="lazy" decoding="async" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;">
           <div style="padding:16px 18px 20px;">
             <span style="color:#2D9C6E;font-size:13px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
             <p style="font-size:13px;line-height:1.65;color:#1A1526;margin:8px 0;font-style:italic;">"I used to skip the last set every time I took pre-workout. That tightness is gone. Worth every penny."</p>
@@ -1403,11 +1441,11 @@
       </div>
       <div style="max-width:680px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
         <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #EDE6F4;box-shadow:0 8px 24px rgba(139,114,204,0.07);">
-          <img src="/brand_assets/beforequiz.png" alt="Before" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center top;">
+          <img src="/brand_assets/beforequiz.png" alt="Before" loading="lazy" decoding="async" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center top;">
           <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(28,24,40,0.85);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;font-size:12px;font-weight:700;padding:5px 16px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;">Before</div>
         </div>
         <div style="position:relative;border-radius:16px;overflow:hidden;border:1px solid #EDE6F4;box-shadow:0 8px 24px rgba(139,114,204,0.07);">
-          <img src="/brand_assets/afterquiz.png" alt="After" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center top;">
+          <img src="/brand_assets/afterquiz.png" alt="After" loading="lazy" decoding="async" style="width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:center top;">
           <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:#8B72CC;color:#fff;font-size:12px;font-weight:700;padding:5px 16px;border-radius:100px;letter-spacing:0.08em;text-transform:uppercase;white-space:nowrap;">After</div>
         </div>
       </div>
