@@ -1460,8 +1460,13 @@
     function proceedToCheckout() {
       var items = selectedVariant + ':' + cartQty;
       Object.keys(addedUpsells).forEach(function(v) { items += ',' + v + ':1'; });
-      var url = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
-      if (appliedDiscount) url += '?discount=' + appliedDiscount;
+      var cartPath = '/cart/' + items;
+      var url;
+      if (appliedDiscount) {
+        url = 'https://' + SHOPIFY_DOMAIN + '/discount/' + appliedDiscount + '?redirect=' + encodeURIComponent(cartPath);
+      } else {
+        url = 'https://' + SHOPIFY_DOMAIN + cartPath;
+      }
       window.location.href = url;
     }
 
