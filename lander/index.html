@@ -1448,24 +1448,6 @@
       }
     }, { threshold: 0.5 }).observe(document.getElementById('death-bars'));
 
-    // ── Resolved bars (rise up) ──
-    new IntersectionObserver((e) => {
-      if (e[0].isIntersecting) {
-        setTimeout(() => {
-          document.getElementById('r-bar1').style.height = '1%';
-          document.getElementById('r-bar2').style.height = '2%';
-          document.getElementById('r-bar3').style.height = '4%';
-        }, 100);
-        setTimeout(() => {
-          document.getElementById('r-bar-pl').style.height = '92%';
-        }, 300);
-      }
-    }, { threshold: 0.4 }).observe(document.getElementById('resolved-bars'));
-
-    // ── FAQ — first item open on load ──
-    const firstAnswer = document.getElementById('faq-first-answer');
-    firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
-
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
