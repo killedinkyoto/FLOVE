@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flove — Daily Performance Synbiotic</title>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','610597558585604');fbq('track','PageView');fbq('track','ViewContent',{content_name:'Flove Daily Synbiotic',content_category:'Probiotics',content_ids:['43847089946702'],content_type:'product',value:44.99,currency:'USD'});</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=610597558585604&ev=PageView&noscript=1"/></noscript>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="theme-color" content="#F8F4EE">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1774,6 +1776,9 @@
       } else {
         url = 'https://' + SHOPIFY_DOMAIN + cartPath;
       }
+      var total = BUNDLE_MAP[selectedVariant] ? BUNDLE_MAP[selectedVariant].amount * cartQty : 0;
+      Object.values(addedUpsells).forEach(function(p) { total += p; });
+      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_ids: [selectedVariant], content_type: 'product', value: total, currency: 'USD', num_items: cartQty });
       window.location.href = url;
     }
 
