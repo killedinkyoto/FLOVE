@@ -426,7 +426,12 @@
           <span style="font-size:13px;color:#C4962A;letter-spacing:1px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
           <span style="font-size:13px;color:#6B6480;">4.9 stars &middot; 30-day money back, no return needed</span>
         </div>
-        <button onclick="openCart('43847089946702')" class="cta-dark" style="padding:16px 36px;font-size:16px;border:none;cursor:pointer;">Start the 90-day reset &rarr;</button>
+        <button onclick="document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth',block:'start'})" class="cta-dark" style="padding:16px 36px;font-size:16px;border:none;cursor:pointer;">Choose your supply &rarr;</button>
+        <p style="font-size:12px;color:#6B6480;margin:10px 0 20px;">From $44.99 &middot; One-time purchase &middot; No subscription</p>
+        <div style="padding:14px 16px;background:rgba(139,114,204,0.07);border-left:3px solid #8B72CC;border-radius:0 10px 10px 0;">
+          <p style="font-size:13px;color:#1A1526;line-height:1.6;margin:0 0 5px;font-style:italic;">&ldquo;Protein bloat gone in week two. I had no idea a probiotic could actually get there.&rdquo;</p>
+          <p style="font-size:11px;color:#6B6480;margin:0;font-weight:600;">Kayla R. &middot; Verified buyer &middot; <span style="color:#C4962A;">&#9733;&#9733;&#9733;&#9733;&#9733;</span></p>
+        </div>
       </div>
       <div class="l1-img" style="position:relative;">
         <img src="/brand_assets/testimonial-1-opt.webp" alt="Woman in activewear" style="width:100%;border-radius:24px;object-fit:cover;aspect-ratio:4/5;display:block;object-position:top;">
@@ -737,12 +742,28 @@
       </p>
 
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        <span class="spec-pill"><span class="spec-dot"></span>Patented MAKTREK&reg; Bi-Pass</span>
+        <span class="spec-pill"><span class="spec-dot"></span>Patented PhaseLock&trade; Technology</span>
         <span class="spec-pill"><span class="spec-dot"></span>40B CFU on label, 20B+ delivered</span>
         <span class="spec-pill"><span class="spec-dot"></span>1,685% more live bacteria than standard</span>
       </div>
     </div>
   </section>
+
+  <!-- ── MID-PAGE PRICING ANCHOR ── -->
+  <div style="background:#F8F4EE;padding:0 20px 48px;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#FFFFFF;border:1px solid #EDE6F4;border-radius:20px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 4px 20px rgba(139,114,204,0.08);">
+        <div style="display:flex;align-items:center;gap:12px;min-width:0;">
+          <img src="/brand_assets/1780881996497-generated-label-image-3.png" alt="Flove" style="width:44px;height:44px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(139,114,204,0.12));">
+          <div style="min-width:0;">
+            <p style="font-size:13px;font-weight:700;color:#1A1526;margin:0 0 2px;white-space:nowrap;">Flove Daily Synbiotic</p>
+            <p style="font-size:11px;color:#6B6480;margin:0;">From $44.99 &middot; One-time &middot; 30-day guarantee</p>
+          </div>
+        </div>
+        <button onclick="document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth',block:'start'})" class="cta-dark" style="padding:10px 18px;font-size:12px;border:none;cursor:pointer;white-space:nowrap;flex-shrink:0;">Get it &rarr;</button>
+      </div>
+    </div>
+  </div>
 
   <!-- ════════════════════════════════════════ -->
   <!-- L7 · PRODUCT STRAINS                    -->
@@ -945,7 +966,7 @@
             </div>
             <div style="background:rgba(139,114,204,0.18);border:1px solid rgba(139,114,204,0.35);border-radius:10px;padding:10px 14px;display:flex;align-items:flex-start;gap:10px;">
               <span style="font-size:14px;flex-shrink:0;margin-top:1px;">🧪</span>
-              <p style="font-size:11px;color:rgba(196,181,232,0.9);margin:0;line-height:1.5;"><strong style="color:#C4B5E8;">PhaseLock&trade; (MAKTREK&reg; Bi-Pass)</strong> — marine seaweed shield keeps bacteria alive through stomach acid. 1,685% more live bacteria than a standard capsule.</p>
+              <p style="font-size:11px;color:rgba(196,181,232,0.9);margin:0;line-height:1.5;"><strong style="color:#C4B5E8;">PhaseLock&trade; Technology</strong> — marine seaweed shield keeps bacteria alive through stomach acid. 1,685% more live bacteria than a standard capsule.</p>
             </div>
           </div>
 
@@ -1301,6 +1322,28 @@
     <p style="font-size:11px;color:rgba(255,255,255,0.25);margin:0;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.6;">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
   </footer>
 
+  <!-- ── EMAIL CAPTURE POPUP ── -->
+  <div id="email-overlay" onclick="closeEmailPopup()" style="display:none;position:fixed;inset:0;background:rgba(28,24,40,0.55);z-index:300;opacity:0;transition:opacity 0.3s ease;"></div>
+  <div id="email-modal" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:301;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);background:#FFFFFF;border-radius:24px 24px 0 0;padding:32px 24px 44px;box-shadow:0 -8px 40px rgba(28,24,40,0.15);max-width:600px;margin:0 auto;">
+    <button onclick="closeEmailPopup()" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border:none;background:#F0EBF8;border-radius:50%;cursor:pointer;font-size:18px;line-height:1;color:#5A5370;display:flex;align-items:center;justify-content:center;">&times;</button>
+    <div id="email-form-state">
+      <p style="font-size:11px;font-weight:600;letter-spacing:0.1em;color:#8B72CC;text-transform:uppercase;margin:0 0 10px;">Before you go</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1A1526;margin:0 0 8px;line-height:1.2;">Get the <em>Why Probiotics Fail</em> breakdown.</h3>
+      <p style="font-size:14px;color:#6B6480;margin:0 0 20px;line-height:1.6;">Plus 10% off your first order. No subscription pitch. Just the science.</p>
+      <input id="email-input" type="email" placeholder="your@email.com" style="width:100%;padding:14px 16px;border:1.5px solid #EDE6F4;border-radius:12px;font-size:15px;font-family:'Inter',sans-serif;color:#1A1526;background:#F8F4EE;box-sizing:border-box;margin-bottom:12px;outline:none;transition:border-color 0.15s ease;">
+      <button onclick="submitEmailCapture()" class="cta-dark" style="width:100%;padding:14px;font-size:15px;border:none;cursor:pointer;border-radius:100px;">Send me the breakdown &rarr;</button>
+      <p style="font-size:11px;color:#9B96A8;margin:12px 0 0;text-align:center;">No spam. Unsubscribe anytime.</p>
+    </div>
+    <div id="email-success-state" style="display:none;text-align:center;padding:8px 0;">
+      <div style="width:56px;height:56px;background:rgba(139,114,204,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#8B72CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1526;margin:0 0 8px;">Check your inbox.</h3>
+      <p style="font-size:14px;color:#6B6480;margin:0 0 20px;line-height:1.65;">Use code <strong style="color:#8B72CC;font-family:'Inter',monospace;letter-spacing:0.05em;">FLOVE10</strong> for 10% off today.</p>
+      <button onclick="closeEmailPopup()" class="cta-dark" style="padding:12px 32px;font-size:14px;border:none;cursor:pointer;">Shop now &rarr;</button>
+    </div>
+  </div>
+
   <script>
     // ── Slider Cart ──
     const SHOPIFY_DOMAIN = 'checkout.tryflove.com';
@@ -1465,6 +1508,63 @@
         }
       });
     });
+
+    // ── Email capture popup ──
+    let emailPopupShown = false;
+    function showEmailPopup() {
+      if (emailPopupShown || sessionStorage.getItem('emailPopupSeen')) return;
+      emailPopupShown = true;
+      sessionStorage.setItem('emailPopupSeen', '1');
+      var overlay = document.getElementById('email-overlay');
+      var modal = document.getElementById('email-modal');
+      overlay.style.display = 'block';
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function() { requestAnimationFrame(function() {
+        overlay.style.opacity = '1';
+        modal.style.transform = 'translateY(0)';
+      }); });
+    }
+    function closeEmailPopup() {
+      var overlay = document.getElementById('email-overlay');
+      var modal = document.getElementById('email-modal');
+      modal.style.transform = 'translateY(100%)';
+      overlay.style.opacity = '0';
+      setTimeout(function() {
+        overlay.style.display = 'none';
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 400);
+    }
+    function submitEmailCapture() {
+      var emailInput = document.getElementById('email-input');
+      var email = emailInput.value.trim();
+      if (!email || !email.includes('@') || !email.includes('.')) {
+        emailInput.style.borderColor = '#D06060';
+        emailInput.focus();
+        return;
+      }
+      emailInput.style.borderColor = '#EDE6F4';
+      // TODO: replace with your Klaviyo list ID — POST to:
+      // https://manage.kmail-lists.com/ajax/subscriptions/subscribe
+      // Body: { g: 'YOUR_LIST_ID', email: email, $source: 'Lander Popup' }
+      document.getElementById('email-form-state').style.display = 'none';
+      document.getElementById('email-success-state').style.display = 'block';
+    }
+    // Fire at 60% scroll depth, once per session
+    (function() {
+      var fired = false;
+      function onScroll() {
+        if (fired) return;
+        var pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
+        if (pct >= 0.6) {
+          fired = true;
+          window.removeEventListener('scroll', onScroll);
+          setTimeout(showEmailPopup, 800);
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
   </script>
 
 </body>
