@@ -1646,15 +1646,16 @@
       <div style="width:56px;height:56px;background:rgba(139,114,204,0.1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#8B72CC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1526;margin:0 0 8px;">Check your inbox.</h3>
-      <p style="font-size:14px;color:#6B6480;margin:0 0 20px;line-height:1.65;">Use code <strong style="color:#8B72CC;font-family:'Inter',monospace;letter-spacing:0.05em;">FLOVE10</strong> for 10% off today.</p>
-      <button onclick="closeEmailPopup()" class="cta-dark" style="padding:12px 32px;font-size:14px;border:none;cursor:pointer;">Shop now &rarr;</button>
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1A1526;margin:0 0 8px;">You're getting 10% off.</h3>
+      <p style="font-size:14px;color:#6B6480;margin:0 0 20px;line-height:1.65;">Your discount is <strong style="color:#8B72CC;">applied automatically</strong> — just choose your supply and it comes off at checkout.</p>
+      <button onclick="closeEmailPopup();document.getElementById('pricing-cards').scrollIntoView({behavior:'smooth'});" class="cta-dark" style="padding:12px 32px;font-size:14px;border:none;cursor:pointer;">Choose your supply &rarr;</button>
     </div>
   </div>
 
   <script>
     // ── Slider Cart ──
     const SHOPIFY_DOMAIN = 'checkout.tryflove.com';
+    let appliedDiscount = null;
     const BUNDLE_MAP = {
       '43847080837198': { label: '1-Bottle — 30-day supply',  price: '$44.99',  amount: 44.99 },
       '43847089946702': { label: '3-Bottle — 90-day supply',  price: '$119.97', amount: 119.97 },
@@ -1767,7 +1768,9 @@
     function proceedToCheckout() {
       var items = selectedVariant + ':' + cartQty;
       Object.keys(addedUpsells).forEach(function(v) { items += ',' + v + ':1'; });
-      window.location.href = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
+      var url = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
+      if (appliedDiscount) url += '?discount=' + appliedDiscount;
+      window.location.href = url;
     }
 
     // ── Sticky ATC ──
@@ -1861,6 +1864,7 @@
       // TODO: replace with your Klaviyo list ID — POST to:
       // https://manage.kmail-lists.com/ajax/subscriptions/subscribe
       // Body: { g: 'YOUR_LIST_ID', email: email, $source: 'Lander Popup' }
+      appliedDiscount = 'FLOVE10';
       document.getElementById('email-form-state').style.display = 'none';
       document.getElementById('email-success-state').style.display = 'block';
     }
