@@ -1889,6 +1889,12 @@
       // TODO: replace with your Klaviyo list ID — POST to:
       // https://manage.kmail-lists.com/ajax/subscriptions/subscribe
       // Body: { g: 'YOUR_LIST_ID', email: email, $source: 'Lander Popup' }
+      // Advanced Matching: feed the email to the pixel (Meta hashes it client-side)
+      // so every subsequent event from this visitor is high-match → raises EMQ.
+      if (typeof fbq !== 'undefined') {
+        fbq('init', '1725808198870245', { em: email.toLowerCase() });
+        fbq('track', 'Lead', { content_name: 'Email Capture', value: 0, currency: 'USD' });
+      }
       appliedDiscount = 'FLOVE10';
       document.getElementById('email-form-state').style.display = 'none';
       document.getElementById('email-success-state').style.display = 'block';
