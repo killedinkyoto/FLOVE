@@ -399,14 +399,21 @@
           <span style="font-size:13px;color:#6B6480;">Subtotal</span>
           <span id="cart-subtotal" style="font-size:13px;font-weight:600;color:#1C1828;">$119.97</span>
         </div>
+        <div id="cart-discount-row" style="display:none;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-size:13px;color:#8B72CC;font-weight:600;display:inline-flex;align-items:center;gap:6px;"><span style="background:rgba(139,114,204,0.12);border:1px solid rgba(139,114,204,0.3);border-radius:5px;padding:1px 7px;font-size:11px;letter-spacing:0.04em;" id="cart-discount-code">FLOVE10</span> 10% off</span>
+          <span id="cart-discount" style="font-size:13px;font-weight:700;color:#8B72CC;">&minus;$0.00</span>
+        </div>
         <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
           <span style="font-size:13px;color:#6B6480;">Shipping</span>
           <span style="font-size:13px;font-weight:600;color:#22C55E;">Free</span>
         </div>
         <div style="border-top:1px solid #EDE6F4;margin:10px 0;"></div>
-        <div style="display:flex;justify-content:space-between;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;">
           <span style="font-size:15px;font-weight:700;color:#1C1828;">Total</span>
-          <span id="cart-total" style="font-size:15px;font-weight:700;color:#1C1828;">$119.97</span>
+          <span style="display:flex;align-items:baseline;gap:8px;">
+            <span id="cart-total-strike" style="display:none;font-size:13px;font-weight:500;color:#AEA5C8;text-decoration:line-through;">$119.97</span>
+            <span id="cart-total" style="font-size:15px;font-weight:700;color:#1C1828;">$119.97</span>
+          </span>
         </div>
       </div>
       <button onclick="proceedToCheckout()" style="width:100%;padding:16px;background:#1C1828;color:#fff;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(28,24,40,0.22);">
@@ -1657,6 +1664,7 @@
     // ── Slider Cart ──
     const SHOPIFY_DOMAIN = 'checkout.tryflove.com';
     let appliedDiscount = null;
+    const DISCOUNT_RATE = 0.10; // FLOVE10 = 10% off (must match the active Shopify discount)
     const BUNDLE_MAP = {
       '43847080837198': { label: '1-Bottle — 30-day supply',  price: '$44.99',  amount: 44.99 },
       '43847089946702': { label: '3-Bottle — 90-day supply',  price: '$119.97', amount: 119.97 },
@@ -1759,23 +1767,31 @@
 
     function updateCartTotals() {
       var base = BUNDLE_MAP[selectedVariant] ? BUNDLE_MAP[selectedVariant].amount : 0;
-      var total = base * cartQty;
-      Object.values(addedUpsells).forEach(function(p) { total += p; });
-      var fmt = '$' + total.toFixed(2);
-      document.getElementById('cart-subtotal').textContent = fmt;
-      document.getElementById('cart-total').textContent = fmt;
+      var subtotal = base * cartQty;
+      Object.values(addedUpsells).forEach(function(p) { subtotal += p; });
+      var discount = appliedDiscount ? subtotal * DISCOUNT_RATE : 0;
+      var total = subtotal - discount;
+      document.getElementById('cart-subtotal').textContent = '$' + subtotal.toFixed(2);
+      var row = document.getElementById('cart-discount-row');
+      var strike = document.getElementById('cart-total-strike');
+      if (appliedDiscount) {
+        row.style.display = 'flex';
+        document.getElementById('cart-discount-code').textContent = appliedDiscount;
+        document.getElementById('cart-discount').innerHTML = '&minus;$' + discount.toFixed(2);
+        strike.style.display = 'inline';
+        strike.textContent = '$' + subtotal.toFixed(2);
+      } else {
+        row.style.display = 'none';
+        strike.style.display = 'none';
+      }
+      document.getElementById('cart-total').textContent = '$' + total.toFixed(2);
     }
 
     function proceedToCheckout() {
       var items = selectedVariant + ':' + cartQty;
       Object.keys(addedUpsells).forEach(function(v) { items += ',' + v + ':1'; });
-      var cartPath = '/cart/' + items;
-      var url;
-      if (appliedDiscount) {
-        url = 'https://' + SHOPIFY_DOMAIN + '/discount/' + appliedDiscount + '?redirect=' + encodeURIComponent(cartPath);
-      } else {
-        url = 'https://' + SHOPIFY_DOMAIN + cartPath;
-      }
+      var url = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
+      if (appliedDiscount) url += '?discount=' + encodeURIComponent(appliedDiscount);
       var total = BUNDLE_MAP[selectedVariant] ? BUNDLE_MAP[selectedVariant].amount * cartQty : 0;
       Object.values(addedUpsells).forEach(function(p) { total += p; });
       if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_ids: [selectedVariant], content_type: 'product', value: total, currency: 'USD', num_items: cartQty });
