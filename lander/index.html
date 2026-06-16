@@ -1586,19 +1586,17 @@
       document.getElementById('email-form-state').style.display = 'none';
       document.getElementById('email-success-state').style.display = 'block';
     }
-    // Fire at 60% scroll depth, once per session
+    // Fire at 30% scroll depth OR after 6s on page — whichever comes first (once per session)
     (function() {
-      var fired = false;
       function onScroll() {
-        if (fired) return;
         var pct = (window.scrollY + window.innerHeight) / document.body.scrollHeight;
-        if (pct >= 0.6) {
-          fired = true;
+        if (pct >= 0.3) {
           window.removeEventListener('scroll', onScroll);
-          setTimeout(showEmailPopup, 800);
+          showEmailPopup();
         }
       }
       window.addEventListener('scroll', onScroll, { passive: true });
+      setTimeout(showEmailPopup, 6000);
     })();
   </script>
 
