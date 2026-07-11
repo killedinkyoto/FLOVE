@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flove Daily Synbiotic — 40B CFU · PhaseLock™ Delivery</title>
+  <meta name="description" content="Stop the protein bloat that hides your abs, without giving up a single scoop of whey. PhaseLock™ delivery gets 95% of Flove's live cultures past your stomach acid — standard capsules deliver under 3%." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#F8F4EE',
+            surface: '#FFFFFF',
+            'surface-2': '#F2EBF8',
+            border: '#EDE6F4',
+            accent: '#8B72CC',
+            'accent-dim': '#7A62B8',
+            'accent-light': '#C4B5E8',
+            'cta-dark': '#1C1828',
+            amber: '#C4962A',
+            'text-primary': '#1A1526',
+            'text-secondary': '#4A4458',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #F8F4EE;
+      color: #1A1526;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', Georgia, serif; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #F8F4EE; }
+    ::-webkit-scrollbar-thumb { background: #EDE6F4; border-radius: 2px; }
+
+    #sticky-nav { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+
+    .spec-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid #EDE6F4; background: rgba(139,114,204,0.07);
+      padding: 5px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 500; color: #8B72CC; font-family: 'Inter', sans-serif;
+    }
+    .spec-pill .dot { width: 5px; height: 5px; border-radius: 50%; background: #8B72CC; }
+
+    .benefit-item { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 9px; }
+    .benefit-dot {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(139,114,204,0.1); border: 1px solid rgba(139,114,204,0.25);
+    }
+
+    /* ── DELIVERY SCHEDULE RADIO ── */
+    .sched-card { cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .sched-card.active { border-color: #8B72CC !important; background: rgba(139,114,204,0.05) !important; }
+    .sched-card.active .sched-radio { border-color: #8B72CC; }
+    .sched-card.active .sched-radio::after { transform: scale(1); }
+    .sched-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #D4C8E8; flex-shrink: 0; position: relative; transition: border-color 0.15s; }
+    .sched-radio::after { content:''; position:absolute; inset:3px; border-radius:50%; background:#8B72CC; transform:scale(0); transition:transform 0.15s; }
+
+    /* ── SIZE PILLS ── */
+    .size-pill { cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s, box-shadow 0.15s; border: 1.5px solid #D8CBEA; box-shadow: 0 2px 8px rgba(139,114,204,0.07); }
+    .size-pill.active { border-color: #1C1828 !important; background: #1C1828 !important; color: #fff !important; box-shadow: 0 4px 16px rgba(28,24,40,0.22); }
+    .size-pill-bottle { width: 100%; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 4px; }
+    .size-pill-bottle img { max-width: 78%; max-height: 78%; object-fit: contain; }
+    .size-pill-badge {
+      position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; border-radius: 50%;
+      background: #8B72CC; color: #fff; font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif;
+    }
+
+    /* ── SOCIAL PROOF TICKER ── */
+    .proof-ticker-track { display: flex; align-items: center; gap: 36px; width: max-content; animation: proof-scroll 28s linear infinite; }
+    @keyframes proof-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .proof-item {
+      font-family: 'Playfair Display', Georgia, serif; font-size: 0.8125rem; letter-spacing: 0.05em;
+      text-transform: uppercase; color: #6E52B5; white-space: nowrap; flex-shrink: 0; font-weight: 600;
+    }
+    .proof-dot { width: 4px; height: 4px; border-radius: 50%; background: #D8CFE8; flex-shrink: 0; }
+
+    /* ── VIDEO TESTIMONIAL TICKER ── */
+    .vticker-track { display: flex; gap: 12px; align-items: center; animation: vticker-scroll 42s linear infinite; width: max-content; }
+    @keyframes vticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .vticker-card {
+      flex-shrink: 0; width: 118px; height: 210px; border-radius: 12px;
+      overflow: hidden; position: relative; border: 1px solid #EDE6F4; background: #2A2240;
+    }
+    .vticker-card video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .vticker-name {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 10px; font-size: 11px; font-weight: 600;
+      background: linear-gradient(to top, rgba(28,24,40,0.85) 0%, transparent 100%);
+      font-family: 'Inter', sans-serif; color: #fff;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline-dot {
+      width: 16px; height: 16px; border-radius: 50%; background: #8B72CC;
+      border: 3px solid #F8F4EE; box-shadow: 0 0 0 2px #C4B5E8; flex-shrink: 0;
+    }
+
+    /* ── CROSS-SELL ── */
+    .xsell-card { border: 1px solid #EDE6F4; transition: border-color 0.15s; }
+    .xsell-card:hover { border-color: #C4B5E8; }
+    .xsell-add-btn { transition: opacity 0.15s, transform 0.15s; }
+    .xsell-add-btn:hover { opacity: 0.85; }
+    .xsell-add-btn:active { transform: scale(0.96); }
+    .xsell-add-btn.added { background: #22C55E !important; }
+
+    /* ── INGREDIENTS ACCORDION ── */
+    .ing-toggle { transition: transform 0.3s; }
+    .ing-toggle.open { transform: rotate(45deg); }
+    .ing-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .ing-body.open { max-height: 700px; }
+
+    /* ── FACE STRIP ── */
+    .face-avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #F8F4EE; box-shadow: 0 0 0 1px #EDE6F4; }
+
+    /* ── PILL VISUAL ── */
+    .mech-dot { width:7px; height:7px; border-radius:50%; background:#8B72CC; flex-shrink:0; }
+    .mech-dash { flex:1; height:1px; background:rgba(139,114,204,0.25); }
+    .mech-step-num {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: #1C1828; color: #fff; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 16px;
+    }
+
+    /* ── STRAIN PILL TABS ── */
+    .strain-pill {
+      cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s;
+      border: 1.5px solid #DCCFEF; background: #fff; color: #3A3450; font-weight: 600;
+    }
+    .strain-pill.active { border-color: #8B72CC; background: #8B72CC; color: #fff; }
+
+    /* ── COMPARISON TABLE ── */
+    .cmp-check { color: #6E52B5; font-size: 1.25rem; font-weight: 700; }
+    .cmp-cross { color: #ABA1BF; font-size: 1.1rem; }
+    .cmp-row:nth-child(odd) { background: rgba(139,114,204,0.035); }
+
+    /* ── REVIEW TOGGLE ── */
+    .rev-toggle-btn { transition: background 0.15s, color 0.15s; }
+    .rev-toggle-btn.active { background: #1C1828; color: #fff; }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+    .faq-answer.open { max-height:400px; }
+    .faq-plus { transition:transform 0.3s; font-size:20px; font-weight:300; }
+    .faq-plus.open { transform:rotate(45deg); }
+
+    /* ── BAR CHART ── */
+    .bar-fill { width:0; transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94); }
+    .bar-fill.animated { width:var(--w); }
+
+    /* ── CTA BUTTON (dark) ── */
+    .cta-btn {
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      background:#1C1828; color:#FFFFFF;
+      font-family:'Inter',sans-serif; font-weight:600;
+      border-radius:100px; transition:opacity 0.15s, transform 0.15s;
+      text-decoration:none; border: none; cursor: pointer;
+    }
+    .cta-btn:hover { opacity:0.85; }
+    .cta-btn:active { transform:scale(0.98); }
+
+    /* ── MOBILE BAR ── */
+    #mobile-bar { backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
+    @media (max-width:767px) { body { padding-bottom:76px; } }
+
+    hr { border:none; border-top:1px solid #EDE6F4; }
+
+    /* ── PRODUCT CAROUSEL ── */
+    #product-carousel { overflow: hidden; background: #F8F4EE; aspect-ratio: 1; }
+    #carousel-track { height: 100%; display:flex; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
+    #carousel-track > div { display: flex; align-items: center; justify-content: center; background: #F8F4EE; height: 100%; flex:0 0 100%; width:100%; }
+    #carousel-track img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
+    @media (min-width: 1024px) {
+      #product-carousel { aspect-ratio: unset; height: 480px; }
+      #carousel-track { height: 480px; }
+      #carousel-track > div { height: 480px; }
+    }
+
+    /* ── NEWSLETTER FOOTER ── */
+    .footer-input:focus { outline: none; border-color: #8B72CC; }
+  </style>
+</head>
+<body>
+
+<!-- ── STICKY NAV ── -->
+<nav id="sticky-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(248,244,238,0.92);">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+    <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.25rem; color:#1A1526; letter-spacing:-0.01em;">flove.</div>
+    <div class="hidden sm:flex items-center gap-5 text-sm" style="color:#4A4458;">
+      <a href="#mechanism" class="hover:text-text-primary transition-colors">How It Works</a>
+      <a href="#stack-up" class="hover:text-text-primary transition-colors">Compare</a>
+      <a href="#reviews" class="hover:text-text-primary transition-colors">Reviews</a>
+      <a href="#faq" class="hover:text-text-primary transition-colors">FAQ</a>
+    </div>
+    <a href="#order" class="cta-btn px-5 py-2 text-sm">Order Now →</a>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     SOCIAL PROOF TICKER
+============================================================ -->
+<section class="pt-20 pb-4 px-4 sm:px-6" style="overflow:hidden;">
+  <div style="overflow:hidden; position:relative;">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:60px;z-index:2;background:linear-gradient(to right,#F8F4EE,transparent);pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:60px;z-index:2;background:linear-gradient(to left,#F8F4EE,transparent);pointer-events:none;"></div>
+    <div class="proof-ticker-track px-4">
+      <span class="proof-item">★ 4.9 · 889 Verified Reviews</span><span class="proof-dot"></span>
+      <span class="proof-item">40B CFU · 4 Strains + FOS</span><span class="proof-dot"></span>
+      <span class="proof-item">PhaseLock™ · 95% Survival</span><span class="proof-dot"></span>
+      <span class="proof-item">60-Day Money-Back Guarantee</span><span class="proof-dot"></span>
+      <span class="proof-item">Gluten Free · Lactose Free</span><span class="proof-dot"></span>
+      <span class="proof-item">Made In The USA</span><span class="proof-dot"></span>
+      <span class="proof-item">★ 4.9 · 889 Verified Reviews</span><span class="proof-dot"></span>
+      <span class="proof-item">40B CFU · 4 Strains + FOS</span><span class="proof-dot"></span>
+      <span class="proof-item">PhaseLock™ · 95% Survival</span><span class="proof-dot"></span>
+      <span class="proof-item">60-Day Money-Back Guarantee</span><span class="proof-dot"></span>
+      <span class="proof-item">Gluten Free · Lactose Free</span><span class="proof-dot"></span>
+      <span class="proof-item">Made In The USA</span><span class="proof-dot"></span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     1. PRODUCT INFORMATION — hero
+============================================================ -->
+<section class="pt-2 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start pt-10 pb-8">
+
+      <!-- LEFT: Media -->
+      <div class="flex flex-col gap-4 lg:sticky lg:top-20">
+        <div class="rounded-3xl" style="border:1px solid #EDE6F4; position:relative;" id="product-carousel">
+          <div id="carousel-track">
+            <div><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove Daily Performance Synbiotic" width="1024" height="1024" fetchpriority="high" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="Flove product view 2" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="Flove product view 3" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="Flove product view 4" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="Flove product view 5" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+          </div>
+        </div>
+        <div class="grid grid-cols-5 gap-2">
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="0" style="border:2px solid #8B72CC; cursor:pointer;"><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="1" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="2" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Info -->
+      <div class="flex flex-col gap-4">
+
+
+        <!-- FLAG: 889 is a placeholder review count from the swipe doc. Replace with the real verified-review count before this page sees spend. -->
+        <div class="flex items-center gap-2">
+          <div class="text-base" style="letter-spacing:2px; color:#C4962A;">★★★★★</div>
+          <span class="text-sm" style="color:#4A4458;">4.9 · 889 reviews</span>
+          <a href="#reviews" class="text-xs underline" style="color:#8B72CC;">See all</a>
+        </div>
+
+        <div>
+          <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary leading-tight mb-2" style="letter-spacing:-0.02em;">
+            Finally! Visible Abs And a Flatter Stomach In 2 Simple Steps With MAKTrek Bi-Layer Delivery.
+          </h1>
+          <p class="text-lg leading-snug" style="color:#3A3450;">See Results In Under A Week, Without Bathroom Emergencies, Cramping, Or Gas!</p>
+        </div>
+
+        <!-- Bullet claims -->
+        <ul class="text-base space-y-2.5" style="color:#241F35;">
+          <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>A flat stomach</strong> that holds all day</span></li>
+          <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>Abs visible again</strong>, not<strong> buried under gas and water</strong>.</span></li>
+          <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>95%</strong> of the cultures reach your gut alive.</span></li>
+          <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>The La-14 strain</strong> that breaks down lactose in whey.</span></li>
+        </ul>
+        <p class="text-sm font-medium -mt-1" style="color:#726A87;">1 capsule with your biggest meal. 1 capsule before bed.</p>
+
+        <!-- Price + Delivery Schedule -->
+        <div id="order" class="pt-2">
+          <div class="flex items-baseline gap-2 mb-4">
+            <span style="font-family:'Playfair Display',serif; font-weight:700; font-size:2rem; color:#1A1526;" id="price-display">$101.97</span>
+            <span class="text-sm line-through" style="color:#4A4458;" id="original-price">$119.97</span>
+            <span class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:#C4B5E8; color:#1A1526;" id="save-badge">Save 15%</span>
+          </div>
+
+          <!-- Delivery schedule radios -->
+          <div class="space-y-2.5 mb-4" id="schedule-selector">
+            <div class="sched-card active rounded-2xl px-4 py-3.5 flex items-center gap-3 bg-surface" style="border:1px solid #EDE6F4;" data-mode="subscribe" onclick="pickSchedule(this)">
+              <div class="sched-radio"></div>
+              <div class="flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="font-semibold text-sm" style="color:#1A1526;">Subscribe &amp; Save</span>
+                  <span class="px-1.5 py-0.5 rounded-full text-xs font-semibold" style="background:#8B72CC; color:#fff;">15% OFF</span>
+                </div>
+                <div class="text-xs" style="color:#4A4458;">Ships every 30 days · skip, pause, or cancel anytime · no fees</div>
+              </div>
+            </div>
+            <div class="sched-card rounded-2xl px-4 py-3.5 flex items-center gap-3 bg-surface" style="border:1px solid #EDE6F4;" data-mode="onetime" onclick="pickSchedule(this)">
+              <div class="sched-radio"></div>
+              <div class="flex-1">
+                <div class="font-semibold text-sm" style="color:#1A1526;">One-Time Purchase</div>
+                <div class="text-xs" style="color:#4A4458;">No recurring charge · order again whenever you want</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottle size selector -->
+          <div class="mb-5">
+            <div class="text-xs font-semibold uppercase tracking-widest mb-2.5" style="color:#8B72CC;">Bottle count</div>
+            <!-- FLAG: only the 1-Bottle price ($49.99) is confirmed. 3-Bottle/6-Bottle figures below are carried over from the prior build and still need real Shopify pricing. -->
+            <div class="grid grid-cols-3 gap-3" id="size-selector">
+              <div class="size-pill rounded-xl py-3 px-2 text-center" data-days="30" data-price="49.99" data-orig="49.99" data-variant="43847080837198" onclick="pickSize(this)">
+                <div class="size-pill-bottle"><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="1 bottle of Flove"></div>
+                <div class="font-semibold text-sm">1-Bottle</div>
+                <div class="text-xs opacity-70">30-day</div>
+              </div>
+              <div class="size-pill active rounded-xl py-3 px-2 text-center" data-days="90" data-price="119.97" data-orig="134.97" data-variant="43847089946702" onclick="pickSize(this)">
+                <div class="size-pill-bottle"><img src="../brand_assets/1780881996497-generated-label-image-3.png" alt="3 bottles of Flove"><span class="size-pill-badge">3</span></div>
+                <div class="font-semibold text-sm">3-Bottle</div>
+                <div class="text-xs opacity-70">90-day</div>
+              </div>
+              <div class="size-pill rounded-xl py-3 px-2 text-center" data-days="180" data-price="215.94" data-orig="269.94" data-variant="43847100563534" onclick="pickSize(this)">
+                <div class="size-pill-bottle"><img src="../brand_assets/1780881996497-generated-label-image-3.png" alt="6 bottles of Flove"><span class="size-pill-badge">6</span></div>
+                <div class="font-semibold text-sm">6-Bottle</div>
+                <div class="text-xs opacity-70">180-day</div>
+              </div>
+            </div>
+          </div>
+
+          <button class="cta-btn w-full py-4 text-base mb-3" onclick="goToCheckout()" id="cta-btn-main">
+            Start My 90-Day Supply — <span id="btn-price">$101.97</span>
+          </button>
+
+          <!-- Gift note toggle -->
+          <label class="flex items-center gap-2.5 mb-4 cursor-pointer select-none" style="padding:2px 2px;">
+            <input type="checkbox" id="gift-toggle" class="w-4 h-4" style="accent-color:#8B72CC;" onchange="toggleGiftNote(this)">
+            <span class="text-xs font-medium" style="color:#3A3450;">Add a gift note?</span>
+          </label>
+          <div id="gift-note-field" class="mb-4" style="display:none;">
+            <textarea rows="2" placeholder="Write a short note for the recipient…" class="w-full rounded-xl px-3 py-2.5 text-sm footer-input" style="border:1px solid #EDE6F4; background:#fff; color:#1A1526; resize:none;"></textarea>
+          </div>
+
+          <div class="flex justify-center gap-5 text-xs flex-wrap" style="color:#4A4458;">
+            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>60-day guarantee</div>
+            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Cancel anytime</div>
+            <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ships in 24h</div>
+          </div>
+        </div>
+
+        <!-- Quick FAQ: biggest limiting beliefs, answered briefly -->
+        <div class="border-t border-border pt-5">
+          <div class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:#8B72CC;">Before You Order</div>
+          <div class="space-y-2">
+            <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+              <button class="w-full flex items-center justify-between px-4 py-3 text-left" onclick="toggleFaq(this)">
+                <span class="font-semibold text-sm text-text-primary pr-4">Didn't my last probiotic already fail me?</span>
+                <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+              </button>
+              <div class="faq-answer"><div class="px-4 pb-4 text-sm leading-relaxed" style="color:#3A3450;">It never survived your stomach acid. Standard capsules dissolve in minutes; PhaseLock&trade; keeps 95% of the cultures alive until they reach your gut.</div></div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+              <button class="w-full flex items-center justify-between px-4 py-3 text-left" onclick="toggleFaq(this)">
+                <span class="font-semibold text-sm text-text-primary pr-4">Can I still drink my whey shakes?</span>
+                <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+              </button>
+              <div class="faq-answer"><div class="px-4 pb-4 text-sm leading-relaxed" style="color:#3A3450;">Yes. The La-14 strain produces lactase, the enzyme that breaks down the lactose in whey concentrate.</div></div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+              <button class="w-full flex items-center justify-between px-4 py-3 text-left" onclick="toggleFaq(this)">
+                <span class="font-semibold text-sm text-text-primary pr-4">Will this cramp me like a greens powder?</span>
+                <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+              </button>
+              <div class="faq-answer"><div class="px-4 pb-4 text-sm leading-relaxed" style="color:#3A3450;">No. Flove uses 24mg of low-dose FOS, not high-volume fiber, so there's nothing to ferment mid-lift.</div></div>
+            </div>
+            <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+              <button class="w-full flex items-center justify-between px-4 py-3 text-left" onclick="toggleFaq(this)">
+                <span class="font-semibold text-sm text-text-primary pr-4">Why two capsules instead of one?</span>
+                <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+              </button>
+              <div class="faq-answer"><div class="px-4 pb-4 text-sm leading-relaxed" style="color:#3A3450;">One digests your meal by day, one repairs your gut overnight. A single dose shocks your system and causes gas.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cross-sell: Thousands of Customers Also Buy -->
+        <div class="border-t border-border pt-5 mt-1">
+          <div class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:#8B72CC;">Thousands Of Customers Also Buy</div>
+          <div class="space-y-2" id="xsell-list">
+            <div class="xsell-card rounded-2xl px-3.5 py-3 flex items-center gap-3 bg-surface" data-item="0">
+              <img src="https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovecolos_a5b7d8dc-9612-42d5-9cc5-2ae0966e035e.png" alt="Colostrum Capsules" width="44" height="44" loading="lazy" style="width:44px; height:44px; object-fit:contain; border-radius:10px; background:#F8F4EE; flex-shrink:0;" onerror="this.style.cssText='width:44px;height:44px;border-radius:10px;background:#F2EBF8;flex-shrink:0;';this.removeAttribute('src')">
+              <div class="flex-1 min-w-0">
+                <div class="font-semibold text-xs" style="color:#1A1526;">Colostrum Capsules — $35.00</div>
+                <div class="text-xs truncate" style="color:#4A4458;">Rebuilds the lining your pre-workout stripped</div>
+              </div>
+              <button class="xsell-add-btn flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold cta-btn" onclick="toggleXsell(this,0)">+ Add</button>
+            </div>
+            <!-- FLAG: swipe doc's second cross-sell item was "Digestive Enzyme Complex $29," an unconfirmed SKU. Kept Max Detox here instead since it's a verified live product; swap if Digestive Enzyme Complex ships. -->
+            <div class="xsell-card rounded-2xl px-3.5 py-3 flex items-center gap-3 bg-surface" data-item="1">
+              <img src="https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovedetox.png" alt="Max Detox" width="44" height="44" loading="lazy" style="width:44px; height:44px; object-fit:contain; border-radius:10px; background:#F8F4EE; flex-shrink:0;" onerror="this.style.cssText='width:44px;height:44px;border-radius:10px;background:#F2EBF8;flex-shrink:0;';this.removeAttribute('src')">
+              <div class="flex-1 min-w-0">
+                <div class="font-semibold text-xs" style="color:#1A1526;">Max Detox (Acai) — $29.90</div>
+                <div class="text-xs truncate" style="color:#4A4458;">Daily gut cleanse, clears the runway</div>
+              </div>
+              <button class="xsell-add-btn flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold cta-btn" onclick="toggleXsell(this,1)">+ Add</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial photo strip -->
+        <!-- FLAG: "889" is a placeholder count per the swipe doc. Do not ship without the real verified-review number. -->
+        <div class="border-t border-border pt-5">
+          <a href="#reviews" class="flex items-center gap-3 group">
+            <div class="flex -space-x-2.5">
+              <img class="face-avatar" src="../brand_assets/testimonial-1-opt.webp" alt="">
+              <img class="face-avatar" src="../brand_assets/testimonial-2-opt.webp" alt="">
+              <img class="face-avatar" src="../brand_assets/testimonial-3-opt.webp" alt="">
+            </div>
+            <div class="text-sm" style="color:#3A3450;">
+              <strong style="color:#1A1526;">889 women</strong> stopped planning their outfit around their stomach
+              <span class="text-xs underline block sm:inline" style="color:#8B72CC;">Read their stories →</span>
+            </div>
+          </a>
+        </div>
+
+      </div><!-- /right -->
+    </div><!-- /grid -->
+  </div>
+</section>
+
+
+<!-- ============================================================
+     1B. TESTIMONIAL VIDEO TICKER
+============================================================ -->
+<section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8; overflow:hidden;">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
+    <div class="flex items-center gap-3">
+      <div class="spec-pill"><span class="dot"></span>Customer stories</div>
+      <div class="text-sm" style="color:#6B6480;">889 verified buyers · 4.9★ average</div>
+    </div>
+  </div>
+  <div style="overflow:hidden; position:relative;">
+    <div style="position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to right,#F2EBF8,transparent);pointer-events:none;"></div>
+    <div style="position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to left,#F2EBF8,transparent);pointer-events:none;"></div>
+    <div class="vticker-track px-4">
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Sarah L. · Chicago</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid2.mp4" type="video/mp4"></video><div class="vticker-name">Megan P. · New York</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Kristen T. · Boston</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid4.mp4" type="video/mp4"></video><div class="vticker-name">Dana R. · Austin</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid6.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid7.mp4" type="video/mp4"></video><div class="vticker-name">Lauren B. · LA</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid8.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Sarah L. · Chicago</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid2.mp4" type="video/mp4"></video><div class="vticker-name">Megan P. · New York</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Kristen T. · Boston</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid4.mp4" type="video/mp4"></video><div class="vticker-name">Dana R. · Austin</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid6.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid7.mp4" type="video/mp4"></video><div class="vticker-name">Lauren B. · LA</div></div>
+      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid8.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     2. PROOF / STAT BLOCK
+============================================================ -->
+<section class="py-12 sm:py-20 px-4 sm:px-6" style="background:#FFFFFF; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+      <div class="rounded-3xl overflow-hidden order-2 lg:order-1" style="border:1px solid #EDE6F4;">
+        <img src="../brand_assets/stomach.png" alt="Digestive tract illustration" width="800" height="600" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div class="order-1 lg:order-2">
+        <div class="spec-pill inline-flex mb-4"><span class="dot"></span>The number nobody prints on the bottle</div>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mb-4" style="letter-spacing:-0.02em; line-height:1.1;"><span style="color:#6E52B5;">95%</span> Of Flove's Cultures Reach Your Gut Alive. Your Last Probiotic Delivered <em>Under 3%</em>.</h2>
+        <p class="text-base mb-6 leading-relaxed" style="color:#3A3450;"><strong>To fix their protein shake bloat, thousands of fit women bought generic probiotics with cheap capsules that only deliver 3% of good bacteria to their gut.</strong></p>
+        <p class="text-base mb-6 leading-relaxed" style="color:#3A3450;"><strong>Flove</strong> uses the advanced <strong>MAKTrek Bi-Layer technology</strong>  to ensure <strong>95%</strong> of the good bacteria reach your gut intact, for a flatter stomach, In 2 simple daily steps.</p>
+        <div class="grid grid-cols-2 gap-4 mb-6">
+          <div class="rounded-2xl p-5 bg-surface" style="border:1px solid #E0D6EE;">
+            <div class="font-display font-bold text-4xl" style="color:#6E52B5;">95%</div>
+            <div class="text-sm mt-1 font-medium" style="color:#3A3450;">Cultures surviving gastric transit</div>
+          </div>
+          <div class="rounded-2xl p-5 bg-surface" style="border:1px solid #E0D6EE;">
+            <div class="font-display font-bold text-4xl text-text-primary">40x</div>
+            <div class="text-sm mt-1 font-medium" style="color:#3A3450;">More live bacteria delivered vs. unshielded capsules</div>
+          </div>
+        </div>
+        <p class="text-xs" style="color:#726A87;">Survival figures from delivery-system manufacturer testing. Comparative survival data: <em>Nutrients</em> 2024;16(16):2791.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. HOW IT WORKS — 3-STEP MECHANISM
+============================================================ -->
+<section id="mechanism" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#FFFFFF; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>PhaseLock™ Delivery</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">How Flove Works From Day One, With No Adjustment Week</h2>
+      <p class="text-base max-w-xl mx-auto" style="color:#3A3450;">A marine polysaccharide drawn from brown seaweed sits inside the capsule wall and turns to gel the moment it meets stomach acid, which is why the cultures arrive alive instead of dissolving on the way down.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE6F4; background:#fff;">
+        <img src="../brand_assets/maktrek-pill-opt.png" alt="PhaseLock capsule technology" width="800" height="800" style="width:100%; height:auto; display:block;">
+      </div>
+      <div class="space-y-7">
+        <div class="flex gap-4">
+          <div class="mech-step-num">1</div>
+          <div>
+            <h3 class="font-display font-bold text-xl sm:text-2xl mb-1.5" style="color:#8B72CC; letter-spacing:-0.01em;">Sealed</h3>
+            <p class="text-base leading-relaxed" style="color:#3A3450;">Four strains, 24mg of FOS, and the marine polysaccharide complex go into a single vegetable capsule.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mech-step-num">2</div>
+          <div>
+            <h3 class="font-display font-bold text-xl sm:text-2xl mb-1.5" style="color:#8B72CC; letter-spacing:-0.01em;">The Gel Forms</h3>
+            <p class="text-base leading-relaxed" style="color:#3A3450;">Gastric moisture hits the polysaccharide. It hydrates and expands into an <em>acid-resistant gel</em> around the living cultures. pH 1.5 to 3.5 beats against it and doesn't get through.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="mech-step-num">3</div>
+          <div>
+            <h3 class="font-display font-bold text-xl sm:text-2xl mb-1.5" style="color:#8B72CC; letter-spacing:-0.01em;">Neutral-pH Release</h3>
+            <p class="text-base leading-relaxed" style="color:#3A3450;">Past the stomach the pH climbs to 6.0 and above. The gel dissolves there and <strong>only there</strong>. Live cultures land in the section of gut where they can actually colonize.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6. INGREDIENT PILL SELECTOR
+============================================================ -->
+<section class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>40B CFU per daily dose</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">Four strains. Four jobs. 24mg of prebiotic fuel.</h2>
+    </div>
+    <div class="flex flex-wrap justify-center gap-2 mb-10" id="strain-pills">
+      <button class="strain-pill active rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="0" onclick="pickStrain(this)">Digest</button>
+      <button class="strain-pill rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="1" onclick="pickStrain(this)">Shield</button>
+      <button class="strain-pill rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="2" onclick="pickStrain(this)">Defend</button>
+      <button class="strain-pill rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="3" onclick="pickStrain(this)">Rebuild</button>
+      <button class="strain-pill rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="4" onclick="pickStrain(this)">FOS Prebiotic</button>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE6F4;">
+        <img src="../brand_assets/strain-diagram.png" alt="Flove strain diagram" width="800" height="1100" style="width:100%; height:auto; display:block;">
+      </div>
+      <div id="strain-panels">
+        <div class="strain-panel" data-panel="0">
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Whey</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Lactose</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Post-shake gas</span>
+          </div>
+          <h3 class="font-display font-bold text-3xl text-text-primary mb-3" style="letter-spacing:-0.01em;"><span style="color:#8B72CC;">DIGEST</span> — <em>Lactobacillus acidophilus</em> <span style="white-space:nowrap;">(La-14)</span></h3>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">La-14 produces lactase, the enzyme most adults stop making enough of after childhood. Lactase is what breaks down the lactose in whey concentrate. Two or three shakes a day is more lactose than an unassisted gut clears, and <strong>the surplus ferments</strong>.</p>
+        </div>
+        <div class="strain-panel hidden" data-panel="1">
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Gut lining</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Water retention</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Inflammation</span>
+          </div>
+          <h3 class="font-display font-bold text-3xl text-text-primary mb-3" style="letter-spacing:-0.01em;"><span style="color:#8B72CC;">SHIELD</span> — <em>Bifidobacterium lactis</em> <span style="white-space:nowrap;">(Bl-04)</span></h3>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">Bl-04 reinforces the tight-junction proteins holding your intestinal wall closed. Those junctions loosen under a diet heavy in artificial sweeteners. When they hold, <strong>less water gets held in the tissue over your abs</strong>.</p>
+        </div>
+        <div class="strain-panel hidden" data-panel="2">
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Gas</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Pathogens</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Distension</span>
+          </div>
+          <h3 class="font-display font-bold text-3xl text-text-primary mb-3" style="letter-spacing:-0.01em;"><span style="color:#8B72CC;">DEFEND</span> — <em>Lactobacillus plantarum</em> <span style="white-space:nowrap;">(Lp-115)</span></h3>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">Lp-115 secretes bacteriocins, antimicrobial compounds that crowd out gas-producing opportunists. Sucralose feeds those opportunists &mdash; <strong>every scoop of pre-workout is a meal</strong> for the exact bacteria inflating your lower stomach by 2pm.</p>
+        </div>
+        <div class="strain-panel hidden" data-panel="3">
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Overnight repair</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Motility</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">Butyrate</span>
+          </div>
+          <h3 class="font-display font-bold text-3xl text-text-primary mb-3" style="letter-spacing:-0.01em;"><span style="color:#8B72CC;">REBUILD</span> — <em>Lactobacillus paracasei</em> <span style="white-space:nowrap;">(Lpc-37)</span></h3>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">Lpc-37 produces butyrate and acetate, the short-chain fatty acids your colon cells burn as fuel. This is the strain doing the overnight work &mdash; <strong>the reason one capsule goes in before bed</strong> instead of both at breakfast.</p>
+        </div>
+        <div class="strain-panel hidden" data-panel="4">
+          <div class="flex flex-wrap gap-1.5 mb-3">
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">No cramping</span>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold" style="background:rgba(139,114,204,0.14); color:#6E52B5;">No adjustment week</span>
+          </div>
+          <h3 class="font-display font-bold text-3xl text-text-primary mb-3" style="letter-spacing:-0.01em;"><span style="color:#8B72CC;">FOS PREBIOTIC</span> — Fructooligosaccharide (24mg)</h3>
+          <p class="text-base leading-relaxed" style="color:#3A3450;"><strong>Twenty-four milligrams.</strong> A scoop of greens powder can carry five to ten grams of inulin and chicory root, which ferments hard under a heavy squat and doubles you over. FOS at this dose feeds the four strains that just arrived and not much else.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     7. WHAT TO EXPECT — churn-mitigation timeline
+============================================================ -->
+<section class="py-12 sm:py-20 px-4 sm:px-6" style="border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-center mb-10">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>No day-one sensation, and that's by design</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">What To Expect</h2>
+      <p class="text-base max-w-lg mx-auto" style="color:#3A3450;">This isn't a stimulant. It's colonization, and colonization takes time to build.</p>
+    </div>
+    <!-- Desktop: alternating vertical timeline -->
+    <div class="hidden sm:block relative" style="max-width:680px; margin:0 auto;">
+      <div class="absolute left-1/2 top-2 bottom-2" style="width:2px; background:#E0D6EE; transform:translateX(-50%);"></div>
+
+      <div class="relative grid grid-cols-2 gap-x-10 mb-16">
+        <div class="text-right pr-10">
+          <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">1</span></div>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">Lactase production ramps up. Post-shake gas starts to drop.</p>
+        </div>
+        <div></div>
+        <div class="timeline-dot absolute left-1/2 top-1" style="transform:translate(-50%,0);"></div>
+      </div>
+
+      <div class="relative grid grid-cols-2 gap-x-10 mb-16">
+        <div></div>
+        <div class="text-left pl-10">
+          <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">4</span></div>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">Morning-to-evening consistency becomes visible. Fewer surprises from your afternoon stomach.</p>
+        </div>
+        <div class="timeline-dot absolute left-1/2 top-1" style="transform:translate(-50%,0);"></div>
+      </div>
+
+      <div class="relative grid grid-cols-2 gap-x-10">
+        <div class="text-right pr-10">
+          <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">12</span></div>
+          <p class="text-base leading-relaxed" style="color:#3A3450;">Full colonization. This is the timeline the <strong>90-day supply</strong> is built around.</p>
+        </div>
+        <div></div>
+        <div class="timeline-dot absolute left-1/2 top-1" style="transform:translate(-50%,0);"></div>
+      </div>
+    </div>
+
+    <!-- Mobile: single-column timeline, line + dots on the left -->
+    <div class="sm:hidden" style="max-width:420px; margin:0 auto;">
+      <div class="relative mb-10 pl-6" style="border-left:2px solid #E0D6EE;">
+        <div class="timeline-dot absolute" style="left:-8px; top:3px;"></div>
+        <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">1</span></div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Lactase production ramps up. Post-shake gas starts to drop.</p>
+      </div>
+      <div class="relative mb-10 pl-6" style="border-left:2px solid #E0D6EE;">
+        <div class="timeline-dot absolute" style="left:-8px; top:3px;"></div>
+        <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">4</span></div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Morning-to-evening consistency becomes visible. Fewer surprises from your afternoon stomach.</p>
+      </div>
+      <div class="relative pl-6" style="border-left:2px solid #E0D6EE;">
+        <div class="timeline-dot absolute" style="left:-8px; top:3px;"></div>
+        <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">12</span></div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Full colonization. This is the timeline the <strong>90-day supply</strong> is built around.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     8. COMPARISON TABLE — SEE HOW IT STACKS UP
+============================================================ -->
+<section id="stack-up" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-10">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Flove vs. the shelf</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">The only probiotic built around whey<br class="hidden sm:block"> See how it stacks up</h2>
+    </div>
+    <div class="rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+      <div class="grid grid-cols-3 text-center py-4" style="border-bottom:1px solid #EDE6F4;">
+        <div></div>
+        <div class="font-display font-bold text-lg" style="color:#8B72CC;">flove.</div>
+        <div class="font-semibold text-sm" style="color:#4A4458;">Others</div>
+      </div>
+      <div class="cmp-row grid grid-cols-3 items-center text-center py-4 text-sm sm:text-base">
+        <div class="text-left pl-4 sm:pl-6 font-medium" style="color:#241F35;">Lactase-producing strain for whey lactose</div>
+        <div class="cmp-check">✓</div>
+        <div class="cmp-cross">✕</div>
+      </div>
+      <div class="cmp-row grid grid-cols-3 items-center text-center py-4 text-sm sm:text-base">
+        <div class="text-left pl-4 sm:pl-6 font-medium" style="color:#241F35;">24mg FOS, no adjustment period</div>
+        <div class="cmp-check">✓</div>
+        <div class="cmp-cross">✕</div>
+      </div>
+      <div class="cmp-row grid grid-cols-3 items-center text-center py-4 text-sm sm:text-base">
+        <div class="text-left pl-4 sm:pl-6 font-medium" style="color:#241F35;">Separate morning and evening dose</div>
+        <div class="cmp-check">✓</div>
+        <div class="cmp-cross">✕</div>
+      </div>
+      <div class="cmp-row grid grid-cols-3 items-center text-center py-4 text-sm sm:text-base">
+        <div class="text-left pl-4 sm:pl-6 font-medium" style="color:#241F35;">95% survival past stomach acid</div>
+        <div class="cmp-check">✓</div>
+        <div class="cmp-cross">✕</div>
+      </div>
+      <div class="cmp-row grid grid-cols-3 items-center text-center py-4 text-sm sm:text-base">
+        <div class="text-left pl-4 sm:pl-6 font-medium" style="color:#241F35;">Zero senna, cascara, or stimulant laxative</div>
+        <div class="cmp-check">✓</div>
+        <div class="cmp-cross">✕</div>
+      </div>
+      <div class="cmp-row grid grid-cols-3 items-center text-center py-4 text-sm sm:text-base">
+        <div class="text-left pl-4 sm:pl-6 font-medium" style="color:#241F35;">Every strain and dose printed on the label</div>
+        <div class="cmp-check">✓</div>
+        <div class="cmp-cross">✕</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     9. REVIEWS
+     ⚠ PLACEHOLDER CONTENT — DO NOT SHIP AS-IS.
+     Every quote, name, and the "889" count below are placeholders
+     written to the right shape/specificity per the swipe doc, not
+     real customer submissions. Replace with verified reviews and
+     the real review count before this page takes traffic.
+============================================================ -->
+<section id="reviews" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#FFFFFF; border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-8">
+      <h2 class="font-display font-bold text-2xl sm:text-3xl text-text-primary mb-6" style="letter-spacing:-0.02em;">889 women stopped planning their outfit around their stomach</h2>
+      <div class="inline-flex flex-col items-center gap-2 mb-6">
+        <div class="spec-pill inline-flex mb-1"><span class="dot"></span>Verified reviews</div>
+        <div class="font-display font-bold text-5xl text-text-primary">4.9</div>
+        <div class="flex gap-0.5 text-2xl" style="color:#00B67A;">★★★★★</div>
+        <div class="text-sm" style="color:#4A4458;">Based on 889 reviews · 92% five-star</div>
+      </div>
+      <div class="max-w-xs mx-auto space-y-1.5 mb-8">
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#4A4458;">5 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:92%;background:#00B67A;"></div></div><span class="w-6" style="color:#4A4458;">92%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#4A4458;">4 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:6%;background:#00B67A;"></div></div><span class="w-6" style="color:#4A4458;">6%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#4A4458;">3 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"><div class="h-full rounded-full" style="width:1.5%;background:#EDE6F4;"></div></div><span class="w-6" style="color:#4A4458;">1%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#4A4458;">2 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"></div><span class="w-6" style="color:#4A4458;">0%</span></div>
+        <div class="flex items-center gap-2 text-xs"><span class="w-8 text-right" style="color:#4A4458;">1 ★</span><div class="flex-1 h-1.5 rounded-full overflow-hidden" style="background:#EDE6F4;"></div><span class="w-6" style="color:#4A4458;">0%</span></div>
+      </div>
+      <div class="inline-flex rounded-full p-1 gap-1" style="background:#F2EBF8;">
+        <button class="rev-toggle-btn active rounded-full px-5 py-2 text-sm font-semibold" data-tab="written" onclick="revTab(this)">Written Reviews</button>
+        <button class="rev-toggle-btn rounded-full px-5 py-2 text-sm font-semibold" data-tab="video" onclick="revTab(this)">Video Reviews</button>
+      </div>
+    </div>
+
+    <div id="rev-written" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"I kept all three shakes."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">I'd cut whey, gone back to it, cut it again. Four weeks on Flove I'm at three scoops a day and my stomach is flat walking out of the gym. That's the whole review.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-1-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Priya M.</div><div class="text-xs" style="color:#4A4458;">24 · Denver</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"I was braced for the bad week. It never came."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Seed gave me nine days of gas before I quit. Flove had nothing. Day one felt like day thirty and I kept waiting for the transition everybody warns you about.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-2-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Hannah B.</div><div class="text-xs" style="color:#4A4458;">27 · Austin</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"My check-in photos finally match the mirror."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Sunday progress photos used to be a coin flip depending on how bloated I was that morning. My coach asked what I changed. Six weeks.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-3-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Talia R.</div><div class="text-xs" style="color:#4A4458;">22 · Toronto</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"Pre-workout stopped wrecking me."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Twenty minutes into leg day my stomach used to go hard and tight. I assumed that was just what training on a full gut felt like. It isn't.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-1-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Jess K.</div><div class="text-xs" style="color:#4A4458;">29 · Phoenix</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"I stopped sucking it in."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Not for photos. Just standing at the squat rack, in my own gym, with nobody looking at me. I didn't realize I'd been doing it for two years.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-2-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Marisol V.</div><div class="text-xs" style="color:#4A4458;">26 · Miami</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"The guarantee is why I tried a fourth probiotic."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Three duds in eighteen months. I was done. Sixty days was the only thing that got my card out. By day sixty I'd forgotten the guarantee existed.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-3-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Elle W.</div><div class="text-xs" style="color:#4A4458;">25 · Chicago</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+    </div>
+
+    <div id="rev-video" class="hidden" style="overflow:hidden; position:relative;">
+      <div class="flex gap-3 overflow-x-auto pb-2" style="scrollbar-width:none;">
+        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid1.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Sarah L.</div></div>
+        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid2.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Megan P.</div></div>
+        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid3.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Kristen T.</div></div>
+        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid4.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Dana R.</div></div>
+        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid5.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Jennifer M.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     10. FAQ
+============================================================ -->
+<section id="faq" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-8 sm:mb-12">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Common objections</div>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">You've thought most of these already.</h2>
+    </div>
+    <div class="space-y-2.5">
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+        <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Can I keep drinking whey?</span>
+          <span class="faq-plus open flex-shrink-0" style="color:#4A4458;">+</span>
+        </button>
+        <div class="faq-answer open"><div class="px-5 pb-5 text-base leading-relaxed" style="color:#3A3450;">Yes, and this is the reason Flove exists. The lactose in whey concentrate needs lactase to break down, and most adults produce too little of it to clear two or three shakes a day. La-14 produces lactase on site, in your small intestine, at the moment the shake arrives. You don't have to switch to isolate. You don't have to drop to one scoop.</div></div>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+        <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">I've tried three probiotics. Why is this one different?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+        </button>
+        <div class="faq-answer"><div class="px-5 pb-5 text-base leading-relaxed" style="color:#3A3450;">Because the other three likely never made it out of your stomach. Standard gelatin and HPMC capsules dissolve at pH 1.5 to 3.5, which means the cultures spill into gastric acid and die within minutes. You paid premium prices for freeze-dried protein. PhaseLock™ holds the gel shield closed until the pH turns neutral, and 95% of the payload gets through.</div></div>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+        <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Will this cramp me mid-lift like my greens powder did?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+        </button>
+        <div class="faq-answer"><div class="px-5 pb-5 text-base leading-relaxed" style="color:#3A3450;">Greens powders carry raw insoluble fiber and high-dose inulin, measured in grams. Under the intra-abdominal pressure of a heavy squat, that ferments and doubles you over. Flove carries 24 milligrams of FOS, roughly two hundred times less, dosed as fuel for the four arriving strains rather than as bulk fiber. There is no adjustment period to survive.</div></div>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+        <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Is this a laxative?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+        </button>
+        <div class="faq-answer"><div class="px-5 pb-5 text-base leading-relaxed" style="color:#3A3450;">No. There is no senna, no cascara sagrada, no stimulant herb of any kind. Detox teas force bowel contractions and cause dehydration, bathroom emergencies, and dependency. Flove reduces distension by suppressing the gas-producing strains, by supporting motility through short-chain fatty acid production, and by holding the gut barrier closed.</div></div>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+        <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Why two capsules instead of one?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+        </button>
+        <div class="faq-answer"><div class="px-5 pb-5 text-base leading-relaxed" style="color:#3A3450;">A single large dose lands all at once in a gut that isn't ready for it, which is what produces the transition gas people report from once-daily brands. The morning capsule works on the meal in front of it and buffers protein digestion. The evening capsule colonizes while motility slows and acid production drops. The two jobs don't overlap.</div></div>
+      </div>
+      <div class="rounded-2xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
+        <button class="w-full flex items-center justify-between px-5 py-4 text-left" onclick="toggleFaq(this)">
+          <span class="font-semibold text-sm sm:text-base text-text-primary pr-4">Is Subscribe &amp; Save a trap?</span>
+          <span class="faq-plus flex-shrink-0" style="color:#4A4458;">+</span>
+        </button>
+        <div class="faq-answer"><div class="px-5 pb-5 text-base leading-relaxed" style="color:#3A3450;">No. It applies 15% off recurring orders. Skip, pause, swap bottle count, or cancel from your account in one click, no fees and no phone call. If you'd rather not have a recurring charge, One-Time Purchase sits directly above it. Same product, same 60-day guarantee.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     11. FINAL CTA
+============================================================ -->
+<section class="py-14 sm:py-24 px-4 sm:px-6 text-center" style="background:#FFFFFF; border-top:1px solid #D8CBEA;">
+  <div class="max-w-2xl mx-auto">
+    <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The complete offer</div>
+    <h2 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.1;">Keep the protein.<br/>Lose the stomach.</h2>
+    <p class="text-lg mb-10 max-w-lg mx-auto" style="color:#4A4458; line-height:1.65;">40 billion CFU, four strains, PhaseLock™ delivery, and sixty days to send it back if your stomach doesn't change.</p>
+    <div class="grid grid-cols-3 gap-2 sm:gap-3 max-w-sm mx-auto mb-10">
+      <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">95%</div><div class="text-xs mt-1" style="color:#4A4458;">Survival</div></div>
+      <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl text-text-primary">40B</div><div class="text-xs mt-1" style="color:#4A4458;">CFU / dose</div></div>
+      <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">60-day</div><div class="text-xs mt-1" style="color:#4A4458;">Guarantee</div></div>
+    </div>
+    <a href="#order" class="cta-btn px-10 py-5 text-base mb-5 inline-flex">Choose My Supply →</a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     12. FOOTER
+============================================================ -->
+<footer class="pt-14 pb-8 px-4 sm:px-6 border-t border-border" style="background:#1C1828;">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-10" style="border-bottom:1px solid rgba(255,255,255,0.1);">
+      <div class="lg:col-span-1">
+        <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.4rem; color:#fff;">flove.</div>
+        <p class="text-sm mt-3 mb-5" style="color:#726A87;">Unlock 15% off your first order.</p>
+        <form class="flex gap-2" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Sent ✓';">
+          <input type="email" required placeholder="Email address" class="footer-input flex-1 min-w-0 rounded-full px-4 py-2.5 text-sm" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.15); color:#fff;">
+          <button type="submit" class="cta-btn px-4 py-2.5 text-sm flex-shrink-0" style="background:#8B72CC;">Join</button>
+        </form>
+      </div>
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#8B72CC;">Shop</div>
+        <div class="flex flex-col gap-2.5 text-sm" style="color:#C9C2D6;">
+          <a href="#order" class="hover:text-white transition-colors">Daily Performance Synbiotic</a>
+          <a href="#" class="hover:text-white transition-colors">Bundle &amp; Save</a>
+          <a href="#" class="hover:text-white transition-colors">Gift a Subscription</a>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#8B72CC;">Learn</div>
+        <div class="flex flex-col gap-2.5 text-sm" style="color:#C9C2D6;">
+          <a href="#mechanism" class="hover:text-white transition-colors">The Science</a>
+          <a href="#stack-up" class="hover:text-white transition-colors">Compare</a>
+          <a href="#reviews" class="hover:text-white transition-colors">Reviews</a>
+          <a href="#faq" class="hover:text-white transition-colors">FAQ</a>
+        </div>
+      </div>
+      <div>
+        <div class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:#8B72CC;">Support</div>
+        <div class="flex flex-col gap-2.5 text-sm" style="color:#C9C2D6;">
+          <a href="#" class="hover:text-white transition-colors">Contact Us</a>
+          <a href="#" class="hover:text-white transition-colors">Shipping Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Manage Subscription</a>
+          <a href="#" class="hover:text-white transition-colors">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs" style="color:#7A7290;">
+      <span>© 2026 Flove. All rights reserved.</span>
+      <p class="text-center max-w-lg">*These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- MOBILE BAR -->
+<div id="mobile-bar" class="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-4 py-3 bg-surface" style="border-top:1px solid #EDE6F4;">
+  <a href="#order" class="cta-btn w-full py-3.5 text-sm">
+    <span>Order Now</span>
+    <span class="font-normal opacity-60">· From $49.99 · 60-day guarantee</span>
+  </a>
+</div>
+
+<!-- ── CART DRAWER ── -->
+<style>
+  #cart-drawer { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); transform: translateX(100%); }
+  #cart-drawer.open { transform: translateX(0); }
+  @media (max-width: 639px) {
+    #cart-drawer { top: auto !important; right: 0 !important; left: 0 !important; bottom: 0 !important; width: 100vw !important; max-height: 92vh !important; border-radius: 20px 20px 0 0 !important; transform: translateY(100%) !important; box-shadow: 0 -8px 40px rgba(28,24,40,0.18) !important; }
+    #cart-drawer.open { transform: translateY(0) !important; }
+  }
+</style>
+<div id="cart-overlay" onclick="closeCart()" style="display:none;position:fixed;inset:0;background:rgba(28,24,40,0.5);z-index:100;opacity:0;transition:opacity 0.3s ease;"></div>
+<div id="cart-drawer" style="display:none;position:fixed;right:0;top:0;bottom:0;width:min(420px,100vw);background:#F8F4EE;z-index:101;overflow-y:auto;box-shadow:-8px 0 40px rgba(28,24,40,0.15);">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #EDE6F4;position:sticky;top:0;background:#F8F4EE;z-index:2;">
+    <span style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#1C1828;">Your Cart</span>
+    <button onclick="closeCart()" style="width:36px;height:36px;border-radius:50%;border:none;background:#EDE6F4;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#5A5370;">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div style="padding:20px 24px;">
+    <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:16px;padding:16px;margin-bottom:24px;">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <img src="../brand_assets/1780881996497-generated-label-image-3.png" style="width:72px;height:72px;object-fit:contain;border-radius:10px;background:#F8F4EE;flex-shrink:0;">
+        <div style="flex:1;">
+          <div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:2px;">Flove Daily Performance Synbiotic</div>
+          <div id="cart-variant-label" style="font-size:12px;color:#4A4458;margin-bottom:6px;">3-Bottle · Subscribe &amp; Save</div>
+          <div id="cart-item-price" style="font-size:15px;font-weight:700;color:#8B72CC;">$101.97</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+          <button onclick="adjustQty(1)" style="width:28px;height:28px;border-radius:8px;border:1.5px solid #EDE6F4;background:#fff;cursor:pointer;font-size:16px;color:#1C1828;display:flex;align-items:center;justify-content:center;">+</button>
+          <span id="cart-qty" style="font-size:14px;font-weight:600;color:#1C1828;">1</span>
+          <button onclick="adjustQty(-1)" style="width:28px;height:28px;border-radius:8px;border:1.5px solid #EDE6F4;background:#fff;cursor:pointer;font-size:16px;color:#1C1828;display:flex;align-items:center;justify-content:center;">−</button>
+        </div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:16px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span style="font-size:13px;color:#4A4458;">Subtotal</span>
+        <span id="cart-subtotal" style="font-size:13px;font-weight:600;color:#1C1828;">$101.97</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span style="font-size:13px;color:#4A4458;">Shipping</span>
+        <span style="font-size:13px;font-weight:600;color:#22C55E;">Free</span>
+      </div>
+      <div style="border-top:1px solid #EDE6F4;margin:10px 0;"></div>
+      <div style="display:flex;justify-content:space-between;">
+        <span style="font-size:15px;font-weight:700;color:#1C1828;">Total</span>
+        <span id="cart-total" style="font-size:15px;font-weight:700;color:#1C1828;">$101.97</span>
+      </div>
+    </div>
+    <button onclick="proceedToCheckout()" style="width:100%;padding:16px;background:#1C1828;color:#fff;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(28,24,40,0.22);">
+      Proceed to Checkout →
+    </button>
+    <p style="font-size:11px;color:#AEA5C8;text-align:center;margin-top:10px;">Secure checkout · 60-day money-back guarantee</p>
+  </div>
+</div>
+
+<script>
+  const SHOPIFY_DOMAIN = 'checkout.tryflove.com';
+  const XSELL_ITEMS = [
+    { variant: '43850583933006', price: 35.00 },
+    { variant: '43850609655886', price: 29.90 },
+  ];
+  let addedXsells = {};
+
+  // ── PRODUCT CAROUSEL ──
+  (function () {
+    const track = document.getElementById('carousel-track');
+    const thumbs = document.querySelectorAll('.carousel-thumb');
+    const total = thumbs.length;
+    let current = 0, timer;
+    let touchStartX = 0, touchStartY = 0, swipeDir = null;
+    function slideWidth() { return track.offsetWidth; }
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * slideWidth()) + 'px)';
+      thumbs.forEach((t, i) => { t.style.border = i === current ? '2px solid #8B72CC' : '1px solid #EDE6F4'; });
+    }
+    function startTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 5000); }
+    window.addEventListener('resize', () => goTo(current), { passive: true });
+    thumbs.forEach(t => { t.addEventListener('click', () => { goTo(parseInt(t.dataset.index)); startTimer(); }); });
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; swipeDir = null; }, { passive: true });
+    track.addEventListener('touchmove', e => {
+      if (swipeDir === null) {
+        const dx = Math.abs(e.touches[0].clientX - touchStartX);
+        const dy = Math.abs(e.touches[0].clientY - touchStartY);
+        if (dx > 4 || dy > 4) swipeDir = dx > dy ? 'h' : 'v';
+      }
+      if (swipeDir === 'h') e.preventDefault();
+    }, { passive: false });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (swipeDir === 'h' && Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+      swipeDir = null; startTimer();
+    }, { passive: true });
+    goTo(0); startTimer();
+  })();
+
+  // ── SCHEDULE + SIZE + PRICE ──
+  const priceEl = document.getElementById('price-display');
+  const origEl = document.getElementById('original-price');
+  const saveEl = document.getElementById('save-badge');
+  const btnPriceEl = document.getElementById('btn-price');
+  const ctaBtnMain = document.getElementById('cta-btn-main');
+  let scheduleMode = 'subscribe';
+  let selectedVariant = '43847089946702';
+
+  function currentSizeCard() { return document.querySelector('.size-pill.active'); }
+
+  function computePrice() {
+    const size = currentSizeCard();
+    if (!size) return;
+    const base = parseFloat(size.dataset.price);
+    const orig = parseFloat(size.dataset.orig);
+    const days = size.dataset.days;
+    let final = base;
+    let subLabel = '';
+    if (scheduleMode === 'subscribe') {
+      final = base * 0.85;
+      subLabel = 'Save 15%';
+    } else if (orig > base) {
+      subLabel = 'Save $' + (orig - base).toFixed(0);
+    }
+    priceEl.textContent = '$' + final.toFixed(2);
+    btnPriceEl.textContent = '$' + final.toFixed(2);
+    if (ctaBtnMain) ctaBtnMain.firstChild.textContent = 'Start My ' + days + '-Day Supply — ';
+    if (orig > base || scheduleMode === 'subscribe') {
+      origEl.textContent = '$' + (scheduleMode === 'subscribe' ? base.toFixed(2) : orig.toFixed(2));
+      origEl.style.display = '';
+    } else { origEl.style.display = 'none'; }
+    if (subLabel) { saveEl.textContent = subLabel; saveEl.style.display = ''; } else { saveEl.style.display = 'none'; }
+    selectedVariant = size.dataset.variant;
+  }
+
+  function pickSchedule(card) {
+    document.querySelectorAll('.sched-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    scheduleMode = card.dataset.mode;
+    computePrice();
+  }
+
+  function pickSize(card) {
+    document.querySelectorAll('.size-pill').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    computePrice();
+  }
+
+  computePrice();
+
+  function toggleGiftNote(cb) {
+    document.getElementById('gift-note-field').style.display = cb.checked ? '' : 'none';
+  }
+
+  function toggleXsell(btn, idx) {
+    const item = XSELL_ITEMS[idx];
+    if (addedXsells[item.variant]) {
+      delete addedXsells[item.variant];
+      btn.textContent = '+ Add';
+      btn.classList.remove('added');
+    } else {
+      addedXsells[item.variant] = item.price;
+      btn.textContent = 'Added ✓';
+      btn.classList.add('added');
+    }
+    updateCartTotals();
+  }
+
+  // ── STRAIN PILLS ──
+  function pickStrain(btn) {
+    document.querySelectorAll('.strain-pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    const idx = btn.dataset.strain;
+    document.querySelectorAll('.strain-panel').forEach(p => p.classList.add('hidden'));
+    document.querySelector('.strain-panel[data-panel="' + idx + '"]').classList.remove('hidden');
+  }
+
+  // ── REVIEW TABS ──
+  function revTab(btn) {
+    document.querySelectorAll('.rev-toggle-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.getElementById('rev-written').classList.toggle('hidden', tab !== 'written');
+    document.getElementById('rev-video').classList.toggle('hidden', tab !== 'video');
+  }
+
+  // ── FAQ ──
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const plus = btn.querySelector('.faq-plus');
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.querySelector('.faq-plus').classList.remove('open'); });
+    if (!isOpen) { answer.classList.add('open'); plus.classList.add('open'); }
+  }
+
+  // ── CART ──
+  let cartQty = 1;
+
+  function goToCheckout() { openCart(); }
+
+  function openCart() {
+    const overlay = document.getElementById('cart-overlay');
+    const drawer  = document.getElementById('cart-drawer');
+    const size = currentSizeCard();
+    if (size) {
+      const label = size.querySelector('.font-semibold.text-sm').textContent.trim() + ' · ' + (scheduleMode === 'subscribe' ? 'Subscribe & Save' : 'One-Time Purchase');
+      document.getElementById('cart-variant-label').textContent = label;
+      document.getElementById('cart-item-price').textContent = priceEl.textContent;
+    }
+    cartQty = 1;
+    document.getElementById('cart-qty').textContent = '1';
+    overlay.style.display = 'block';
+    drawer.style.display  = 'block';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      overlay.style.opacity = '1';
+      drawer.classList.add('open');
+    }));
+    updateCartTotals();
+  }
+
+  function closeCart() {
+    const overlay = document.getElementById('cart-overlay');
+    const drawer  = document.getElementById('cart-drawer');
+    drawer.classList.remove('open');
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+      drawer.style.display  = 'none';
+      document.body.style.overflow = '';
+    }, 350);
+  }
+
+  function adjustQty(delta) {
+    cartQty = Math.max(1, cartQty + delta);
+    document.getElementById('cart-qty').textContent = cartQty;
+    updateCartTotals();
+  }
+
+  function updateCartTotals() {
+    const size = currentSizeCard();
+    if (!size) return;
+    const base = parseFloat(priceEl.textContent.replace('$', ''));
+    let total = base * cartQty;
+    Object.values(addedXsells).forEach(p => { total += p; });
+    const fmt = '$' + total.toFixed(2);
+    document.getElementById('cart-subtotal').textContent = fmt;
+    document.getElementById('cart-total').textContent    = fmt;
+  }
+
+  function proceedToCheckout() {
+    const base = parseFloat(priceEl.textContent.replace('$', ''));
+    let total = base * cartQty;
+    Object.values(addedXsells).forEach(p => { total += p; });
+    let items = selectedVariant + ':' + cartQty;
+    Object.keys(addedXsells).forEach(variant => { items += ',' + variant + ':1'; });
+    window.location.href = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
+  }
+
+  function checkMobileBar() { document.getElementById('mobile-bar').style.display = window.innerWidth >= 640 ? 'none' : ''; }
+  window.addEventListener('resize', checkMobileBar);
+  checkMobileBar();
+</script>
+</body>
+</html>
