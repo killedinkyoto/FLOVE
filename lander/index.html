@@ -1422,6 +1422,9 @@
     function openCart(variantId) {
       selectedVariant = variantId;
       var b = BUNDLE_MAP[variantId];
+      // Funnel step: user selected a bundle / opened the product cart
+      if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', { content_ids: [variantId], content_type: 'product', content_name: b.label, value: b.amount, currency: 'USD' });
+      if (typeof clarity !== 'undefined') clarity('event', 'add_to_cart');
       document.getElementById('cart-variant-label').textContent = b.label;
       document.getElementById('cart-item-price').textContent = b.price;
       cartQty = 1;
@@ -1496,6 +1499,20 @@
     new IntersectionObserver((e) => {
       stickyAtc.classList.toggle('visible', !e[0].isIntersecting);
     }, { threshold: 0 }).observe(heroEl);
+
+    // ── Funnel step: reached the product / pricing section ("product page" view) ──
+    (function() {
+      var pricingEl = document.getElementById('pricing');
+      if (!pricingEl) return;
+      var obs = new IntersectionObserver(function(e) {
+        if (e[0].isIntersecting) {
+          obs.disconnect();
+          if (typeof fbq !== 'undefined') fbq('trackCustom', 'ViewPricing');
+          if (typeof clarity !== 'undefined') clarity('event', 'view_pricing');
+        }
+      }, { threshold: 0.4 });
+      obs.observe(pricingEl);
+    })();
 
     // ── Problem pills ──
     function showProblem(index) {
