@@ -36,7 +36,7 @@
   </script>
   <style>
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: 13.5px; }
     body {
       background: #F8F4EE;
       color: #1A1526;
@@ -107,6 +107,26 @@
       position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 10px; font-size: 11px; font-weight: 600;
       background: linear-gradient(to top, rgba(28,24,40,0.85) 0%, transparent 100%);
       font-family: 'Inter', sans-serif; color: #fff;
+    }
+
+    /* ── TESTIMONIAL VIDEO CARDS (clickable/playable) ── */
+    .testimonial-vid-card {
+      position: relative; cursor: pointer; border-radius: 16px; overflow: hidden;
+      aspect-ratio: 9/16; border: 1px solid #EDE6F4; background: #2A2240;
+    }
+    .testimonial-vid-card video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .testimonial-play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 44px; height: 44px; border-radius: 50%; background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(28,24,40,0.35); transition: opacity 0.15s, transform 0.15s;
+    }
+    .testimonial-play-btn.hidden { opacity: 0; pointer-events: none; transform: translate(-50%,-50%) scale(0.85); }
+    .testimonial-vid-card:hover .testimonial-play-btn { transform: translate(-50%,-50%) scale(1.06); }
+    .testimonial-name {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 12px; font-size: 12px; font-weight: 600;
+      background: linear-gradient(to top, rgba(28,24,40,0.85) 0%, transparent 100%);
+      font-family: 'Inter', sans-serif; color: #fff; pointer-events: none;
     }
 
     /* ── TIMELINE ── */
@@ -189,11 +209,19 @@
     #carousel-track { height: 100%; display:flex; transition:transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94); }
     #carousel-track > div { display: flex; align-items: center; justify-content: center; background: #F8F4EE; height: 100%; flex:0 0 100%; width:100%; }
     #carousel-track img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
-    @media (min-width: 1024px) {
-      #product-carousel { aspect-ratio: unset; height: 480px; }
-      #carousel-track { height: 480px; }
-      #carousel-track > div { height: 480px; }
+
+    .carousel-arrow {
+      position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+      width:30px; height:30px; border-radius:50%; background:rgba(255,255,255,0.9);
+      display:flex; align-items:center; justify-content:center; border:1px solid #EDE6F4;
+      box-shadow:0 4px 14px rgba(139,114,204,0.18); cursor:pointer;
+      transition:background 0.15s, transform 0.15s;
     }
+    .carousel-arrow:hover { background:#fff; transform:translateY(-50%) scale(1.06); }
+    .carousel-arrow:active { transform:translateY(-50%) scale(0.94); }
+    .carousel-arrow:focus-visible { outline:2px solid #8B72CC; outline-offset:2px; }
+    .carousel-arrow.prev { left:8px; }
+    .carousel-arrow.next { right:8px; }
 
     /* ── NEWSLETTER FOOTER ── */
     .footer-input:focus { outline: none; border-color: #8B72CC; }
@@ -203,6 +231,7 @@
 
 <!-- ── STICKY NAV ── -->
 <nav id="sticky-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(248,244,238,0.92);">
+  <div class="w-full text-center py-1.5 px-4 text-xs sm:text-sm font-bold" style="background:#8B72CC; color:#FFFFFF; letter-spacing:0.02em;">Labor Day Sale — 45% Off</div>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
     <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.25rem; color:#1A1526; letter-spacing:-0.01em;">flove.</div>
     <div class="hidden sm:flex items-center gap-5 text-sm" style="color:#4A4458;">
@@ -217,39 +246,14 @@
 
 
 <!-- ============================================================
-     SOCIAL PROOF TICKER
-============================================================ -->
-<section class="pt-20 pb-4 px-4 sm:px-6" style="overflow:hidden;">
-  <div style="overflow:hidden; position:relative;">
-    <div style="position:absolute;left:0;top:0;bottom:0;width:60px;z-index:2;background:linear-gradient(to right,#F8F4EE,transparent);pointer-events:none;"></div>
-    <div style="position:absolute;right:0;top:0;bottom:0;width:60px;z-index:2;background:linear-gradient(to left,#F8F4EE,transparent);pointer-events:none;"></div>
-    <div class="proof-ticker-track px-4">
-      <span class="proof-item">★ 4.9 · 889 Verified Reviews</span><span class="proof-dot"></span>
-      <span class="proof-item">40B CFU · 4 Strains + FOS</span><span class="proof-dot"></span>
-      <span class="proof-item">PhaseLock™ · 95% Survival</span><span class="proof-dot"></span>
-      <span class="proof-item">60-Day Money-Back Guarantee</span><span class="proof-dot"></span>
-      <span class="proof-item">Gluten Free · Lactose Free</span><span class="proof-dot"></span>
-      <span class="proof-item">Made In The USA</span><span class="proof-dot"></span>
-      <span class="proof-item">★ 4.9 · 889 Verified Reviews</span><span class="proof-dot"></span>
-      <span class="proof-item">40B CFU · 4 Strains + FOS</span><span class="proof-dot"></span>
-      <span class="proof-item">PhaseLock™ · 95% Survival</span><span class="proof-dot"></span>
-      <span class="proof-item">60-Day Money-Back Guarantee</span><span class="proof-dot"></span>
-      <span class="proof-item">Gluten Free · Lactose Free</span><span class="proof-dot"></span>
-      <span class="proof-item">Made In The USA</span><span class="proof-dot"></span>
-    </div>
-  </div>
-</section>
-
-
-<!-- ============================================================
      1. PRODUCT INFORMATION — hero
 ============================================================ -->
-<section class="pt-2 px-4 sm:px-6">
+<section class="pt-24 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start pt-10 pb-8">
 
       <!-- LEFT: Media -->
-      <div class="flex flex-col gap-4 lg:sticky lg:top-20">
+      <div class="flex flex-col gap-3 lg:sticky lg:top-24 mx-auto w-full" style="max-width:460px;">
         <div class="rounded-3xl" style="border:1px solid #EDE6F4; position:relative;" id="product-carousel">
           <div id="carousel-track">
             <div><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove Daily Performance Synbiotic" width="1024" height="1024" fetchpriority="high" style="width:100%; height:auto; display:block;"></div>
@@ -258,13 +262,15 @@
             <div><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="Flove product view 4" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
             <div><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="Flove product view 5" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
           </div>
+          <button type="button" class="carousel-arrow prev" id="carousel-prev" aria-label="Previous image"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <button type="button" class="carousel-arrow next" id="carousel-next" aria-label="Next image"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
-        <div class="grid grid-cols-5 gap-2">
-          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="0" style="border:2px solid #8B72CC; cursor:pointer;"><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="1" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="2" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-2xl overflow-hidden" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer;"><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" width="128" height="128" loading="lazy" style="width:100%; aspect-ratio:1; object-fit:contain; display:block; background:#F8F4EE;"></div>
+        <div class="flex gap-1.5">
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="0" style="border:2px solid #8B72CC; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="1" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="2" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
         </div>
       </div>
 
@@ -299,8 +305,8 @@
         <div id="order" class="pt-2">
           <div class="flex items-baseline gap-2 mb-4">
             <span style="font-family:'Playfair Display',serif; font-weight:700; font-size:2rem; color:#1A1526;" id="price-display">$101.97</span>
-            <span class="text-sm line-through" style="color:#4A4458;" id="original-price">$119.97</span>
-            <span class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:#C4B5E8; color:#1A1526;" id="save-badge">Save 15%</span>
+            <span class="text-sm line-through" style="color:#4A4458;" id="original-price">$185.40</span>
+            <span class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:#C4B5E8; color:#1A1526;" id="save-badge">Save 45%</span>
           </div>
 
           <!-- Delivery schedule radios -->
@@ -449,36 +455,32 @@
 
 
 <!-- ============================================================
-     1B. TESTIMONIAL VIDEO TICKER
+     1B. TESTIMONIALS — 3 clickable/playable customer videos
 ============================================================ -->
-<section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8; overflow:hidden;">
+<section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8;">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
     <div class="flex items-center gap-3">
       <div class="spec-pill"><span class="dot"></span>Customer stories</div>
       <div class="text-sm" style="color:#6B6480;">889 verified buyers · 4.9★ average</div>
     </div>
   </div>
-  <div style="overflow:hidden; position:relative;">
-    <div style="position:absolute;left:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to right,#F2EBF8,transparent);pointer-events:none;"></div>
-    <div style="position:absolute;right:0;top:0;bottom:0;width:80px;z-index:2;background:linear-gradient(to left,#F2EBF8,transparent);pointer-events:none;"></div>
-    <div class="vticker-track px-4">
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Sarah L. · Chicago</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid2.mp4" type="video/mp4"></video><div class="vticker-name">Megan P. · New York</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Kristen T. · Boston</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid4.mp4" type="video/mp4"></video><div class="vticker-name">Dana R. · Austin</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid6.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid7.mp4" type="video/mp4"></video><div class="vticker-name">Lauren B. · LA</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid8.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
-      <!-- duplicate set for seamless loop -->
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Sarah L. · Chicago</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid2.mp4" type="video/mp4"></video><div class="vticker-name">Megan P. · New York</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Kristen T. · Boston</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid4.mp4" type="video/mp4"></video><div class="vticker-name">Dana R. · Austin</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid6.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid7.mp4" type="video/mp4"></video><div class="vticker-name">Lauren B. · LA</div></div>
-      <div class="vticker-card"><video autoplay muted loop playsinline preload="auto"><source src="../videos/vid8.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-3 gap-3 sm:gap-5">
+      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
+        <video muted loop playsinline preload="metadata"><source src="../videos/vid5.mp4" type="video/mp4"></video>
+        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="testimonial-name">Jennifer M. · Seattle</div>
+      </div>
+      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
+        <video muted loop playsinline preload="metadata"><source src="../videos/vid6.mp4" type="video/mp4"></video>
+        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="testimonial-name">Amber C. · SF</div>
+      </div>
+      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
+        <video muted loop playsinline preload="metadata"><source src="../videos/vid8.mp4" type="video/mp4"></video>
+        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="testimonial-name">Rachel S. · Denver</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1014,6 +1016,8 @@
     function startTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 5000); }
     window.addEventListener('resize', () => goTo(current), { passive: true });
     thumbs.forEach(t => { t.addEventListener('click', () => { goTo(parseInt(t.dataset.index)); startTimer(); }); });
+    document.getElementById('carousel-prev').addEventListener('click', () => { goTo(current - 1); startTimer(); });
+    document.getElementById('carousel-next').addEventListener('click', () => { goTo(current + 1); startTimer(); });
     track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; swipeDir = null; }, { passive: true });
     track.addEventListener('touchmove', e => {
       if (swipeDir === null) {
@@ -1042,28 +1046,25 @@
 
   function currentSizeCard() { return document.querySelector('.size-pill.active'); }
 
+  const HOLIDAY_SALE_PCT = 0.45;
+
   function computePrice() {
     const size = currentSizeCard();
     if (!size) return;
     const base = parseFloat(size.dataset.price);
-    const orig = parseFloat(size.dataset.orig);
     const days = size.dataset.days;
     let final = base;
-    let subLabel = '';
     if (scheduleMode === 'subscribe') {
       final = base * 0.85;
-      subLabel = 'Save 15%';
-    } else if (orig > base) {
-      subLabel = 'Save $' + (orig - base).toFixed(0);
     }
+    const compareAt = final / (1 - HOLIDAY_SALE_PCT);
     priceEl.textContent = '$' + final.toFixed(2);
     btnPriceEl.textContent = '$' + final.toFixed(2);
     if (ctaBtnMain) ctaBtnMain.firstChild.textContent = 'Start My ' + days + '-Day Supply — ';
-    if (orig > base || scheduleMode === 'subscribe') {
-      origEl.textContent = '$' + (scheduleMode === 'subscribe' ? base.toFixed(2) : orig.toFixed(2));
-      origEl.style.display = '';
-    } else { origEl.style.display = 'none'; }
-    if (subLabel) { saveEl.textContent = subLabel; saveEl.style.display = ''; } else { saveEl.style.display = 'none'; }
+    origEl.textContent = '$' + compareAt.toFixed(2);
+    origEl.style.display = '';
+    saveEl.textContent = 'Save 45%';
+    saveEl.style.display = '';
     selectedVariant = size.dataset.variant;
   }
 
@@ -1116,6 +1117,21 @@
     const tab = btn.dataset.tab;
     document.getElementById('rev-written').classList.toggle('hidden', tab !== 'written');
     document.getElementById('rev-video').classList.toggle('hidden', tab !== 'video');
+  }
+
+  // ── TESTIMONIAL VIDEOS ──
+  function playTestimonial(card, event) {
+    const video = card.querySelector('video');
+    // once controls are on, the native <video> controls own clicks inside the player — don't fight them
+    if (video.hasAttribute('controls')) return;
+    if (event) event.preventDefault();
+    document.querySelectorAll('.testimonial-vid-card video').forEach(v => {
+      if (v !== video) { v.pause(); v.muted = true; v.removeAttribute('controls'); v.closest('.testimonial-vid-card').querySelector('.testimonial-play-btn').classList.remove('hidden'); }
+    });
+    video.muted = false;
+    video.setAttribute('controls', '');
+    video.play();
+    card.querySelector('.testimonial-play-btn').classList.add('hidden');
   }
 
   // ── FAQ ──
