@@ -5,18 +5,18 @@
 - **Read `docs/` folder** before writing any copy — all research, avatar data, and copy-mining phrasing lives there.
 
 ## Brand & Product Context
-- **Product:** Flove Daily Performance Synbiotic — 40B CFU, 4-strain + FOS prebiotics, MAKTREK® Bi-Pass Technology
-- **Avatar:** "Tina" — corporate female, 25–45, management consultant / attorney / analyst / software architect
-- **Big Idea:** "The Anatomy of Cubicle Gut" — sedentary desk job is an evolutionary mismatch. Unshielded probiotics die in stomach acid (0.003% survival). MAKTREK® delivers 1,685% more live bacteria.
-- **Tone:** Clinical, direct-response, data-driven. NOT wellness-generic. This is for an analytical professional who rejects vague claims.
+- **Product:** Flove Daily Performance Synbiotic — 40B CFU, 4-strain + FOS prebiotics, MAKTREK® Bi-Pass Technology (consumer-facing name: PhaseLock™ — MAKTREK® should not appear on customer-facing pages)
+- **Avatar:** 18–30, fitness-disciplined female — macro-tracker, dedicated gym-goer, 2–3 whey shakes/day, pre-workout daily
+- **Big Idea:** "Imposter Bloat" — the "clean" fitness supplements she trusts (sweeteners, sugar alcohols, whey lactose) are secretly wrecking her gut. Unshielded probiotics die in stomach acid. PhaseLock™ delivers far more live bacteria past the gastric acid barrier.
+- **Tone:** Clinical, direct-response, data-driven. NOT vague wellness language. This is for a disciplined, skeptical fitness consumer who rejects placebo claims.
 - **Design direction:** Warm cream background (`#F8F4EE`), lavender purple accent (`#8B72CC`), dark CTA button (`#1C1828`), Playfair Display serif headings + Inter body. Editorial, warm, refined. Inspired by Nuriva. NOT dark, NOT mint-green, NOT Space Grotesk.
 
 ## Reference Files
-- `docs/tina-avatar.md` — full psychographic profile, pain points, emotional journey, verbatim quotes
-- `docs/copy-bank.md` — campaign hooks, headlines, visceral copy-mining phrasing
-- `docs/offer-brief.md` — big idea, metaphors, funnel architecture, objections + counters
+- `docs/avatar-18-30.md` — full psychographic profile, pain points, emotional journey, verbatim quotes
+- `docs/beliefs-18-30.md` — the 6 sequential core beliefs she must hold before purchasing
+- `docs/offer-brief-18-30.md` — big idea, metaphors, funnel architecture, objections + counters
+- `docs/research-fitness-dysbiosis.md` — physiology research, survival stats, strain mechanisms, competitor failure table
 - `docs/ingredients.md` — full ingredient list, strain mechanisms, certifications
-- `docs/competitor-audit.md` — competitor failures, 5-star vs 1-star reality, copy angles
 
 ## Local Server
 - **Always serve on localhost** — never screenshot a `file:///` URL.
@@ -56,10 +56,10 @@
 - **Depth:** Surfaces have a layering system: cream bg → white cards → floating elements.
 
 ## Copy Rules
-- Use verbatim phrasing from `docs/copy-bank.md` — "desk bloat," "embarrassing growling noises," "mid-afternoon cognitive fatigue," "clothing digging into the waist"
-- Frame symptoms as evolutionary mismatch — remove guilt, blame the corporate environment
-- Always include the MAKTREK® mechanism explanation when describing the product
-- Address objections inline (see `docs/offer-brief.md`)
+- Use verbatim phrasing from `docs/research-fitness-dysbiosis.md` and `docs/avatar-18-30.md` — "imposter bloat," "food baby," "look pregnant," "protein bloat," "abs are invisible"
+- Frame symptoms as hidden fitness-supplement chemistry (sweeteners, sugar alcohols, whey lactose) — remove guilt, blame the supplement industry, not her discipline
+- Always include the PhaseLock™ mechanism explanation when describing the product (never MAKTREK® on customer-facing pages)
+- Address objections inline (see `docs/offer-brief-18-30.md`)
 - No vague wellness language ("feel your best," "support gut health") — use clinical specificity
 
 ## Hard Rules
@@ -68,4 +68,4 @@
 - Do not use default Tailwind blue/indigo as primary color
 - Do not stop after one screenshot pass
 - Do not use soft pastel colors — this brand is sharp and clinical
-- Do not write generic wellness copy — Tina is analytical and rejects it
+- Do not write generic wellness copy — she is disciplined and analytical, and rejects it

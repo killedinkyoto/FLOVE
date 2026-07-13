@@ -2,8 +2,9 @@
 
 ## Brand Positioning
 **Product:** Flove Daily Performance Synbiotic  
-**Category:** Clinical gut health supplement for corporate professionals  
-**Big Idea:** "The Anatomy of Cubicle Gut" — the desk job is an evolutionary mismatch. Standard probiotics die in stomach acid. MAKTREK® delivers where others don't.
+**Category:** Clinical gut health supplement for fitness-disciplined women  
+**Avatar:** 18–30, fitness-disciplined ("Fit Chick") — macro-tracker, 2–3 whey shakes/day, pre-workout daily. See `docs/avatar-18-30.md`.
+**Big Idea:** "Imposter Bloat" — the "clean" fitness supplements she trusts are secretly wrecking her gut. Standard probiotics die in stomach acid. PhaseLock™ (consumer-facing name for MAKTREK®) delivers where others don't.
 
 ---
 
