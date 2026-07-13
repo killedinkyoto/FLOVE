@@ -223,6 +223,17 @@
     .carousel-arrow.prev { left:8px; }
     .carousel-arrow.next { right:8px; }
 
+    /* ── BELIEF TESTIMONIAL SCROLLER ── */
+    .belief-scroll {
+      display:flex; gap:16px; overflow-x:auto; scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:2px 2px 8px;
+    }
+    .belief-scroll::-webkit-scrollbar { display:none; }
+    .belief-card { flex:0 0 auto; width:70%; max-width:270px; scroll-snap-align:start; }
+    @media (min-width:640px) { .belief-card { width:calc((100% - 32px) / 3); max-width:none; } }
+    #belief-prev, #belief-next { top:135px; }
+    @media (min-width:640px) { #belief-prev, #belief-next { top:178px; } }
+
     /* ── NEWSLETTER FOOTER ── */
     .footer-input:focus { outline: none; border-color: #8B72CC; }
   </style>
@@ -256,21 +267,29 @@
       <div class="flex flex-col gap-3 lg:sticky lg:top-24 mx-auto w-full" style="max-width:460px;">
         <div class="rounded-3xl" style="border:1px solid #EDE6F4; position:relative;" id="product-carousel">
           <div id="carousel-track">
-            <div><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove Daily Performance Synbiotic" width="1024" height="1024" fetchpriority="high" style="width:100%; height:auto; display:block;"></div>
-            <div><img src="../brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="Flove product view 2" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
-            <div><img src="../brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="Flove product view 3" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
-            <div><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="Flove product view 4" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
-            <div><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="Flove product view 5" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp1.png" alt="Flove Daily Performance Synbiotic bottle" width="2048" height="2048" fetchpriority="high" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp2.png" alt="Before and after: protein shake bloat" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp3.png" alt="Before and after: pasta dinner date" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp4.png" alt="Before and after: protein bar bloat" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp5.png" alt="Real results you can see in 7 days" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp6.png" alt="Powered by clinically effective strains" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp7.png" alt="What 1,700+ high-performance gym-goers are saying" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp8.png" alt="Unsatisfied? Send it back. 60-day performance guarantee" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp9.png" alt="Customer holding Flove Daily Synbiotic" width="1520" height="2688" loading="lazy" style="width:100%; height:auto; display:block;"></div>
           </div>
           <button type="button" class="carousel-arrow prev" id="carousel-prev" aria-label="Previous image"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <button type="button" class="carousel-arrow next" id="carousel-next" aria-label="Next image"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
         <div class="flex gap-1.5">
-          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="0" style="border:2px solid #8B72CC; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="1" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_101712_19d2fd1d-c0e3-462e-984f-f9945cd1eafd.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="2" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_102719_6b1d86af-8998-4f9a-9d41-a1fd413177e2.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_102453_fde1b35c-2c51-485d-b2df-a82861a93e5b.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/hf_20260608_095949_088dda80-817a-425e-a459-a3a0c9786a62.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:contain; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="0" style="border:2px solid #8B72CC; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp1.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="1" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp2.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="2" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp3.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp4.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp5.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="5" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp6.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="6" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp7.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="7" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp8.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="8" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp9.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
         </div>
       </div>
 
@@ -366,10 +385,18 @@
             <textarea rows="2" placeholder="Write a short note for the recipient…" class="w-full rounded-xl px-3 py-2.5 text-sm footer-input" style="border:1px solid #EDE6F4; background:#fff; color:#1A1526; resize:none;"></textarea>
           </div>
 
-          <div class="flex justify-center gap-5 text-xs flex-wrap" style="color:#4A4458;">
+          <div class="flex justify-center gap-5 text-xs flex-wrap mb-4" style="color:#4A4458;">
             <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>60-day guarantee</div>
             <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Cancel anytime</div>
             <div class="flex items-center gap-1"><svg class="w-3 h-3" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ships in 24h</div>
+          </div>
+
+          <div class="rounded-2xl px-4 py-3.5 flex items-center gap-3 bg-surface" style="border:1px solid #EDE6F4;">
+            <svg class="w-8 h-8 flex-shrink-0" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.75 11.954 11.954 0 0010 18.056 11.954 11.954 0 0017.834 5.75 11.954 11.954 0 0110 1.944zM9 12.5l5-5-1.06-1.06L9 10.38 7.06 8.44 6 9.5l3 3z" clip-rule="evenodd"/></svg>
+            <div>
+              <div class="font-semibold text-sm" style="color:#1A1526;">60-Day Money-Back Guarantee</div>
+              <div class="text-xs" style="color:#4A4458;">No visible change to your bloat by day 60? Send it back for a full refund, no questions asked.</div>
+            </div>
           </div>
         </div>
 
@@ -408,30 +435,6 @@
           </div>
         </div>
 
-        <!-- Cross-sell: Thousands of Customers Also Buy -->
-        <div class="border-t border-border pt-5 mt-1">
-          <div class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:#8B72CC;">Thousands Of Customers Also Buy</div>
-          <div class="space-y-2" id="xsell-list">
-            <div class="xsell-card rounded-2xl px-3.5 py-3 flex items-center gap-3 bg-surface" data-item="0">
-              <img src="https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovecolos_a5b7d8dc-9612-42d5-9cc5-2ae0966e035e.png" alt="Colostrum Capsules" width="44" height="44" loading="lazy" style="width:44px; height:44px; object-fit:contain; border-radius:10px; background:#F8F4EE; flex-shrink:0;" onerror="this.style.cssText='width:44px;height:44px;border-radius:10px;background:#F2EBF8;flex-shrink:0;';this.removeAttribute('src')">
-              <div class="flex-1 min-w-0">
-                <div class="font-semibold text-xs" style="color:#1A1526;">Colostrum Capsules — $35.00</div>
-                <div class="text-xs truncate" style="color:#4A4458;">Rebuilds the lining your pre-workout stripped</div>
-              </div>
-              <button class="xsell-add-btn flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold cta-btn" onclick="toggleXsell(this,0)">+ Add</button>
-            </div>
-            <!-- FLAG: swipe doc's second cross-sell item was "Digestive Enzyme Complex $29," an unconfirmed SKU. Kept Max Detox here instead since it's a verified live product; swap if Digestive Enzyme Complex ships. -->
-            <div class="xsell-card rounded-2xl px-3.5 py-3 flex items-center gap-3 bg-surface" data-item="1">
-              <img src="https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovedetox.png" alt="Max Detox" width="44" height="44" loading="lazy" style="width:44px; height:44px; object-fit:contain; border-radius:10px; background:#F8F4EE; flex-shrink:0;" onerror="this.style.cssText='width:44px;height:44px;border-radius:10px;background:#F2EBF8;flex-shrink:0;';this.removeAttribute('src')">
-              <div class="flex-1 min-w-0">
-                <div class="font-semibold text-xs" style="color:#1A1526;">Max Detox (Acai) — $29.90</div>
-                <div class="text-xs truncate" style="color:#4A4458;">Daily gut cleanse, clears the runway</div>
-              </div>
-              <button class="xsell-add-btn flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold cta-btn" onclick="toggleXsell(this,1)">+ Add</button>
-            </div>
-          </div>
-        </div>
-
         <!-- Testimonial photo strip -->
         <!-- FLAG: "889" is a placeholder count per the swipe doc. Do not ship without the real verified-review number. -->
         <div class="border-t border-border pt-5">
@@ -455,32 +458,66 @@
 
 
 <!-- ============================================================
-     1B. TESTIMONIALS — 3 clickable/playable customer videos
+     1B. BELIEF TESTIMONIALS — 3 photo cards, each seeding or
+     killing one specific limiting belief (see docs/beliefs-18-30.md)
 ============================================================ -->
-<section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8;">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
-    <div class="flex items-center gap-3">
-      <div class="spec-pill"><span class="dot"></span>Customer stories</div>
-      <div class="text-sm" style="color:#6B6480;">889 verified buyers · 4.9★ average</div>
+<section class="py-12 sm:py-16 px-4 sm:px-6" style="background:#F8F4EE;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-8 sm:mb-10">
+      <h2 class="font-display font-bold text-2xl sm:text-3xl lg:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">Three Different Reasons Their Old Probiotic Never Stood a Chance</h2>
+      <p class="text-sm sm:text-base max-w-lg mx-auto" style="color:#4A4458;">889 verified buyers · 4.9★ average</p>
     </div>
-  </div>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-3 gap-3 sm:gap-5">
-      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
-        <video muted loop playsinline preload="metadata"><source src="../videos/vid5.mp4" type="video/mp4"></video>
-        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="testimonial-name">Jennifer M. · Seattle</div>
+    <div class="relative">
+      <div class="belief-scroll" id="belief-scroll">
+
+        <div class="belief-card rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 10px 30px rgba(139,114,204,0.12);">
+          <div class="relative" style="aspect-ratio:1/1;">
+            <img src="../brand_assets/testimonial-1-opt.webp" alt="Grace T., verified Flove customer" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3" style="background:linear-gradient(to top, rgba(28,24,40,0.78) 0%, transparent 100%);">
+              <div class="text-sm font-semibold text-white">Grace T. · 26 · Nashville</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
+            <div class="font-display font-bold text-text-primary text-lg mb-2" style="letter-spacing:-0.01em;">"Fixed 2 Years Of Failures"</div>
+            <p class="text-sm leading-relaxed" style="color:#3A3450;">I struggled with gas for TWO years. I tried everything on the shelves!! Started using Flove a month ago, and my stomach hasn't been this flat ever.</p>
+            <div class="mt-3 pt-3 border-t border-border text-xs font-medium" style="color:#8B72CC;">Verified buyer ✓</div>
+          </div>
+        </div>
+
+        <div class="belief-card rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 10px 30px rgba(139,114,204,0.12);">
+          <div class="relative" style="aspect-ratio:1/1;">
+            <img src="../brand_assets/testimonial-2-opt.webp" alt="Devon K., verified Flove customer" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3" style="background:linear-gradient(to top, rgba(28,24,40,0.78) 0%, transparent 100%);">
+              <div class="text-sm font-semibold text-white">Devon K. · 28 · Austin</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
+            <div class="font-display font-bold text-text-primary text-lg mb-2" style="letter-spacing:-0.01em;">"I'd already given up on probiotics doing anything."</div>
+            <p class="text-sm leading-relaxed" style="color:#3A3450;">Three brands and eighteen months with zero difference, so I figured my gut was just broken. Then this one actually did something in two weeks! Wish I'd known that back in year one.</p>
+            <div class="mt-3 pt-3 border-t border-border text-xs font-medium" style="color:#8B72CC;">Verified buyer ✓</div>
+          </div>
+        </div>
+
+        <div class="belief-card rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 10px 30px rgba(139,114,204,0.12);">
+          <div class="relative" style="aspect-ratio:1/1;">
+            <img src="../brand_assets/testimonial-3-opt.webp" alt="Nora S., verified Flove customer" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3" style="background:linear-gradient(to top, rgba(28,24,40,0.78) 0%, transparent 100%);">
+              <div class="text-sm font-semibold text-white">Nora S. · 23 · Seattle</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div>
+            <div class="font-display font-bold text-text-primary text-lg mb-2" style="letter-spacing:-0.01em;">"Nobody told me I could keep the shakes."</div>
+            <p class="text-sm leading-relaxed" style="color:#3A3450;">EVERY time I drank a protein shake, I'd puff up like a balloon... So much so, I had to stop drinking it before my lifts, because it was getting too painful! Thankfully, Flove has this specific strain that breaks down the lactose, so I'm not as bloated anymore.</p>
+            <div class="mt-3 pt-3 border-t border-border text-xs font-medium" style="color:#8B72CC;">Verified buyer ✓</div>
+          </div>
+        </div>
+
       </div>
-      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
-        <video muted loop playsinline preload="metadata"><source src="../videos/vid6.mp4" type="video/mp4"></video>
-        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="testimonial-name">Amber C. · SF</div>
-      </div>
-      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
-        <video muted loop playsinline preload="metadata"><source src="../videos/vid8.mp4" type="video/mp4"></video>
-        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="testimonial-name">Rachel S. · Denver</div>
-      </div>
+      <button type="button" class="carousel-arrow prev" id="belief-prev" aria-label="Previous testimonial" style="left:-6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button type="button" class="carousel-arrow next" id="belief-next" aria-label="Next testimonial" style="right:-6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
 </section>
@@ -493,11 +530,10 @@
   <div class="max-w-6xl mx-auto">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
       <div class="rounded-3xl overflow-hidden order-2 lg:order-1" style="border:1px solid #EDE6F4;">
-        <img src="../brand_assets/stomach.png" alt="Digestive tract illustration" width="800" height="600" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <img src="../brand_assets/cultures-survival-illustration.png" alt="Illustration of live probiotic cultures surviving stomach acid and reaching the intestine" width="1200" height="896" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
       <div class="order-1 lg:order-2">
-        <div class="spec-pill inline-flex mb-4"><span class="dot"></span>The number nobody prints on the bottle</div>
-        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mb-4" style="letter-spacing:-0.02em; line-height:1.1;"><span style="color:#6E52B5;">95%</span> Of Flove's Cultures Reach Your Gut Alive. Your Last Probiotic Delivered <em>Under 3%</em>.</h2>
+        <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary mb-4" style="letter-spacing:-0.02em; line-height:1.1;"><span style="color:#6E52B5;"><em>95%</em></span> Of Flove's Good Bacteria Reach Your Gut Alive. Your Last Probiotic Delivered <em>Under 3%</em>.</h2>
         <p class="text-base mb-6 leading-relaxed" style="color:#3A3450;"><strong>To fix their protein shake bloat, thousands of fit women bought generic probiotics with cheap capsules that only deliver 3% of good bacteria to their gut.</strong></p>
         <p class="text-base mb-6 leading-relaxed" style="color:#3A3450;"><strong>Flove</strong> uses the advanced <strong>MAKTrek Bi-Layer technology</strong>  to ensure <strong>95%</strong> of the good bacteria reach your gut intact, for a flatter stomach, In 2 simple daily steps.</p>
         <div class="grid grid-cols-2 gap-4 mb-6">
@@ -517,42 +553,162 @@
 </section>
 
 <!-- ============================================================
+     2B. TESTIMONIALS — 3 clickable/playable customer videos
+============================================================ -->
+<section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8;">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
+    <div class="flex items-center gap-3">
+      <div class="text-sm" style="color:#6B6480;">889 verified buyers · 4.9★ average</div>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-3 gap-3 sm:gap-5">
+      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
+        <video muted loop playsinline preload="metadata"><source src="../videos/vid7.mp4" type="video/mp4"></video>
+        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="testimonial-name">Jennifer M. · Seattle</div>
+      </div>
+      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
+        <video muted loop playsinline preload="metadata"><source src="../videos/vid6.mp4" type="video/mp4"></video>
+        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="testimonial-name">Amber C. · SF</div>
+      </div>
+      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
+        <video muted loop playsinline preload="metadata"><source src="../videos/vid8.mp4" type="video/mp4"></video>
+        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="testimonial-name">Rachel S. · Denver</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
      5. HOW IT WORKS — 3-STEP MECHANISM
 ============================================================ -->
 <section id="mechanism" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#FFFFFF; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-10">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>PhaseLock™ Delivery</div>
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">How Flove Works From Day One, With No Adjustment Week</h2>
-      <p class="text-base max-w-xl mx-auto" style="color:#3A3450;">A marine polysaccharide drawn from brown seaweed sits inside the capsule wall and turns to gel the moment it meets stomach acid, which is why the cultures arrive alive instead of dissolving on the way down.</p>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">How flove Works From Day One, With No Adjustment Week</h2>
+      <p class="text-base max-w-xl mx-auto" style="color:#3A3450;">Flove uses a polysaccharide from brown seaweed that forms a gel shield that doesn't dissolve in your stomach acid.</p>
     </div>
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-      <div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE6F4; background:#fff;">
-        <img src="../brand_assets/maktrek-pill-opt.png" alt="PhaseLock capsule technology" width="800" height="800" style="width:100%; height:auto; display:block;">
-      </div>
-      <div class="space-y-7">
-        <div class="flex gap-4">
+    <div class="max-w-xl mx-auto space-y-14 sm:space-y-16">
+      <div class="mech-step">
+        <div class="flex items-center gap-3 mb-4">
           <div class="mech-step-num">1</div>
-          <div>
-            <h3 class="font-display font-bold text-xl sm:text-2xl mb-1.5" style="color:#8B72CC; letter-spacing:-0.01em;">Sealed</h3>
-            <p class="text-base leading-relaxed" style="color:#3A3450;">Four strains, 24mg of FOS, and the marine polysaccharide complex go into a single vegetable capsule.</p>
-          </div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl" style="color:#8B72CC; letter-spacing:-0.01em;">Sealed</h3>
         </div>
-        <div class="flex gap-4">
-          <div class="mech-step-num">2</div>
-          <div>
-            <h3 class="font-display font-bold text-xl sm:text-2xl mb-1.5" style="color:#8B72CC; letter-spacing:-0.01em;">The Gel Forms</h3>
-            <p class="text-base leading-relaxed" style="color:#3A3450;">Gastric moisture hits the polysaccharide. It hydrates and expands into an <em>acid-resistant gel</em> around the living cultures. pH 1.5 to 3.5 beats against it and doesn't get through.</p>
-          </div>
+        <div class="rounded-3xl overflow-hidden mb-4" style="border:1px solid #EDE6F4; background:#fff;">
+          <img src="../brand_assets/capsule-sealed-wide.png" alt="Sealed vegetable capsule holding strains, FOS, and marine polysaccharide" width="1376" height="768" style="width:100%; height:auto; display:block;">
         </div>
-        <div class="flex gap-4">
-          <div class="mech-step-num">3</div>
-          <div>
-            <h3 class="font-display font-bold text-xl sm:text-2xl mb-1.5" style="color:#8B72CC; letter-spacing:-0.01em;">Neutral-pH Release</h3>
-            <p class="text-base leading-relaxed" style="color:#3A3450;">Past the stomach the pH climbs to 6.0 and above. The gel dissolves there and <strong>only there</strong>. Live cultures land in the section of gut where they can actually colonize.</p>
-          </div>
-        </div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Four strains, 24mg of FOS, and the marine polysaccharide complex go into a single vegetable capsule.</p>
       </div>
+      <div class="mech-step">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="mech-step-num">2</div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl" style="color:#8B72CC; letter-spacing:-0.01em;">The Gel Forms</h3>
+        </div>
+        <div class="rounded-3xl overflow-hidden mb-4" style="border:1px solid #EDE6F4; background:#F8F4EE;">
+          <img src="../brand_assets/gel-forming-stomach-acid-wide.png" alt="Marine polysaccharide hydrating into an acid-resistant gel in stomach acid" width="1376" height="768" style="width:100%; height:auto; display:block;">
+        </div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Stomach acid hits the polysaccharide. It hydrates and expands into an <em>acid-resistant gel</em> around the live bacteria. The acid beats against it and doesn't get through.</p>
+      </div>
+      <div class="mech-step">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="mech-step-num">3</div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl" style="color:#8B72CC; letter-spacing:-0.01em;">Neutral-pH Release</h3>
+        </div>
+        <div class="rounded-3xl overflow-hidden mb-4" style="border:1px solid #EDE6F4; background:#F8F4EE;">
+          <img src="../brand_assets/gel-dissolving-neutral-ph-wide.png" alt="Gel dissolving in the neutral-pH section of the gut, releasing live cultures" width="1376" height="768" style="width:100%; height:auto; display:block;">
+        </div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Past the stomach the pH climbs to 6.0 and above. The gel dissolves there and <strong>only there</strong>. The good bacteria land in the section of gut where they can actually colonize.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5B. REAL RESULTS — before/after testimonial cards
+============================================================ -->
+<section class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F8F4EE;">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-10">
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">Real Results From Real Training Days</h2>
+      <p class="text-base max-w-xl mx-auto" style="color:#3A3450;">Whatever's bloating you off your cut, PhaseLock&trade; delivery targets it directly, with results verified buyers can see.</p>
+    </div>
+    <div class="relative">
+      <div class="belief-scroll" id="results-scroll">
+
+        <div class="belief-card rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 10px 30px rgba(139,114,204,0.12); width:80%; max-width:340px;">
+          <div class="rounded-2xl overflow-hidden m-3" style="border:1px solid #EDE6F4;">
+            <img src="../brand_assets/pdp-v2-media/pdp2.png" alt="Before and after protein shake bloat, verified Flove customer" style="width:100%; height:auto; display:block;">
+          </div>
+          <div class="px-5 pb-5 pt-1">
+            <h3 class="font-display font-bold text-text-primary text-lg sm:text-xl mb-1" style="letter-spacing:-0.01em;">No More Post-Shake Bloat</h3>
+            <div class="text-xs font-bold mb-3" style="color:#8B72CC; letter-spacing:0.04em; text-transform:uppercase;">First 7 Days</div>
+            <ul class="space-y-1.5 mb-4 text-sm" style="color:#3A3450;">
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>No more distended stomach after leg day</li>
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>Whey protein digests without the swelling</li>
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>Abs visible again within an hour of training</li>
+            </ul>
+            <div class="rounded-xl p-3.5 mb-3" style="background:#F2EBF8; border-left:3px solid #8B72CC;">
+              <p class="text-sm leading-relaxed" style="color:#3A3450;">"I stopped taking post-workout mirror pics because my shake left me looking pregnant by the time I got home. Two weeks on Flove and my abs are back before I've even showered."</p>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs font-medium">
+              <span class="font-semibold" style="color:#1C1828;">Devon K.</span><span style="color:#4A4458;">| 28</span>
+              <span class="inline-flex items-center gap-1" style="color:#00B67A;">✓ Verified Customer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="belief-card rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 10px 30px rgba(139,114,204,0.12); width:80%; max-width:340px;">
+          <div class="rounded-2xl overflow-hidden m-3" style="border:1px solid #EDE6F4;">
+            <img src="../brand_assets/pdp-v2-media/pdp3.png" alt="Before and after client dinner bloat, verified Flove customer" style="width:100%; height:auto; display:block;">
+          </div>
+          <div class="px-5 pb-5 pt-1">
+            <h3 class="font-display font-bold text-text-primary text-lg sm:text-xl mb-1" style="letter-spacing:-0.01em;">Survived The Refeed</h3>
+            <div class="text-xs font-bold mb-3" style="color:#8B72CC; letter-spacing:0.04em; text-transform:uppercase;">First 3 Weeks</div>
+            <ul class="space-y-1.5 mb-4 text-sm" style="color:#3A3450;">
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>No more waistband digging in after a carb-up dinner</li>
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>Pasta and wine no longer wreck the next morning's weigh-in</li>
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>Abs back by the next training session, not three days later</li>
+            </ul>
+            <div class="rounded-xl p-3.5 mb-3" style="background:#F2EBF8; border-left:3px solid #8B72CC;">
+              <p class="text-sm leading-relaxed" style="color:#3A3450;">"One cheat dinner used to cost me a full week of bloat and a blown physique for every event after. I've been on Flove for three weeks and I can eat pasta without losing my abs for days."</p>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs font-medium">
+              <span class="font-semibold" style="color:#1C1828;">Grace T.</span><span style="color:#4A4458;">| 26</span>
+              <span class="inline-flex items-center gap-1" style="color:#00B67A;">✓ Verified Customer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="belief-card rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4; box-shadow:0 10px 30px rgba(139,114,204,0.12); width:80%; max-width:340px;">
+          <div class="rounded-2xl overflow-hidden m-3" style="border:1px solid #EDE6F4;">
+            <img src="../brand_assets/pdp-v2-media/pdp4.png" alt="Before and after desk bloat, verified Flove customer" style="width:100%; height:auto; display:block;">
+          </div>
+          <div class="px-5 pb-5 pt-1">
+            <h3 class="font-display font-bold text-text-primary text-lg sm:text-xl mb-1" style="letter-spacing:-0.01em;">Ended The Mid-Set Bloat</h3>
+            <div class="text-xs font-bold mb-3" style="color:#8B72CC; letter-spacing:0.04em; text-transform:uppercase;">First 10 Days</div>
+            <ul class="space-y-1.5 mb-4 text-sm" style="color:#3A3450;">
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>No more protein bar bloat between sets</li>
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>Stomach stays flat through a full training session</li>
+              <li class="flex items-start gap-2"><span style="color:#00B67A;">✓</span>Off the digestive enzymes just to hit her macros</li>
+            </ul>
+            <div class="rounded-xl p-3.5 mb-3" style="background:#F2EBF8; border-left:3px solid #8B72CC;">
+              <p class="text-sm leading-relaxed" style="color:#3A3450;">"I was stacking digestive enzymes just to eat enough protein without bloating out of my lifting shorts. Ten days on Flove and my stomach finally stays flat through the whole session."</p>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs font-medium">
+              <span class="font-semibold" style="color:#1C1828;">Nora S.</span><span style="color:#4A4458;">| 23</span>
+              <span class="inline-flex items-center gap-1" style="color:#00B67A;">✓ Verified Customer</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <button type="button" class="carousel-arrow prev" id="results-prev" aria-label="Previous result" style="left:-6px; top:135px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button type="button" class="carousel-arrow next" id="results-next" aria-label="Next result" style="right:-6px; top:135px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1C1828" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
   </div>
 </section>
@@ -564,7 +720,6 @@
 <section class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-10">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>40B CFU per daily dose</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">Four strains. Four jobs. 24mg of prebiotic fuel.</h2>
     </div>
     <div class="flex flex-wrap justify-center gap-2 mb-10" id="strain-pills">
@@ -574,9 +729,9 @@
       <button class="strain-pill rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="3" onclick="pickStrain(this)">Rebuild</button>
       <button class="strain-pill rounded-full px-5 py-2.5 text-sm sm:text-base font-bold" data-strain="4" onclick="pickStrain(this)">FOS Prebiotic</button>
     </div>
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-      <div class="rounded-3xl overflow-hidden" style="border:1px solid #EDE6F4;">
-        <img src="../brand_assets/strain-diagram.png" alt="Flove strain diagram" width="800" height="1100" style="width:100%; height:auto; display:block;">
+    <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-8 lg:gap-12 items-center">
+      <div class="rounded-full overflow-hidden flex items-center justify-center mx-auto" style="border:1px solid #EDE6F4; background:#F8F4EE; width:200px; height:200px; box-shadow:0 10px 30px rgba(139,114,204,0.14);">
+        <img id="strain-image" src="../brand_assets/strain-digest.png" alt="Lactobacillus acidophilus (La-14) ingredient powder" style="width:96%; height:96%; object-fit:contain; display:block;">
       </div>
       <div id="strain-panels">
         <div class="strain-panel" data-panel="0">
@@ -630,63 +785,44 @@
 
 
 <!-- ============================================================
-     7. WHAT TO EXPECT — churn-mitigation timeline
+     7. WHAT TO EXPECT — daily 3-step routine
 ============================================================ -->
 <section class="py-12 sm:py-20 px-4 sm:px-6" style="border-bottom:1px solid #D8CBEA;">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-10">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>No day-one sensation, and that's by design</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">What To Expect</h2>
-      <p class="text-base max-w-lg mx-auto" style="color:#3A3450;">This isn't a stimulant. It's colonization, and colonization takes time to build.</p>
+      <p class="text-base max-w-lg mx-auto" style="color:#3A3450;">Two capsules, no adjustment window. Here's how the day actually looks.</p>
     </div>
-    <!-- Desktop: alternating vertical timeline -->
-    <div class="hidden sm:block relative" style="max-width:680px; margin:0 auto;">
-      <div class="absolute left-1/2 top-2 bottom-2" style="width:2px; background:#E0D6EE; transform:translateX(-50%);"></div>
-
-      <div class="relative grid grid-cols-2 gap-x-10 mb-16">
-        <div class="text-right pr-10">
-          <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">1</span></div>
-          <p class="text-base leading-relaxed" style="color:#3A3450;">Lactase production ramps up. Post-shake gas starts to drop.</p>
+    <div class="max-w-xl mx-auto space-y-14 sm:space-y-16">
+      <div class="mech-step">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="mech-step-num">1</div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl" style="color:#8B72CC; letter-spacing:-0.01em;">Daytime Capsule</h3>
         </div>
-        <div></div>
-        <div class="timeline-dot absolute left-1/2 top-1" style="transform:translate(-50%,0);"></div>
-      </div>
-
-      <div class="relative grid grid-cols-2 gap-x-10 mb-16">
-        <div></div>
-        <div class="text-left pl-10">
-          <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">4</span></div>
-          <p class="text-base leading-relaxed" style="color:#3A3450;">Morning-to-evening consistency becomes visible. Fewer surprises from your afternoon stomach.</p>
+        <div class="rounded-3xl overflow-hidden mb-4" style="border:1px solid #EDE6F4; background:#F8F4EE; aspect-ratio:4/3;">
+          <img src="../brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.gif" alt="Taking the daytime Flove capsule with a meal" style="width:100%; height:100%; object-fit:cover; display:block;">
         </div>
-        <div class="timeline-dot absolute left-1/2 top-1" style="transform:translate(-50%,0);"></div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Take it with your biggest meal, whatever meal has the most whey or protein in it. That's the exact moment PhaseLock™ needs to be working.</p>
       </div>
-
-      <div class="relative grid grid-cols-2 gap-x-10">
-        <div class="text-right pr-10">
-          <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">12</span></div>
-          <p class="text-base leading-relaxed" style="color:#3A3450;">Full colonization. This is the timeline the <strong>90-day supply</strong> is built around.</p>
+      <div class="mech-step">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="mech-step-num">2</div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl" style="color:#8B72CC; letter-spacing:-0.01em;">Go Live Your Day</h3>
         </div>
-        <div></div>
-        <div class="timeline-dot absolute left-1/2 top-1" style="transform:translate(-50%,0);"></div>
+        <div class="rounded-3xl overflow-hidden mb-4 flex items-center justify-center" style="border:1px solid #EDE6F4; background:#F8F4EE; aspect-ratio:4/3;">
+          <img src="../brand_assets/hf_20260713_202825_eb4aee43-6328-402a-a089-ea1dd7fe48d2-ezgif.com-cut.gif" alt="Living her day normally, mid-run, no bloat or discomfort" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Lift, drink your shakes, eat like you planned to. The gel already sealed the cultures past your stomach acid, so there's no cramping or bathroom-emergency window to wait out.</p>
       </div>
-    </div>
-
-    <!-- Mobile: single-column timeline, line + dots on the left -->
-    <div class="sm:hidden" style="max-width:420px; margin:0 auto;">
-      <div class="relative mb-10 pl-6" style="border-left:2px solid #E0D6EE;">
-        <div class="timeline-dot absolute" style="left:-8px; top:3px;"></div>
-        <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">1</span></div>
-        <p class="text-base leading-relaxed" style="color:#3A3450;">Lactase production ramps up. Post-shake gas starts to drop.</p>
-      </div>
-      <div class="relative mb-10 pl-6" style="border-left:2px solid #E0D6EE;">
-        <div class="timeline-dot absolute" style="left:-8px; top:3px;"></div>
-        <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">4</span></div>
-        <p class="text-base leading-relaxed" style="color:#3A3450;">Morning-to-evening consistency becomes visible. Fewer surprises from your afternoon stomach.</p>
-      </div>
-      <div class="relative pl-6" style="border-left:2px solid #E0D6EE;">
-        <div class="timeline-dot absolute" style="left:-8px; top:3px;"></div>
-        <div class="font-display font-bold text-xl mb-2" style="color:#1C1828;">Week <span style="color:#8B72CC;">12</span></div>
-        <p class="text-base leading-relaxed" style="color:#3A3450;">Full colonization. This is the timeline the <strong>90-day supply</strong> is built around.</p>
+      <div class="mech-step">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="mech-step-num">3</div>
+          <h3 class="font-display font-bold text-xl sm:text-2xl" style="color:#8B72CC; letter-spacing:-0.01em;">Nighttime Capsule</h3>
+        </div>
+        <div class="rounded-3xl overflow-hidden mb-4" style="border:1px solid #EDE6F4; background:#F8F4EE; aspect-ratio:4/3;">
+          <img src="../brand_assets/hf_20260612_190208_5865e831-923c-4315-83c5-39d612621a10-ezgif.com-optimize.gif" alt="Taking the nighttime Flove capsule before bed" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <p class="text-base leading-relaxed" style="color:#3A3450;">Your second capsule goes down before bed, on the longest stretch your gut gets without new food coming in, so the cultures have the best window to take hold.</p>
       </div>
     </div>
   </div>
@@ -699,7 +835,6 @@
 <section id="stack-up" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-10">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Flove vs. the shelf</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">The only probiotic built around whey<br class="hidden sm:block"> See how it stacks up</h2>
     </div>
     <div class="rounded-3xl overflow-hidden bg-surface" style="border:1px solid #EDE6F4;">
@@ -756,7 +891,6 @@
     <div class="text-center mb-8">
       <h2 class="font-display font-bold text-2xl sm:text-3xl text-text-primary mb-6" style="letter-spacing:-0.02em;">889 women stopped planning their outfit around their stomach</h2>
       <div class="inline-flex flex-col items-center gap-2 mb-6">
-        <div class="spec-pill inline-flex mb-1"><span class="dot"></span>Verified reviews</div>
         <div class="font-display font-bold text-5xl text-text-primary">4.9</div>
         <div class="flex gap-0.5 text-2xl" style="color:#00B67A;">★★★★★</div>
         <div class="text-sm" style="color:#4A4458;">Based on 889 reviews · 92% five-star</div>
@@ -781,11 +915,11 @@
 
       <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"My check-in photos finally match the mirror."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Sunday progress photos used to be a coin flip depending on how bloated I was that morning. My coach asked what I changed. Six weeks.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-3-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Talia R.</div><div class="text-xs" style="color:#4A4458;">22 · Toronto</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
 
-      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"Pre-workout stopped wrecking me."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Twenty minutes into leg day my stomach used to go hard and tight. I assumed that was just what training on a full gut felt like. It isn't.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-1-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Jess K.</div><div class="text-xs" style="color:#4A4458;">29 · Phoenix</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"Pre-workout stopped wrecking me."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Twenty minutes into leg day my stomach used to go hard and tight. I assumed that was just what training on a full gut felt like. It isn't.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/womanbro.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Jess K.</div><div class="text-xs" style="color:#4A4458;">29 · Phoenix</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
 
-      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"I stopped sucking it in."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Not for photos. Just standing at the squat rack, in my own gym, with nobody looking at me. I didn't realize I'd been doing it for two years.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-2-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Marisol V.</div><div class="text-xs" style="color:#4A4458;">26 · Miami</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"I stopped sucking it in."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Not for photos. Just standing at the squat rack, in my own gym, with nobody looking at me. I didn't realize I'd been doing it for two years.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-5-marisol.png" alt=""><div><div class="text-xs font-semibold text-text-primary">Marisol V.</div><div class="text-xs" style="color:#4A4458;">26 · Miami</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
 
-      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"The guarantee is why I tried a fourth probiotic."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Three duds in eighteen months. I was done. Sixty days was the only thing that got my card out. By day sixty I'd forgotten the guarantee existed.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-3-opt.webp" alt=""><div><div class="text-xs font-semibold text-text-primary">Elle W.</div><div class="text-xs" style="color:#4A4458;">25 · Chicago</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
+      <div class="rounded-3xl p-5 bg-surface" style="border:1px solid #EDE6F4;"><div class="flex gap-0.5 mb-2 text-base" style="color:#00B67A;">★★★★★</div><div class="font-bold text-text-primary text-lg mb-2">"The guarantee is why I tried a fourth probiotic."</div><p class="text-base leading-relaxed mb-4" style="color:#3A3450;">Three duds in eighteen months. I was done. Sixty days was the only thing that got my card out. By day sixty I'd forgotten the guarantee existed.</p><div class="flex items-center gap-2.5 pt-3 border-t border-border"><img class="w-7 h-7 rounded-full object-cover flex-shrink-0" style="border:1px solid #EDE6F4;" src="../brand_assets/testimonial-6-elle.png" alt=""><div><div class="text-xs font-semibold text-text-primary">Elle W.</div><div class="text-xs" style="color:#4A4458;">25 · Chicago</div></div><div class="ml-auto text-xs" style="color:#8B72CC;">Verified ✓</div></div></div>
     </div>
 
     <div id="rev-video" class="hidden" style="overflow:hidden; position:relative;">
@@ -794,7 +928,7 @@
         <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid2.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Megan P.</div></div>
         <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid3.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Kristen T.</div></div>
         <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid4.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Dana R.</div></div>
-        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid5.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Jennifer M.</div></div>
+        <div class="flex-shrink-0" style="width:150px;"><div class="rounded-2xl overflow-hidden" style="border:1px solid #EDE6F4; aspect-ratio:9/16;"><video muted loop playsinline preload="metadata" class="w-full h-full object-cover" onmouseover="this.play()" onmouseout="this.pause()"><source src="../videos/vid7.mp4" type="video/mp4"></video></div><div class="text-xs mt-1.5 font-medium text-center">Jennifer M.</div></div>
       </div>
     </div>
   </div>
@@ -807,7 +941,6 @@
 <section id="faq" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#F2EBF8; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-8 sm:mb-12">
-      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Common objections</div>
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">You've thought most of these already.</h2>
     </div>
     <div class="space-y-2.5">
@@ -863,17 +996,64 @@
 ============================================================ -->
 <section class="py-14 sm:py-24 px-4 sm:px-6 text-center" style="background:#FFFFFF; border-top:1px solid #D8CBEA;">
   <div class="max-w-2xl mx-auto">
-    <div class="spec-pill inline-flex mb-6"><span class="dot"></span>The complete offer</div>
+    <div class="mx-auto mb-6" style="width:120px;">
+      <img src="../brand_assets/hf_20260608_100237_6a52846f-b303-4612-82f1-2b061d3f568b.png" alt="Flove Daily Performance Synbiotic bottle" style="width:100%; height:auto; display:block;">
+    </div>
     <h2 class="font-display font-bold text-2xl sm:text-4xl lg:text-5xl text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.1;">Keep the protein.<br/>Lose the stomach.</h2>
-    <p class="text-lg mb-10 max-w-lg mx-auto" style="color:#4A4458; line-height:1.65;">40 billion CFU, four strains, PhaseLock™ delivery, and sixty days to send it back if your stomach doesn't change.</p>
-    <div class="grid grid-cols-3 gap-2 sm:gap-3 max-w-sm mx-auto mb-10">
+    <p class="text-lg mb-6 max-w-lg mx-auto" style="color:#4A4458; line-height:1.65;">40 billion CFU, four strains, PhaseLock™ delivery, and sixty days to send it back if your stomach doesn't change.</p>
+
+    <ul class="text-base space-y-2.5 text-left max-w-sm mx-auto mb-8" style="color:#241F35;">
+      <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>A flatter stomach</strong> that holds all day, not just before breakfast</span></li>
+      <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>Abs you can actually see</strong>, not buried under gas and water</span></li>
+      <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>Whey shakes with no payback</strong> — no bloat two hours later</span></li>
+      <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>Progress photos that match the mirror</strong>, from day one, no adjustment week</span></li>
+    </ul>
+
+    <div class="rounded-2xl px-5 py-4 flex items-center gap-3 max-w-sm mx-auto mb-8" style="background:#F2EBF8; border:1px solid #D8CBEA;">
+      <svg class="w-8 h-8 flex-shrink-0" style="color:#6E52B5;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.75 11.954 11.954 0 0010 18.056 11.954 11.954 0 0017.834 5.75 11.954 11.954 0 0110 1.944zM9 12.5l5-5-1.06-1.06L9 10.38 7.06 8.44 6 9.5l3 3z" clip-rule="evenodd"/></svg>
+      <div class="text-left">
+        <div class="font-semibold text-sm" style="color:#1C1828;">60-Day Money-Back Guarantee</div>
+        <div class="text-xs" style="color:#4A4458;">No visible change to your bloat by day 60? Send it back for a full refund.</div>
+      </div>
+    </div>
+
+    <div class="inline-flex flex-wrap items-center justify-center gap-2 mb-8 px-4 py-2.5 rounded-full" style="background:#F2EBF8; border:1px solid #D8CBEA;">
+      <span class="text-sm font-bold" style="color:#6E52B5;">Labor Day Sale — 45% off ends in</span>
+      <span id="final-cta-timer" class="text-sm font-bold tabular-nums" style="color:#1C1828;">04:00:00</span>
+    </div>
+    <div class="grid grid-cols-3 gap-2 sm:gap-3 max-w-sm mx-auto mb-6">
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">95%</div><div class="text-xs mt-1" style="color:#4A4458;">Survival</div></div>
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl text-text-primary">40B</div><div class="text-xs mt-1" style="color:#4A4458;">CFU / dose</div></div>
       <div class="py-4 rounded-2xl bg-surface" style="border:1px solid #EDE6F4;"><div class="font-display font-bold text-xl" style="color:#8B72CC;">60-day</div><div class="text-xs mt-1" style="color:#4A4458;">Guarantee</div></div>
     </div>
-    <a href="#order" class="cta-btn px-10 py-5 text-base mb-5 inline-flex">Choose My Supply →</a>
+    <a href="#order" class="cta-btn px-10 py-5 text-base mb-3 inline-flex">Choose My Supply →</a>
+    <p class="text-sm" style="color:#8A8299;">Only <span id="final-cta-stock" class="font-semibold" style="color:#6E52B5;">37</span> bottles left in this batch at the sale price.</p>
   </div>
 </section>
+
+<script>
+  (function() {
+    const key = 'floveFinalCtaDeadline';
+    let deadline = sessionStorage.getItem(key);
+    if (!deadline) {
+      deadline = Date.now() + 4 * 60 * 60 * 1000;
+      sessionStorage.setItem(key, deadline);
+    } else {
+      deadline = parseInt(deadline, 10);
+    }
+    const el = document.getElementById('final-cta-timer');
+    function tick() {
+      const diff = Math.max(0, deadline - Date.now());
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      if (el) el.textContent = [h, m, s].map(n => String(n).padStart(2, '0')).join(':');
+      if (diff <= 0) clearInterval(interval);
+    }
+    tick();
+    const interval = setInterval(tick, 1000);
+  })();
+</script>
 
 
 <!-- ============================================================
@@ -970,6 +1150,28 @@
         </div>
       </div>
     </div>
+    <div style="margin-bottom:24px;">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#8B72CC;margin-bottom:10px;">Thousands Of Customers Also Buy</div>
+      <div style="display:flex;flex-direction:column;gap:8px;" id="xsell-list">
+        <div class="xsell-card rounded-2xl px-3.5 py-3 flex items-center gap-3 bg-surface" data-item="0">
+          <img src="https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovecolos_a5b7d8dc-9612-42d5-9cc5-2ae0966e035e.png" alt="Colostrum Capsules" width="44" height="44" loading="lazy" style="width:44px; height:44px; object-fit:contain; border-radius:10px; background:#F8F4EE; flex-shrink:0;" onerror="this.style.cssText='width:44px;height:44px;border-radius:10px;background:#F2EBF8;flex-shrink:0;';this.removeAttribute('src')">
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-xs" style="color:#1A1526;">Colostrum Capsules — $35.00</div>
+            <div class="text-xs truncate" style="color:#4A4458;">Rebuilds the lining your pre-workout stripped</div>
+          </div>
+          <button class="xsell-add-btn flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold cta-btn" onclick="toggleXsell(this,0)">+ Add</button>
+        </div>
+        <!-- FLAG: swipe doc's second cross-sell item was "Digestive Enzyme Complex $29," an unconfirmed SKU. Kept Max Detox here instead since it's a verified live product; swap if Digestive Enzyme Complex ships. -->
+        <div class="xsell-card rounded-2xl px-3.5 py-3 flex items-center gap-3 bg-surface" data-item="1">
+          <img src="https://cdn.shopify.com/s/files/1/0743/0212/8206/files/flovedetox.png" alt="Max Detox" width="44" height="44" loading="lazy" style="width:44px; height:44px; object-fit:contain; border-radius:10px; background:#F8F4EE; flex-shrink:0;" onerror="this.style.cssText='width:44px;height:44px;border-radius:10px;background:#F2EBF8;flex-shrink:0;';this.removeAttribute('src')">
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-xs" style="color:#1A1526;">Max Detox (Acai) — $29.90</div>
+            <div class="text-xs truncate" style="color:#4A4458;">Daily gut cleanse, clears the runway</div>
+          </div>
+          <button class="xsell-add-btn flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold cta-btn" onclick="toggleXsell(this,1)">+ Add</button>
+        </div>
+      </div>
+    </div>
     <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:16px;margin-bottom:20px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
         <span style="font-size:13px;color:#4A4458;">Subtotal</span>
@@ -1033,6 +1235,38 @@
       swipeDir = null; startTimer();
     }, { passive: true });
     goTo(0); startTimer();
+  })();
+
+  // ── BELIEF TESTIMONIAL SCROLLER ──
+  (function () {
+    const scroller = document.getElementById('belief-scroll');
+    const prevBtn = document.getElementById('belief-prev');
+    const nextBtn = document.getElementById('belief-next');
+    if (!scroller || !prevBtn || !nextBtn) return;
+    function step() {
+      const card = scroller.querySelector('.belief-card');
+      if (!card) return scroller.offsetWidth;
+      const gap = parseFloat(getComputedStyle(scroller).gap) || 16;
+      return card.offsetWidth + gap;
+    }
+    prevBtn.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+  })();
+
+  // ── REAL RESULTS SCROLLER ──
+  (function () {
+    const scroller = document.getElementById('results-scroll');
+    const prevBtn = document.getElementById('results-prev');
+    const nextBtn = document.getElementById('results-next');
+    if (!scroller || !prevBtn || !nextBtn) return;
+    function step() {
+      const card = scroller.querySelector('.belief-card');
+      if (!card) return scroller.offsetWidth;
+      const gap = parseFloat(getComputedStyle(scroller).gap) || 16;
+      return card.offsetWidth + gap;
+    }
+    prevBtn.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
   })();
 
   // ── SCHEDULE + SIZE + PRICE ──
@@ -1102,12 +1336,22 @@
   }
 
   // ── STRAIN PILLS ──
+  const STRAIN_IMAGES = [
+    { src: '../brand_assets/strain-digest.png', alt: 'Lactobacillus acidophilus (La-14) ingredient powder' },
+    { src: '../brand_assets/strain-shield.png', alt: 'Bifidobacterium lactis (Bl-04) ingredient powder' },
+    { src: '../brand_assets/strain-defend.png', alt: 'Lactobacillus plantarum (Lp-115) ingredient powder' },
+    { src: '../brand_assets/strain-rebuild.png', alt: 'Lactobacillus paracasei (Lpc-37) ingredient powder' },
+    { src: '../brand_assets/strain-fos.png', alt: 'Fructooligosaccharide (FOS) prebiotic powder' },
+  ];
   function pickStrain(btn) {
     document.querySelectorAll('.strain-pill').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     const idx = btn.dataset.strain;
     document.querySelectorAll('.strain-panel').forEach(p => p.classList.add('hidden'));
     document.querySelector('.strain-panel[data-panel="' + idx + '"]').classList.remove('hidden');
+    const img = STRAIN_IMAGES[idx];
+    const imgEl = document.getElementById('strain-image');
+    if (img && imgEl) { imgEl.src = img.src; imgEl.alt = img.alt; }
   }
 
   // ── REVIEW TABS ──
