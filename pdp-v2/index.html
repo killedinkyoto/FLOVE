@@ -1510,14 +1510,21 @@
     const base = parseFloat(priceEl.textContent.replace('$', ''));
     let total = base * cartQty;
     Object.values(addedXsells).forEach(p => { total += p; });
-    let items = selectedVariant + ':' + cartQty;
-    Object.keys(addedXsells).forEach(variant => { items += ',' + variant + ':1'; });
     // Funnel step: user proceeded to Shopify checkout
     if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', { content_ids: [selectedVariant], content_type: 'product', value: total, currency: 'USD', num_items: cartQty });
     if (typeof clarity !== 'undefined') clarity('event', 'initiate_checkout');
-    var url = 'https://' + SHOPIFY_DOMAIN + '/cart/' + items;
-    // Subscribe & Save: attach the Shopify selling plan so the 15% + recurring billing actually apply
-    if (scheduleMode === 'subscribe') url += '?selling_plan=2885386318';
+    // Route: clear -> add(main, + selling plan if subscribe) -> add(cross-sells) -> /cart.
+    // /cart/add is the only URL that attaches a selling plan; clearing first stops items
+    // piling up on repeat clicks; landing on /cart lets the customer review & remove items
+    // before checkout (Shopify's one-page checkout won't let them remove).
+    var dest = '/cart';
+    Object.keys(addedXsells).forEach(function(v) {
+      dest = '/cart/add?id=' + v + '&quantity=1&return_to=' + encodeURIComponent(dest);
+    });
+    var mainAdd = '/cart/add?id=' + selectedVariant + '&quantity=' + cartQty
+      + (scheduleMode === 'subscribe' ? '&selling_plan=2885386318' : '')
+      + '&return_to=' + encodeURIComponent(dest);
+    var url = 'https://' + SHOPIFY_DOMAIN + '/cart/clear?return_to=' + encodeURIComponent(mainAdd);
     window.location.href = url;
   }
 
