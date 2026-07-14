@@ -1334,7 +1334,10 @@
       final = base * 0.85;
     }
     const compareAt = final / (1 - HOLIDAY_SALE_PCT);
-    if (emailDiscountApplied) {
+    // Email 10% (FLOVE10) can't combine with the subscription discount, so it only
+    // applies to one-time purchases. Subscribers already get the better 15%.
+    var emailActive = emailDiscountApplied && scheduleMode !== 'subscribe';
+    if (emailActive) {
       final = final * (1 - EMAIL_DISCOUNT_PCT);
     }
     priceEl.textContent = '$' + final.toFixed(2);
@@ -1344,12 +1347,12 @@
     origEl.style.display = '';
     saveEl.textContent = 'Save 45%';
     saveEl.style.display = '';
-    if (emailTagEl) emailTagEl.style.display = emailDiscountApplied ? '' : 'none';
+    if (emailTagEl) emailTagEl.style.display = emailActive ? '' : 'none';
     if (btnPriceOrigEl) {
       btnPriceOrigEl.textContent = '$' + compareAt.toFixed(2);
       btnPriceOrigEl.style.display = '';
     }
-    if (btnDiscountTagEl) btnDiscountTagEl.style.display = emailDiscountApplied ? '' : 'none';
+    if (btnDiscountTagEl) btnDiscountTagEl.style.display = emailActive ? '' : 'none';
     selectedVariant = size.dataset.variant;
     if (typeof updateCartTotals === 'function') updateCartTotals();
   }
@@ -1454,7 +1457,7 @@
       document.getElementById('cart-variant-label').textContent = label;
       document.getElementById('cart-item-price').textContent = priceEl.textContent;
       document.getElementById('cart-item-price-orig').textContent = origEl.textContent;
-      document.getElementById('cart-email-tag').style.display = emailDiscountApplied ? '' : 'none';
+      document.getElementById('cart-email-tag').style.display = (emailDiscountApplied && scheduleMode !== 'subscribe') ? '' : 'none';
     }
     cartQty = 1;
     document.getElementById('cart-qty').textContent = '1';
@@ -1524,7 +1527,13 @@
     var mainAdd = '/cart/add?id=' + selectedVariant + '&quantity=' + cartQty
       + (scheduleMode === 'subscribe' ? '&selling_plan=2885386318' : '')
       + '&return_to=' + encodeURIComponent(dest);
-    var url = 'https://' + SHOPIFY_DOMAIN + '/cart/clear?return_to=' + encodeURIComponent(mainAdd);
+    var path = '/cart/clear?return_to=' + encodeURIComponent(mainAdd);
+    // Email 10% (FLOVE10) — one-time only (can't combine with the subscription discount).
+    // Set the discount first, then run the clear -> add -> /cart chain so it carries to checkout.
+    if (emailDiscountApplied && scheduleMode !== 'subscribe') {
+      path = '/discount/FLOVE10?redirect=' + encodeURIComponent(path);
+    }
+    var url = 'https://' + SHOPIFY_DOMAIN + path;
     window.location.href = url;
   }
 
