@@ -1571,9 +1571,12 @@
       return;
     }
     emailInput.style.borderColor = 'rgba(255,255,255,0.3)';
-    // TODO: replace with your Klaviyo list ID — POST to:
-    // https://manage.kmail-lists.com/ajax/subscriptions/subscribe
-    // Body: { g: 'YOUR_LIST_ID', email: email, $source: 'PDP Popup' }
+    // Subscribe the email to Klaviyo (list XinHh6) — fire-and-forget
+    fetch('https://a.klaviyo.com/client/subscriptions/?company_id=S3D76Q', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
+      body: JSON.stringify({ data: { type: 'subscription', attributes: { profile: { data: { type: 'profile', attributes: { email: email } } } }, relationships: { list: { data: { type: 'list', id: 'XinHh6' } } } } })
+    }).catch(function(){});
     if (typeof fbq !== 'undefined') {
       fbq('init', '1725808198870245', { em: email.toLowerCase() });
       fbq('track', 'Lead', { content_name: 'Email Capture', value: 0, currency: 'USD' });
