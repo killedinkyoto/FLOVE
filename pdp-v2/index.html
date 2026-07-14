@@ -200,7 +200,7 @@
 
     /* ── MOBILE BAR ── */
     #mobile-bar { backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
-    @media (max-width:767px) { body { padding-bottom:76px; } }
+    @media (max-width:767px) { body { padding-bottom:96px; } }
 
     hr { border:none; border-top:1px solid #EDE6F4; }
 
@@ -322,10 +322,11 @@
 
         <!-- Price + Delivery Schedule -->
         <div id="order" class="pt-2">
-          <div class="flex items-baseline gap-2 mb-4">
+          <div class="flex items-baseline gap-2 mb-4 flex-wrap">
             <span style="font-family:'Playfair Display',serif; font-weight:700; font-size:2rem; color:#1A1526;" id="price-display">$101.97</span>
             <span class="text-sm line-through" style="color:#4A4458;" id="original-price">$185.40</span>
             <span class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:#C4B5E8; color:#1A1526;" id="save-badge">Save 45%</span>
+            <span class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:#1C1828; color:#fff; display:none;" id="email-discount-tag">EMAIL10 applied</span>
           </div>
 
           <!-- Delivery schedule radios -->
@@ -372,8 +373,11 @@
             </div>
           </div>
 
-          <button class="cta-btn w-full py-4 text-base mb-3" onclick="goToCheckout()" id="cta-btn-main">
-            Start My 90-Day Supply — <span id="btn-price">$101.97</span>
+          <button class="cta-btn w-full py-4 sm:py-4 text-base mb-3 flex-wrap" onclick="goToCheckout()" id="cta-btn-main">
+            <span id="cta-btn-label">Start My 90-Day Supply</span> —
+            <span id="btn-price-orig" class="line-through" style="opacity:0.55; display:none;"></span>
+            <span id="btn-price">$101.97</span>
+            <span id="btn-discount-tag" class="px-2 py-0.5 rounded-full text-xs font-semibold" style="background:rgba(255,255,255,0.18); display:none;">EMAIL10</span>
           </button>
 
           <!-- Gift note toggle -->
@@ -1110,10 +1114,10 @@
 
 
 <!-- MOBILE BAR -->
-<div id="mobile-bar" class="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-4 py-3 bg-surface" style="border-top:1px solid #EDE6F4;">
-  <a href="#order" class="cta-btn w-full py-3.5 text-sm">
-    <span>Order Now</span>
-    <span class="font-normal opacity-60">· From $49.99 · 60-day guarantee</span>
+<div id="mobile-bar" class="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-4 py-4 bg-surface" style="border-top:1px solid #EDE6F4; box-shadow:0 -6px 24px rgba(28,24,40,0.1);">
+  <a href="#order" class="cta-btn w-full py-4 text-base" style="min-height:56px;">
+    <span class="font-bold">Order Now</span>
+    <span class="font-normal opacity-60 text-sm">· From $49.99</span>
   </a>
 </div>
 
@@ -1141,7 +1145,11 @@
         <div style="flex:1;">
           <div style="font-size:13px;font-weight:700;color:#1C1828;margin-bottom:2px;">Flove Daily Performance Synbiotic</div>
           <div id="cart-variant-label" style="font-size:12px;color:#4A4458;margin-bottom:6px;">3-Bottle · Subscribe &amp; Save</div>
-          <div id="cart-item-price" style="font-size:15px;font-weight:700;color:#8B72CC;">$101.97</div>
+          <div style="display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;">
+            <span id="cart-item-price" style="font-size:15px;font-weight:700;color:#8B72CC;">$101.97</span>
+            <span id="cart-item-price-orig" style="font-size:12px;color:#9B96A8;text-decoration:line-through;"></span>
+            <span id="cart-email-tag" style="display:none;font-size:10px;font-weight:700;padding:1px 6px;border-radius:9999px;background:#1C1828;color:#fff;">EMAIL10</span>
+          </div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
           <button onclick="adjustQty(1)" style="width:28px;height:28px;border-radius:8px;border:1.5px solid #EDE6F4;background:#fff;cursor:pointer;font-size:16px;color:#1C1828;display:flex;align-items:center;justify-content:center;">+</button>
@@ -1172,7 +1180,7 @@
         </div>
       </div>
     </div>
-    <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:16px;margin-bottom:20px;">
+    <div style="background:#fff;border:1.5px solid #EDE6F4;border-radius:14px;padding:16px;margin-bottom:16px;">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
         <span style="font-size:13px;color:#4A4458;">Subtotal</span>
         <span id="cart-subtotal" style="font-size:13px;font-weight:600;color:#1C1828;">$101.97</span>
@@ -1181,16 +1189,52 @@
         <span style="font-size:13px;color:#4A4458;">Shipping</span>
         <span style="font-size:13px;font-weight:600;color:#22C55E;">Free</span>
       </div>
+      <div id="cart-savings-row" style="display:flex;justify-content:space-between;margin-bottom:8px;">
+        <span style="font-size:13px;color:#4A4458;">You're saving</span>
+        <span id="cart-savings" style="font-size:13px;font-weight:700;color:#22C55E;">$0.00</span>
+      </div>
       <div style="border-top:1px solid #EDE6F4;margin:10px 0;"></div>
       <div style="display:flex;justify-content:space-between;">
         <span style="font-size:15px;font-weight:700;color:#1C1828;">Total</span>
         <span id="cart-total" style="font-size:15px;font-weight:700;color:#1C1828;">$101.97</span>
       </div>
     </div>
+    <div style="display:flex;align-items:center;gap:10px;background:#F2EBF8;border:1px solid #D8CBEA;border-radius:14px;padding:12px 14px;margin-bottom:20px;">
+      <svg width="26" height="26" viewBox="0 0 20 20" fill="#6E52B5" style="flex-shrink:0;"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5.75 11.954 11.954 0 0010 18.056 11.954 11.954 0 0017.834 5.75 11.954 11.954 0 0110 1.944zM9 12.5l5-5-1.06-1.06L9 10.38 7.06 8.44 6 9.5l3 3z" clip-rule="evenodd"/></svg>
+      <div>
+        <div style="font-size:12.5px;font-weight:700;color:#1C1828;">60-Day Money-Back Guarantee</div>
+        <div style="font-size:11.5px;color:#4A4458;">No visible change by day 60? Send it back for a full refund.</div>
+      </div>
+    </div>
     <button onclick="proceedToCheckout()" style="width:100%;padding:16px;background:#1C1828;color:#fff;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(28,24,40,0.22);">
       Proceed to Checkout →
     </button>
     <p style="font-size:11px;color:#AEA5C8;text-align:center;margin-top:10px;">Secure checkout · 60-day money-back guarantee</p>
+  </div>
+</div>
+
+<!-- ── EMAIL CAPTURE POPUP — full-screen image takeover ── -->
+<div id="email-modal" style="display:none;position:fixed;inset:0;z-index:300;opacity:0;transition:opacity 0.35s ease;">
+  <img src="../brand_assets/pdp-v2-media/pdp9.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;">
+  <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(20,17,28,0.95) 0%, rgba(20,17,28,0.65) 38%, rgba(20,17,28,0.15) 62%, rgba(20,17,28,0.05) 100%);"></div>
+  <button onclick="closeEmailPopup()" aria-label="Close" style="position:absolute;top:max(20px,env(safe-area-inset-top));right:20px;width:40px;height:40px;border:none;background:rgba(255,255,255,0.92);border-radius:50%;cursor:pointer;font-size:20px;line-height:1;color:#1C1828;display:flex;align-items:center;justify-content:center;z-index:2;">&times;</button>
+  <div style="position:absolute;left:0;right:0;bottom:0;padding:28px 24px max(28px,env(safe-area-inset-bottom));z-index:1;max-width:520px;margin:0 auto;">
+    <div id="email-form-state">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C4B5E8;text-transform:uppercase;margin:0 0 10px;">Before you go</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin:0 0 8px;line-height:1.15;">Here's 10% off your first order.</h3>
+      <p style="font-size:14.5px;color:rgba(255,255,255,0.85);margin:0 0 20px;line-height:1.6;">Drop your email and we'll apply it automatically to every price on this page. No spam, just the science.</p>
+      <input id="email-input" type="email" placeholder="your@email.com" style="width:100%;padding:15px 16px;border:1.5px solid rgba(255,255,255,0.3);border-radius:12px;font-size:16px;font-family:'Inter',sans-serif;color:#1A1526;background:#fff;box-sizing:border-box;margin-bottom:12px;outline:none;transition:border-color 0.15s ease;">
+      <button onclick="submitEmailCapture()" class="cta-btn" style="width:100%;padding:16px;font-size:15px;border:none;cursor:pointer;background:#fff;color:#1C1828;">Send me 10% off →</button>
+      <p style="font-size:11px;color:rgba(255,255,255,0.6);margin:12px 0 0;text-align:center;">No spam. Unsubscribe anytime.</p>
+    </div>
+    <div id="email-success-state" style="display:none;text-align:center;padding:8px 0;">
+      <div style="width:56px;height:56px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L19 7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#fff;margin:0 0 8px;">You're getting 10% off.</h3>
+      <p style="font-size:14.5px;color:rgba(255,255,255,0.85);margin:0 0 20px;line-height:1.65;">Your discount is <strong style="color:#fff;">applied automatically</strong> — every price on this page just updated.</p>
+      <button onclick="closeEmailPopup();document.getElementById('order').scrollIntoView({behavior:'smooth'});" class="cta-btn" style="width:100%;padding:16px;font-size:15px;border:none;cursor:pointer;background:#fff;color:#1C1828;">Choose my supply →</button>
+    </div>
   </div>
 </div>
 
@@ -1269,18 +1313,27 @@
     nextBtn.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
   })();
 
+  // ── CART (qty declared early — computePrice() below needs it) ──
+  let cartQty = 1;
+
   // ── SCHEDULE + SIZE + PRICE ──
   const priceEl = document.getElementById('price-display');
   const origEl = document.getElementById('original-price');
   const saveEl = document.getElementById('save-badge');
+  const emailTagEl = document.getElementById('email-discount-tag');
   const btnPriceEl = document.getElementById('btn-price');
+  const btnPriceOrigEl = document.getElementById('btn-price-orig');
+  const btnDiscountTagEl = document.getElementById('btn-discount-tag');
+  const ctaBtnLabelEl = document.getElementById('cta-btn-label');
   const ctaBtnMain = document.getElementById('cta-btn-main');
   let scheduleMode = 'subscribe';
   let selectedVariant = '43847089946702';
+  let emailDiscountApplied = sessionStorage.getItem('floveEmailDiscount') === '1';
 
   function currentSizeCard() { return document.querySelector('.size-pill.active'); }
 
   const HOLIDAY_SALE_PCT = 0.45;
+  const EMAIL_DISCOUNT_PCT = 0.10;
 
   function computePrice() {
     const size = currentSizeCard();
@@ -1292,14 +1345,24 @@
       final = base * 0.85;
     }
     const compareAt = final / (1 - HOLIDAY_SALE_PCT);
+    if (emailDiscountApplied) {
+      final = final * (1 - EMAIL_DISCOUNT_PCT);
+    }
     priceEl.textContent = '$' + final.toFixed(2);
     btnPriceEl.textContent = '$' + final.toFixed(2);
-    if (ctaBtnMain) ctaBtnMain.firstChild.textContent = 'Start My ' + days + '-Day Supply — ';
+    if (ctaBtnLabelEl) ctaBtnLabelEl.textContent = 'Start My ' + days + '-Day Supply';
     origEl.textContent = '$' + compareAt.toFixed(2);
     origEl.style.display = '';
     saveEl.textContent = 'Save 45%';
     saveEl.style.display = '';
+    if (emailTagEl) emailTagEl.style.display = emailDiscountApplied ? '' : 'none';
+    if (btnPriceOrigEl) {
+      btnPriceOrigEl.textContent = '$' + compareAt.toFixed(2);
+      btnPriceOrigEl.style.display = '';
+    }
+    if (btnDiscountTagEl) btnDiscountTagEl.style.display = emailDiscountApplied ? '' : 'none';
     selectedVariant = size.dataset.variant;
+    if (typeof updateCartTotals === 'function') updateCartTotals();
   }
 
   function pickSchedule(card) {
@@ -1388,8 +1451,6 @@
   }
 
   // ── CART ──
-  let cartQty = 1;
-
   function goToCheckout() { openCart(); }
 
   function openCart() {
@@ -1400,6 +1461,8 @@
       const label = size.querySelector('.font-semibold.text-sm').textContent.trim() + ' · ' + (scheduleMode === 'subscribe' ? 'Subscribe & Save' : 'One-Time Purchase');
       document.getElementById('cart-variant-label').textContent = label;
       document.getElementById('cart-item-price').textContent = priceEl.textContent;
+      document.getElementById('cart-item-price-orig').textContent = origEl.textContent;
+      document.getElementById('cart-email-tag').style.display = emailDiscountApplied ? '' : 'none';
     }
     cartQty = 1;
     document.getElementById('cart-qty').textContent = '1';
@@ -1435,11 +1498,20 @@
     const size = currentSizeCard();
     if (!size) return;
     const base = parseFloat(priceEl.textContent.replace('$', ''));
+    const compareAt = parseFloat(origEl.textContent.replace('$', '')) || base;
     let total = base * cartQty;
     Object.values(addedXsells).forEach(p => { total += p; });
     const fmt = '$' + total.toFixed(2);
     document.getElementById('cart-subtotal').textContent = fmt;
     document.getElementById('cart-total').textContent    = fmt;
+    const savings = (compareAt - base) * cartQty;
+    const savingsRow = document.getElementById('cart-savings-row');
+    if (savings > 0.01) {
+      document.getElementById('cart-savings').textContent = '$' + savings.toFixed(2);
+      savingsRow.style.display = 'flex';
+    } else {
+      savingsRow.style.display = 'none';
+    }
   }
 
   function proceedToCheckout() {
@@ -1454,6 +1526,51 @@
   function checkMobileBar() { document.getElementById('mobile-bar').style.display = window.innerWidth >= 640 ? 'none' : ''; }
   window.addEventListener('resize', checkMobileBar);
   checkMobileBar();
+
+  // ── EMAIL CAPTURE POPUP (full-screen takeover) ──
+  let emailPopupShown = false;
+  function showEmailPopup() {
+    if (emailPopupShown || sessionStorage.getItem('emailPopupSeen') || emailDiscountApplied) return;
+    emailPopupShown = true;
+    sessionStorage.setItem('emailPopupSeen', '1');
+    const modal = document.getElementById('email-modal');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      modal.style.opacity = '1';
+    }));
+  }
+  function closeEmailPopup() {
+    const modal = document.getElementById('email-modal');
+    modal.style.opacity = '0';
+    setTimeout(() => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 350);
+  }
+  function submitEmailCapture() {
+    const emailInput = document.getElementById('email-input');
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@') || !email.includes('.')) {
+      emailInput.style.borderColor = '#D06060';
+      emailInput.focus();
+      return;
+    }
+    emailInput.style.borderColor = 'rgba(255,255,255,0.3)';
+    // TODO: replace with your Klaviyo list ID — POST to:
+    // https://manage.kmail-lists.com/ajax/subscriptions/subscribe
+    // Body: { g: 'YOUR_LIST_ID', email: email, $source: 'PDP Popup' }
+    if (typeof fbq !== 'undefined') {
+      fbq('init', '1725808198870245', { em: email.toLowerCase() });
+      fbq('track', 'Lead', { content_name: 'Email Capture', value: 0, currency: 'USD' });
+    }
+    emailDiscountApplied = true;
+    sessionStorage.setItem('floveEmailDiscount', '1');
+    computePrice();
+    document.getElementById('email-form-state').style.display = 'none';
+    document.getElementById('email-success-state').style.display = 'block';
+  }
+  if (!emailDiscountApplied) setTimeout(showEmailPopup, 6000);
 </script>
 </body>
 </html>
