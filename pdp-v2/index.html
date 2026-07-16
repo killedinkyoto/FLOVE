@@ -222,7 +222,6 @@
 
 <!-- ── STICKY NAV ── -->
 <nav id="sticky-nav" class="fixed top-0 left-0 right-0 z-50 border-b border-border" style="background:rgba(248,244,238,0.92);">
-  <div class="w-full text-center py-1.5 px-4 text-xs sm:text-sm font-bold" style="background:#8B72CC; color:#FFFFFF; letter-spacing:0.02em;">Labor Day Sale — 45% Off</div>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
     <div style="font-family:'Playfair Display',serif; font-weight:700; font-size:1.25rem; color:#1A1526; letter-spacing:-0.01em;">flove.</div>
     <div class="hidden sm:flex items-center gap-5 text-sm" style="color:#4A4458;">
@@ -231,8 +230,9 @@
       <a href="#reviews" class="hover:text-text-primary transition-colors">Reviews</a>
       <a href="#faq" class="hover:text-text-primary transition-colors">FAQ</a>
     </div>
-    <a href="#order" class="cta-btn px-5 py-2 text-sm">Order Now →</a>
+    <button type="button" onclick="openCart()" class="cta-btn px-5 py-2 text-sm">Open Cart →</button>
   </div>
+  <div class="w-full text-center py-2 px-4 text-sm sm:text-base font-bold" style="background:#8B72CC; color:#FFFFFF; letter-spacing:0.02em;">Labor Day Sale — 45% Off</div>
 </nav>
 
 
@@ -241,10 +241,10 @@
 ============================================================ -->
 <section class="pt-24 px-4 sm:px-6">
   <div class="max-w-6xl mx-auto">
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start pt-10 pb-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start pt-2 pb-8">
 
       <!-- LEFT: Media -->
-      <div class="flex flex-col gap-3 lg:sticky lg:top-24 mx-auto w-full" style="max-width:460px;">
+      <div class="flex flex-col gap-3 lg:sticky lg:top-24 mx-auto w-full" style="max-width:400px;">
         <div class="rounded-3xl" style="border:1px solid #EDE6F4; position:relative;" id="product-carousel">
           <div id="carousel-track">
             <div><img src="../brand_assets/pdp-v2-media/pdp1.webp" alt="Flove Daily Performance Synbiotic bottle" width="2048" height="2048" fetchpriority="high" style="width:100%; height:auto; display:block;"></div>
@@ -282,7 +282,7 @@
 
         <div>
           <h1 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-text-primary leading-tight mb-2" style="letter-spacing:-0.02em;">
-            Finally! Visible Abs And a Flatter Stomach In 2 Simple Steps With MAKTrek Bi-Layer Delivery.
+            Finally! A Flatter, More Defined Stomach In 2 Simple Steps With PhaseLock™ Delivery.
           </h1>
           <p class="text-lg leading-snug" style="color:#3A3450;">See Results In Under A Week, Without Bathroom Emergencies, Cramping, Or Gas!</p>
         </div>
@@ -299,7 +299,6 @@
           <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>95%</strong> of the cultures reach your gut alive.</span></li>
           <li class="flex items-start gap-2.5"><svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color:#8B72CC;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-5"/></svg><span><strong>The La-14 strain</strong> that breaks down lactose in whey.</span></li>
         </ul>
-        <p class="text-sm font-medium -mt-1" style="color:#726A87;">1 capsule with your biggest meal. 1 capsule before bed.</p>
 
         <!-- Price + Delivery Schedule -->
         <div id="order" class="pt-2">
