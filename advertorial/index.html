@@ -201,6 +201,32 @@
       backdrop-filter: blur(4px);
     }
 
+    /* Morning / Night split media — two clips meeting seamlessly at the center */
+    .am-pm-split {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-radius: 14px; overflow: hidden;
+      box-shadow: 0 16px 40px rgba(139,114,204,0.14);
+    }
+    .am-pm-split figure { position: relative; margin: 0; aspect-ratio: 3 / 4; overflow: hidden; }
+    .am-pm-split img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .am-pm-split figure:first-child img { object-position: 58% 22%; }
+    .am-pm-split figure:last-child img { object-position: 52% 18%; }
+    .am-pm-split figure::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(26,21,38,0.45), rgba(26,21,38,0) 40%);
+    }
+    .am-pm-split figcaption {
+      position: absolute; bottom: 14px; left: 14px; z-index: 1;
+      font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.6875rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: rgba(255,255,255,0.9); color: #1A1526;
+      padding: 6px 12px; border-radius: 100px;
+    }
+    .am-pm-split figure:first-child figcaption { color: #8B72CC; }
+    @media (min-width: 640px) {
+      .am-pm-split figure { aspect-ratio: 4 / 5; }
+    }
+
     /* Requirement / strain list */
     .req-item {
       display: flex; gap: 14px; align-items: flex-start; justify-content: center;
@@ -213,6 +239,32 @@
       width: 22px; height: 22px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; margin-top: 2px;
+    }
+
+    /* Strain card (ingredient photo + copy) */
+    .strain-card {
+      display: flex; gap: 16px; align-items: center;
+      padding: 1rem; border-radius: 14px;
+      border: 1px solid #EDE6F4; background: #FFFFFF;
+      margin-bottom: 0.75rem;
+      text-align: left;
+      box-shadow: 0 8px 20px rgba(139,114,204,0.06);
+    }
+    .strain-card .strain-photo {
+      width: 76px; height: 76px; flex-shrink: 0;
+      border-radius: 12px;
+      background: radial-gradient(circle at 50% 42%, rgba(139,114,204,0.32), rgba(139,114,204,0.16) 72%);
+      box-shadow: inset 0 0 0 1px rgba(139,114,204,0.18);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .strain-card .strain-photo img {
+      width: 76%; height: 76%; object-fit: contain; display: block;
+      filter: drop-shadow(0 2px 3px rgba(26,21,38,0.18));
+    }
+    @media (min-width: 640px) {
+      .strain-card { padding: 1.15rem 1.35rem; gap: 20px; }
+      .strain-card .strain-photo { width: 92px; height: 92px; }
     }
 
     /* Testimonial card */
@@ -312,7 +364,7 @@
 
     <!-- Deck / lede -->
     <p class="text-lg sm:text-xl" style="color:#6B6480; line-height:1.6;">
-      In this 3-minute read, you’ll learn about two <span class="hl-accent"><span class="hl-italic">secret</span></span> secret mistakes keeping thousands of fit women <span class="hl-accent"><span class="hl-italic">painfully bloated</span></span> all day long, as well as the simple and effective 2-step routine that <span class="hl-accent"><span class="hl-italic">flattens</span></span> your stomach  <span class="hl-accent"><span class="hl-italic">in less than 3 weeks without bathroom emergencies, cramping, or diet changes.</span></span>
+      In this 3-minute read, you’ll learn about two <span class="hl-accent"><span class="hl-italic">secret</span></span> secret mistakes keeping thousands of fit women <span class="hl-accent"><span class="hl-italic">painfully bloated</span></span> all day long, including a simple 2-step routine that <span class="hl-accent"><span class="hl-italic">flattens</span></span> your stomach  <span class="hl-accent"><span class="hl-italic">in less than 3 weeks without bathroom emergencies, cramping, or diet changes.</span></span>
     </p>
 
     <!-- Author line -->
@@ -348,23 +400,25 @@
       <p>"Why do I look four months pregnant by the end of my workout?"</p>
     </div>
 
-    <p>It comes from women who track every gram of protein, who haven't missed a leg day in a year, who could teach a class on caloric deficits. Then progress photo day comes around and she won't take the hoodie off.</p>
+    <p>It comes from women who track every gram of protein, who haven't missed a leg day in a year, who could teach a class on caloric deficits.</p>
 
-    <p>She buys the leggings she's been eyeing for months, wears them once, and instantly regrets it because her stomach won't "suck in."</p>
+    <p>Then progress photo day comes around and she won't take the hoodie off.</p>
+
+    <p>She buys the leggings she's been eyeing for months, wears them once, and instantly regrets it because her stomach won't <strong>"suck in."</strong></p>
 
     <p>So she does what any disciplined person does, which is go looking for a fix.</p>
 
     <p>She starts with a probiotic, then a greens powder, then maybe a detox tea she's a little embarrassed to admit she tried.</p>
 
-    <p>None of it works the way the label promised.</p>
+    <p><strong>And none of it works the way the label promised.</strong></p>
 
     <p>And this is where it turns on her, because she starts thinking the problem is her.</p>
 
-    <p>Her genetics.</p>
+    <p><strong>Her genetics.</strong></p>
 
-    <p>Her hormones.</p>
+    <p><strong>Her hormones.</strong></p>
 
-    <p>Some flaw in her body that no amount of work can fix.</p>
+    <p><strong>Some flaw in her body that no amount of work can fix.</strong></p>
 
     <div class="pull-quote">
       <p>It isn't her. I've watched this same pattern run through hundreds of clients, and it almost always comes down to two mistakes. Neither one is her fault, and both are easy to miss.</p>
@@ -377,28 +431,26 @@
     <h3 class="mistake-heading">She's Blaming Her Body For Something <span class="hl-accent">Her Supplements</span> Are Actually Doing</h3>
 
     <p>Here's what nobody tells her when she starts stacking supplements to hit her macros.</p>
-    <p></p>
-    <p>That "zero sugar" pre-workout she mixes before every session is sweetened with sucralose, and her gut has no way to break sucralose down.</p>
-    <p></p>
-    <p>Those "low-carb" protein bars in her gym bag are sweetened with sugar alcohols like erythritol and xylitol.</p>
+
+    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
+      <img src="/brand_assets/hf_20260705_135426_beee570b-68d5-41ba-b8da-c31346c984f3.webp" alt="Three culprits: sucralose pre-workout, sugar alcohol protein bars, whey lactose shake." loading="lazy" style="display:block; width:100%; height:auto;">
+    </figure>
+
+    <p>That <strong>"zero sugar"</strong> pre-workout she mixes before every session is sweetened with sucralose, and her gut has no way to break sucralose down.</p>
+    
+    <p>Those <strong>"low-carb" </strong>protein bars in her gym bag are sweetened with sugar alcohols like erythritol and xylitol.</p>
 
     <p>Her body can't absorb those either, so they pull water into her gut and sit there fermenting.</p>
 
-    <p>That's the gas. The swelling she feels mid-set.</p>
+    <p><strong>That's the gas. The swelling she feels mid-set.</strong></p>
 
     <p>And the whey shake... The one her entire routine is built around, is loaded with lactose.</p>
 
     <p>Hardly anyone makes enough of the enzyme that breaks lactose down, so after two or three shakes it just ferments in her gut like everything else.</p>
 
-    <p>She isn't eating badly.</p>
+    <p><strong>She isn't eating badly.</strong></p>
 
-    <p>She's eating exactly what the fitness industry told her to eat, and those products were designed to hit a macro number on a label, not to work with a human gut.</p>
-
-    <p></p>
-
-    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260705_135426_beee570b-68d5-41ba-b8da-c31346c984f3.webp" alt="Three culprits: sucralose pre-workout, sugar alcohol protein bars, whey lactose shake." loading="lazy" style="display:block; width:100%; height:auto;">
-    </figure>
+    <p><strong>She's eating exactly what the fitness industry told her to eat, and those products were designed to hit a macro number on a label, not to work with a human gut.</strong></p>
 
     <div class="pull-quote">
       <p>That's mistake number one, and it's the reason her bloating shows up hardest on the days she tries hardest.</p>
@@ -410,53 +462,27 @@
     <div class="mistake-tag">Mistake #2</div>
     <h3 class="mistake-heading">The Probiotic She Already Tried <span class="hl-accent">Never Actually Reached Her Gut</span></h3>
 
-    <p>This is the one that stopped me cold when I started reading the research.</p>
+    <p>This is the one that stopped me <strong>cold</strong> when I started reading the research.</p>
 
-    <p>Most women who feel this kind of bloating end up trying a probiotic, which makes complete sense. Gut problem, gut supplement.</p>
+    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
+      <img src="/brand_assets/hf_20260716_162101_f2c8ce74-8f3c-4224-aa51-0f4626597ceb.png" alt="A plain capsule dissolving apart in liquid, unable to hold its shape." loading="lazy" style="display:block; width:100%; height:auto;">
+    </figure>
 
-    <p>Here's what almost none of them know:</p>
+    <p>Most women who feel this kind of bloating end up trying a probiotic...</p>
 
-    <p>A standard probiotic capsule dissolves in the stomach, and the bacteria inside are dead long before they reach the intestines, which is the only place they can do anything for you.</p>
+    <p>But here's what almost none of them know:</p>
+
+    <p>It can't just be <strong>any</strong> probiotic.</p>
+
+    <p><strong>A normal probiotic capsule dissolves in the stomach, and the bacteria inside are dead long before they reach the intestines, which is the only place they can do anything for you.</strong></p>
 
     <p>Stomach acid is strong enough to break down a steak, so a plain capsule doesn't stand a chance in there.</p>
 
-    <p>With the most fragile strains, fewer 3% of bacteria come out the other side alive, and the rest get digested like any other dead protein.</p>
-
-    <!-- Survival rate visualization -->
-    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260705_135351_2dae0d78-31f7-4df4-9ca9-02dada73a18b.webp" alt="Test tubes comparing 3% survival for a standard probiotic vs 95-96% survival for Flove PhaseLock." loading="lazy" style="display:block; width:100%; height:auto;">
-    </figure>
-    <div class="data-callout" id="listicle-bars">
-      <div class="text-sm font-semibold text-text-primary mb-4" style="font-family:'Playfair Display',serif;">Bacterial survival through gastric transit</div>
-      <div class="space-y-4">
-        <div>
-          <div class="flex justify-between text-sm mb-1.5">
-            <span style="color:#6B6480;">Standard probiotic capsule</span>
-            <span class="font-semibold" style="color:#C04040; font-family:'Playfair Display',serif;">&lt; 3%</span>
-          </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;">
-            <div class="sbar-fill h-full rounded-full" style="--w:3%; background:#D06060;"></div>
-          </div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5">
-            <span style="color:#6B6480;">PhaseLock&trade; (Flove)</span>
-            <span class="font-semibold" style="color:#8B72CC; font-family:'Playfair Display',serif;">95&ndash;96%</span>
-          </div>
-          <div class="h-2 rounded-full overflow-hidden" style="background:#F2EBF8;">
-            <div class="sbar-fill h-full rounded-full" style="--w:96%; background:linear-gradient(90deg,#7A62B8,#8B72CC);"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p>Fewer than <strong>3%</strong> of bacteria reach your gut alive, and the rest get digested like any other dead protein.</p>
 
     <p>So she takes her probiotic every morning for six weeks and feels nothing change, and she isn't imagining that.</p>
 
-    <p>The bacteria never reached her gut in the first place.</p>
-
-    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260705_135540_7cddaf0b-e933-4787-b7d6-03ee82085d49.webp" alt="Side-by-side bottle comparison: Generic Probiotic vs Flove." loading="lazy" style="display:block; width:100%; height:auto;">
-    </figure>
+    <p><strong>The bacteria never reached her gut in the first place.</strong></p>
 
     <div class="pull-quote">
       <p>So if it isn't her diet and it isn't her discipline, the real question is what it actually takes to get live bacteria past stomach acid and into the gut alive. That's the part the supplement industry never explains, and it's the whole difference between a probiotic that works and one that quietly does nothing.</p>
@@ -469,9 +495,13 @@
 
     <p>I spent months on this, digging through gut research most nutrition coaches never touch, and the answer didn't come from the supplement world at all.</p>
 
-    <p>It came from marine biology.</p>
+    <p><strong>It came from marine biology.</strong></p>
 
     <p>There's a compound in brown seaweed that does something strange when it hits stomach acid.</p>
+
+    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
+      <img src="/brand_assets/hf_20260716_162016_9e67a4e2-745c-4cda-a4ca-edc7e5acc871.png" alt="Strands of brown seaweed extract, the source of the compound that shields live bacteria from stomach acid." loading="lazy" style="display:block; width:100%; height:auto;">
+    </figure>
 
     <p>Instead of dissolving, it tightens into a shell, and that shell holds all the way through the stomach.</p>
 
@@ -489,89 +519,89 @@
 
     <div class="inline-cta accent">
       <div class="spec-pill inline-flex mb-3"><span class="dot"></span>PhaseLock&trade; Delivery</div>
-      <p style="margin:0; color:#3A3450; font-size:0.9375rem;">That's PhaseLock&trade;, and it's why <strong style="color:#1A1526;">95&ndash;96%</strong> of the bacteria in this formula reach the gut alive, against fewer than 3% for the capsule sitting in most bathroom cabinets.</p>
-      <p style="margin:0.5rem 0 0; color:#3A3450; font-size:0.9375rem;">Every woman who ever told me a probiotic did nothing for her was telling the truth.</p>
-      <p style="margin:0.5rem 0 0; color:#3A3450; font-size:0.9375rem;">Hers never got there.</p>
+      <img src="/brand_assets/hf_20260716_162018_307bee20-319f-47df-b556-6243648892bd.png" alt="A sealed, acid-resistant capsule shell that stays intact through the stomach." loading="lazy" style="display:block; width:100%; max-width:420px; height:auto; margin:0 auto 1.25rem; border-radius:12px;">
+      <p style="margin:0; color:#3A3450; font-size:0.9375rem;">That's <strong style="color:#1A1526;">PhaseLock&trade;</strong>, and it's why <strong>95&ndash;96%</strong> of the bacteria in this formula reach the gut alive, compared to <strong>3%</strong> from the generic capsules sitting in most bathroom cabinets.</p>
     </div>
 
     <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== THE STRAINS ===== -->
-    <h3 class="mistake-heading">The Strain That Solves the <span class="hl-accent">Whey Shake Problem</span></h3>
+    <h3 class="mistake-heading">The Good Bacteria Made For <span class="hl-accent">Gym Girlies Who Take Whey</span></h3>
 
     <p>Getting bacteria into the gut alive is only step one.</p>
 
     <p>Which bacteria you send in matters just as much, and four strains do the heavy lifting here.</p>
 
-    <p>One of them is the reason you never have to give up your post-workout shake.</p>
-
-    <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260705_135434_a6a0ccc3-53e9-4cee-8b41-bbbc18ced996.webp" alt="The four strains: Lactobacillus acidophilus La-14, Bifidobacterium lactis Bl-04, Lactobacillus plantarum Lp-115, Lactobacillus paracasei Lpc-37." loading="lazy" style="display:block; width:100%; height:auto;">
-    </figure>
-
-    <div style="margin: 1.75rem 0;">
-      <div class="req-item">
-        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
-          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+    <div style="margin: 1.75rem 0;" id="ingredient-cards">
+      <div class="strain-card">
+        <div class="strain-photo">
+          <img src="/brand_assets/hf_20260713_191622_a11b80d7-d487-4da7-9118-0d5d61e74dd8.png" alt="Lactobacillus acidophilus La-14 strain powder." loading="lazy">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Lactobacillus acidophilus</em> &mdash; La-14</div>
-          <div class="text-sm" style="color:#6B6480;">Makes lactase, the enzyme that breaks down lactose. Lactose is the milk sugar in whey, and it causes most of the gas and swelling you feel after a shake. This strain does that job for you.</div>
+          <div class="text-sm" style="color:#6B6480;">Keeps your stomach flat after a protein shake by producing lactase. The enzyme that breaks down the lactose in whey.</div>
         </div>
       </div>
-      <div class="req-item">
-        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
-          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+      <div class="strain-card">
+        <div class="strain-photo">
+          <img src="/brand_assets/hf_20260713_191628_1e294c85-5e4b-41b9-af55-ef633f6d0131.png" alt="Bifidobacterium lactis Bl-04 strain powder." loading="lazy">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Bifidobacterium lactis</em> &mdash; Bl-04</div>
-          <div class="text-sm" style="color:#6B6480;">Rebuilds the gut lining, which is what keeps inflammation and water weight down.</div>
+          <div class="text-sm" style="color:#6B6480;">Cuts your water weight and reduces inflammation by rebuilding the gut lining.</div>
         </div>
       </div>
-      <div class="req-item">
-        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
-          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+      <div class="strain-card">
+        <div class="strain-photo">
+          <img src="/brand_assets/hf_20260713_191634_99f2cff3-b8e7-45ae-8042-cfeae377e414.png" alt="Lactobacillus plantarum Lp-115 strain powder." loading="lazy">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Lactobacillus plantarum</em> &mdash; Lp-115</div>
-          <div class="text-sm" style="color:#6B6480;">Crowds out the gas-producing bacteria before they get going.</div>
+          <div class="text-sm" style="color:#6B6480;">Overwhelms the bad bacteria that causes painful bloating.</div>
         </div>
       </div>
-      <div class="req-item">
-        <div class="req-icon" style="background:rgba(139,114,204,0.12); color:#8B72CC;">
-          <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+      <div class="strain-card">
+        <div class="strain-photo">
+          <img src="/brand_assets/hf_20260713_191640_a232ca22-f618-43da-bcc8-6f6aa8884201.png" alt="Lactobacillus paracasei Lpc-37 strain powder." loading="lazy">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Lactobacillus paracasei</em> &mdash; Lpc-37</div>
-          <div class="text-sm" style="color:#6B6480;">Keeps things moving so nothing sits in there overnight.</div>
+          <div class="text-sm" style="color:#6B6480;">Flattens your stomach naturally by speeding up your gut.</div>
         </div>
       </div>
     </div>
 
-    <p>This means you can keep the shake. The strain handles it. Most gut health brands never mention any of this, because most of them were never built for the way an athlete actually eats.</p>
+    <p>The formula also carries a small dose of a prebiotic fiber called <strong>FOS.</strong></p>
 
-    <p>The formula also carries a small dose of a prebiotic fiber called FOS.</p>
+    <p>This beats other probiotic brands that use fibers like inulin, and when you're mid-lift with pressure driving through your core, that much fiber ferments fast.</p>
 
-    <p>Greens powders load up on fiber like inulin, and when you're mid-lift with pressure driving through your core, that much fiber ferments fast. Many of my clients say they cramp from this mid-set.</p>
+    <p>Causing bathroom emergencies and cramping mid-lift.</p>
 
-    <p>FOS at this dose feeds the new bacteria and does nothing else.</p>
-
-    <p>And the detox tea is a laxative wearing nicer packaging.</p>
-
-    <p>It empties you out, leaves you dehydrated, and if you lean on it long enough your gut stops doing the job without it.</p>
+    <p><strong>FOS at this dose only feeds the new bacteria and does nothing else.</strong></p>
 
     <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
 
     <!-- ===== MORNING & NIGHT ===== -->
     <h3 class="mistake-heading"><span class="hl-accent">Morning and Night</span>, Not Just Once a Day</h3>
 
-    <p>One more thing. This isn't a once-a-day pill, and there's a reason for that.</p>
+    <div class="am-pm-split" style="margin: 1.75rem 0 2rem;">
+      <figure>
+        <img src="/brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.webp" alt="Morning capsule, taken with breakfast or pre-workout.">
+        <figcaption>Morning</figcaption>
+      </figure>
+      <figure>
+        <img src="/brand_assets/hf_20260612_190208_5865e831-923c-4315-83c5-39d612621a10-ezgif.com-optimize.webp" alt="Night capsule, taken before bed.">
+        <figcaption>Night</figcaption>
+      </figure>
+    </div>
+
+    <p><strong>This isn't a once-a-day routine, and there's a reason for that.</strong></p>
 
     <p>One big dose can shock a sensitive gut and set off gas of its own, so the dose gets split in half.</p>
 
-    <p>The morning capsule goes to work on your first real meal or your pre-workout, so the food gets digested instead of fermented.</p>
+    <p><strong>The morning capsule</strong> goes to work on your first real meal or your pre-workout, so the food gets digested instead of fermented.</p>
 
-    <p>The night capsule works while you sleep, when your gut is quietest and these strains can finally settle into the wall and repair the lining.</p>
+    <p><strong>The night capsule</strong> works while you sleep, when your gut is quietest and these strains can finally settle into the wall and repair the lining.</p>
 
     <div class="pull-quote">
       <p>Split in two, your gut gets steady support for a full 24 hours instead of one flood it has to survive. Digestion by day, repair overnight. You wake up flat.</p>
@@ -582,40 +612,51 @@
     <!-- ===== PRODUCT INTRO ===== -->
     <h3 class="mistake-heading">Introducing <span class="hl-accent">Flove</span></h3>
 
-    <div style="border-radius:16px; margin:0 auto 2rem; max-width:340px;">
-      <img src="/brand_assets/hf_20260705_135409_7d852831-af3c-41d8-b9b1-31569985b37a.webp"
-           alt="Flove Daily Performance Synbiotic bottle with 95-96% survival, 40B CFU, 30-day guarantee badges."
+    <div style="border-radius:16px; margin:0 auto 2rem; max-width:480px;">
+      <img src="/brand_assets/hf_20260716_163207_db2aa1a7-d287-446b-b5c4-1103eba33267-4x3.png"
+           alt="Client holding her bottle of Flove Daily Performance Synbiotic."
            loading="lazy"
-           style="display:block; width:100%; height:auto; border-radius:16px;">
+           style="display:block; width:100%; height:auto; border-radius:16px; aspect-ratio: 4 / 3; object-fit: cover;">
     </div>
 
-    <p>This is the probiotic I started giving my clients the moment I understood how PhaseLock&trade; works.</p>
+    <p>This is the probiotic I started giving my clients the moment I understood how <strong>PhaseLock&trade;</strong> works.</p>
 
-    <p>Two capsules a day, one with breakfast or your pre-workout, one before bed.</p>
+    <p><strong>Two capsules a day, one with breakfast or your pre-workout, one before bed</strong>.</p>
 
     <p>Nothing to mix, nothing gritty, no taste to hide.</p>
 
-    <p>Most of them come back and tell me the same thing: The leggings feel different by the end of the first week.</p>
-
-    <figure style="margin: 1.75rem 0; border-radius:16px; overflow:hidden; max-width:340px; margin-left:auto; margin-right:auto;">
-      <img src="/brand_assets/hf_20260705_135359_9da57950-ce45-49d3-966c-c445b6c47f9c.webp" alt="Flat By Design — flat-stomach athletic-wear lifestyle shot." loading="lazy" style="display:block; width:100%; height:auto;">
-    </figure>
+    <p>Most of them come back and tell me the same thing: <strong>The leggings feel different by the end of the first week.</strong></p>
 
     <!-- Testimonials -->
     <div class="grid sm:grid-cols-2 gap-5" style="margin: 2rem 0;">
       <div class="testimonial-card">
-        <img src="/brand_assets/testimonial-1-opt.webp" alt="Client holding Flove bottle, competitive powerlifter." loading="lazy">
+        <img src="/brand_assets/hf_20260716_155839_ff3d3926-dd99-410c-9c9b-1deb67eebb99.png" alt="Client holding Flove bottle, competitive powerlifter." loading="lazy">
         <blockquote>
           &ldquo;I've tried three other probiotics and a $90 greens powder before this. This is the first one where I actually noticed a difference by the end of week one.&rdquo;
           <cite>&mdash; Client, competitive powerlifter</cite>
         </blockquote>
       </div>
       <div class="testimonial-card">
-        <img src="/brand_assets/testimonial-3-opt.webp" alt="Client holding Flove bottle in her kitchen, marathon runner." loading="lazy">
+        <img src="/brand_assets/hf_20260716_155906_0be87f5c-ac79-4e65-9793-4cdb189cf012.png" alt="Client holding Flove bottle in her kitchen, marathon runner." loading="lazy">
         <blockquote>
           &ldquo;I still drink my protein shake every single day. That was the one thing I refused to give up, and I didn't have to.&rdquo;
           <cite>&mdash; Client, marathon runner</cite>
         </blockquote>
+      </div>
+    </div>
+
+    <hr style="border:none; border-top:1px solid #EDE6F4; margin: 2.5rem 0;" />
+
+    <!-- ===== FULL STORY ===== -->
+    <h3 class="mistake-heading">The Story That <span class="hl-accent">Moved Me</span>...</h3>
+
+    <div style="background:#FFFFFF; border:1px solid #EDE6F4; border-radius:16px; overflow:hidden; margin: 0 0 2.5rem;">
+      <img src="/brand_assets/hf_20260716_160307_784f2e61-e76c-4ee9-8569-35b99a7d7f04-4x3.webp" alt="Ana H., Flove customer story." loading="lazy" style="display:block; width:100%; height:auto;">
+      <div style="padding:1.75rem;">
+        
+        <p style="font-family:'Playfair Display', Georgia, serif; font-weight:700; font-size:1.25rem; color:#1A1526; letter-spacing:-0.02em; line-height:1.35; margin-bottom:1rem;">"It finally gave me the body I've been grinding for, for years!"</p>
+        <p style="color:#3A3450; font-size:0.9375rem; line-height:1.7; margin:0;"><strong>Flove is the reason I didn't give up.</strong> I started the gym for the same reason as many: To look good. But for many years, I just couldn't get my stomach to <strong>suck in.</strong> I was doing everything right... Eating the right foods, tracking my calories, making sure I got my steps in, and because my workouts were so heavy, I started taking pre-workouts. <strong>But after all this... my stomach was bigger than ever!</strong> So, I tried everything possible. 3 different diets, then <strong>greens powders</strong> that claimed to flatten my stomach after one quick drink. But the only thing they did was tasted like grass and make me <strong>run to the bathroom mid-workout!</strong> So I dug deeper, and found <strong>probiotics.</strong> First, I went with the generic Target and CVS ones that did NOTHING. At some point, I bought a <strong>premium $70 one</strong>, but it was too much for my gut to handle. I ended up with horrible poop emergencies in the first couple of days, and with even more bloating WEEKS after I stopped taking those... Then, I found <strong>Flove.</strong> <strong>Simple enough to work, and for me, fast enough to keep going.</strong> I've been taking Flove for just 3 weeks, and <strong>I can finally wear the compression set I bought a YEAR ago.</strong> My stomach has NEVER been this flat. And I mean... <strong>Ever!</strong> My butt even looks bigger now because my waist "shrunk." <strong>It finally gave me the body I've been grinding for, for YEARS. I finally get compliments at the beach, and even my boyfriend noticed. I've never had to suck my stomach in for another progress photo again.</strong></p>
+        <div class="font-semibold text-sm text-text-primary mb-3"></div> <cite>&mdash; Ana H., 3 Years Lifting</cite>
       </div>
     </div>
 
@@ -626,14 +667,20 @@
 
     <p>I reached out to the Flove team, and they agreed to hold a discount for readers of this article.</p>
 
-    <div class="inline-cta accent">
-      <img src="/brand_assets/hf_20260705_135409_7d852831-af3c-41d8-b9b1-31569985b37a.webp" alt="Flove Daily Performance Synbiotic bottle." style="width:88px; height:auto; margin:0 auto 1.25rem; display:block;">
-      <p class="font-display font-bold text-xl text-text-primary mb-2" style="margin-bottom: 0.5rem !important; letter-spacing:-0.02em;">Save 45% on your first order</p>
-      <p class="text-sm mb-5" style="color:#6B6480; margin-bottom: 1.25rem !important;">Every order is covered for 60 days, money back, and you don't even have to send the bottle in. If your stomach doesn't change, you're out nothing.</p>
+    <div class="inline-cta accent" style="padding: 2.5rem 2rem; box-shadow: 0 16px 40px rgba(139,114,204,0.14);">
+      <img src="/brand_assets/hf_20260612_192101_fe00bedf-259d-4ccf-820f-18bd410460e9.webp" alt="Flove Daily Performance Synbiotic — 40 billion CFU, seaweed-shielded matrix." style="width:100%; max-width:280px; height:auto; margin:0 auto 1.5rem; display:block;">
+      <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Reader Exclusive</div>
+      <p class="font-display font-bold text-text-primary mb-2" style="margin-bottom: 0.5rem !important; letter-spacing:-0.02em; font-size:1.625rem;">Save 45% on your first order</p>
+      <p class="text-sm mb-5" style="color:#6B6480; margin-bottom: 1.25rem !important;">Every order is covered for 60 days. If your stomach doesn't change, you literally don't lose a single penny.</p>
       <a href="/pdp-v2/" class="inline-btn">Claim Your Reader Discount &rarr;</a>
     </div>
 
-    <p>Fair warning: that seaweed shell costs a great deal more than the gelatin everyone else uses, so batches run out ahead of schedule. If the button below still works, there's stock left.</p>
+    <div style="background:#FFFFFF; border:1px solid rgba(196,150,42,0.35); border-radius:16px; padding:1.85rem 1.75rem; margin:2.5rem 0;">
+      <div class="spec-pill inline-flex mb-4" style="background:rgba(196,150,42,0.1); border-color:rgba(196,150,42,0.3); color:#C4962A;"><span class="dot" style="background:#C4962A;"></span>Limited Availability</div>
+      <p style="margin:0 0 1rem; color:#1A1526;"><strong>Fair warning:</strong> that seaweed shell isn't cheap. It costs a lot more than the gelatin capsules everyone else uses, which means Flove doesn't run batches the size a normal supplement brand would.</p>
+      <p style="margin:0 0 1rem; color:#3A3450;">And this particular batch is moving quicker than usual. Labor Day pulled in a wave of new readers, and stock has been dropping faster than the team planned for.</p>
+      <p style="margin:0; color:#3A3450;">If the button below still works, there's stock left. If it doesn't, this run is gone, and the next one doesn't have a date on it yet.</p>
+    </div>
 
     <div class="text-center" style="margin: 2rem 0;">
       <a href="/pdp-v2/" class="inline-btn">Check Current Availability &rarr;</a>
@@ -665,7 +712,7 @@
     </h2>
 
     <p class="text-lg mb-8 max-w-xl mx-auto" style="color:#6B6480; line-height:1.65;">
-      40 billion CFU delivered alive with PhaseLock&trade;, in a four-strain formula built for a high-protein training routine, backed for 60 days with no subscription to cancel.
+      40 billion CFU delivered alive with PhaseLock&trade;, in a four-strain formula built for a high-protein training routine, backed for 30 days with no subscription to cancel.
     </p>
 
     <!-- Mini spec grid -->
@@ -679,7 +726,7 @@
         <div class="text-xs mt-1" style="color:#6B6480;">CFU per dose</div>
       </div>
       <div class="rounded-2xl py-4 px-2 text-center bg-surface" style="border:1px solid #EDE6F4;">
-        <div class="font-display font-bold text-xl" style="color:#C4962A;">60-day</div>
+        <div class="font-display font-bold text-xl" style="color:#C4962A;">30-day</div>
         <div class="text-xs mt-1" style="color:#6B6480;">Guarantee</div>
       </div>
     </div>
@@ -691,7 +738,7 @@
     <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm mt-7" style="color:#6B6480;">
       <div class="flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-        60-day money-back guarantee
+        30-day money-back guarantee
       </div>
       <div class="flex items-center gap-1.5">
         <svg class="w-3.5 h-3.5" style="color:#8B72CC;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
