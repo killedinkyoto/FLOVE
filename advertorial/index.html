@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="tailwind.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" /></noscript>
   <style>
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -35,40 +37,6 @@
       transition: width 0.1s linear;
       width: 0%;
     }
-
-    /* Masthead */
-    .masthead-rule { border-top: 3px double #1A1526; border-bottom: 1px solid #1A1526; }
-    .masthead-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-weight: 800;
-      letter-spacing: 0.01em;
-    }
-    .masthead-kicker {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #6B6480;
-    }
-
-    /* Press ticker */
-    .press-ticker-track {
-      display: flex; align-items: center; gap: 40px;
-      width: max-content;
-      animation: press-scroll 26s linear infinite;
-    }
-    @keyframes press-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .press-name {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: 0.8125rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #9B93A8;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .press-dot { width: 4px; height: 4px; border-radius: 50%; background: #D8CFE8; flex-shrink: 0; }
 
     /* Highlighted words within headings */
     .hl-accent { color: #8B72CC; }
@@ -322,48 +290,18 @@
 <div id="progress-bar"></div>
 
 <!-- ============================================================
-     MASTHEAD
-     ============================================================ -->
-<header class="pt-8 pb-6 px-4 sm:px-6">
-  <div class="max-w-3xl mx-auto text-center">
-    <div class="masthead-kicker mb-2">Section: Recovery &amp; Performance</div>
-    <h1 class="masthead-title text-3xl sm:text-4xl" style="color:#1A1526;">Women's Strength Weekly</h1>
-  </div>
-  <div class="max-w-3xl mx-auto masthead-rule mt-4"></div>
-
-  <div style="overflow:hidden; position:relative; margin-top:1.25rem;">
-    <div style="position:absolute;left:0;top:0;bottom:0;width:60px;z-index:2;background:linear-gradient(to right,#F8F4EE,transparent);pointer-events:none;"></div>
-    <div style="position:absolute;right:0;top:0;bottom:0;width:60px;z-index:2;background:linear-gradient(to left,#F8F4EE,transparent);pointer-events:none;"></div>
-    <div class="press-ticker-track px-4">
-      <span class="press-name">The Performance Edit</span><span class="press-dot"></span>
-      <span class="press-name">Iron &amp; Form</span><span class="press-dot"></span>
-      <span class="press-name">The Lifting Journal</span><span class="press-dot"></span>
-      <span class="press-name">Athletic Edge Monthly</span><span class="press-dot"></span>
-      <span class="press-name">Recovery Review</span><span class="press-dot"></span>
-      <span class="press-name">The Strength Quarterly</span><span class="press-dot"></span>
-      <span class="press-name">The Performance Edit</span><span class="press-dot"></span>
-      <span class="press-name">Iron &amp; Form</span><span class="press-dot"></span>
-      <span class="press-name">The Lifting Journal</span><span class="press-dot"></span>
-      <span class="press-name">Athletic Edge Monthly</span><span class="press-dot"></span>
-      <span class="press-name">Recovery Review</span><span class="press-dot"></span>
-      <span class="press-name">The Strength Quarterly</span><span class="press-dot"></span>
-    </div>
-  </div>
-</header>
-
-<!-- ============================================================
      ARTICLE HEADER
      ============================================================ -->
-<div class="pt-8 pb-6 px-4 sm:px-6">
+<div class="pt-8 sm:pt-10 pb-6 px-4 sm:px-6">
   <div class="max-w-3xl mx-auto">
 
     <!-- Headline -->
-    <h2 class="font-display font-bold text-3xl sm:text-4xl lg:text-[2.75rem] text-text-primary mb-5" style="letter-spacing:-0.02em; line-height:1.15;">
+    <h2 class="font-display font-bold text-[1.8125rem] sm:text-[2rem] lg:text-[2.4rem] text-text-primary mb-4" style="letter-spacing:-0.02em; line-height:1.17;">
       Discover The <span class="hl-accent"><span class="hl-italic">SHOCKING</span></span> way <span class="hl-accent"><span class="hl-italic">889+ Gym Girls</span></span> Got Rid Of Their Painful Protein Shake Bloat - <span class="hl-italic">x10 Better Than Greens, Probiotics, And Laxatives</span>
     </h2>
 
     <!-- Deck / lede -->
-    <p class="text-lg sm:text-xl" style="color:#6B6480; line-height:1.6;">
+    <p class="text-[1rem] sm:text-[1.1875rem]" style="color:#6B6480; line-height:1.58;">
       In this 3-minute read, you’ll learn about two <span class="hl-accent"><span class="hl-italic">secret</span></span> secret mistakes keeping thousands of fit women <span class="hl-accent"><span class="hl-italic">painfully bloated</span></span> all day long, including a simple 2-step routine that <span class="hl-accent"><span class="hl-italic">flattens</span></span> your stomach  <span class="hl-accent"><span class="hl-italic">in less than 3 weeks without bathroom emergencies, cramping, or diet changes.</span></span>
     </p>
 
@@ -387,9 +325,8 @@
 
     <!-- Split before/after photo -->
     <figure class="mb-2" style="margin: 0 auto 0.75rem; border-radius:10px; overflow:hidden; max-width:88%;">
-      <img src="/brand_assets/hf_20260705_140713_71d2725b-cc87-490a-b4ec-5cb174390fa4.webp" alt="Same woman, same gym outfit — bloated stomach on the left, flat stomach on the right." loading="eager" fetchpriority="high" style="display:block; width:100%; height:auto;">
+      <img src="/brand_assets/hf_20260705_140713_71d2725b-cc87-490a-b4ec-5cb174390fa4.webp" alt="Same woman, same gym outfit — bloated stomach on the left, flat stomach on the right." width="928" height="1152" loading="eager" fetchpriority="high" style="display:block; width:100%; height:auto;">
     </figure>
-    <p class="text-xs text-center mb-10" style="color:#9B93A8;">Same woman. Same gym outfit. Same training week.</p>
 
     <!-- Opening -->
     <p class="lede">I've spent the last 14 years building nutrition plans for female athletes. Powerlifters, marathoners, bikini competitors.</p>
@@ -433,7 +370,7 @@
     <p>Here's what nobody tells her when she starts stacking supplements to hit her macros.</p>
 
     <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260705_135426_beee570b-68d5-41ba-b8da-c31346c984f3.webp" alt="Three culprits: sucralose pre-workout, sugar alcohol protein bars, whey lactose shake." loading="lazy" style="display:block; width:100%; height:auto;">
+      <img src="/brand_assets/hf_20260705_135426_beee570b-68d5-41ba-b8da-c31346c984f3.webp" alt="Three culprits: sucralose pre-workout, sugar alcohol protein bars, whey lactose shake." width="1024" height="1024" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
     </figure>
 
     <p>That <strong>"zero sugar"</strong> pre-workout she mixes before every session is sweetened with sucralose, and her gut has no way to break sucralose down.</p>
@@ -465,7 +402,7 @@
     <p>This is the one that stopped me <strong>cold</strong> when I started reading the research.</p>
 
     <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260716_162101_f2c8ce74-8f3c-4224-aa51-0f4626597ceb.png" alt="A plain capsule dissolving apart in liquid, unable to hold its shape." loading="lazy" style="display:block; width:100%; height:auto;">
+      <img src="/brand_assets/capsule-dissolving.webp" alt="A plain capsule dissolving apart in liquid, unable to hold its shape." width="1264" height="848" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
     </figure>
 
     <p>Most women who feel this kind of bloating end up trying a probiotic...</p>
@@ -500,7 +437,7 @@
     <p>There's a compound in brown seaweed that does something strange when it hits stomach acid.</p>
 
     <figure style="margin: 1.75rem auto; border-radius:10px; overflow:hidden; max-width:85%;">
-      <img src="/brand_assets/hf_20260716_162016_9e67a4e2-745c-4cda-a4ca-edc7e5acc871.png" alt="Strands of brown seaweed extract, the source of the compound that shields live bacteria from stomach acid." loading="lazy" style="display:block; width:100%; height:auto;">
+      <img src="/brand_assets/seaweed-extract.webp" alt="Strands of brown seaweed extract, the source of the compound that shields live bacteria from stomach acid." width="1264" height="848" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
     </figure>
 
     <p>Instead of dissolving, it tightens into a shell, and that shell holds all the way through the stomach.</p>
@@ -519,7 +456,7 @@
 
     <div class="inline-cta accent">
       <div class="spec-pill inline-flex mb-3"><span class="dot"></span>PhaseLock&trade; Delivery</div>
-      <img src="/brand_assets/hf_20260716_162018_307bee20-319f-47df-b556-6243648892bd.png" alt="A sealed, acid-resistant capsule shell that stays intact through the stomach." loading="lazy" style="display:block; width:100%; max-width:420px; height:auto; margin:0 auto 1.25rem; border-radius:12px;">
+      <img src="/brand_assets/capsule-shell.webp" alt="A sealed, acid-resistant capsule shell that stays intact through the stomach." width="840" height="564" loading="lazy" decoding="async" style="display:block; width:100%; max-width:420px; height:auto; margin:0 auto 1.25rem; border-radius:12px;">
       <p style="margin:0; color:#3A3450; font-size:0.9375rem;">That's <strong style="color:#1A1526;">PhaseLock&trade;</strong>, and it's why <strong>95&ndash;96%</strong> of the bacteria in this formula reach the gut alive, compared to <strong>3%</strong> from the generic capsules sitting in most bathroom cabinets.</p>
     </div>
 
@@ -535,7 +472,7 @@
     <div style="margin: 1.75rem 0;" id="ingredient-cards">
       <div class="strain-card">
         <div class="strain-photo">
-          <img src="/brand_assets/hf_20260713_191622_a11b80d7-d487-4da7-9118-0d5d61e74dd8.png" alt="Lactobacillus acidophilus La-14 strain powder." loading="lazy">
+          <img src="/brand_assets/strain-la14.webp" alt="Lactobacillus acidophilus La-14 strain powder." width="200" height="200" loading="lazy" decoding="async">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Lactobacillus acidophilus</em> &mdash; La-14</div>
@@ -544,7 +481,7 @@
       </div>
       <div class="strain-card">
         <div class="strain-photo">
-          <img src="/brand_assets/hf_20260713_191628_1e294c85-5e4b-41b9-af55-ef633f6d0131.png" alt="Bifidobacterium lactis Bl-04 strain powder." loading="lazy">
+          <img src="/brand_assets/strain-bl04.webp" alt="Bifidobacterium lactis Bl-04 strain powder." width="200" height="200" loading="lazy" decoding="async">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Bifidobacterium lactis</em> &mdash; Bl-04</div>
@@ -553,7 +490,7 @@
       </div>
       <div class="strain-card">
         <div class="strain-photo">
-          <img src="/brand_assets/hf_20260713_191634_99f2cff3-b8e7-45ae-8042-cfeae377e414.png" alt="Lactobacillus plantarum Lp-115 strain powder." loading="lazy">
+          <img src="/brand_assets/strain-lp115.webp" alt="Lactobacillus plantarum Lp-115 strain powder." width="200" height="200" loading="lazy" decoding="async">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Lactobacillus plantarum</em> &mdash; Lp-115</div>
@@ -562,7 +499,7 @@
       </div>
       <div class="strain-card">
         <div class="strain-photo">
-          <img src="/brand_assets/hf_20260713_191640_a232ca22-f618-43da-bcc8-6f6aa8884201.png" alt="Lactobacillus paracasei Lpc-37 strain powder." loading="lazy">
+          <img src="/brand_assets/strain-lpc37.webp" alt="Lactobacillus paracasei Lpc-37 strain powder." width="200" height="200" loading="lazy" decoding="async">
         </div>
         <div>
           <div class="font-semibold text-sm text-text-primary mb-1"><em>Lactobacillus paracasei</em> &mdash; Lpc-37</div>
@@ -586,11 +523,11 @@
 
     <div class="am-pm-split" style="margin: 1.75rem 0 2rem;">
       <figure>
-        <img src="/brand_assets/hf_20260612_185946_67789214-792d-4503-862d-d0ae4526da13-ezgif.com-optimize.webp" alt="Morning capsule, taken with breakfast or pre-workout.">
+        <img src="/brand_assets/capsule-morning.webp" alt="Morning capsule, taken with breakfast or pre-workout." width="720" height="540" loading="lazy" decoding="async">
         <figcaption>Morning</figcaption>
       </figure>
       <figure>
-        <img src="/brand_assets/hf_20260612_190208_5865e831-923c-4315-83c5-39d612621a10-ezgif.com-optimize.webp" alt="Night capsule, taken before bed.">
+        <img src="/brand_assets/capsule-night.webp" alt="Night capsule, taken before bed." width="720" height="540" loading="lazy" decoding="async">
         <figcaption>Night</figcaption>
       </figure>
     </div>
@@ -613,9 +550,10 @@
     <h3 class="mistake-heading">Introducing <span class="hl-accent">Flove</span></h3>
 
     <div style="border-radius:16px; margin:0 auto 2rem; max-width:480px;">
-      <img src="/brand_assets/hf_20260716_163207_db2aa1a7-d287-446b-b5c4-1103eba33267-4x3.png"
+      <img src="/brand_assets/product-intro.webp"
            alt="Client holding her bottle of Flove Daily Performance Synbiotic."
-           loading="lazy"
+           width="768" height="576"
+           loading="lazy" decoding="async"
            style="display:block; width:100%; height:auto; border-radius:16px; aspect-ratio: 4 / 3; object-fit: cover;">
     </div>
 
@@ -630,14 +568,14 @@
     <!-- Testimonials -->
     <div class="grid sm:grid-cols-2 gap-5" style="margin: 2rem 0;">
       <div class="testimonial-card">
-        <img src="/brand_assets/hf_20260716_155839_ff3d3926-dd99-410c-9c9b-1deb67eebb99.png" alt="Client holding Flove bottle, competitive powerlifter." loading="lazy">
+        <img src="/brand_assets/testimonial-powerlifter.webp" alt="Client holding Flove bottle, competitive powerlifter." width="700" height="869" loading="lazy" decoding="async">
         <blockquote>
           &ldquo;I've tried three other probiotics and a $90 greens powder before this. This is the first one where I actually noticed a difference by the end of week one.&rdquo;
           <cite>&mdash; Client, competitive powerlifter</cite>
         </blockquote>
       </div>
       <div class="testimonial-card">
-        <img src="/brand_assets/hf_20260716_155906_0be87f5c-ac79-4e65-9793-4cdb189cf012.png" alt="Client holding Flove bottle in her kitchen, marathon runner." loading="lazy">
+        <img src="/brand_assets/testimonial-marathon.webp" alt="Client holding Flove bottle in her kitchen, marathon runner." width="500" height="896" loading="lazy" decoding="async">
         <blockquote>
           &ldquo;I still drink my protein shake every single day. That was the one thing I refused to give up, and I didn't have to.&rdquo;
           <cite>&mdash; Client, marathon runner</cite>
@@ -651,7 +589,7 @@
     <h3 class="mistake-heading">The Story That <span class="hl-accent">Moved Me</span>...</h3>
 
     <div style="background:#FFFFFF; border:1px solid #EDE6F4; border-radius:16px; overflow:hidden; margin: 0 0 2.5rem;">
-      <img src="/brand_assets/hf_20260716_160307_784f2e61-e76c-4ee9-8569-35b99a7d7f04-4x3.webp" alt="Ana H., Flove customer story." loading="lazy" style="display:block; width:100%; height:auto;">
+      <img src="/brand_assets/hf_20260716_160307_784f2e61-e76c-4ee9-8569-35b99a7d7f04-4x3.webp" alt="Ana H., Flove customer story." width="768" height="576" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
       <div style="padding:1.75rem;">
         
         <p style="font-family:'Playfair Display', Georgia, serif; font-weight:700; font-size:1.25rem; color:#1A1526; letter-spacing:-0.02em; line-height:1.35; margin-bottom:1rem;">"It finally gave me the body I've been grinding for, for years!"</p>
@@ -668,7 +606,7 @@
     <p>I reached out to the Flove team, and they agreed to hold a discount for readers of this article.</p>
 
     <div class="inline-cta accent" style="padding: 2.5rem 2rem; box-shadow: 0 16px 40px rgba(139,114,204,0.14);">
-      <img src="/brand_assets/hf_20260612_192101_fe00bedf-259d-4ccf-820f-18bd410460e9.webp" alt="Flove Daily Performance Synbiotic — 40 billion CFU, seaweed-shielded matrix." style="width:100%; max-width:280px; height:auto; margin:0 auto 1.5rem; display:block;">
+      <img src="/brand_assets/hf_20260612_192101_fe00bedf-259d-4ccf-820f-18bd410460e9.webp" alt="Flove Daily Performance Synbiotic — 40 billion CFU, seaweed-shielded matrix." width="1080" height="1080" loading="lazy" decoding="async" style="width:100%; max-width:280px; height:auto; margin:0 auto 1.5rem; display:block;">
       <div class="spec-pill inline-flex mb-4"><span class="dot"></span>Reader Exclusive</div>
       <p class="font-display font-bold text-text-primary mb-2" style="margin-bottom: 0.5rem !important; letter-spacing:-0.02em; font-size:1.625rem;">Save 45% on your first order</p>
       <p class="text-sm mb-5" style="color:#6B6480; margin-bottom: 1.25rem !important;">Every order is covered for 60 days. If your stomach doesn't change, you literally don't lose a single penny.</p>
