@@ -68,6 +68,7 @@
 
     /* ── SOCIAL PROOF TICKER ── */
     .proof-ticker-track { display: flex; align-items: center; gap: 36px; width: max-content; animation: proof-scroll 28s linear infinite; }
+    @keyframes quiz-spin { to { transform: rotate(360deg); } }
     @keyframes proof-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     .proof-item {
       font-family: 'Playfair Display', Georgia, serif; font-size: 0.8125rem; letter-spacing: 0.05em;
@@ -87,26 +88,6 @@
       position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 10px; font-size: 11px; font-weight: 600;
       background: linear-gradient(to top, rgba(28,24,40,0.85) 0%, transparent 100%);
       font-family: 'Inter', sans-serif; color: #fff;
-    }
-
-    /* ── TESTIMONIAL VIDEO CARDS (clickable/playable) ── */
-    .testimonial-vid-card {
-      position: relative; cursor: pointer; border-radius: 16px; overflow: hidden;
-      aspect-ratio: 9/16; border: 1px solid #EDE6F4; background: #2A2240;
-    }
-    .testimonial-vid-card video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-    .testimonial-play-btn {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      width: 44px; height: 44px; border-radius: 50%; background: #fff;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 16px rgba(28,24,40,0.35); transition: opacity 0.15s, transform 0.15s;
-    }
-    .testimonial-play-btn.hidden { opacity: 0; pointer-events: none; transform: translate(-50%,-50%) scale(0.85); }
-    .testimonial-vid-card:hover .testimonial-play-btn { transform: translate(-50%,-50%) scale(1.06); }
-    .testimonial-name {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 10px 12px; font-size: 12px; font-weight: 600;
-      background: linear-gradient(to top, rgba(28,24,40,0.85) 0%, transparent 100%);
-      font-family: 'Inter', sans-serif; color: #fff; pointer-events: none;
     }
 
     /* ── TIMELINE ── */
@@ -542,31 +523,22 @@
 </section>
 
 <!-- ============================================================
-     2B. TESTIMONIALS — 3 clickable/playable customer videos
+     2B. TESTIMONIALS — endless-loop horizontal video ticker
 ============================================================ -->
 <section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8;">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
     <div class="flex items-center gap-3">
-      <div class="text-sm" style="color:#6B6480;">889 verified buyers · 4.9★ average</div>
+      <div class="text-base sm:text-lg font-bold" style="color:#3A3450;">889 verified buyers · 4.9★ average</div>
     </div>
   </div>
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="grid grid-cols-3 gap-3 sm:gap-5">
-      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
-        <video muted loop playsinline preload="metadata"><source src="../videos/vid7.mp4" type="video/mp4"></video>
-        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="testimonial-name">Jennifer M. · Seattle</div>
-      </div>
-      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
-        <video muted loop playsinline preload="metadata"><source src="../videos/vid6.mp4" type="video/mp4"></video>
-        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="testimonial-name">Amber C. · SF</div>
-      </div>
-      <div class="testimonial-vid-card" onclick="playTestimonial(this, event)">
-        <video muted loop playsinline preload="metadata"><source src="../videos/vid8.mp4" type="video/mp4"></video>
-        <div class="testimonial-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="testimonial-name">Rachel S. · Denver</div>
-      </div>
+  <div style="overflow:hidden;">
+    <div class="vticker-track" id="vticker-track">
+      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
+      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
+      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
+      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
+      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
+      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
     </div>
   </div>
 </section>
@@ -578,7 +550,7 @@
 <section id="mechanism" class="py-12 sm:py-20 px-4 sm:px-6" style="background:#FFFFFF; border-top:1px solid #D8CBEA; border-bottom:1px solid #D8CBEA;">
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-10">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">How <span style="color:#6E52B5;">flove</span> Works From <span style="color:#6E52B5;"><em>Day One</em></span>, Without Shocking Your Gut</h2>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">How <span style="color:#6E52B5;">flove</span> Works From <span style="color:#6E52B5;"><em>Day One</em></span>, Without <span style="color:#6E52B5;">Shocking</span> Your Gut</h2>
       <p class="text-base max-w-xl mx-auto" style="color:#3A3450;">Flove uses a polysaccharide from brown seaweed that forms a gel shield that doesn't dissolve in your stomach acid.</p>
     </div>
     <div class="max-w-xl mx-auto space-y-14 sm:space-y-16">
@@ -779,7 +751,7 @@
 <section class="py-12 sm:py-20 px-4 sm:px-6" style="border-bottom:1px solid #D8CBEA;">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-10">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">What A Routine <span style="color:#6E52B5;"><em>Finally Free</em></span> From <span style="color:#6E52B5;"><em>Painful Gas</em></span> Looks Like</h2>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">What A Normal Day <span style="color:#6E52B5;"><em>Finally Free</em></span> From <span style="color:#6E52B5;"><em>Painful Gas</em></span> Looks Like</h2>
       <p class="text-base max-w-lg mx-auto" style="color:#3A3450;">Two capsules, no adjustment window. Here's how the day actually looks.</p>
     </div>
     <div class="max-w-xl mx-auto space-y-14 sm:space-y-16">
@@ -1205,10 +1177,14 @@
         <button onclick="selectQuizAnswer('Finally wear a compression set')" class="cta-btn" style="width:100%;padding:15px 18px;font-size:14.5px;text-align:left;justify-content:flex-start;border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;background:rgba(255,255,255,0.08);color:#fff;">Finally wear a compression set</button>
       </div>
     </div>
+    <div id="quiz-loading-state" style="display:none;text-align:center;padding:32px 0;">
+      <div style="width:32px;height:32px;border:2.5px solid rgba(255,255,255,0.25);border-top-color:#fff;border-radius:50%;margin:0 auto 14px;animation:quiz-spin 0.7s linear infinite;"></div>
+      <p style="font-size:13.5px;color:rgba(255,255,255,0.75);margin:0;">Finding your discount...</p>
+    </div>
     <div id="email-form-state" style="display:none;">
       <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C4B5E8;text-transform:uppercase;margin:0 0 10px;">Nice choice</p>
       <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin:0 0 8px;line-height:1.15;">Congrats! You've unlocked 10% off.</h3>
-      <p style="font-size:14.5px;color:rgba(255,255,255,0.85);margin:0 0 20px;line-height:1.6;">Drop your email and we'll apply it automatically to every price on this page. No spam, just the science.</p>
+      <p style="font-size:14.5px;color:rgba(255,255,255,0.85);margin:0 0 20px;line-height:1.6;">Drop your best email, and we'll automatically apply the discount for you.</p>
       <input id="email-input" type="email" placeholder="your@email.com" style="width:100%;padding:15px 16px;border:1.5px solid rgba(255,255,255,0.3);border-radius:12px;font-size:16px;font-family:'Inter',sans-serif;color:#1A1526;background:#fff;box-sizing:border-box;margin-bottom:12px;outline:none;transition:border-color 0.15s ease;">
       <button onclick="submitEmailCapture()" class="cta-btn" style="width:100%;padding:16px;font-size:15px;border:none;cursor:pointer;background:#fff;color:#1C1828;">Send me 10% off →</button>
       <p style="font-size:11px;color:rgba(255,255,255,0.6);margin:12px 0 0;text-align:center;">No spam. Unsubscribe anytime.</p>
@@ -1416,19 +1392,28 @@
   }
 
   // ── TESTIMONIAL VIDEOS ──
-  function playTestimonial(card, event) {
-    const video = card.querySelector('video');
-    // once controls are on, the native <video> controls own clicks inside the player — don't fight them
-    if (video.hasAttribute('controls')) return;
-    if (event) event.preventDefault();
-    document.querySelectorAll('.testimonial-vid-card video').forEach(v => {
-      if (v !== video) { v.pause(); v.muted = true; v.removeAttribute('controls'); v.closest('.testimonial-vid-card').querySelector('.testimonial-play-btn').classList.remove('hidden'); }
-    });
-    video.muted = false;
-    video.setAttribute('controls', '');
-    video.play();
-    card.querySelector('.testimonial-play-btn').classList.add('hidden');
-  }
+  // ── VIDEO TESTIMONIAL TICKER — lazy-load and only decode/play videos once they scroll into view ──
+  (function () {
+    const track = document.getElementById('vticker-track');
+    if (!track) return;
+    const videos = track.querySelectorAll('video');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          if (!video.getAttribute('src') && !video.querySelector('source[data-loaded]')) {
+            video.preload = 'auto';
+            video.load();
+            video.querySelector('source').setAttribute('data-loaded', '1');
+          }
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      });
+    }, { root: null, rootMargin: '200px', threshold: 0.1 });
+    videos.forEach(v => io.observe(v));
+  })();
 
   // ── FAQ ──
   function toggleFaq(btn) {
@@ -1559,7 +1544,11 @@
   function selectQuizAnswer(answer) {
     quizAnswer = answer;
     document.getElementById('quiz-state').style.display = 'none';
-    document.getElementById('email-form-state').style.display = 'block';
+    document.getElementById('quiz-loading-state').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('quiz-loading-state').style.display = 'none';
+      document.getElementById('email-form-state').style.display = 'block';
+    }, 900);
   }
   function submitEmailCapture() {
     const emailInput = document.getElementById('email-input');
