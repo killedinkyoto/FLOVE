@@ -178,9 +178,6 @@
     .cta-btn:hover { opacity:0.85; }
     .cta-btn:active { transform:scale(0.98); }
 
-    /* ── MOBILE BAR ── */
-    #mobile-bar { backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); }
-    @media (max-width:767px) { body { padding-bottom:80px; } }
 
     hr { border:none; border-top:1px solid #EDE6F4; }
 
@@ -782,7 +779,7 @@
 <section class="py-12 sm:py-20 px-4 sm:px-6" style="border-bottom:1px solid #D8CBEA;">
   <div class="max-w-4xl mx-auto">
     <div class="text-center mb-10">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">What A Routine Finally Free of Painful Gas Looks Like</h2>
+      <h2 class="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-3" style="letter-spacing:-0.02em;">What A Routine <span style="color:#6E52B5;"><em>Finally Free</em></span> From <span style="color:#6E52B5;"><em>Painful Gas</em></span> Looks Like</h2>
       <p class="text-base max-w-lg mx-auto" style="color:#3A3450;">Two capsules, no adjustment window. Here's how the day actually looks.</p>
     </div>
     <div class="max-w-xl mx-auto space-y-14 sm:space-y-16">
@@ -1101,14 +1098,6 @@
 </footer>
 
 
-<!-- MOBILE BAR -->
-<div id="mobile-bar" class="fixed bottom-0 left-0 right-0 z-50 sm:hidden px-4 pt-2 pb-4">
-  <a href="#order" class="cta-btn w-full py-3 text-sm" style="min-height:48px; box-shadow:0 8px 24px rgba(28,24,40,0.28);">
-    <span class="font-bold">Order Now</span>
-    <span class="font-normal opacity-60 text-sm">· From $49.99</span>
-  </a>
-</div>
-
 <!-- ── CART DRAWER ── -->
 <style>
   #cart-drawer { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1); transform: translateX(100%); }
@@ -1207,9 +1196,18 @@
   <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(20,17,28,0.95) 0%, rgba(20,17,28,0.65) 38%, rgba(20,17,28,0.15) 62%, rgba(20,17,28,0.05) 100%);"></div>
   <button onclick="closeEmailPopup()" aria-label="Close" style="position:absolute;top:max(20px,env(safe-area-inset-top));right:20px;width:40px;height:40px;border:none;background:rgba(255,255,255,0.92);border-radius:50%;cursor:pointer;font-size:20px;line-height:1;color:#1C1828;display:flex;align-items:center;justify-content:center;z-index:2;">&times;</button>
   <div style="position:absolute;left:0;right:0;bottom:0;padding:28px 24px max(28px,env(safe-area-inset-bottom));z-index:1;max-width:520px;margin:0 auto;">
-    <div id="email-form-state">
-      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C4B5E8;text-transform:uppercase;margin:0 0 10px;">Before you go</p>
-      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin:0 0 8px;line-height:1.15;">Here's 10% off your first order.</h3>
+    <div id="quiz-state">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C4B5E8;text-transform:uppercase;margin:0 0 10px;">Quick question</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin:0 0 18px;line-height:1.15;">What's Your #1 Gut Goal Right Now?</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <button onclick="selectQuizAnswer('Get rid of painful bloating')" class="cta-btn" style="width:100%;padding:15px 18px;font-size:14.5px;text-align:left;justify-content:flex-start;border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;background:rgba(255,255,255,0.08);color:#fff;">Get rid of painful bloating</button>
+        <button onclick="selectQuizAnswer('Get a flatter stomach')" class="cta-btn" style="width:100%;padding:15px 18px;font-size:14.5px;text-align:left;justify-content:flex-start;border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;background:rgba(255,255,255,0.08);color:#fff;">Get a flatter stomach</button>
+        <button onclick="selectQuizAnswer('Finally wear a compression set')" class="cta-btn" style="width:100%;padding:15px 18px;font-size:14.5px;text-align:left;justify-content:flex-start;border:1.5px solid rgba(255,255,255,0.3);cursor:pointer;background:rgba(255,255,255,0.08);color:#fff;">Finally wear a compression set</button>
+      </div>
+    </div>
+    <div id="email-form-state" style="display:none;">
+      <p style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#C4B5E8;text-transform:uppercase;margin:0 0 10px;">Nice choice</p>
+      <h3 style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#fff;margin:0 0 8px;line-height:1.15;">Congrats! You've unlocked 10% off.</h3>
       <p style="font-size:14.5px;color:rgba(255,255,255,0.85);margin:0 0 20px;line-height:1.6;">Drop your email and we'll apply it automatically to every price on this page. No spam, just the science.</p>
       <input id="email-input" type="email" placeholder="your@email.com" style="width:100%;padding:15px 16px;border:1.5px solid rgba(255,255,255,0.3);border-radius:12px;font-size:16px;font-family:'Inter',sans-serif;color:#1A1526;background:#fff;box-sizing:border-box;margin-bottom:12px;outline:none;transition:border-color 0.15s ease;">
       <button onclick="submitEmailCapture()" class="cta-btn" style="width:100%;padding:16px;font-size:15px;border:none;cursor:pointer;background:#fff;color:#1C1828;">Send me 10% off →</button>
@@ -1536,10 +1534,6 @@
     window.location.href = url;
   }
 
-  function checkMobileBar() { document.getElementById('mobile-bar').style.display = window.innerWidth >= 640 ? 'none' : ''; }
-  window.addEventListener('resize', checkMobileBar);
-  checkMobileBar();
-
   // ── EMAIL CAPTURE POPUP (full-screen takeover) ──
   let emailPopupShown = false;
   function showEmailPopup() {
@@ -1561,6 +1555,12 @@
       document.body.style.overflow = '';
     }, 350);
   }
+  let quizAnswer = null;
+  function selectQuizAnswer(answer) {
+    quizAnswer = answer;
+    document.getElementById('quiz-state').style.display = 'none';
+    document.getElementById('email-form-state').style.display = 'block';
+  }
   function submitEmailCapture() {
     const emailInput = document.getElementById('email-input');
     const email = emailInput.value.trim();
@@ -1574,7 +1574,7 @@
     fetch('https://a.klaviyo.com/client/subscriptions/?company_id=S3D76Q', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'revision': '2024-10-15' },
-      body: JSON.stringify({ data: { type: 'subscription', attributes: { profile: { data: { type: 'profile', attributes: { email: email } } } }, relationships: { list: { data: { type: 'list', id: 'XinHh6' } } } } })
+      body: JSON.stringify({ data: { type: 'subscription', attributes: { profile: { data: { type: 'profile', attributes: { email: email, properties: { gut_goal: quizAnswer } } } } }, relationships: { list: { data: { type: 'list', id: 'XinHh6' } } } } })
     }).catch(function(){});
     if (typeof fbq !== 'undefined') {
       fbq('init', '1725808198870245', { em: email.toLowerCase() });
