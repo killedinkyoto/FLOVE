@@ -76,19 +76,35 @@
     }
     .proof-dot { width: 4px; height: 4px; border-radius: 50%; background: #D8CFE8; flex-shrink: 0; }
 
-    /* ── VIDEO TESTIMONIAL TICKER ── */
-    .vticker-track { display: flex; gap: 12px; align-items: center; animation: vticker-scroll 42s linear infinite; width: max-content; }
-    @keyframes vticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .vticker-card {
-      flex-shrink: 0; width: 118px; height: 210px; border-radius: 12px;
-      overflow: hidden; position: relative; border: 1px solid #EDE6F4; background: #2A2240;
+    /* ── VIDEO TESTIMONIAL GRID ── */
+    .vgrid-card { display: flex; flex-direction: column; }
+    .vgrid-frame {
+      position: relative; width: 100%; aspect-ratio: 4 / 5; border-radius: 12px;
+      overflow: hidden; border: 1px solid #EDE6F4; background: #2A2240;
+      box-shadow: 0 6px 20px rgba(139,114,204,0.12);
     }
-    .vticker-card video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-    .vticker-name {
-      position: absolute; bottom: 0; left: 0; right: 0; padding: 8px 10px; font-size: 11px; font-weight: 600;
+    .vgrid-frame video { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; cursor: pointer; }
+    .vgrid-name {
+      position: absolute; bottom: 0; left: 0; right: 0; padding: 6px 8px 8px; font-size: 10px; font-weight: 600;
       background: linear-gradient(to top, rgba(28,24,40,0.85) 0%, transparent 100%);
-      font-family: 'Inter', sans-serif; color: #fff;
+      font-family: 'Inter', sans-serif; color: #fff; pointer-events: none;
     }
+    .vgrid-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 40px; height: 40px; border-radius: 50%; background: #F8F4EE; border: none;
+      display: flex; align-items: center; justify-content: center; cursor: pointer;
+      box-shadow: 0 4px 14px rgba(28,24,40,0.35);
+      transition: transform 0.15s, opacity 0.15s;
+    }
+    .vgrid-play svg { margin-left: 2px; }
+    .vgrid-play:hover { transform: translate(-50%, -50%) scale(1.06); }
+    .vgrid-play:active { transform: translate(-50%, -50%) scale(0.96); }
+    .vgrid-frame.is-playing .vgrid-play { opacity: 0; pointer-events: none; }
+    .vgrid-quote {
+      margin-top: 10px; font-size: 12px; line-height: 1.5; color: #3A3450;
+      font-family: 'Inter', sans-serif;
+    }
+    @media (min-width: 640px) { .vgrid-quote { font-size: 14px; } }
 
     /* ── TIMELINE ── */
     .timeline-dot {
@@ -231,7 +247,7 @@
             <div><img src="../brand_assets/pdp-v2-media/pdp4.webp" alt="Before and after: protein bar bloat" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
             <div><img src="../brand_assets/pdp-v2-media/pdp5.webp" alt="Real results you can see in 7 days" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
             <div><img src="../brand_assets/pdp-v2-media/pdp6.webp" alt="Powered by clinically effective strains" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
-            <div><img src="../brand_assets/pdp-v2-media/pdp7.webp" alt="What 1,700+ high-performance gym-goers are saying" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
+            <div><img src="../brand_assets/pdp-v2-media/pdp7.png" alt="Verified Trustpilot review: I've never seen something flatten my stomach so fast without horrible side effects" width="1024" height="1024" loading="lazy" style="width:100%; height:auto; display:block;"></div>
             <div><img src="../brand_assets/pdp-v2-media/pdp8.webp" alt="Unsatisfied? Send it back. 60-day performance guarantee" width="2048" height="2048" loading="lazy" style="width:100%; height:auto; display:block;"></div>
             <div><img src="../brand_assets/pdp-v2-media/pdp9.webp" alt="Customer holding Flove Daily Synbiotic" width="1520" height="2688" loading="lazy" style="width:100%; height:auto; display:block;"></div>
           </div>
@@ -245,7 +261,7 @@
           <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="3" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp4.webp" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
           <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="4" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp5.webp" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
           <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="5" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp6.webp" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
-          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="6" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp7.webp" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
+          <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="6" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp7.png" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
           <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="7" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp8.webp" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
           <div class="carousel-thumb rounded-lg overflow-hidden flex-shrink-0" data-index="8" style="border:1px solid #EDE6F4; cursor:pointer; width:34px; height:34px;"><img src="../brand_assets/pdp-v2-media/pdp9.webp" alt="" width="128" height="128" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block; background:#F8F4EE;"></div>
         </div>
@@ -523,22 +539,50 @@
 </section>
 
 <!-- ============================================================
-     2B. TESTIMONIALS — endless-loop horizontal video ticker
+     2B. TESTIMONIALS — tap-to-play video grid
 ============================================================ -->
-<section class="py-10 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8;">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
-    <div class="flex items-center gap-3">
+<section class="py-10 sm:py-14 px-4 sm:px-6 border-t border-b" style="border-color:#D8CBEA; background:#F2EBF8;">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center gap-3 mb-6">
       <div class="text-base sm:text-lg font-bold" style="color:#3A3450;">889 verified buyers · 4.9★ average</div>
     </div>
-  </div>
-  <div style="overflow:hidden;">
-    <div class="vticker-track" id="vticker-track">
-      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
-      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
-      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
-      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid1.mp4" type="video/mp4"></video><div class="vticker-name">Jennifer M. · Seattle</div></div>
-      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid5.mp4" type="video/mp4"></video><div class="vticker-name">Amber C. · SF</div></div>
-      <div class="vticker-card"><video muted loop playsinline preload="none" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" style="pointer-events:none;"><source src="../videos/vid3.mp4" type="video/mp4"></video><div class="vticker-name">Rachel S. · Denver</div></div>
+    <div class="grid grid-cols-3 gap-3 sm:gap-6" id="vgrid">
+      <div class="vgrid-card">
+        <div class="vgrid-frame">
+          <video muted playsinline preload="metadata" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" poster="../brand_assets/testimonial-1-poster.jpg" data-name="Rachel S. · Denver">
+            <source src="../videos/testimonial-1.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="vgrid-play" aria-label="Play video testimonial from Rachel S., Denver">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vgrid-name">Rachel S. · Denver</div>
+        </div>
+        <p class="vgrid-quote">"I've never seen my stomach this flat this fast."</p>
+      </div>
+      <div class="vgrid-card">
+        <div class="vgrid-frame">
+          <video muted playsinline preload="metadata" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" poster="../brand_assets/testimonial-2-poster.jpg" data-name="Jennifer M. · Seattle">
+            <source src="../videos/testimonial-2.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="vgrid-play" aria-label="Play video testimonial from Jennifer M., Seattle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vgrid-name">Jennifer M. · Seattle</div>
+        </div>
+        <p class="vgrid-quote">"Their formula doesn't do too much, and that's why it worked with my sensitive stomach."</p>
+      </div>
+      <div class="vgrid-card">
+        <div class="vgrid-frame">
+          <video muted playsinline preload="metadata" disablePictureInPicture disableRemotePlayback controlsList="nofullscreen nodownload noremoteplayback" poster="../brand_assets/testimonial-3-poster.jpg" data-name="Amber C. · SF">
+            <source src="../videos/testimonial-3.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="vgrid-play" aria-label="Play video testimonial from Amber C., San Francisco">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#1C1828"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <div class="vgrid-name">Amber C. · SF</div>
+        </div>
+        <p class="vgrid-quote">"My abs would just disappear for the rest of the day."</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1398,28 +1442,56 @@
     document.getElementById('rev-video').classList.toggle('hidden', tab !== 'video');
   }
 
-  // ── TESTIMONIAL VIDEOS ──
-  // ── VIDEO TESTIMONIAL TICKER — lazy-load and only decode/play videos once they scroll into view ──
+  // ── TESTIMONIAL VIDEOS — tap to unmute + play, one at a time, no autoplay, no replay, stops off-screen ──
   (function () {
-    const track = document.getElementById('vticker-track');
-    if (!track) return;
-    const videos = track.querySelectorAll('video');
+    const grid = document.getElementById('vgrid');
+    if (!grid) return;
+    const frames = grid.querySelectorAll('.vgrid-frame');
+
+    function resetFrame(frame) {
+      const video = frame.querySelector('video');
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      frame.classList.remove('is-playing');
+    }
+
+    function playFrame(frame) {
+      const video = frame.querySelector('video');
+      frames.forEach(f => { if (f !== frame) resetFrame(f); });
+      video.muted = false;
+      frame.classList.add('is-playing');
+      video.play().catch(() => {});
+    }
+
+    frames.forEach(frame => {
+      const video = frame.querySelector('video');
+      const playBtn = frame.querySelector('.vgrid-play');
+
+      const toggle = () => {
+        if (video.paused) {
+          playFrame(frame);
+        } else {
+          resetFrame(frame);
+        }
+      };
+      playBtn.addEventListener('click', toggle);
+      video.addEventListener('click', toggle);
+
+      // no auto-replay: when it finishes, drop back to the muted first frame
+      video.addEventListener('ended', () => resetFrame(frame));
+    });
+
+    // stop playback (and its audio) the moment a video scrolls out of view
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          if (!video.getAttribute('src') && !video.querySelector('source[data-loaded]')) {
-            video.preload = 'auto';
-            video.load();
-            video.querySelector('source').setAttribute('data-loaded', '1');
-          }
-          video.play().catch(() => {});
-        } else {
-          video.pause();
+        if (!entry.isIntersecting) {
+          const frame = entry.target;
+          if (!frame.querySelector('video').paused) resetFrame(frame);
         }
       });
-    }, { root: null, rootMargin: '200px', threshold: 0.1 });
-    videos.forEach(v => io.observe(v));
+    }, { root: null, threshold: 0.4 });
+    frames.forEach(f => io.observe(f));
   })();
 
   // ── FAQ ──
