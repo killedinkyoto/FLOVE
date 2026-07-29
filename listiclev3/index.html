@@ -826,13 +826,37 @@
 </footer>
 
 <script>
+  // Read-depth milestones — the engagement signal on an editorial page.
+  // Fires once each; piggybacks the existing scroll handler so there is no second listener.
+  const readMarks = { 50: false, 90: false };
+
   window.addEventListener('scroll', () => {
     const doc = document.documentElement;
     const scrollTop = window.scrollY || doc.scrollTop;
     const scrollHeight = doc.scrollHeight - doc.clientHeight;
     const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
     document.getElementById('progress-bar').style.width = pct + '%';
+
+    [50, 90].forEach(function (m) {
+      if (!readMarks[m] && pct >= m) {
+        readMarks[m] = true;
+        if (typeof fbq !== 'undefined') fbq('trackCustom', 'ArticleRead', { source: 'listiclev3', depth: m });
+        if (typeof clarity !== 'undefined') clarity('event', 'article_read_' + m);
+      }
+    });
   });
+
+  // ── Funnel step: clicked through to the offer page ──
+  // This is the real conversion action on an editorial page — there is no cart,
+  // checkout or email form here, so AddToCart/InitiateCheckout/Lead fire on pdp-v2.
+  (function () {
+    document.querySelectorAll('a[href^="/pdp-v2"]').forEach(function (a, i) {
+      a.addEventListener('click', function () {
+        if (typeof fbq !== 'undefined') fbq('trackCustom', 'ClickToOffer', { source: 'listiclev3', cta_position: i + 1 });
+        if (typeof clarity !== 'undefined') clarity('event', 'click_to_offer');
+      });
+    });
+  })();
 </script>
 
 </body>

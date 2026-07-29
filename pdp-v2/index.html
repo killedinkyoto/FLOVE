@@ -1583,6 +1583,20 @@
     document.getElementById('email-success-state').style.display = 'block';
   }
   if (!emailDiscountApplied) setTimeout(showEmailPopup, 10000);
+
+  // ── Funnel step: reached the offer / pricing block ──
+  (function() {
+    var pricingEl = document.getElementById('order');
+    if (!pricingEl) return;
+    var obs = new IntersectionObserver(function(e) {
+      if (e[0].isIntersecting) {
+        obs.disconnect();
+        if (typeof fbq !== 'undefined') fbq('trackCustom', 'ViewPricing');
+        if (typeof clarity !== 'undefined') clarity('event', 'view_pricing');
+      }
+    }, { threshold: 0.4 });
+    obs.observe(pricingEl);
+  })();
 </script>
 </body>
 </html>
