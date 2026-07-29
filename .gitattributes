@@ -1,0 +1,20 @@
+# Normalize all text files to LF in the repo and on checkout.
+# This repo's history is LF; without this, editors on Windows (or tools that
+# write CRLF) make every line of a file look modified and block pulls.
+* text=auto eol=lf
+
+# Binary assets — never touch these.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.webp  binary
+*.ico   binary
+*.mp4   binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary
+*.pdf   binary
+*.docx  binary
+*.xlsx  binary
